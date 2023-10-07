@@ -1,9 +1,15 @@
 = Introduction
 
+Foo bar
+
 // tag::content[]
+
+== Content 
 
 * Agility
 ** Includes expertise
 ** Includes design
 ** Includes accept changes
+
+
 // end::content[]
