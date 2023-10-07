@@ -48,7 +48,7 @@ jobs:
         run: bundle binstubs --all && ls -l
       - name: Build with Asciidoctor
         # Outputs to the './_site' directory by default
-        run: asciidoctor-revealjs index.adoc -o ./_site/index.html 
+        run: ./bin/asciidoctor-revealjs index.adoc -o ./_site/index.html 
         # "${{ steps.pages.outputs.base_path }}/
         env:
           JEKYLL_ENV: production
