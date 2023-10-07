@@ -49,7 +49,7 @@ jobs:
       - name:  Copy custom
         run: cp -r custom ./_site/
       - name:  Copy revealjs
-        run: cp -r reveal.js ./_site/        
+        run: cp -r reveal.js ./_site/   && ls -l ./_site/     
       - name: Build with Asciidoctor
         # Outputs to the './_site' directory by default
         run: ./bin/asciidoctor-revealjs index.adoc -o ./_site/index.html 
