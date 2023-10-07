@@ -46,7 +46,7 @@ jobs:
         run: bundle install
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
-        run: bundle exec asciidoctor-revealjs index.adoc -o "${{ steps.pages.outputs.base_path }}"/index.html
+        run: bundle exec asciidoctor-revealjs index.adoc -o "${{ steps.pages.outputs.base_path }}/index.html"
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
