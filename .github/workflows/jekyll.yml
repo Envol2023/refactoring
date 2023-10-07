@@ -43,7 +43,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v3
       - name: Install asciidoctor
-        run: bundle install && bundle binstubs --all
+        run: bundle install
+      - name: Install bins
+        run: bundle binstubs --all && ls -l
       - name: Build with Asciidoctor
         # Outputs to the './_site' directory by default
         run: asciidoctor-revealjs index.adoc -o ./_site/index.html 
