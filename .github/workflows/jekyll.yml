@@ -46,8 +46,10 @@ jobs:
         run: bundle install
       - name: Install bins
         run: bundle binstubs --all && ls -l
+      - name: Prepare _site
+        run: mkdir ./_site/
       - name:  Copy custom
-        run: cp -a custom ./_site/ && ls -l ./_site/
+        run: cp -r custom ./_site/ && ls -l ./_site/
       - name:  Copy revealjs
         run: cp -r reveal.js ./_site/   && ls -l ./_site/     
       - name: Build with Asciidoctor
