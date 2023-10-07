@@ -1,0 +1,11 @@
+.bundle/
+bin/
+Gemfile.lock
+*.pdf
+
+book.html
+index.html
+.vscode/launch.json
+.venv
+.vscode/settings.json
+.python-version

@@ -1,3 +1,23 @@
 = Refactoring, Optimisation and Agility
+ifndef::mode_book[]
+include::_inc_revealjs.adoc[]
+endif::mode_book[]
+:print-detail: true
+:print-timing: true
+:ROLE: notes
+:include_options:
+ifndef::backend-revealjs[]
+:toc: left
+:toc-title: Table des matières
+:toclevels: 4
+:doctype: book
+:include_options: leveloffset=+1,
+:sectnums:
+endif::backend-revealjs[]
 
 Content for ENVOL 2023 and further
+
+[.small.right]
+marc.dexet@ias.u-psud.fr
+
+include::./sections/intro.adoc[{include_options}]

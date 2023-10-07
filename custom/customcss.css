@@ -1,0 +1,297 @@
+/* Top document settings */
+
+.reveal {
+	font-size: 2em;
+}
+.reveal .slides {
+	text-align: left;
+}
+.reveal .slides .center {
+	text-align: center;
+}
+.reveal .slides .right {
+	text-align: right;
+}
+.reveal .slides .top { 
+  border: 1px solid red;
+}
+
+.reveal .slides section.middle { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.reveal .slides .bottom { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+
+/* titles */
+.reveal h1 {
+  font-size: 3em; 
+  text-transform: none;
+}
+
+.reveal h2 {
+  font-size: 1.7em;
+  text-transform: none;
+}
+
+.reveal h3 {
+  font-size: 1.55em;
+  text-transform: none;
+}
+
+.reveal h4 {
+  font-size: 1em;
+  text-transform: none;
+}
+
+/* Lists */
+.reveal ul > li { 
+	list-style-type: disc; 
+	font-size: 1em;
+	font-weight: normal;
+}
+
+.reveal ul > li > p {
+	margin: 20px 0 5px;
+}
+
+
+div.ulist > ul > li > p {
+  font-family: "Oswald", sans-serif;  
+}
+
+div.ulist > ul > li > div.ulist > ul > li { 
+	list-style-type: circle; 
+	font-size: 0.9em;
+	font-style: normal;
+}
+
+div.ulist > ul > li > div.ulist > ul > li > p {
+	margin: 10px 0 2px;
+  font-family: "Lato", sans-serif;
+}
+
+
+.reveal ul > li > div > ul > li > div > ul > li { 
+	list-style-type: square; 
+	font-size: 0.9em;
+}
+
+.reveal ul > li > div > ul > li > div > ul > li { 
+	margin: 2px 0;
+}
+
+
+/* Images */
+.reveal section img  {
+  border: none;
+  box-shadow: none;
+}
+
+
+/* special slides */
+
+
+section.inverse.background, 
+section.inverse.background h1, 
+section.inverse.background h2,
+section.inverse.background h3,
+section.inverse.background h4,
+section.inverse.background h5,
+section.inverse.background h6 {
+  color: #fff;
+  background: #272822;
+}
+
+section.end.background, 
+section.end.background h1, 
+section.end.background h2,
+section.end.background h3,
+section.end.background h4,
+section.end.background h5,
+section.end.background h6 {
+  color: #fff;
+  background: #005b68;
+}
+
+section.subsection.background, 
+section.subsection.background h1, 
+section.subsection.background h2,
+section.subsection.background h3,
+section.subsection.background h4,
+section.subsection.background h5,
+section.subsection.background h6 {
+  color: #fff;
+  background: #505246;
+}
+
+.inverse a {
+    color: burlywood;
+}
+
+pre.CodeRay.listingblock.left-column,
+pre.CodeRay.listingblock.right-column {
+    width: 45%;
+}
+
+pre.CodeRay.listingblock.big {
+    line-height: 1em;
+    font-size: 0.8em;
+}
+
+pre.CodeRay.listingblock.very-big {
+    line-height: 1.2em;
+    font-size: 1em;
+}
+
+pre.CodeRay ~ .colist.arabic {
+    font-size: 0.8em;
+}
+
+.reveal .sidebarblock {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dbdbd6;
+  padding: 0.8em;
+  margin: 0.8em;
+  background: #f3f3f2;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.reveal .sidebarblock .title {
+  font-size: 1em;
+  font-family: "League Gothic", Impact, sans-serif;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.reveal .exampleblock {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dbdbd6;
+  padding: 1em;
+  margin: 1em;
+  background: #f3f3f2;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.reveal .sidebarblock.definition{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dbdbd6;
+  padding: 0.5em;
+  margin: 0.5em auto 0.5em auto;
+  background: #f3f3f2;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.reveal .sidebarblock.definition .content {
+    text-align: center;
+}
+
+
+.left-column {
+  width: 50%;
+  float: left;
+}
+
+.right-column {
+  width: 50%;
+  float: right;
+}
+
+.left-column-1-3 {
+  width: 33%;
+  float: left;
+}
+
+.right-column-2-3 {
+  width: 67%;
+  float: right;
+}
+
+.left-column-2-3 {
+  width: 67%;
+  float: left;
+}
+
+.right-column-1-3 {
+  width: 33%;
+  float: right;
+}
+
+.reset-column {
+  overflow: auto;
+  width: 100%;
+  display: block;
+} 
+
+
+.reveal .smaller {
+    font-size: 0.8em;
+}
+
+.reveal .x-small {
+    font-size: 0.6em;
+}
+
+
+td.icon {
+    border-right: 2px solid;
+}
+td.content {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dbdbd6;
+  padding: 1em;
+  margin: 1em;
+  background: #f3f3f2;
+}
+
+.decale-bas {
+    margin-top: 40px !important;
+}
+
+.at-top-right {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    float: right;
+    clear: both;
+}
+
+.at-1-3-right {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    float: right;
+    clear: both;
+}
+
+.at-middle-right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    float: right;
+    clear: both;
+}
+
+.at-bottom-right {
+    position: absolute;
+    bottom: 0%;
+    right: 0;
+    float: right;
+    clear: both;
+}

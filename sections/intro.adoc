@@ -1,0 +1,9 @@
+= Introduction
+
+// tag::content[]
+
+* Agility
+** Includes expertise
+** Includes design
+** Includes accept changes
+// end::content[]

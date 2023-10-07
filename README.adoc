@@ -1,0 +1,40 @@
+= refactoring
+Refactoring, optimization and Agility
+
+A course about Refactoring and Optimization from an agile point of view.
+
+== Support 
+
+=== Installation
+
+* Clone project
+* Install binaries
+[source,language,attributes]
+----
+bundle config --local path .bundle/gems
+bundle
+bundle binstubs --all
+----
+* Install watchdog
+[source,language,attributes]
+----
+python -m venv .venv --prompt "refactoring"
+. .venv/bin/activate
+python -m pip install watchdog
+----
+
+=== Generation
+
+==== Presentation
+
+[source,language,attributes]
+----
+bundle exec "asciidoctor-revealjs -a mode index.adoc -o index.html"
+----
+
+==== All Inclusive HTML
+
+[source,language,attributes]
+----
+bundle exec "asciidoctor -a data-uri -a skip_all -a _management -a _concepts cours2022-2023.adoc -o _build/cours_2.html"
+----
