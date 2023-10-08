@@ -19,7 +19,7 @@
 :revealjs_mousewheel: true
 :revealjs_hideaddressbar: true
 :revealjs_previewlinks: false
-:revealjs_transition: default
+:revealjs_transition: fast
 :revealjs_transitionspeed: default
 :revealjs_backgroundtransition: default
 :revealjs_viewdistance: 3
