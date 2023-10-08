@@ -1,46 +1,93 @@
 = Introduction
+include::../_inc_context.adoc[]
 
 // tag::content[]
 
+== Refactoring
 
-== Content
-
-* Agility
-** Includes expertise
-** Includes design
-** Includes accept changes
+* Refactoring (noun): 
+** a change made to the *internal* structure of software 
+** to make it easier to understand 
+** and cheaper to modify 
+** _without changing its observable behavior._
+[%step]
+--
+* Refactoring (verb): 
+** to restructure software 
+** by applying a series of refactorings 
+** _without changing its observable behavior._
+--
 
 [NOTE.notes]
 --
-L'agilité est construite autour de 4 valeurs et 12 principes
+Refactoring is the process of restructuring code, while not changing its original functionality. The goal of refactoring is to improve internal code by making many small changes without altering the code's external behavior
+--
+
+== Why to refactor ?
+
+* Because Refactoring improves
+** Human Understanding  
+** Software Design
+*** => Better Testability
+*** => Facilitate Evolution
 
 
-**Valeurs**
+[.start.background.center]
+[%notitle]
+== Refactoring and Agility
 
-* Valoriser ... plus que ...
-** *Les individus et leurs interactions* plus que les processus et les outils,
-** *Un logiciel qui fonctionne* plus qu’une documentation exhaustive,
-** *La collaboration avec les clients* plus que la négociation contractuelle,
-** *L’adaptation au changement* plus que le suivi d’un plan,
+--
+[%step]
+It's *possible* to _refactor your code_ without _being agile_
+[%step]
+But
+[%step]
+It's *impossible* _to be agile_ without _refactoring your code_
+--
 
-**Principes** 
+=== Refactoring and Agility
 
-* Plus haute priorité est de satisfaire le client en livrant rapidement et régulièrement des fonctionnalités à grande valeur ajoutée.
-* Accueillez positivement les changements de besoins, même tard dans le projet.
-* Livrez fréquemment un logiciel opérationnel avec des cycles de quelques semaines à quelques mois et une préférence pour les plus courts.
-* Les utilisateurs ou leurs représentants et les développeurs doivent travailler ensemble _quotidiennement_ tout au long du projet.
-* Réalisez les projets avec des personnes motivées. Fournissez-leur l’environnement et le soutien dont elles ont besoin et _faites-leur confiance_ pour atteindre les objectifs fixés.
-* Privilégiez la co-location de toutes les personnes travaillant ensemble et le dialogue en face à face comme méthode de communication.
-* Un logiciel _opérationnel_ est la principale mesure de progression d'un projet.
-* Les processus agiles encouragent un rythme de développement _soutenable_. Ensemble, les commanditaires, les développeurs et les utilisateurs devraient être capables de maintenir indéfiniment un rythme constant.
-* Une attention continue à l'excellence technique et à un bon design.
-* La simplicité – c’est-à-dire l’art de minimiser la quantité de travail inutile – est essentielle.
-* Les meilleures architectures, spécifications et conceptions émergent d'équipes auto-organisées.
-* À intervalles réguliers, l'équipe réfléchit aux moyens possibles pour devenir plus efficace. Puis elle s'adapte et modifie son mode de fonctionnement en conséquence.
+Agility focuses on
+
+* Facilitating iterative evolution
+** <= Tests 
+* Technical excellence and attention to design
+** <= Better Design
+* Rapid feedback on code by testing
+
+
+[NOTE.notes]
+--
+4 values
+
+* Individuals and interactions over processes and tools
+* Working software over comprehensive documentation
+* Customer collaboration over contract negotiation
+* Responding to change over following a plan
+
+_That is, while there is value in the items on the right, we value the items on the left more._
+
+
+. Our highest priority is to satisfy the client through early and continuous delivery of valuable computer software.
+. Welcome dynamical necessities, even late in development. Agile processes harness modification for the customer’s competitive advantage.
+. Deliver operating computer software often, from a pair of weeks to a couple of months, with a preference to the shorter timescale.
+. Business individuals and developers should work along daily throughout the project.
+. The build comes around actuated people. offer them the setting and support they have, and trust them to urge the task done.
+. the foremost economical and effective methodology of conveyancing info to and among a development team is face-to-face speech.
+. working computer software is the primary live of progress.
+. Agile processes promote property development. The sponsors, developers, and users got to be able to maintain a relentless pace indefinitely.
+. Continuous attention to technical excellence and smart style enhances nimbleness.
+. Simplicity—the art of maximizing the number of work not done—is essential.
+. the most effective architectures, necessities, and styles emerge from self– organizing groups.
+. At regular intervals, the team reflects on a way to become simpler, then tunes and adjusts its behavior consequently.
+
 
 --
 
-=== Expertise
+
+
+
+
 
 
 // end::content[]

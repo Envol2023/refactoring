@@ -100,13 +100,13 @@ div.ulist > ul > li > div.ulist > ul > li > p {
 /* special slides */
 
 
-section.inverse.background, 
-section.inverse.background h1, 
-section.inverse.background h2,
-section.inverse.background h3,
-section.inverse.background h4,
-section.inverse.background h5,
-section.inverse.background h6 {
+section.start.background, 
+section.start.background h1, 
+section.start.background h2,
+section.start.background h3,
+section.start.background h4,
+section.start.background h5,
+section.start.background h6 {
   color: #fff;
   background: #272822;
 }

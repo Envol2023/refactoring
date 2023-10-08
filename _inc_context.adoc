@@ -1,39 +1,54 @@
-:hide_prez: request_to_hide_prez
-:hide_pdf: request_to_hide_pdf
-:hide_book: request_to_hide_book
-:hide_html: request_to_hide_html
+:!mode_html:
+:!mode_book:
+:!mode_pdf:
+:!mode_slide:
+:cr:
 ifdef::backend-revealjs[]
-:hide_prez!:
+:mode_slide: slide
+:mode: slide
 endif::[]
 ifdef::backend-pdf[]
-:hide_pdf!:
-:hide_book!:
+:mode_pdf: pdf
+:mode_book: book
+:mode: book, pdf
 endif::[]
 ifdef::backend-html5[]
-:hide_html!:
-:hide_book!:
+:mode_html: html
+endif::[]
+ifeval::["{backend}" == "webview-html5"]
+:mode_html: html
+endif::[]
+ifdef::mode_html[]
+:mode_book: book
+:mode: book, html
 endif::[]
 ifndef::source-highlighter[]
 :source-highlighter: coderay
 endif::[]
-ifndef::hide_prez[]
-:cr: +
-endif::hide_prez[]
-ifndef::hide_book[]
-:cr:
-endif::hide_book[]
-:numbered:
 :experimental:
 :icons: font
 :!start_definition_block:
 :!end_definition_block:
-ifndef::hide_book[]
+ifdef::mode_book[]
 :start_definition_block: 
 :end_definition_block: 
-endif::hide_book[]
-ifndef::hide_book[]
+endif::[]
+ifdef::mode_book[]
 :include_options: leveloffset=+1
-endif::hide_book[]
-ifndef::hide_prez[]
+endif::[]
+ifdef::mode_slide[]
 :include_options: tag=prez
-endif::hide_prez[]
+endif::[]
+ifdef::mode_slide[]
+:cr: + 
+:!sectnums:
+endif::[]
+ifdef::mode_book[]
+:cr: 
+:sectnums:
+:numbered:
+endif::[]
+ifndef::hide_debug[{mode}]
+//ifdef::mode_slide[MODE SLIDE]
+//ifdef::mode_html[MODE HTML]
+

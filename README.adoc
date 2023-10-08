@@ -65,3 +65,12 @@ To use properly `mode_slide`, use this procedure
 
  ifdef::mode_slide[:leveloffset: +1]
 ----
+
+== Styles
+
+Sevearl styles are availables
+
+* `.start.background`
+* `.end.background`
+* `.subsection.background`
+
