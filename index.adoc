@@ -2,24 +2,30 @@
 ifndef::mode_book[]
 include::_inc_revealjs.adoc[]
 endif::mode_book[]
+
 :print-detail: true
 :print-timing: true
 :ROLE: notes
-:include_options: leveloffset=+1,tag=content
+:include_options: tag=content
+
 ifndef::backend-revealjs[]
 :toc: left
 :toc-title: Table des matières
 :toclevels: 4
 :doctype: book
 :sectnums:
-endif::backend-revealjs[]
+endif::[]
+
+ifdef::backend-revealjs[]
+:!mode_slide: 1
+:sectnums:
+endif::[]
 
 Content for ENVOL 2023 and further
 
 [.small.right]
 marc.dexet@ias.u-psud.fr
 
-`{include_options}`
-
 == Introduction
 include::./sections/intro.adoc[{include_options}]
+

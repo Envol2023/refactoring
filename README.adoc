@@ -29,12 +29,39 @@ python -m pip install watchdog
 
 [source,language,attributes]
 ----
-bundle exec "asciidoctor-revealjs -a mode index.adoc -o index.html"
+./bin/asciidoctor-revealjs index.adoc -o index.html
 ----
 
 ==== All Inclusive HTML
 
 [source,language,attributes]
 ----
-bundle exec "asciidoctor -a data-uri -a skip_all -a _management -a _concepts cours2022-2023.adoc -o _build/cours_2.html"
+./bin/asciidoctor -a data-uri index.adoc -o book.html
+----
+
+==== Automatic generation
+
+[source,shell]
+----
+watchmedo shell-command -p "*.adoc" --recursive -c 'echo ${watch_src_path} ; ./bin/asciidoctor-revealjs index.adoc -o index.html -v'
+----
+
+== Modes
+
+There's two modes:
+
+* `mode_slide` which put all section level to number 2 or 3 allowing to section appearing as a full slide
+* `mode_book` for all book aspects
+
+To use properly `mode_slide`, use this procedure
+
+:code: python 
+
+[source,asciidoc]
+----
+ ifdef::mode_slide[:leveloffset: -1]
+
+ ==== Level 4 to put down to 3 max to appear as a slide
+
+ ifdef::mode_slide[:leveloffset: +1]
 ----
