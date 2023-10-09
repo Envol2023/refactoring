@@ -1,0 +1,67 @@
+= Typing
+
+// tag::content[]
+
+== Java
+
+* Abstract class => Inheritance
+
+[source,java,attributes]
+----
+public abstract class Notifier {
+    abstract void notify(Event event);
+}
+
+public class EmailNotifier extends Notifier {
+    void notify(Event event) {
+        ...
+    }
+}
+----
+
+
+* Interface => Formal contract
+
+[source,java,attributes]
+----
+public interface Notifier {
+    void notify(Event event);
+}
+
+public class EmailNotifier implements Notifier {
+    void notify(Event event) {
+        ...
+    }
+}
+----
+
+
+
+== Python
+
+
+[NOTE.notes]
+--
+We choose python because it's a pretty popular language in our community now.
+But python has weakness for contract and typing. It doesn't enforce type checking by runtime, making ot very flexible, maybe too much flexible.
+--
+
+=== Duck typing
+____
+"If it walks like a duck and it quacks like a duck, then it must be a duck"
+____
+
+[source,python,attributes]
+-----
+class Mailer:
+    def send():
+        # do something
+-----
+
+=== Protocole
+
+=== Abstract Class
+
+=== Type checker
+
+// end::content[]
