@@ -1,0 +1,182 @@
+= Trail
+
+== Intro
+
+_____
+Si il est possible de faire de la refactorisation sans être agile, il est impossible d'être agile sans refactorisation.
+_____
+
+
+== Traduire, c'est trahir
+
+* Notre travail consiste à traduire des idées humaines en code exécutable.
+* Traduire, c'est souvent trahir
+* Et c'est là tous les enjeux de notre mission : comment traduire sans se perdre.
+
+L'agilité est une démarche qui prend pour partie de ne pas tout embrasser ni résoudre dès le départ sur un jeux exhaustif, mais d'apporter des incréments de fonctionnalité
+
+
+
+== Agilité
+
+Sur le plan purement technique, nous pouvons constater que
+
+* Travail en itération par incrément de fonctionnalité
+* Conception (_Software Design_) toujours en évolution
+* Une recherche de l'excellence technique
+* Une remise en cause et une adaptation permanente
+
+== Refactoring
+
+* _Refactorisation_: Modification de la structure interne d'un logiciel afin de le rendre plus facile à comprendre et moins coûteux à faire évoluer sans changer son comportement observable
+* _Refactoriser_: Restructurer un logiciel en appliquant une série de refactorisations sans changer son comportement observable
+
+____
+Le refactoring est le processus de restructuration d'un code, tout en ne modifiant pas sa fonctionnalité d'origine. L'objectif du refactoring est d'améliorer le code interne en apportant de nombreuses petites modifications sans altérer le comportement externe du code.
+____
+
+=== Pourquoi refactoriser
+
+Les principaux objectifs
+
+* Faciliter la compréhension
+* Améliorer la conception logicielle (_Software Design_)
+** Faciliter l'analyse et la recherche de bugs
+** Rendre le code plus évolutif
+** Rendre le code plus modulaire
+* Rendre le code le plus testable possible
+** Améliorer la confiance en la solution
+
+=== La refactorisation vs conception initiale
+
+La refactorisation et la conception sont souvent opposées, mais c'est une erreur car 
+
+* Si La conception initiale va créer à partir de premisses une base de code et 
+* Que la refactorisation intervient sur une base de code existante, 
+
+Conception => Refactorisation => Re-conception
+
+=== Quand refactoriser le code ?
+
+* Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
+* Quand la mise sous tests est problématique
+* Quand le code semble obscure ou ésotérique bien qu'il fonctionne
+* Quand des petits défauts sont repérés (_Boy Scout Rules_)
+* Lors d'une revue de code ou d'une analyse qualité
+
+=== Quand ne **PAS** refactoriser le code ?
+
+* Quand il est plus facile de le réécrire form scratch
+** On ne tire pas sur une ambulance
+* Quand il n'y a pas de bonnes raisons
+
+=== Refactoring: agenda
+
+* Comment s'assurer que le comportement observable n'est pas altéré ?
+* Comment améliorer la compréhension ?
+* Comment améliorer le design ?
+* Le refactoring de code Legacy
+
+== Comment savoir si un refactoring n'a rien cassé
+
+* *Première solution : AYEZ CONFIANCE* 
+** Vous savez que votre code est presque parfait. 
+** Vous espérez qu'il n'y a pas de bogue.
+
+=> Mais la foi est une affaire privée...
+
+* *Deuxième solution : TESTER A LA MAIN*
+** Exécuter quelques cas d'utilisation, avec quelques paramètres et vérifier le résultat,
+** Cela fonctionne assez bien... pour des programmes très courts. 
+
+=> Ce n'est pas humainement viable lorsque la base de code grandit.
+
+*Troisième solution : TESTS AUTOMATIQUES*
+** Utiliser des tests exécutables, 
+** Exécuter des tests à volonté,
+
+==> Nécessite un investissement mais très rentable.
+
+
+== Tests automatisés
+
+Le test consiste à s'assurer du comportement 
+
+* d'un objet testé (Objet sous test), 
+* dans un contexte donné, 
+* en vérifiant certaines assertions. (Assertions)
+
+
+`Objet testé`
+Application, programme, module, classe, fonction, ...
+
+`Assertion` : 
+Attentes concernant la condition, l'état, le résultat, le contenu, ...
+
+
+=== Types de tests
+
+* Unit tests
+* Integration tests
+* Acceptance tests
+
+_insérer le détail des tests_
+
+=== Tests unitaires
+
+=== FAST
+
+Faire l'explication de type FAST, mais en plus court.
+
+=== Exemple de tests unitaire
+
+[source,python]
+----
+def test_something
+    # Given
+    engine = Engine()
+
+    # When
+    engine.start()
+
+    # Then
+    assert engine.round_per_minutes > 1000
+----
+
+
+== Ameliorer la compréhension
+
+* Construire un logiciel, c'est traduire des idées humaines en code
+* => Il faut coder pour les humains
+* Code for Human
+* Cerveau premier compilateur => Connaître ses limites
+
+=== Limites Cognitives (rapide)
+
+=== Principe de moindre surprise
+
+== Refactoring: l'écriture
+
+Insérer contenue classique écriture
+Convention de nommage
+
+=== Les commentaires
+
+* Un mot: ne pas paraphraser le code
+* Se limiter au minimum
+* Maintenir la cohérence
+
+=== Isoler et séparer les concerns
+
+Reprise de DevWorkshop5
+
+== Améliorer la conception
+
+=== Problématiques 
+
+* Données + traitements
+
+* Isoler et regrouper
+
+* 
+
