@@ -144,7 +144,7 @@ def test_something
 ----
 
 
-== Ameliorer la compréhension
+== Objectif: Ameliorer la compréhension
 
 * Construire un logiciel, c'est traduire des idées humaines en code
 * => Il faut coder pour les humains
@@ -170,7 +170,12 @@ Convention de nommage
 
 Reprise de DevWorkshop5
 
-== Améliorer la conception
+prendre quelques exemple de clean code 
+
+* Single Level Of Abstraction principle
+
+
+== Objectif: Améliorer la conception
 
 === Problématiques 
 
