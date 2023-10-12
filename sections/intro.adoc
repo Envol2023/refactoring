@@ -5,6 +5,8 @@ include::../_inc_context.adoc[]
 
 == Refactoring
 
+Definition by https://martinfowler.com/[Martin Fowler]
+
 * Refactoring (noun): 
 ** a change made to the *internal* structure of software 
 ** to make it easier to understand 
@@ -20,16 +22,53 @@ include::../_inc_context.adoc[]
 
 [NOTE.notes]
 --
-Refactoring is the process of restructuring code, while not changing its original functionality. The goal of refactoring is to improve internal code by making many small changes without altering the code's external behavior
+Refactoring is the process of restructuring code, while not changing its original functionality. The goal of refactoring is to improve internal code by making many small changes without altering the code's external behavior.
+--
+
+ifdef::mode_slide[]
+== Refactoring
+endif::[]
+
+[.left-column]
+--
+
+* Key concepts
+** _Internal changes_
+*** => Developer concern
+** _Same External Behavior_
+*** => Not a User concern
+**** User don't know refactoring occurred
+* But it consumes resources
+** => Project Management concern
+*** Product Owner must understand refactoring benefits 
+--
+
+[.right-column]
+--
+ifdef::SHOW_it[]
+[.right]
+image::../images/refactoring.png[height=600]
+endif::[]
+--
+
+[NOTE.notes]
+--
+The refactoring is a pure technical concern, user don't know about it, it don't suffer it, and that's the sign the refactoring succeeded... from the user point of view.
+
+At the controversy, the refactoring may consumes a lot of refactoring, and some project manager are reluctant.
 --
 
 == Why to refactor ?
 
-* Because Refactoring improves
-** Human Understanding  
-** Software Design
+* Refactoring improves 
+** Human Understanding of code
+** The Software Design
 *** => Better Testability
-*** => Facilitate Evolution
+*** => Facilitate Evolution of new features
+** Make more easy bug fixing
+* Refactoring is a Technical Debt Management
+** _Refactoring early fixes infringements of the good practices_ + 
+_that will be required to fix later... or never_
 
 
 [.start.background.center]
@@ -47,14 +86,18 @@ It's *impossible* _to be agile_ without _refactoring your code_
 
 === Refactoring and Agility
 
-Agility focuses on
-
-* Facilitating iterative evolution
-** <= Tests 
+* Continuous delivery of valuable computer software
+** Delivers small increments of functionalities
+*** => Software Design extensions
+** Welcome changement and evolution, event late
+*** => Software Design disturbances
 * Technical excellence and attention to design
-** <= Better Design
-* Rapid feedback on code by testing
+** => Genuine focus on Software Design
+** => *Testing* is a first-class citizen activity
 
+[%step]
+[.center]
+[.huge]#Without refactoring, agility is impossible#
 
 [NOTE.notes]
 --
@@ -80,14 +123,68 @@ _That is, while there is value in the items on the right, we value the items on 
 . Simplicity—the art of maximizing the number of work not done—is essential.
 . the most effective architectures, necessities, and styles emerge from self– organizing groups.
 . At regular intervals, the team reflects on a way to become simpler, then tunes and adjusts its behavior consequently.
+--
 
+== Refactoring and So What...
 
+Refactoring is a collection of techniques and habits
+
+You're probably doing refactoring everyday without knowing it...
+
+== Formalization of refactoring techniques
+
+* Martin Fowler listed around 70 techniques in a famous book 
+
+[.center]
+image:./../images/refact2.jpg[]
+
+[NOTE.notes]
+--
+Martin Fowler has publish several editions of his famous book, from a C/C++/Java background to a Ruby then Javascript point of view.
+All 
+--
+
+=== Refactoring Techniques
+
+Techniques are divided into 6 categories
+
+[.left-column]
+--
+include::_refact_listing.adoc[tag=categories]
 --
 
 
+[%step]
+[.right-column]
+--
+* There's too many to take a look at now
+** Some of them you're probably using without naming it
+** But take a look later please...
 
+--
 
+:leveloffset: +1
 
+include::_refact_listing.adoc[tag=composing_methods]
 
+include::_refact_listing.adoc[tag=moving_features_between_objects]
+
+include::_refact_listing.adoc[tag=organizing_data]
+
+include::_refact_listing.adoc[tag=simplifying_conditional_expressions]
+
+include::_refact_listing.adoc[tag=making_method_calls_simpler]
+
+include::_refact_listing.adoc[tag=dealing_with_generalization]
+
+:leveloffset: -1
+
+== Refactoring and So What ?
+
+* Try to discover the spirit of refactoring 
+** An application of some principles
+** For a daily approach
+** For the developer and the manager
+** As a set of target to keep in mind in trouble
 
 // end::content[]

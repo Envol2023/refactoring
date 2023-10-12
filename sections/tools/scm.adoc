@@ -1,0 +1,27 @@
+= SCM
+
+// tag::content[]
+== Use a Source Control Management (scm)
+
+* Source Control Management is a **requirement**
+** https://git-scm.com/[Git], https://www.mercurial-scm.org/[Mercurial] or https://subversion.apache.org/[Subversion] (disused)
+* => Freedom of mind to refactor
+*** Don't work with the fear of not being able to go back
+* Separate refactoring from validated code.
+** Use a dedicated _branch_ for refactoring
+** _Never work on production server_
+
+[NOTE.notes]
+--
+Never work on safed code. You have to be creative and volunteer to feel comfortable.
+Of course, never work on production server: refactoring is not a hotfix.
+For example, don't modify live PHP code from your lab internet site just for a refactoring !
+
+There's several SCM. GIt is now the new kind of standard, famous through gitlab and github. Mercurial is a nice alternative.
+Subversion is now fallen in disuse. Switch to git or mercurial as soon as possible.
+
+Use a dedicated branch for any new refactoring. Associate refactored code and updated tests before merging into the main branch.
+--
+
+// end::content[]
+

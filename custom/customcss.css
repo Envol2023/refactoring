@@ -295,3 +295,19 @@ td.content {
     float: right;
     clear: both;
 }
+
+.reveal table.very-packed p {
+  margin: 1px;
+}
+
+.reveal table.packed p {
+  margin: 2px;
+}
+
+.reveal .big {
+  font-size: 1.2em;
+}
+
+.reveal .huge {
+  font-size: 2em;
+}

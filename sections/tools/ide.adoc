@@ -1,0 +1,69 @@
+= IDE
+
+// tag::content[]
+
+== Use an IDE
+
+**Use a real editor**
+
+* The best editor is the one you master, but...
+. It takes time to **really** master it.
+. It may not be the most suitable
+
+ifdef::mode_slide[]
+== Use an IDE
+endif::[]
+
+[%step]
+--
+**Go beyond the simple text editor**
+
+____
+"I know a guy who can develop with a simple text editor !" +
+"I know someone who calculates logarithms in his head." +
+"It's possible, but there are more efficient ways."
+____
+--
+
+== Requirements for IDE
+
+* **Refactoring**
+** Renaming (variable, function, method, class, package, ...)
+** Signature change (parameter, name and order)
+** Move (function, method, class, package, ...)
+* **Language-oriented assistant**
+** Syntax Highlight and Auto-completion
+** Permanent code analysis ( _linter_ )
+* **Easy visual debugging** 
+** Step-by-step
+** With value exploration and modification
+* **Navigation**
+** Display structure (Outline)
+** Fast jump to definition, declaration, etc.
+
+== IDE with refactoring capabilities
+
+* See https://en.wikipedia.org/wiki/Code_refactoring#Automated_code_refactoring
+
+For Python
+
+[.very-packed]
+|===
+|Language |Editor 
+
+|Python
+|VSCode
+
+|Python
+|PyCharm
+
+|Java
+|Eclipse
+
+|Java
+|IntelliJ
+
+|===
+
+
+// end::content[]

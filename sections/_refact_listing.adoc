@@ -1,0 +1,85 @@
+// tag::categories[]
+* Refactoring technique categories
+** Composing Methods
+** Moving Features Between Objects
+** Organizing Data
+** Simplifying Conditional Expressions
+** Making Method Calls Simpler
+** Dealing with Generalization
+// end::categories[]
+
+
+
+// tag::all[]
+// tag::composing_methods[]
+==  Composing Methods
+
+* Extract Method
+* Introduce Explaining Variable
+* Inline Method
+* Replace Temp with Query
+* Split Temporary Variable
+* Remove Assignments to Parameters
+* Replace Method with Method Object
+//end::composing_methods[]
+
+// tag::moving_features_between_objects[]
+==  Moving Features Between Objects
+
+* Move Method
+* Move Field
+* Extract Class
+* Hide Delegate (+ Remove Middle Man)
+* Introduce Local Extension
+//end::moving_features_between_objects[]
+
+// tag::organizing_data[]
+==  Organizing Data
+
+* Replace Data Value with Object
+* Replace Array with Object
+* Replace Magic Number with Symbolic Constant
+* Replace Type Code with Class
+* Encapsulate Collection
+// end::organizing_data[]
+
+// tag::simplifying_conditional_expressions[]
+==  Simplifying Conditional Expressions
+
+* Decompose Conditional
+* Consolidate Conditional Expression
+* Consolidate Duplicate Conditional Fragments
+* Remove Control Flag
+* Replace Nested Conditional with Guard Clauses
+* Replace Conditional with Polymorphism
+* Introduce Null Object
+* Introduce Assertion
+// end::simplifying_conditional_expressions[]
+
+
+// tag::making_method_calls_simpler[]
+==  Making Method Calls Simpler
+
+* Rename Method
+* Separate Query from Modifier
+* Parameterize Method
+* Replace Parameter with Explicit Methods
+* Preserve Whole Object
+* Replace Parameter with Method
+* Introduce Parameter Object
+* Hide Method
+* Replace Constructor with Factory Method
+* Replace Error Code with Exception
+* Replace Exception with Test
+// end::making_method_calls_simpler[]
+
+// tag::dealing_with_generalization[]
+==  Dealing with Generalization
+
+* Extract Subclass
+* Extract Superclass
+* Replace Inheritance with Delegation
+* Replace Delegation with Inheritance
+// end::dealing_with_generalization[]
+
+// end::all[]

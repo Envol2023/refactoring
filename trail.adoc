@@ -1,4 +1,37 @@
 = Trail
+:type: article
+:toc:
+
+== Resumé (12 octobre)
+
+* Poser le refactoring
+** Définition
+** Motivation
+
+* Expliquer que le refactoring
+** Pléthore de techniques
+* => choix de voir le refactoring à l'aune de 
+** Notre capacité cognitive
+** Gestion de la complexité
+** Gestion de la confiance et du temps
+
+* Le refactoring 
+** De quoi avons nous besoin ?
+*** Outils (IDE)
+**** Fiche classqieu + refactorisation
+*** Tests unitaires
+*** Concepts
+* 
+
+* Le refactoring en tant que manipulation d'un texte
+** Nommage
+** extraction des fonctions
+** Hiérarchisation par niveau d'intérêt (zoom)
+* Le refactoring en tant que manipulation de concepts (amélioration de la conception)
+** Décomposition d'un problème
+
+
+
 
 == Intro
 
@@ -13,7 +46,7 @@ _____
 * Traduire, c'est souvent trahir
 * Et c'est là tous les enjeux de notre mission : comment traduire sans se perdre.
 
-L'agilité est une démarche qui prend pour partie de ne pas tout embrasser ni résoudre dès le départ sur un jeux exhaustif, mais d'apporter des incréments de fonctionnalité
+L'agilité est une démarche qui prend pour partie de ne pas prétendre dès le départ à être exhaustif, mais d'apporter des incréments de fonctionnalités.
 
 
 
@@ -46,6 +79,7 @@ Les principaux objectifs
 ** Rendre le code plus modulaire
 * Rendre le code le plus testable possible
 ** Améliorer la confiance en la solution
+
 
 === La refactorisation vs conception initiale
 

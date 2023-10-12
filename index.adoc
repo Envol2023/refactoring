@@ -22,7 +22,13 @@ Content for ENVOL 2023 and further
 [.small.right]
 marc.dexet@ias.u-psud.fr
 
+[.start.background.center]
+
 == Introduction
 
 include::./sections/intro.adoc[{include_options}]
 
+
+== Requirements
+
+include::./sections/tools/index.adoc[{include_options}]
