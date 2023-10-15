@@ -66,4 +66,24 @@ For Python
 |===
 
 
+[NOTE.notes]
+--
+Opinionated recommandations
+
+As a Swiss Army Knife: VScode is an everyday nice tool and may be sufficient for a lot a tasks. The plugin system is very clever and can adapt it to every situation. The capabilities to work on https://code.visualstudio.com/docs/remote/ssh[remote server through SSH] is very precious for HPC code, ever if it's not a recommended way of refactoring code. 
+Other editors are more language dedicated.
+Its Python refactoring capabilities are nevertheless weak. JetBrain products are a lot more powerful but also heavy to use.
+For Java both of them, VSCode and IntelliJ are very good. Personally I'm still using Eclipse because I know it pretty well.
+--
+
+=== Show Screenshots
+
+* Pycharm
+* VSCode
+
+
+Pycharm refactoring feature are very powerfull
+
+
+
 // end::content[]

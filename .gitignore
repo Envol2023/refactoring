@@ -2,7 +2,7 @@
 bin/
 Gemfile.lock
 *.pdf
-
+*.bkp
 book.html
 index.html
 .vscode/launch.json

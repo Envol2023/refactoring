@@ -1,4 +1,6 @@
 = SCM
+:toc:
+:icons: font
 
 // tag::content[]
 == Use a Source Control Management (scm)
@@ -10,6 +12,13 @@
 * Separate refactoring from validated code.
 ** Use a dedicated _branch_ for refactoring
 ** _Never work on production server_
+* Use a workflow and stick to it
+** See comparison of https://www.atlassian.com/git/tutorials/comparing-workflows/[Git workflows]
+** Opinionated choice : https://danielkummer.github.io/git-flow-cheatsheet/[_git-flow_] icon:star[] icon:star[] icon:star[]
+* Use an on-premise or hosted but **secure**
+** => Continuous Integration and Ticket Tracking System
+
+
 
 [NOTE.notes]
 --

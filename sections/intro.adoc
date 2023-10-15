@@ -1,7 +1,21 @@
 = Introduction
 include::../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
 
 // tag::content[]
+
+[.dark.background]
+[.center]
+[%notitle]
+== What Do We Do When Developing Software?
+
+
+We turn _human_ [.huge]#ideas#  into _computer_ [.huge]#code#
+
+
+
 
 == Refactoring
 
@@ -47,7 +61,7 @@ endif::[]
 --
 ifdef::SHOW_it[]
 [.right]
-image::../images/refactoring.png[height=600]
+image::images/refactoring.png[height=600]
 endif::[]
 --
 
@@ -136,7 +150,7 @@ You're probably doing refactoring everyday without knowing it...
 * Martin Fowler listed around 70 techniques in a famous book 
 
 [.center]
-image:./../images/refact2.jpg[]
+image:images/refact2.jpg[]
 
 [NOTE.notes]
 --
@@ -179,12 +193,41 @@ include::_refact_listing.adoc[tag=dealing_with_generalization]
 
 :leveloffset: -1
 
-== Refactoring and So What ?
+== Another way to talk about Refactoring
 
-* Try to discover the spirit of refactoring 
-** An application of some principles
-** For a daily approach
-** For the developer and the manager
-** As a set of target to keep in mind in trouble
+[.left-column]
+-- 
+* A high-level viewpoint rather than a catalog of techniques
+** Software design and coding beacon 
+* For the developer 
+** Don't focus on coding
+** Build a refactoring culture
+* For the project manager 
+** Guidance for software design
+** Understand that refactoring is not a cost but an investment
+--
+[.right-column]
+[%step]
+--
+* My reading of refactoring
+** From a cognitive angle
+** From the complexity management angle
+** From the testability
+--
+
+[NOTE.notes]
+--
+The way I propose you to follow it is to study refactoring, not as a bunch of techniques you will forget as soon you quit this formation, but in the light of of strong principles and precepts qui constitue notre activité.
+
+Cette façon d'approcher les problèmes s'adressent autant aux développeurs, qui parfois ont besoin de lever le nez de leur, et aux chefs de projets, qui ainsi auraient matière à orienter les choix d'orientation de conception.
+
+Même si il est possible que des éléments paraissent parfois évident à certain, et je m'en excuse à l'avance, je souhaiterai que nous puissions faire un pas de côté et jeter un regard sur notre métier que les délais et le quotidien nous font parfois oublier.
+
+
+Ma lecture, peut-être très personnelle, est de considérer le refactoring 
+* Sous l'angle cognitif
+* De la gestion de la complexité
+* De la testabilité 
+--
 
 // end::content[]

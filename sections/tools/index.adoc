@@ -1,12 +1,14 @@
 = TOOLS
+:toc: auto
 include::../../_inc_context.adoc[]
 
-// tag::content[]
+
+//tag::content[]
 
 == Tools to refactor
+
 include::./ide.adoc[{include_options}]
 
 include::./scm.adoc[{include_options}]
 
-
-//end::content[
+//end::content[]

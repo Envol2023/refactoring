@@ -26,6 +26,8 @@ marc.dexet@ias.u-psud.fr
 
 == Introduction
 
+{docdir} {docfile}
+
 include::./sections/intro.adoc[{include_options}]
 
 
