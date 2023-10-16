@@ -1,0 +1,9 @@
+((Pressman R. S., Software Engineering: A Practitioner's Approach Chapitre 10) 7 niveaux de dépendances ou couplages :  
+
+* Sans couplage: les composants n'échangent pas d'information.
+* Par données: les composants échangent de l'information par des méthodes utilisant des arguments (paramètres) de type simple (nombre, chaîne de caractères, tableau).
+* Par paquet: les composants échangent de l'information par des méthodes utilisant des arguments de type composé (structure, classe).
+* Par contrôle: les composants se passent ou modifient leur contrôle par changement d'un drapeau (verrou).
+* Externe: les composants échangent de l'information par un moyen de communication externe (fichier, pipeline, lien de communication).
+* Commun (global): les composants échangent de l'information via un ensemble de données (variables) commun.
+* Par contenu (interne): les composants échangent de l'information en lisant et écrivant directement dans leurs espaces de données (variables) respectifs.
