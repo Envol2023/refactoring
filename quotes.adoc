@@ -1,0 +1,9 @@
+
+“Programming is the art of telling another human being what one wants the computer to do.”
+― Donald Ervin Knuth 
+
+https://www.goodreads.com/author/quotes/64941.Donald_Ervin_Knuth
+
+“Whenever I have to think to understand what the code is doing, I ask myself if I can refactor the code to make that understanding more immediately apparent.”
+― Martin Fowler, Refactoring: Improving the Design of Existing Code 
+

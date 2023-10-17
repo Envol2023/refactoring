@@ -1,0 +1,150 @@
+= Refactoring, Optimisation and Agility
+ifdef::backend-revealjs[]
+include::_inc_revealjs.adoc[]
+endif::[]
+ifndef::backend-revealjs[]
+:toc: left
+:toc-title: Table des matières
+:toclevels: 4
+:doctype: book
+endif::[]
+include::_inc_context.adoc[]
+:print-detail: true
+:print-timing: true
+:ROLE: notes
+:include_options: tag=content
+
+== Que faisons-nous ?
+
+* Nous traduisons des pensées humaines en code executable
+* Mais nous essayons aussi de comprendre un code en termes humains
+* Cette traduction est imparfaite, car ces deux visions ne sont pas bijectives
+* Traduire, c'est trahir
+
+== Complexité
+
+La situation peut rapidement devenir complexe, surtout si le problème à régler n'est pas lui même simple. 
+La traduction peut saturer nos capacités
+* Trop d’éléments à prendre en compte
+* Trop de relations, statiques ou dynamiques
+
+//TODO Schéma
+* Complexité vs Complication ?
+** *_Complexe_* s'oppose à *_simple_* => *_indirecte_*,
+** *_Compliqué_* s'oppose à *_facile_* => *_difficile_*.
+
+[NOTE.notes]
+--
+La construction d'une solution logicielle. Les nombreux éléments en interaction, qui s'influencent mutuellement. De plus il y a plusieurs aspects à prendre en compte: la sécurité, la cohérence de l'application, les domaines métiers, les tests, etc. 
+L'un des risques principaux est de perdre de vue ce que l'on souhaite faire, de s'éparpiller, d'être un peu en état de stupeur devant l'ensemble des connaissances à mobiliser.
+--
+
+**Il va falloir gérer la complexité**
+
+== Comment nous assurer que nous le faisons bien ?
+
+**Ce n'est pas parce qu'un logiciel fonctionne qu'il est bon**
+
+* Utiliser les normes qualités 9126
+* Nous allons nous limiter à deux aspects
+** Capacité fonctionnelle, en tant que réponse aux besoin d'un client, partie de sa satisfaction.
+** Maintenabilité
+
+== Agilité
+
+L'agilité est une démarche qui prend pour partie de ne pas prétendre dès le départ à être exhaustif, mais d'apporter des incréments de fonctionnalités et de s'assurer que le client est heureux.
+
+== Agilité
+
+Sur le plan purement technique, nous pouvons constater que
+
+* Travail en itération par incrément de fonctionnalité
+* Recherche de cycles courts et de feedback client
+* Conception (_Software Design_) toujours en évolution
+* Une recherche de l'excellence technique
+* Une remise en cause et une adaptation permanente
+
+== Dette technique
+
+Au cours d'un développement, des compromis, des maladresses ou des raccourcis font gagner du temps et des ressources, mais qui pénalisent la maintenabilité de l'application et sa faculté à évoluer.
+
+Métaphore de la dette à rembourser
+
+Pour 10$ de gagner, je devrais rembourser 15$ pour revenir à un niveau acceptable.
+
+//TODO faire un schéma
+
+La dette technique d'une itération (sprint) peut compromettre le sprint suivant (notion de vélocité)
+
+**Il ne peut y avoir d'Agilité sans prise en compte de la dette technique**
+
+// TODO insérer Technical Debt Martin Fowler
+
+**=> Refactoring, outil de gestion de la dette technique**
+
+
+== Comment mesurer la dette technique ?
+
+* La dette technique est l'effet délétère de l'écart à ce qu'il aurait été souhaitable de faire.
+* Comment définir ce qu'il aurait été souhaitable de faire ?
+* Référentiel de bonnes pratiques
+** Choix de la communauté 
+** Heuristiques propre à chaque écosystème
+** Principes reconnus comme universel (Code Clean)
+** Les Design Patterns (GoF, GRASP, ...)
+** et leurs contraires:
+*** Anti patterns
+*** Bad smells
+* Système d'analyse qualité
+* Linters
+
+[NOTE.notes]
+--
+Les moteurs d'analyse qualité sont des outils très puissants, le plus connu étant sonarqube. Mais il n'est pas forcément nécessaire d'utiliser, encore moins de mettre en oeuvre, un tel système pour avoir une idée des écarts manifestes et corrigeables. Des linters suffisent.
+
+
+--
+
+== Refactoring : Définition
+
+La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
+
+* _Refactorisation_: Modification de la structure interne d'un logiciel afin de le rendre plus facile à comprendre et moins coûteux à faire évoluer sans changer son comportement observable
+* _Refactoriser_: Restructurer un logiciel en appliquant une série de refactorisations sans changer son comportement observable
+
+== Refactoring : Concepts clef
+
+* Concepts clés
+** _Les changements internes_
+*** => préoccupation du développeur
+** _Comportement externe identique
+*** => ne concerne pas l'utilisateur
+**** L'utilisateur ne sait pas que le remaniement a eu lieu
+* Mais il consomme des ressources
+** => Préoccupation de la gestion de projet
+*** Le Product Owner doit comprendre les bénéfices du refactoring 
+
+== Refactoring : Pourquoi ?
+
+[.simple]
+* Faciliter la compréhension
+* Améliorer la conception
+* Améliorer la confiance
+** Rendre le code le plus facile à tester possible
+* Faciliter la correction des bogues
+
+
+== Refactoring: Quand ?
+
+[.simple]
+* Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
+* Quand la mise sous tests est problématique
+* Quand le code semble obscure ou ésotérique bien qu'il fonctionne
+* Quand des petits défauts sont repérés (_Boy Scout Rules_)
+* Lors d'une revue de code ou d'une analyse qualité
+
+=== Quand ne **PAS** refactoriser le code ?
+
+* Quand il est plus facile de le réécrire form scratch
+** On ne tire pas sur une ambulance
+* Quand il n'y a pas de bonnes raisons de le faire

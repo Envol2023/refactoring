@@ -68,6 +68,10 @@ div.ulist > ul > li > p {
   font-family: "Oswald", sans-serif;  
 }
 
+div.ulist.simple > ul > li > p {
+  font-family: "Lato", sans-serif; 
+}
+
 div.ulist > ul > li > div.ulist > ul > li { 
 	list-style-type: circle; 
 	font-size: 0.9em;

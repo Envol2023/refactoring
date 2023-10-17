@@ -59,7 +59,7 @@ endif::[]
 
 [.right-column]
 --
-ifdef::SHOW_it[]
+ifndef::SHOW_it[]
 [.right]
 image::images/refactoring.png[height=600]
 endif::[]
