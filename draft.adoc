@@ -176,13 +176,12 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 
 == Refactoring : Concepts clef
 
-* Concepts clés
-** _Les changements internes_
-*** => préoccupation du développeur
-** _Comportement externe identique
-*** => ne concerne pas l'utilisateur
+* Amélioration qualités internes
+** => préoccupation du développeur
+* Conservations qualités externes
+** => ne concerne pas l'utilisateur
 **** L'utilisateur ne sait pas que le remaniement a eu lieu
-* Mais il consomme des ressources
+* Consommation de ressources
 ** => Préoccupation de la gestion de projet
 *** Le Product Owner doit comprendre les bénéfices du refactoring 
 
