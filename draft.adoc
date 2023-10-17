@@ -24,11 +24,13 @@ include::_inc_context.adoc[]
 == Complexité
 
 La situation peut rapidement devenir complexe, surtout si le problème à régler n'est pas lui même simple. 
-La traduction peut saturer nos capacités
-* Trop d’éléments à prendre en compte
-* Trop de relations, statiques ou dynamiques
+
+* La traduction peut saturer nos capacités
+** Trop d’éléments à prendre en compte
+** Trop de relations, statiques ou dynamiques
 
 //TODO Schéma
+
 * Complexité vs Complication ?
 ** *_Complexe_* s'oppose à *_simple_* => *_indirecte_*,
 ** *_Compliqué_* s'oppose à *_facile_* => *_difficile_*.
@@ -42,8 +44,6 @@ L'un des risques principaux est de perdre de vue ce que l'on souhaite faire, de 
 **Il va falloir gérer la complexité**
 
 == Comment nous assurer que nous le faisons bien ?
-
-**Ce n'est pas parce qu'un logiciel fonctionne qu'il est bon**
 
 * Utiliser les normes qualités 9126
 * Nous allons nous limiter à deux aspects
@@ -63,6 +63,68 @@ Sur le plan purement technique, nous pouvons constater que
 * Conception (_Software Design_) toujours en évolution
 * Une recherche de l'excellence technique
 * Une remise en cause et une adaptation permanente
+
+== TODO transition
+
+== Maintenabilité
+
+**Ce n'est pas parce qu'un logiciel fonctionne qu'il est bon**
+
+**TODO** mettre ici image du chien
+
+L'essence du développement logiciel, c'est de pouvoir faire évoluer un logiciel, surtout en agilité.
+
+== Maintenabilité
+
+
+[%step]
+[.left-column]
+* Faciliter la *compréhension*
+* Faciliter l'*analyse*
+
+[%step]
+[.right-column]
+* Faciliter la *modification*
+* Faciliter les *tests*
+* Faciliter l'*assemblage des composants*
+
+
+=== Maintenabilité
+
+[.left-column]
+--
+[.ppt]
+* Faciliter la compréhension
+** *Que* font les composants ?
+** *Comment* le font-il ?
+
+[%step]
+[.ppt]
+* Faciliter l'analyse
+** Trouver *qui* est responsable de *quoi*,
+** Évaluer l'*impact* d'une modification,
+** *Diagnostiquer* rapidement les *erreurs* en cours d'exécution.
+--
+
+
+[.right-column]
+--
+[%step]
+[.ppt]
+* Faciliter la modification
+** *Corriger* des bugs,
+** *Améliorer* des parties de code,
+*** Meilleures performances
+*** Économiser des ressources
+** _Le tout sans redouter que cela ne vous éclate à la figure._
+--
+
+[%step]
+[.ppt]
+* Faciliter les tests
+** *Concevoir* des tests,
+** *Écrire* des tests,
+** Les *exécuter* le plus fréquemment possible.
 
 == Dette technique
 
@@ -101,16 +163,16 @@ La dette technique d'une itération (sprint) peut compromettre le sprint suivant
 [NOTE.notes]
 --
 Les moteurs d'analyse qualité sont des outils très puissants, le plus connu étant sonarqube. Mais il n'est pas forcément nécessaire d'utiliser, encore moins de mettre en oeuvre, un tel système pour avoir une idée des écarts manifestes et corrigeables. Des linters suffisent.
-
-
 --
 
 == Refactoring : Définition
 
 La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 
-* _Refactorisation_: Modification de la structure interne d'un logiciel afin de le rendre plus facile à comprendre et moins coûteux à faire évoluer sans changer son comportement observable
-* _Refactoriser_: Restructurer un logiciel en appliquant une série de refactorisations sans changer son comportement observable
+* _Refactorisation_:
+** Modification de la structure interne d'un logiciel afin de le rendre plus facile à comprendre et moins coûteux à faire évoluer sans changer son comportement observable
+* _Refactoriser_: 
+** Restructurer un logiciel en appliquant une série de refactorisations sans changer son comportement observable
 
 == Refactoring : Concepts clef
 
