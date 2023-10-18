@@ -185,7 +185,7 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 ** => Préoccupation de la gestion de projet
 *** Le Product Owner doit comprendre les bénéfices du refactoring 
 
-== Refactoring : Pourquoi ?
+== Refactoring : objectifs ?
 
 [.simple]
 * Faciliter la compréhension
@@ -193,6 +193,7 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 * Améliorer la confiance
 ** Rendre le code le plus facile à tester possible
 * Faciliter la correction des bogues
+* Faciliter les futurs évolutions 
 
 
 == Refactoring: Quand ?
@@ -206,6 +207,6 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 
 === Quand ne **PAS** refactoriser le code ?
 
-* Quand il est plus facile de le réécrire form scratch
+* Quand il est plus facile de le réécrire from scratch
 ** On ne tire pas sur une ambulance
 * Quand il n'y a pas de bonnes raisons de le faire
