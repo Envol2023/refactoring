@@ -14,6 +14,54 @@ include::_inc_context.adoc[]
 :ROLE: notes
 :include_options: tag=content
 
+== Introduction
+
+
+
+[NOTE.note]
+--
+Les développeurs et développeuses, que ce soit dans un contexte d'agilité ou pas, pratiquent le refactoring.
+
+Pourtant, c'est un sujet rarement abordé en tant que soi, alors que c'est un domaine très riche. 
+Alors qu'il peut paraître très technique, ce thème me semble une opportunité de prendre un peu de recul sur notre métier et le contexte propre au milieu de l'Enseignement Supérieur et de la Recherche.
+
+Ce que je vais dire est une réflexion personnelle basée sur mon expérience, en tant qu'ingénieur, mais aussi membre de jury et surtout ancien animateur du réseau DevLOG.
+
+Nous avons, dans le domaine du développement logiciel, des répartitions de profils qui ne se retrouvent pas ailleurs.
+
+Les personnes en charge du développement logiciel ne proviennent pas ou peu, de mon expérience, de formation orientées développement logiciel. 
+Les rares candidatures que nous avons reçus sont généralement découragées par nos niveaux de salaire et nous le constatons à travers des difficultés de recrutement qui sont de plus en plus criantes. 
+Les salaires offerts ne sont pas attrayants, surtout sur le marché du développement, ce qui induit une représentation différente de ce que l'on peut trouver dans les entreprises par exemple.
+
+Nous rencontrons des personnes qui veulent donner un sens à leur activité (c'est mon cas), mais aussi des personnes qui viennent d'abord par intérêt pour le domaine, puis pour le métier.
+
+Globalement nous avons plus de personnes qui vont vers le développement que de personnes qui en viennent
+Nous avons donc des gens qui ont des backgrounds et des cultures très diverses: certains ont un parcours résolument scientifiques et se retrouvent à poursuivre en tant qu'ingénieur.
+
+Nous avons également une appréciation du temps et des compétences très dépendant de la proportion croissante de recours à des CDD avec lesquels l'investissement dans le temps ne peut être que différents.
+
+Nous avons enfin une forme de dépréciation des exigences du développement, ce que j'appelle la culture du tombe-en-marche: puisque dans un contexte de laboratoire, beaucoup de personnes en position de responsabilité peuvent ou ont pu écrire des lignes de code, elles ont tendance à minorer les efforts nécessaires pour avoir un code de qualité.
+
+Tout cela pour dire que les attentes et les compétences attendues ou raisonnablement réalisables ne sont pas uniformes, mais dépendent beaucoup de plusieurs variables :
+
+* Trajectoire
+* Background
+* Culture technologique (java, python, C/C++, PHP, ...)
+* Appétence pour le développement plus ou moins marquée
+
+C'est pourquoi je propose d'envisager cette présentation sous deux angles et trois profils
+
+Angle: 
+* Développement
+* Gestion de projet
+
+Profils
+* Compétence annexe / Pratique Occasionnelle
+* Compétence principale / Pratique quotidienne
+* Expertise
+
+--
+
 == Que faisons-nous ?
 
 * Nous traduisons des pensées humaines en code executable
@@ -26,7 +74,7 @@ include::_inc_context.adoc[]
 La situation peut rapidement devenir complexe, surtout si le problème à régler n'est pas lui même simple. 
 
 * La traduction peut saturer nos capacités
-** Trop d’éléments à prendre en compte
+** Trop d'éléments à prendre en compte
 ** Trop de relations, statiques ou dynamiques
 
 //TODO Schéma
@@ -89,42 +137,26 @@ L'essence du développement logiciel, c'est de pouvoir faire évoluer un logicie
 * Faciliter l'*assemblage des composants*
 
 
-=== Maintenabilité
-
-[.left-column]
+[NOTE.notes]
 --
-[.ppt]
 * Faciliter la compréhension
 ** *Que* font les composants ?
 ** *Comment* le font-il ?
-
-[%step]
-[.ppt]
 * Faciliter l'analyse
 ** Trouver *qui* est responsable de *quoi*,
 ** Évaluer l'*impact* d'une modification,
 ** *Diagnostiquer* rapidement les *erreurs* en cours d'exécution.
---
-
-
-[.right-column]
---
-[%step]
-[.ppt]
 * Faciliter la modification
 ** *Corriger* des bugs,
 ** *Améliorer* des parties de code,
 *** Meilleures performances
 *** Économiser des ressources
 ** _Le tout sans redouter que cela ne vous éclate à la figure._
---
-
-[%step]
-[.ppt]
 * Faciliter les tests
 ** *Concevoir* des tests,
 ** *Écrire* des tests,
 ** Les *exécuter* le plus fréquemment possible.
+--
 
 == Dette technique
 
@@ -196,7 +228,7 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 * Faciliter les futurs évolutions 
 
 
-== Refactoring: Quand ?
+== Refactoring : Quand ?
 
 [.simple]
 * Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
@@ -210,3 +242,18 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 * Quand il est plus facile de le réécrire from scratch
 ** On ne tire pas sur une ambulance
 * Quand il n'y a pas de bonnes raisons de le faire
+
+== Refactoring : Comment ?
+
+A chaque niveau ses exigences
+
+* Élémentaire :
+** Un IDE (Integrated Development Editor)
+** Un SCM (Source Control Management)
+* Compétent : 
+** Programmation OOP
+** Design Patterns de base
+** Tests unitaires
+* Avancé
+** Analyseur Qualité
+** Integration continue
