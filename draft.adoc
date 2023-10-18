@@ -62,14 +62,14 @@ Profils
 
 --
 
-== Que faisons-nous ?
+=== Que faisons-nous ?
 
 * Nous traduisons des pensées humaines en code executable
 * Mais nous essayons aussi de comprendre un code en termes humains
 * Cette traduction est imparfaite, car ces deux visions ne sont pas bijectives
 * Traduire, c'est trahir
 
-== Complexité
+=== Complexité
 
 La situation peut rapidement devenir complexe, surtout si le problème à régler n'est pas lui même simple. 
 
@@ -91,18 +91,18 @@ L'un des risques principaux est de perdre de vue ce que l'on souhaite faire, de 
 
 **Il va falloir gérer la complexité**
 
-== Comment nous assurer que nous le faisons bien ?
+=== Comment nous assurer que nous le faisons bien ?
 
 * Utiliser les normes qualités 9126
 * Nous allons nous limiter à deux aspects
 ** Capacité fonctionnelle, en tant que réponse aux besoin d'un client, partie de sa satisfaction.
 ** Maintenabilité
 
-== Agilité
+=== Agilité
 
 L'agilité est une démarche qui prend pour partie de ne pas prétendre dès le départ à être exhaustif, mais d'apporter des incréments de fonctionnalités et de s'assurer que le client est heureux.
 
-== Agilité
+=== Agilité
 
 Sur le plan purement technique, nous pouvons constater que
 
@@ -112,9 +112,9 @@ Sur le plan purement technique, nous pouvons constater que
 * Une recherche de l'excellence technique
 * Une remise en cause et une adaptation permanente
 
-== TODO transition
+=== TODO transition
 
-== Maintenabilité
+=== Maintenabilité
 
 **Ce n'est pas parce qu'un logiciel fonctionne qu'il est bon**
 
@@ -122,7 +122,7 @@ Sur le plan purement technique, nous pouvons constater que
 
 L'essence du développement logiciel, c'est de pouvoir faire évoluer un logiciel, surtout en agilité.
 
-== Maintenabilité
+=== Maintenabilité
 
 
 [%step]
@@ -158,7 +158,7 @@ L'essence du développement logiciel, c'est de pouvoir faire évoluer un logicie
 ** Les *exécuter* le plus fréquemment possible.
 --
 
-== Dette technique
+=== Dette technique
 
 Au cours d'un développement, des compromis, des maladresses ou des raccourcis font gagner du temps et des ressources, mais qui pénalisent la maintenabilité de l'application et sa faculté à évoluer.
 
@@ -177,7 +177,7 @@ La dette technique d'une itération (sprint) peut compromettre le sprint suivant
 **=> Refactoring, outil de gestion de la dette technique**
 
 
-== Comment mesurer la dette technique ?
+=== Comment mesurer la dette technique ?
 
 * La dette technique est l'effet délétère de l'écart à ce qu'il aurait été souhaitable de faire.
 * Comment définir ce qu'il aurait été souhaitable de faire ?
@@ -206,8 +206,11 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 * _Refactoriser_: 
 ** Restructurer un logiciel en appliquant une série de refactorisations sans changer son comportement observable
 
-== Refactoring : Concepts clef
+=== Refactoring : Concepts clef
 
+* Modifications comme objet  
+** Comment bien procéder
+** La bonne exécution est considérée comme satisfaisante
 * Amélioration qualités internes
 ** => préoccupation du développeur
 * Conservations qualités externes
@@ -217,7 +220,15 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 ** => Préoccupation de la gestion de projet
 *** Le Product Owner doit comprendre les bénéfices du refactoring 
 
-== Refactoring : objectifs ?
+
+[NOTE.notes]
+--
+La grille de lecture du refactoring ne porte pas sur l'exécution d'un programme, car on le suppose suffisamment satisfaisant le temps de procéder à la modification de son code. Le refactoring se concentre la notion de modification du code et ses effets comme objets principaux. 
+De même l’ingénierie navale cherche à minimiser l'impact des avaries et des voix d'eau sur un navire, le refactoring cherche à l'impact des modifications sur un code.  
+--
+
+
+=== Refactoring : Objectifs ?
 
 [.simple]
 * Faciliter la compréhension
@@ -228,7 +239,7 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 * Faciliter les futurs évolutions 
 
 
-== Refactoring : Quand ?
+=== Refactoring : Quand ?
 
 [.simple]
 * Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
@@ -243,8 +254,125 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 ** On ne tire pas sur une ambulance
 * Quand il n'y a pas de bonnes raisons de le faire
 
-== Refactoring : Comment ?
+=== Refactoring : Concrètement ?
 
+* Le refactoring est un ensemble de techniques et d'habitudes, qui vont des plus simples aux plus complexes
+* Martin Fowler les a formalisé dans son célèbre ouvrage.
+
+=== Refactoring : Catégories
+
+**Lister les categories**
+
+=== Refactoring : Techniques
+
+**Lister les techniques**
+
+=== Refactoring : une autre approche
+
+* L'esprit plutôt que la lettre
+** Avoir un fil conducteur plutôt qu'un catalogue
+** Pertinence variable
+*** Techniques moins cruciales grâce aux outils existants
+**** IDE, linters
+* Objectifs
+** Développeuses et développeurs
+*** Lever le nez du guidon
+*** Prendre de la hauteur
+** Chef(fes) de projet
+** Comprendre l'importance du refactoring
+** Devenir l'avocat 
+
+=== Une autre approche
+
+* Approche selon trois axes
+** Cognitif
+** Conception
+** Testabilité
+
+== Agenda
+
+**Ici décrire l'agenda**
+
+
+== Test 101
+
+Un rapide rappel sur les tests automatisés
+
+== Cognitif
+
+Le cerveau premier compilateur
+
+défaut
+
+**Insérer slides classiques**
+
+== Ecriture 
+
+=== Empilement de ligne de codes
+
+=== Lecture et règles de nommage
+
+=== Exercice de réécriture
+
+=== Lecture et niveaux d'importance
+
+**Exemples star treck**
+
+== Améliorer la conception
+
+* _Software Design_
+** Traduction sous forme de code d'une solution à un problème humain.
+* Ensemble de décisions 
+** représentation et de structuration des données et des traitements
+**  Pour satisfaire aux critères de Qualité Logicielle
+
+
+
+
+[NOTE.notes]
+--
+Architecture logicielle vs conception logicielle.
+La différence entre les deux peut être plus ou moins nette, notamment en fonction de la complexité et la taille du logicielle.
+
+Nous retiendrons que l'architecture logicielle est une vision de la solution logicielle à haut-niveau, aussi agnostique et indépendante de l'écosystème (langage, framework) que possible.
+La conception logicielle s'attache plus à la structuration du code, des données et des traitements, la définitions des entités et l'utilisation des mécanismes du paradigme utilisé (OOP, fonctionnel, impératif, ...) 
+
+Dans certaines situations, le framework sous-jacent est tellement invasif qu'il à tendance à contraindre l'architecture logicielle.
+
+Nous ne nous étendrons pas sur la pertinence ou non de ce mode de fonctionnement.
+--
+
+=== Amélioration dans le cadre du refactoring
+
+Dans le cadre du refactoring, nous partons d'une situation donnée
+
+* Conservation du comportement observable
+** Principalement _Fonctionnel_
+** Souvent aussi _Sécurité_ et _Performance_
+* Améliorations des aspects internes uniquement
+** Gestion de la complexité
+** Ne pas verrouiller le futur
+*** Réduire la dette technique du passé en gardant un oeil sur l'avenir
+** Améliorer le niveau de confiance
+*** Rendre le code plus testable pour le rendre plus testé
+
+
+[NOTE.notes]
+--
+Le comportement observable, c'est ce que perçoit un utilisateur du système _de l'extérieur_, ce que nous pouvons résumer grossièrement à trois aspects : les fonctionnalités offertes, la sécurité, les performances.
+
+Dans le cadre du refactoring, nous considérons qu'aucune évolution dans ces 3 domaines sont à considérées, même si il est effectivement courant de faire un refactoring pour améliorer les performances ou minimiser la consommation de ressources.
+
+Pour la sécurité dans la conception, cf NSFAW
+--  
+
+== Gestion de la complexité
+
+* La complexité sature les capacités du cerveau humain
+* Nous sommes plus performants sur de petits modèles qui tiennent dans notre mémoire de travail que sur de gros ensemble
+
+ifdef::show[]
+=== Exigences par niveau
 A chaque niveau ses exigences
 
 * Élémentaire :
@@ -257,3 +385,5 @@ A chaque niveau ses exigences
 * Avancé
 ** Analyseur Qualité
 ** Integration continue
+
+endif::[]
