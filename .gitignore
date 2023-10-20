@@ -9,3 +9,4 @@ index.html
 .venv
 .vscode/settings.json
 .python-version
+drawio/*.dtmp

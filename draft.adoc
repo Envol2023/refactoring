@@ -369,7 +369,144 @@ Pour la sécurité dans la conception, cf NSFAW
 == Gestion de la complexité
 
 * La complexité sature les capacités du cerveau humain
-* Nous sommes plus performants sur de petits modèles qui tiennent dans notre mémoire de travail que sur de gros ensemble
+* Nous sommes plus performants sur de petits modèles qui tiennent dans notre mémoire de travail que sur de gros ensemble.
+
+La première étapes quand on est face à un problème que l'on arrive pas à faire tenir en tête, c'est de le découper en petits problèmes
+
+image::images/breakdown-problem.gif[width=50%]
+
+=== Breakdown
+
+La technique consiste à passer d'une situation confuse à une situation plus simple où des éléments sont en relation entre eux sans distinction.
+
+Notre cerveau ne sait pas comment appréhender la situation.
+
+.Complexe et compliqué
+image::images/design-complexite_1.png[width=50%]
+
+=== Breakdown
+
+La première étape consiste à repérer des "clusters", des regroupements d'éléments particulièrement reliés entre eux.
+
+.Distinction de clusters
+image::images/design-complexite_2.png[width=50%]
+
+
+=== Breakdown
+
+Ensuite il faut les identifier ou au moins les nommer.
+
+.Identifications de clusters
+image::images/design-complexite_3.png[width=50%]
+
+
+=== Breakdown
+
+Après, il faut créer des ensemble les plus disjoints possibles
+
+.Regroupement par clusters
+image::images/design-complexite_4.png[width=50%]
+
+
+=== Breakdown
+
+Et isoler ces ensembles autant que possible les uns des autres en conservant les relations.
+
+.Établissement des frontières
+image::images/design-complexite_5.png[width=50%]
+
+
+=== Breakdown
+
+
+En prenant de la hauteur, le problème peut être appréhendé comme un ensemble plus réduit.
+
+.Complexité réduite à haute échelle, zoom vers le haut
+image::images/design-complexite_6.png[width=50%]
+
+
+=== Breakdown
+
+En zoomant sur un composant, il est engin possible de ce focaliser plus aisément
+
+.Focus sur un sous-composant, zoom vers le bas
+image::images/design-complexite_7.1.png[width=50%]
+
+
+=== Breakdown
+
+Voire de le considérer de façon totalement ou presque, isolé.
+
+.Limitation à un sous-composant de niveau N+1
+image::images/design-complexite_7.2.png[width=50%]
+
+=== Breakdown
+
+Ce processus peut se renouveler au sein du sous-composant lui-même
+
+.Décomposition en sous composants de niveau N+2
+image::images/design-complexite_8.png[width=50%]
+
+=== Breakdown
+
+Permettant de pouvoir mieux cerner une partie précise et réduite du système
+
+.Focus sur un sous-composant, zoom vers le bas
+image::images/design-complexite_9.png[width=50%]
+
+== Modularité
+
+* Condition nécessaire à la modularisation
+** En application la décomposition d'un ensemble complexe en sous-éléments moins complexes, nous faisons un premier pas vers la modularisation.
+C'est une condition nécessaire mais pas suffisante. 
+Un sous-composant peut-être considéré comme un module si il est suffisamment autosuffisant, identifiable et potentiellement réutilisable.
+Cela permet de percevoir un système complexe comme un jeu de construction.
+
+image::images/as_legos.jpg[]
+
+== Comment établir un module ?
+
+* Frontière
+** Séparation entre composants
+** Frontière au sein des sous-composant
+** Question d'échelle où l'on se place
+* Critères
+** Comment savoir ce qui va ensemble et ce qui est différent ?
+* Interface
+** Comment interagir avec les autres modules
+
+[NOTE.notes]
+--
+Les mathématiques ont développé la théorie des ensembles pour traiter de ce genre de question. Toutefois, aussi belle et pertinente soit-elle, ce n'est pas forcément elle qui va être la plus utile au quotidien aux développeuses et développeurs qui doivent faire face à tas de lignes de code qui sont tout simplement impossible à comprendre sans sentir le tournis.
+
+Ce que veulent faire ces personnes, c'est trouver le moyen d'établir les frontières et les critères qui permettent de savoir si un ensemble d'instructions font parties d'un ensemble ou non.
+
+Cette question est presque d'ordre générale pour l'humain : il passe son temps, parfois à son corps défendant, à tout classer. Les événements, les éléments de la nature, les sons, les situations et aussi les autres humains, afin de pouvoir se faire l'économie d'une réflexion et d'une écoute. De même que le cerveau filtre ce qu'il veut ignorer pour éviter la saturation, comme l'herbe dans le dos quand nous sommes allongés au soleil dans un parc, mais qu'il est capable de regarder attentivement sur des araignées et des fourmis sont aperçues dans le proche voisinage.
+
+Établir des frontières, des interfaces, des critères, c'est une technique de minimisation de l'effort cognitif.
+Ca tombe bien, car c'est notre objectif aussi.
+--
+
+== Cohésion, couplage et abstraction
+
+== Cohésion
+
+* Définition de la cohésion.
+
+[quote]
+____
+La cohésion indique à quel point les différentes parties d'un module sont liées entre elles et comment elles se concentrent sur la réalisation d'un objectif commun spécifique.
+____
+
+**Regarder dans le carnet**
+
+Il est reconnu plusieurs types de cohésions (cf.Pressman)
+
+
+
+== Couplage
+
+**Piocher les idées dans le cours framework_2019** 
 
 ifdef::show[]
 === Exigences par niveau
