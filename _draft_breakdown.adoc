@@ -1,0 +1,81 @@
+== Breakdowns
+
+=== Breakdown
+
+La technique consiste à passer d'une situation confuse à une situation plus simple où des éléments sont en relation entre eux sans distinction.
+
+Notre cerveau ne sait pas comment appréhender la situation.
+
+.Complexe et compliqué
+image::images/design-complexite_1.png[width=50%]
+
+=== Breakdown
+
+La première étape consiste à repérer des "clusters", des regroupements d'éléments particulièrement reliés entre eux.
+
+.Distinction de clusters
+image::images/design-complexite_2.png[width=50%]
+
+
+=== Breakdown
+
+Ensuite il faut les identifier ou au moins les nommer.
+
+.Identifications de clusters
+image::images/design-complexite_3.png[width=50%]
+
+
+
+=== Breakdown
+
+Après, il faut créer des ensemble les plus disjoints possibles
+
+.Regroupement par clusters
+image::images/design-complexite_4.png[width=50%]
+
+
+=== Breakdown
+
+Et isoler ces ensembles autant que possible les uns des autres en conservant les relations.
+
+.Établissement des frontières
+image::images/design-complexite_5.png[width=50%]
+
+
+=== Breakdown
+
+
+En prenant de la hauteur, le problème peut être appréhendé comme un ensemble plus réduit.
+
+.Complexité réduite à haute échelle, zoom vers le haut
+image::images/design-complexite_6.png[width=50%]
+
+
+=== Breakdown
+
+En zoomant sur un composant, il est engin possible de ce focaliser plus aisément
+
+.Focus sur un sous-composant, zoom vers le bas
+image::images/design-complexite_7.1.png[width=50%]
+
+
+=== Breakdown
+
+Voire de le considérer de façon totalement ou presque, isolé.
+
+.Limitation à un sous-composant de niveau N+1
+image::images/design-complexite_7.2.png[width=50%]
+
+=== Breakdown
+
+Ce processus peut se renouveler au sein du sous-composant lui-même
+
+.Décomposition en sous composants de niveau N+2
+image::images/design-complexite_8.png[width=50%]
+
+=== Breakdown
+
+Permettant de pouvoir mieux cerner une partie précise et réduite du système
+
+.Focus sur un sous-composant, zoom vers le bas
+image::images/design-complexite_9.png[width=50%]

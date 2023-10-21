@@ -35,8 +35,8 @@ Les salaires offerts ne sont pas attrayants, surtout sur le marché du développ
 
 Nous rencontrons des personnes qui veulent donner un sens à leur activité (c'est mon cas), mais aussi des personnes qui viennent d'abord par intérêt pour le domaine, puis pour le métier.
 
-Globalement nous avons plus de personnes qui vont vers le développement que de personnes qui en viennent
-Nous avons donc des gens qui ont des backgrounds et des cultures très diverses: certains ont un parcours résolument scientifiques et se retrouvent à poursuivre en tant qu'ingénieur.
+Globalement nous avons plus de personnes qui vont vers le développement que de personnes qui en viennent. 
+Nous avons donc des gens avec des backgrounds et des cultures très diverses: certains ont un parcours résolument scientifique et se retrouvent à poursuivre en tant qu'ingénieur.
 
 Nous avons également une appréciation du temps et des compétences très dépendant de la proportion croissante de recours à des CDD avec lesquels l'investissement dans le temps ne peut être que différents.
 
@@ -65,13 +65,17 @@ Profils
 === Que faisons-nous ?
 
 * Nous traduisons des pensées humaines en code executable
-* Mais nous essayons aussi de comprendre un code en termes humains
+* Et vice-versa, nous essayons aussi de comprendre un code en termes humains
 * Cette traduction est imparfaite, car ces deux visions ne sont pas bijectives
 * Traduire, c'est trahir
 
 === Complexité
 
+**Complexité inérante au problème**
+
 La situation peut rapidement devenir complexe, surtout si le problème à régler n'est pas lui même simple. 
+
+**Saturation** 
 
 * La traduction peut saturer nos capacités
 ** Trop d'éléments à prendre en compte
@@ -89,20 +93,18 @@ La construction d'une solution logicielle. Les nombreux éléments en interactio
 L'un des risques principaux est de perdre de vue ce que l'on souhaite faire, de s'éparpiller, d'être un peu en état de stupeur devant l'ensemble des connaissances à mobiliser.
 --
 
-**Il va falloir gérer la complexité**
+**=> Il va falloir gérer la complexité _à déplacer_ ?**
 
 === Comment nous assurer que nous le faisons bien ?
 
-* Utiliser les normes qualités 9126
+* Utiliser les https://en.wikipedia.org/wiki/ISO/IEC_9126[normes qualités 9126]
 * Nous allons nous limiter à deux aspects
-** Capacité fonctionnelle, en tant que réponse aux besoin d'un client, partie de sa satisfaction.
-** Maintenabilité
+** _Capacité fonctionnelle_, en tant que réponse aux besoin d'un client, partie de sa satisfaction.
+** _Maintenabilité_
 
 === Agilité
 
 L'agilité est une démarche qui prend pour partie de ne pas prétendre dès le départ à être exhaustif, mais d'apporter des incréments de fonctionnalités et de s'assurer que le client est heureux.
-
-=== Agilité
 
 Sur le plan purement technique, nous pouvons constater que
 
@@ -113,8 +115,6 @@ Sur le plan purement technique, nous pouvons constater que
 * Une remise en cause et une adaptation permanente
 
 === TODO transition
-
-=== Maintenabilité
 
 **Ce n'est pas parce qu'un logiciel fonctionne qu'il est bon**
 
@@ -208,12 +208,12 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 
 === Refactoring : Concepts clef
 
-* Modifications comme objet  
+* La modifications du code en soi comme principal sujet
 ** Comment bien procéder
 ** La bonne exécution est considérée comme satisfaisante
-* Amélioration qualités internes
+* Amélioration _qualités internes_
 ** => préoccupation du développeur
-* Conservations qualités externes
+* Conservations _qualités externes_
 ** => ne concerne pas l'utilisateur
 **** L'utilisateur ne sait pas que le remaniement a eu lieu
 * Consommation de ressources
@@ -224,8 +224,23 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 [NOTE.notes]
 --
 La grille de lecture du refactoring ne porte pas sur l'exécution d'un programme, car on le suppose suffisamment satisfaisant le temps de procéder à la modification de son code. Le refactoring se concentre la notion de modification du code et ses effets comme objets principaux. 
-De même l’ingénierie navale cherche à minimiser l'impact des avaries et des voix d'eau sur un navire, le refactoring cherche à l'impact des modifications sur un code.  
+De même l'ingénierie navale cherche à minimiser l'impact des avaries et des voix d'eau sur un navire, le refactoring cherche à l'impact des modifications sur un code.  
 --
+
+=== Refactoring : Mantra priuncipale
+
+Expliquer ici que le refactoring se concentre sur la construction du code, et pas sur son exécution, que l'on supposera satisfaisante.
+
+Le refactoring se concentre sur le code et non pas sur l'exécutable. 
+Le refactoring vise à 
+
+* minimiser les efforts des humains, 
+* éviter les réactions en chaine lors des modifications
+* limiter ses efforts sur un aspect
+
+image::images/reaction_en_chaine.gif[]
+
+**Mettre un chateau de cartes**
 
 
 === Refactoring : Objectifs ?
@@ -241,18 +256,17 @@ De même l’ingénierie navale cherche à minimiser l'impact des avaries et des
 
 === Refactoring : Quand ?
 
-[.simple]
-* Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
-* Quand la mise sous tests est problématique
-* Quand le code semble obscure ou ésotérique bien qu'il fonctionne
-* Quand des petits défauts sont repérés (_Boy Scout Rules_)
-* Lors d'une revue de code ou d'une analyse qualité
+* Quand refactoriser
+** Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
+** Quand la mise sous tests est problématique
+** Quand le code semble obscure ou ésotérique, bien qu'il fonctionne
+** Quand des petits défauts sont repérés (_Boy Scout Rules_)
+** Lors d'une revue de code ou d'une analyse qualité
 
-=== Quand ne **PAS** refactoriser le code ?
-
-* Quand il est plus facile de le réécrire from scratch
-** On ne tire pas sur une ambulance
-* Quand il n'y a pas de bonnes raisons de le faire
+* Quand ne **PAS** refactoriser le code ?
+** Quand il est plus facile de le réécrire from scratch
+*** On ne tire pas sur une ambulance :/
+** Quand il n'y a pas de bonnes raisons de le faire
 
 === Refactoring : Concrètement ?
 
@@ -267,24 +281,25 @@ De même l’ingénierie navale cherche à minimiser l'impact des avaries et des
 
 **Lister les techniques**
 
-=== Refactoring : une autre approche
-
-* L'esprit plutôt que la lettre
-** Avoir un fil conducteur plutôt qu'un catalogue
-** Pertinence variable
+=== Refactoring : L'esprit plutôt que la lettre
+ 
+* Avoir un fil conducteur plutôt qu'un catalogue
+** Pertinence variable des méthode recensées
 *** Techniques moins cruciales grâce aux outils existants
-**** IDE, linters
+*** IDE, linters
 * Objectifs
-** Développeuses et développeurs
+** Pour les développeuses et développeurs
 *** Lever le nez du guidon
 *** Prendre de la hauteur
-** Chef(fes) de projet
+** Pour les chef(fes) de projet
 ** Comprendre l'importance du refactoring
-** Devenir l'avocat 
+** S'en faire l'avocat lors des arbitrages
+* Pour tous
+** _Evangéliser_ auprès de vos collègues
 
-=== Une autre approche
+=== Approche du refactoring selon trois axes
 
-* Approche selon trois axes
+* 
 ** Cognitif
 ** Conception
 ** Testabilité
@@ -334,11 +349,12 @@ défaut
 Architecture logicielle vs conception logicielle.
 La différence entre les deux peut être plus ou moins nette, notamment en fonction de la complexité et la taille du logicielle.
 
-Nous retiendrons que l'architecture logicielle est une vision de la solution logicielle à haut-niveau, aussi agnostique et indépendante de l'écosystème (langage, framework) que possible.
+Nous retiendrons que l'architecture logicielle est une à haut-niveau, aussi agnostique et indépendante de l'écosystème (langages, frameworks, ...) que possible.
+Elle fait le lien entre les exigences fonctionnelles et les réponses apportées.
+
 La conception logicielle s'attache plus à la structuration du code, des données et des traitements, la définitions des entités et l'utilisation des mécanismes du paradigme utilisé (OOP, fonctionnel, impératif, ...) 
 
 Dans certaines situations, le framework sous-jacent est tellement invasif qu'il à tendance à contraindre l'architecture logicielle.
-
 Nous ne nous étendrons pas sur la pertinence ou non de ce mode de fonctionnement.
 --
 
@@ -361,7 +377,7 @@ Dans le cadre du refactoring, nous partons d'une situation donnée
 --
 Le comportement observable, c'est ce que perçoit un utilisateur du système _de l'extérieur_, ce que nous pouvons résumer grossièrement à trois aspects : les fonctionnalités offertes, la sécurité, les performances.
 
-Dans le cadre du refactoring, nous considérons qu'aucune évolution dans ces 3 domaines sont à considérées, même si il est effectivement courant de faire un refactoring pour améliorer les performances ou minimiser la consommation de ressources.
+Dans le cadre du refactoring, nous considérons qu'aucune évolution dans ces 3 domaines n'est à considérer, même si il est effectivement courant de faire un refactoring pour améliorer les performances ou minimiser la consommation de ressources.
 
 Pour la sécurité dans la conception, cf NSFAW
 --  
@@ -371,98 +387,35 @@ Pour la sécurité dans la conception, cf NSFAW
 * La complexité sature les capacités du cerveau humain
 * Nous sommes plus performants sur de petits modèles qui tiennent dans notre mémoire de travail que sur de gros ensemble.
 
+image::images/zoom.gif[width=50%]
+
 La première étapes quand on est face à un problème que l'on arrive pas à faire tenir en tête, c'est de le découper en petits problèmes
 
 image::images/breakdown-problem.gif[width=50%]
 
-=== Breakdown
 
-La technique consiste à passer d'une situation confuse à une situation plus simple où des éléments sont en relation entre eux sans distinction.
-
-Notre cerveau ne sait pas comment appréhender la situation.
-
-.Complexe et compliqué
-image::images/design-complexite_1.png[width=50%]
-
-=== Breakdown
-
-La première étape consiste à repérer des "clusters", des regroupements d'éléments particulièrement reliés entre eux.
-
-.Distinction de clusters
-image::images/design-complexite_2.png[width=50%]
-
-
-=== Breakdown
-
-Ensuite il faut les identifier ou au moins les nommer.
-
-.Identifications de clusters
-image::images/design-complexite_3.png[width=50%]
-
-
-=== Breakdown
-
-Après, il faut créer des ensemble les plus disjoints possibles
-
-.Regroupement par clusters
-image::images/design-complexite_4.png[width=50%]
-
-
-=== Breakdown
-
-Et isoler ces ensembles autant que possible les uns des autres en conservant les relations.
-
-.Établissement des frontières
-image::images/design-complexite_5.png[width=50%]
-
-
-=== Breakdown
-
-
-En prenant de la hauteur, le problème peut être appréhendé comme un ensemble plus réduit.
-
-.Complexité réduite à haute échelle, zoom vers le haut
-image::images/design-complexite_6.png[width=50%]
-
-
-=== Breakdown
-
-En zoomant sur un composant, il est engin possible de ce focaliser plus aisément
-
-.Focus sur un sous-composant, zoom vers le bas
-image::images/design-complexite_7.1.png[width=50%]
-
-
-=== Breakdown
-
-Voire de le considérer de façon totalement ou presque, isolé.
-
-.Limitation à un sous-composant de niveau N+1
-image::images/design-complexite_7.2.png[width=50%]
-
-=== Breakdown
-
-Ce processus peut se renouveler au sein du sous-composant lui-même
-
-.Décomposition en sous composants de niveau N+2
-image::images/design-complexite_8.png[width=50%]
-
-=== Breakdown
-
-Permettant de pouvoir mieux cerner une partie précise et réduite du système
-
-.Focus sur un sous-composant, zoom vers le bas
-image::images/design-complexite_9.png[width=50%]
+**Inclure ou pas le breakdown**
 
 == Modularité
 
 * Condition nécessaire à la modularisation
 ** En application la décomposition d'un ensemble complexe en sous-éléments moins complexes, nous faisons un premier pas vers la modularisation.
-C'est une condition nécessaire mais pas suffisante. 
-Un sous-composant peut-être considéré comme un module si il est suffisamment autosuffisant, identifiable et potentiellement réutilisable.
+** C'est une condition nécessaire mais pas suffisante. 
+* Un sous-composant peut-être considéré comme un module si 
+** il est suffisamment 
+*** autosuffisant, 
+*** identifiable 
+*** et potentiellement réutilisable.
+
 Cela permet de percevoir un système complexe comme un jeu de construction.
 
 image::images/as_legos.jpg[]
+
+
+[NOTE.notes]
+--
+Par module, nous désignons une entitée de programmation, cela peut-être une classe, un module python, un package java, cela peut dépendre des paradigmes de l'écosystème utilisé.
+--
 
 == Comment établir un module ?
 
@@ -489,6 +442,12 @@ Ca tombe bien, car c'est notre objectif aussi.
 
 == Cohésion, couplage et abstraction
 
+Pour qualifier un module, on utilise souvent trois propriétés
+
+* La cohésion d'un module
+* Le couplage entre modules
+* Le niveau d'abstraction du module
+
 == Cohésion
 
 * Définition de la cohésion.
@@ -503,10 +462,359 @@ ____
 Il est reconnu plusieurs types de cohésions (cf.Pressman)
 
 
-
 == Couplage
 
 **Piocher les idées dans le cours framework_2019** 
+
+
+== Abstraction
+
+L'abstraction, c'est la extraction des caractéristiques essentielle d'une entitée sans se préoccuper de sa forme concrête. C'est une forme de simplication de la réalité pour plus aisément manipuler ou définir des types d'entitée plutôt que les entitée elle-même.
+Les caractéristiques principales étant les attributs et les interactions possibles de cette entitée.
+
+Par exemple : 
+
+**trouver un exemple, type "Juge"**
+
+L'abstraction est souvent le fil d'arianne qui permet de passer d'un concept humain à une entitée qui existe sous forme de code.
+
+Typiquement, l'abstraction _Moteur_ peut-être utilisée dans la modélisation d'un véhicule et se traduire par une classe `class Engine:`` en python et/ou une classe `Engine` en java.
+
+De même qu'en conception, nous nous concentrons sur les caractéristiques essentielles qui apportent une réelle fonctionnalité, en code nous nous concentrons sur les données et les traitements essentiels
+
+
+== Abstraction suivant les paradigmes
+
+En programmation Orientée Objet, nous rencontrons généralement deux type principaux d'abstraction
+
+* l'interface, qui décrit uniquement les attributs et les interactions possibles d'un type, sans se préoccuper de comment le faire. Une interface correspond au **WHAT** sans **HOW**
+* la classe abstraite, qui décrit les attributs et les interactions possibles d'un type, mais en fournit également une concrétisation partielle. La classe abstraite ne peut exister sans rafinement possible. Elle répond à la fois à la question **WHAT** et partiellement à **HOW**
+
+=== Abstraction par langage
+
+=== Abstraction en java
+
+Interface
+
+[source,java,attributes]
+----
+interface Door {
+
+    void open();
+
+    void close();
+
+    boolean isOpened();
+}
+----
+
+Classe abstraite
+
+[source,java,attributes]
+----
+abstract class AbstractDoor {
+
+    private boolean status;
+
+    protected abstract boolean doOpen();
+    protected abstract boolean doClose();
+
+    void open(){
+        status = doOpen();
+    }
+
+    void close(){
+        status = ! doClose();
+    }
+
+    boolean isOpened() {
+        return status;
+    }
+}
+----
+
+Concrétisation
+
+[source,java]
+----
+class DrawbridgeDoor extends AbstractDoor {
+    private Drawbridge bridge = new Drawbridge();
+
+    protected boolean doOpen(){
+        this.bridge.lift(true);
+        return this.bridge.isLifted();
+    }
+    protected boolean doClose() {
+        this.bridge.lift(false);
+        return ! this.bridge.isLifted();
+
+    }
+}
+----
+
+ou utilisation de l'interface `Door`
+
+Concrétisation
+
+[source,java]
+----
+class DrawbridgeDoor implements Door {
+    private Drawbridge bridge = new Drawbridge();
+
+    void open(){
+        this.bridge.lift(true);
+    }
+    void close(){
+        this.bridge.lift(false);
+    }
+    boolean isOpened() {
+        return this.buld.isLifted();
+    }    
+}
+----
+
+ou un mix des deux
+
+[source,java,attributes]
+----
+abstract class AbstractDoor implements Door{
+    ...
+}
+class DrawbridgeDoor extends AbstractDoor {
+    ...
+}
+----
+
+
+== Abstraction en Python
+
+* Duck walking
+* AbstractClass
+* Prototype
+
+=== Abstraction en Python : Duck Walking
+
+Le python est un langage de gentlemen, qui se comportent comme il se doit.
+Aussi Python n'a pas les mécanismes de Java, comme un typage fort et statique.
+Le python ne vérifie jamais le type d'une entitée, il se contente d'utiliser les méthodes qui sont attendues.
+
+Il n'y a pas de mot-clef interface comme en _java_ !
+
+La principale abstraction en Python, c'est le Duck Walking
+
+[quote]
+____
+si ça ressemble à un canard, si ça nage comme un canard et si ça cancane comme un canard, c'est un canard
+____
+
+
+=== !
+
+[source,python,attributes]
+----
+class Door:
+  def open(self):
+      pass
+  def close(self):
+      pass
+
+class Oven:
+  def open(self):
+      pass
+  def close(self):
+      pass
+----
+
+[source,python,attributes]
+----
+def open_and_close(door):
+    door.open()
+    dosomething()
+    door.close()
+
+open_and_close(Door())
+----
+
+[source,python,attributes]
+----
+
+class Oven:
+  def open(self):
+      pass
+  def close(self):
+      pass
+
+open_and_close(Oven())
+----
+
+Alors qu'en java
+
+[source,java,attributes]
+----
+class Operator {
+    void openAndClose(Door door) { ... }
+}
+
+operator.openAndClose(new Door()) // OK
+operator.openAndClose(new Oven()) // KO ne compile pas
+----
+
+=== Abstraction en Python : renforcement avec ABC
+
+La vérification ne se fait que au runtime lors de la définition d'une classe, mais toujours pas d'incompatibilité de type si le Duck Walking est respecté
+
+**FAIRE LE CAS ICI**
+
+[source,python,attributes]
+----
+
+A FAIRE
+----
+
+== Définition d'un bon module
+
+L'object de la refactorisation est de pouvoir transformer le code de façon à avoir des modules  qui présentent les caractéristiques
+
+* Forte cohésion
+* Faible couplage
+* Niveau d'abstraction adapté
+
+=== Couplage et cohésion
+
+Comment, maintenant que nous avons défini ces notions, pouvons nous **améliorer les choses** ?
+
+Il existe des métriques, mais elles ne sont pas évidentes à utiliser au quotidien.
+
+**TODO** décrire les métriques
+
+
+Couplage et cohésion sont des aspects liés: **A REFAIRE**
+
+* Par exemple un fort couplage entre modules affaiblie géneralement diminue la cohésion de ceux-ci **FAUX**
+* Une faible cohésion augmente le risque de couplages et une dispersion.
+
+Quel est la bonne pperception à garder en tête ?
+
+
+La **minimisation des connaissances nécessaires** <= Analogie **subdivision du travail**
+
+
+== Subdivision du travail
+
+Imaginer que vous avez le logiciel de vol d'un instrument spatial embarqué sur un satellite dans le cadre d'une mission de l'ESA.
+Le logiciel de vol est composé 
+
+* d'un système de communication avec le logiciel de bord du satellite, 
+* d'un module de la mémoire de bord, 
+* d'un module de dialogue et pilotage avec le système optique, 
+* d'un module de dialogue avec les sondes de températures, 
+* d'un module de dialogue avec les systèmes de calibration, les systèmes mécaniques etc...
+
+On perçoit aisément que les domaines d'expertises sont très variés, et que la bonne attitude est de confier les modules à ceux qui savent.
+
+C'est le subdivision du travail en fonction de l'expertise nécessaire. Vous n'aller pas confier le module de pilotage du système optique au service thermique !
+
+Pourquoi ?
+
+Parce que vous faite l'hypothèse raisonnable que les experts font mieux ce pour quoi ils sont experts que lorsqu'ils vont s'aventurer dans un domaine en dehors de leur expertise.
+Car ainsi il se focalisent sur ce qu'ils savent très bien faire et minimisent les connaissances nécessaires
+
+
+== Cohésion et connaissance
+
+* Vision tournée vers l'intérieur
+* Minimisation des connaissances nécessaires
+** Diminution taille du _buffer_ cognitif
+* Association à une domaine d'expertise le plus réduit possible.
+
+
+
+[NOTE.notes]
+--
+La cohésion correspond à la minimisation des connaissance nécessaire à la compréhension d'un module. C'est une vision interne au module.
+
+* Un module à forte cohésion pourrait être placé sous la responsabilité d'un expert dont le savoir est concentré sur un domaine précis à une échelle donnée.
+
+Par exemple au sein d'un logiciel de vol tel que décrit précédemment, le module pilotage de l'électronique principale sera plutôt confié à un ou une spécialiste de l'électronique de l'instrument.
+Au sein de ce module pilotage
+
+* la partie compression de données peut être confié à un expert compression
+* la partie gestion de la puissance confié à un expert électronique de puissance
+* etc...
+--
+
+== Couplage et connaissance
+
+* Vision des relations entre modules
+* Augmentation des connaissance nécessaires
+** Augmentation taille _buffer_ cognitif
+* Implication de plusieurs domaines d'expertise
+
+
+[NOTE.notes]
+--
+Le couplage correspond à l'augmentation de la connaissance nécessaire de plusieurs domaines d'expertise.
+Du point de vue d'un concepteur de module, le couplage implique une connaissance plus ou moins poussée de modules autre que le sien.
+
+Pour reprendre notre exemple, un fort couplage serait que le concepteur la partie compression sache comment le module optique fonctionne intimement.
+--
+
+== Couplage et cohésion : résumé
+
+* Cohésion
+** vision intra-module
+** Minimisation de la connaissance nécessaire
+** Concentration sur le module à l'intérieur de ses frontières
+
+
+image::images/design-cohésion.png[]
+
+* Couplage
+** Vision inter-modules
+** Augmentation de la connaissance nécessaire
+** Dispersion au dela du module à l'extérieur des frontières
+
+image::images/design-couplage.png[]
+
+== Nature de la frontière
+
+* La frontière 
+** sert à séparer
+** à échanger
+* Un bon design 
+** minimise les impacts des modifications en cas d'évolution des structures internes
+** produit des modules à haute cohésion et faible couplage
+
+Comment améliorer les frontières pour répondre à ces exigences ?
+
+**Rendre la frontière abstraite**
+
+== Abstraction
+
+* L'abstraction est une description de qu'un module doit **au minimum** offrir
+* Elle ne nécessite pas d'en connaître plus de la part de l'utilisateur du module
+** L'abstraction cache la compléxité du module 
+* L'abstraction étant ce qui est le plus proche d'un état de fait simple à comprende
+
+
+**l'abstraction fournit un contrat entre utilisateur et concepteur**
+
+
+**REPRENDRE COURS M2_OASE/JAVA**
+
+== Abstraction 
+
+* Avantages
+** Fournit stabilité et simplicité de manipulation
+** Permet de communiquer et contractualiser entre groupe de personnes
+** Est concentrée sur la représentation (modélisation) 
+** Permet d'établir des relations entre entitée sans se préocupper des concrétisations
+* Inconvénients
+** Pas forcément toujours pertinente dans des cas très simples
+** Ne permet pas de faire "tourner" la machine telle quelle
+
+
+
 
 ifdef::show[]
 === Exigences par niveau
