@@ -923,5 +923,133 @@ Comment améliorer les frontières pour répondre à ces exigences ?
 
 == TP conception permière partie
 
+== Les bonnes pratiques
 
 
+=== La notion de responsabilité
+
+Nous avons vu que pour avoir des modules de bon niveau, il faut qu'il présente une cohésion élevée.
+
+Cette coh"sion s'obtient en suivant des principes de base qui vont guider notre refactoring.
+
+Ces principes sont basée sur la notion de responsabilité.
+
+=== Définition d'une responsabilité
+
+Une responsabilité est un ensemble de données et de traitements que l'on pourrait identifier et associer à un domaine d'expertise et à lui seul.
+
+C'est une notion très subjective, car elle dépend de l'échelle de détails jusqu'où on veut aller.
+
+Mais l'idée est que tout ce qui concerne ce domaine d'expertise est dans cette ensemble délimité, dans ce module, et que par conséquent, toutes les modifications demandées dans le cadre de ce domaine ne concerne que cet ensemble.
+
+=== Separation of concern
+
+Separation of concern => séparation des préoccupations
+
+Le principe SoC c'est de regrouper ensemble les choses qui vont ensemble
+
+C'est le premier pas vers la modularité 
+
+**Reprendre les slides du cours java cours_framework_2019\cours\good_practices\principes_reduce_nb_of_elements.adoc**
+
+Méthodes de refactoring utilisées 
+
+* Move methods
+
+
+=== Single Reponsability Principle
+
+Ce principe s'applique aussi bien aux fonctions qu'aux classes
+
+_You have one job, only one job_
+
+=== Single Reponsability Principle: fonctions
+
+Une fonction ne doit faire qu'une chose, une seule chose, mais bien.
+
+Reprendre exemple du cours de java
+
+[source,python,attributes]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+
+    file = ctx.get_file()
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+    user = ctx.get_user()
+    if user:
+        ... # Do something with user
+----
+
+
+[source,python,attributes]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+
+    file = ctx.get_file()
+    user = ctx.get_user()
+    save_file_alert_user(file, user)
+
+def save_file_alert_user(file, user):
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+    if user:
+        ... # Do something with user
+
+----
+
+* `save_file_alert_user` n'est pas réutilisable en dehors de ce cas d'usage
+* `save_file_alert_user` fait deux choses très différentes qui relève du domaine d'expertise _Spécialiste de la sauvegarde des fichiers_ et du domaine d'expertise _Spécialiste des communications avec l'utilisateur_
+
+[source,python,attributes]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+    save_file(ctx.get_file())
+    alert_user(ctx.get_user())
+
+def save_file(file):
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+def alert_user(user):
+    if user:
+        ... # Do something with user
+----
+
+* `save_file` relève du domaine d'expertise _Spécialiste de la sauvegarde des fichiers_  et lui seul
+* `alert_user` relève du domaine d'expertise _Spécialiste des communications avec l'utilisateur_ et lui seul
+
+
+[source,python,attributes]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+    do_post_process(ctx)
+
+def do_post_process(ctx: Context):
+    save_file(ctx.get_file())
+    alert_user(ctx.get_user())
+
+def save_file(file):
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+def alert_user(user):
+    if user:
+        ... # Do something with user
+----
+
+La méthode `do_post_process` permet de cacher des détails qui n'ont finalement que peu d'importance du point de vue du _Spécialiste de la gestion des processus_ mais est adaptable suivant les situations.
+
+**FOURNIR DES EXEMPLES**
+
+Uen fonction qui fait des choses qui relèvent, au même niveau d'abstraction, de plusieurs domaines, contrevient au princip
+
+**FOURNIR REFERENCE CLEAN CODE**
+
+=== 
