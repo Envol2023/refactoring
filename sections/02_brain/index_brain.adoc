@@ -1,0 +1,12 @@
+= Vue du cerveau
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+
+* Reprendre contenu passé
+
+// end::content[]
+

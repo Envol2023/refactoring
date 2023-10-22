@@ -1,0 +1,17 @@
+From chatGPT
+
+Running Python in isolated mode can help solve the "module not found" issue in some cases, especially when dealing with specific project layouts, such as the `src` layout. This issue typically arises due to the way Python resolves module paths. When running Python scripts from different directories, the interpreter may have difficulty locating the required modules, resulting in the "module not found" error.
+
+Using isolated mode, you ensure that the interpreter does not search for modules in the standard paths or the current working directory. This forces the interpreter to rely solely on the paths specified within the project structure. This can be particularly useful in situations where the project has a non-standard layout, like the `src` layout.
+
+The `src` layout convention involves placing all the source code into a subdirectory called `src`. This can lead to confusion in module resolution, as the Python interpreter might not be able to find modules outside the current directory by default.
+
+By running Python in isolated mode, you enforce a strict policy that prevents accidental imports from the current directory, ensuring that the interpreter only searches within the specified paths. This can help to resolve the "module not found" issue that often arises with non-standard project layouts.
+
+To run Python in isolated mode, you can use the `-I` flag when invoking the Python interpreter from the command line, like this:
+
+```
+python -I your_script.py
+```
+
+Using this flag ensures that the current directory is not added to the module search path, which can help to avoid module resolution conflicts, especially in cases where the `src` layout is being used.

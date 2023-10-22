@@ -306,7 +306,14 @@ image::images/reaction_en_chaine.gif[]
 
 == Agenda
 
-**Ici décrire l'agenda**
+* Tests
+** Bref rappel
+* Vue du cerveau
+* Faciliter la compréhension
+* Améliorer la conception
+* Faciliter la testabilité
+* Application avec du code legacy
+
 
 
 == Test 101
@@ -332,6 +339,31 @@ défaut
 === Lecture et niveaux d'importance
 
 **Exemples star treck**
+
+== TP partie lecture
+
+Methodes de refactoring à illustrer
+
+* renommer une variable
+* renommer une methode
+* extraire une fonction
+
+
+Scénario
+
+Fournir deux codes avec un rapide descriptif, tous les deux dans la même thématique.
+
+par exemple
+
+Deux système d'exploitation d'un instrument de type heliostat
+
+
+* Un code verifie la disponibilité du capteur et si il remplie toutes les conditions nécessaires.
+* Un autre code qui exploite le capteur en lui donnant des directives genre direction, nature des fichiers à enregistrer
+
+
+
+
 
 == Améliorer la conception
 
@@ -382,6 +414,7 @@ Dans le cadre du refactoring, nous considérons qu'aucune évolution dans ces 3 
 Pour la sécurité dans la conception, cf NSFAW
 --  
 
+
 == Gestion de la complexité
 
 * La complexité sature les capacités du cerveau humain
@@ -395,6 +428,19 @@ image::images/breakdown-problem.gif[width=50%]
 
 
 **Inclure ou pas le breakdown**
+
+
+== Quel est le problème : data + traitement
+
+Un programme informatique, c'est 
+
+* data + traitement
+
+* Description des données
+* Description des traitement
+
+**Pas d'illustration trop naïves ou en bas côté**
+
 
 == Modularité
 
@@ -416,6 +462,67 @@ image::images/as_legos.jpg[]
 --
 Par module, nous désignons une entitée de programmation, cela peut-être une classe, un module python, un package java, cela peut dépendre des paradigmes de l'écosystème utilisé.
 --
+
+== Comment relier les données au traitement ?
+
+L'écosystème utilisé conditionne la façon de construire la solution, et donc des module.
+
+Les paradigmes les plus courants sont
+
+* Approche Procédurale
+* Approche Object
+* Approche fonctionnelle
+
+Je n'aborderait la programmation fonctionnelle, car je n'ai pas d'expérience dans le domaine.
+
+Nous allons voir comment ces paradigmes permettent de gérer la complexité ou pas.
+
+=== Procédurale
+
+**intruire puppet master**
+
+* Disjoint
+** La relation doit être établie
+* Déséquilibré
+** Les algorithmes détiennent toutes les *connaissances*.
+** Les structures de données sont "stupides".
+
+**illustration**
+
+=== Structuration des données 
+
+La structuration des données contribue la modularisation des données en regroupant les data 
+
+* Une meilleure structuration des données aiderait
+** La _forme_ des données détermine l'expressivité de la procédure
+* Une conception intelligente des données 
+** met en avant ce qui est important
+Mettre en avant ce qui est important 
+** Mettre en arrière les détails non pertinents
+
+**Mettre dessin https://code-club.io.ias.u-psud.fr//assets/presentations/oop101/index.html#/_data_structuring_6**
+
+== Regroupement des données et des traitements
+
+* Co-localistion des savoirs nécessaires à la compréhension d'un code
+** Cas des modules en python
+* Le travail de regroupement des informations est toujours à faire par le développeur à l'aide du système de vérification du langage (compilateur, runtime)
+* La connaissance est facilité
+
+== Programmation orienté objet
+
+* Entité en tant que _tout_
+** _Objet
+** Données et procédures sous le même toit
+
+* L'entité a des comportements
+** L'entité est active
+* La connaissance se trouve dans l'entité
+
+
+*mettre https://code-club.io.ias.u-psud.fr//assets/presentations/oop101/index.html#/_object_oriented_programing_2**
+
+*mettre https://code-club.io.ias.u-psud.fr//assets/presentations/oop101/index.html#/_size_of_project**
 
 == Comment établir un module ?
 
@@ -439,6 +546,7 @@ Cette question est presque d'ordre générale pour l'humain : il passe son temps
 Établir des frontières, des interfaces, des critères, c'est une technique de minimisation de l'effort cognitif.
 Ca tombe bien, car c'est notre objectif aussi.
 --
+
 
 == Cohésion, couplage et abstraction
 
@@ -807,28 +915,13 @@ Comment améliorer les frontières pour répondre à ces exigences ?
 * Avantages
 ** Fournit stabilité et simplicité de manipulation
 ** Permet de communiquer et contractualiser entre groupe de personnes
+*** Alors que rien n'existe encore
 ** Est concentrée sur la représentation (modélisation) 
-** Permet d'établir des relations entre entitée sans se préocupper des concrétisations
 * Inconvénients
 ** Pas forcément toujours pertinente dans des cas très simples
-** Ne permet pas de faire "tourner" la machine telle quelle
+** Ne permet pas de faire "tourner" la machine
+
+== TP conception permière partie
 
 
 
-
-ifdef::show[]
-=== Exigences par niveau
-A chaque niveau ses exigences
-
-* Élémentaire :
-** Un IDE (Integrated Development Editor)
-** Un SCM (Source Control Management)
-* Compétent : 
-** Programmation OOP
-** Design Patterns de base
-** Tests unitaires
-* Avancé
-** Analyseur Qualité
-** Integration continue
-
-endif::[]
