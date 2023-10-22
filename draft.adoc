@@ -950,7 +950,7 @@ Le principe SoC c'est de regrouper ensemble les choses qui vont ensemble
 
 C'est le premier pas vers la modularité 
 
-**Reprendre les slides du cours java cours_framework_2019\cours\good_practices\principes_reduce_nb_of_elements.adoc**
+**Reprendre les slides du cours de programmation OOP**
 
 Méthodes de refactoring utilisées 
 
@@ -1046,10 +1046,24 @@ def alert_user(user):
 
 La méthode `do_post_process` permet de cacher des détails qui n'ont finalement que peu d'importance du point de vue du _Spécialiste de la gestion des processus_ mais est adaptable suivant les situations.
 
-**FOURNIR DES EXEMPLES**
-
-Uen fonction qui fait des choses qui relèvent, au même niveau d'abstraction, de plusieurs domaines, contrevient au princip
 
 **FOURNIR REFERENCE CLEAN CODE**
 
-=== 
+=== Single Responsability Principe : application à une classe
+
+Le SRP pour une classe s'exprime sous la forme 
+
+ _une classe ne doit changer que pour une seule raison_
+
+ ce qui semble énigmatique, sauf si on le relit en garder la règle d'or en tête : 
+
+ _Comme une classe ne doit prendre en charge qu'une seule responsabilité, et bien le faire, seule une évolution de cette responsabilité peut motiver la modification de la classe._
+
+
+ Exemple
+
+[source,python,attributes]
+----
+----
+ 
+
