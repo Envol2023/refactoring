@@ -1060,10 +1060,58 @@ Le SRP pour une classe s'exprime sous la forme
  _Comme une classe ne doit prendre en charge qu'une seule responsabilité, et bien le faire, seule une évolution de cette responsabilité peut motiver la modification de la classe._
 
 
- Exemple
+ Exemple un capteur barométric qui est joignable par addressag IP
 
 [source,python,attributes]
 ----
+
+class BarometricSensor:
+
+    def __init__(self):
+        ...
+
+    def get_pressure(self) -> float:
+        ...
+    
+    def set_ip_address(self, ip: str):
+        ...
+
+    def connect_to_ip_address(self) -> bool:
+        ...
+
 ----
  
 
+La gestion du capteur est une responsabilité en soi, mais la gestion d'un addressage IP en est une autre.
+
+Il y a donc deux responsablités distinctes
+
+* La gestion du capteur
+* La gestion de l'adressage IP
+
+
+
+[source,python,attributes]
+----
+class IpAddress:
+    def __init__(self, address: str):
+        self.value = address
+
+    def check(self):
+        ...
+
+class BarometricSensor:
+
+    def __init__(self):
+        self.address : IpAddress = None
+
+    def get_pressure(self) -> float:
+        ...
+    
+    def set_ip_address(self, ip: str):
+        self.address = IpAddress(ip)
+
+    def connect_to_ip_address(self) -> bool:
+        return self.address.check()
+
+----
