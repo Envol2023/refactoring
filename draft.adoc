@@ -1115,3 +1115,6 @@ class BarometricSensor:
         return self.address.check()
 
 ----
+
+
+== Heritage vs Composition 
