@@ -1,0 +1,46 @@
+
+// tag::all[]
+// tag::composing_methods[]
+==  Composing Methods
+
+* [ ] Extract Method
+* [ ] Replace Method with Method Object
+//end::composing_methods[]
+
+// tag::moving_features_between_objects[]
+==  Moving Features Between Objects
+
+* [ ] Move Method
+* [ ] Move Field
+* [ ] Extract Class
+* [ ] Hide Delegate (+ Remove Middle Man)
+* [ ] Introduce Local Extension
+//end::moving_features_between_objects[]
+
+// tag::organizing_data[]
+==  Organizing Data
+
+* [ ] Replace Data Value with Object
+* [ ] Replace Magic Number with Symbolic Constant
+* [ ] Encapsulate Collection
+// end::organizing_data[]
+
+
+// tag::making_method_calls_simpler[]
+==  Making Method Calls Simpler
+
+* [ ] Rename Method
+* [ ] Parameterize Method
+* [ ] Preserve Whole Object
+* [ ] Replace Parameter with Method
+* [ ] Introduce Parameter Object
+* [ ] Hide Method
+* [ ] Replace Constructor with Factory Method
+// end::making_method_calls_simpler[]
+
+// tag::dealing_with_generalization[]
+==  Dealing with Generalization
+
+* [ ] Extract Subclass
+* [ ] Extract Superclass
+// end::dealing_with_generalization[]

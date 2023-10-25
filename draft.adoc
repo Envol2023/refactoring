@@ -314,8 +314,6 @@ image::images/reaction_en_chaine.gif[]
 * Faciliter la testabilité
 * Application avec du code legacy
 
-
-
 == Test 101
 
 Un rapide rappel sur les tests automatisés
@@ -1084,7 +1082,7 @@ class BarometricSensor:
 
 La gestion du capteur est une responsabilité en soi, mais la gestion d'un addressage IP en est une autre.
 
-Il y a donc deux responsablités distinctes
+Il y a donc deux responsabilités distinctes
 
 * La gestion du capteur
 * La gestion de l'adressage IP
@@ -1118,3 +1116,28 @@ class BarometricSensor:
 
 
 == Heritage vs Composition 
+
+TBD
+
+== Techniques de refactoring à utiliser
+
+[INFO]
+--
+Vous pouvez utiliser des outils de refactoring, et si vous en avez, c'est le meilleure moyen d'en faire.
+Sinon vous pouvez aussi faire du refactoring "à la main" du moment que vous avez un linter qui "couine" suffisamment fort pour vous avertir que des variables ne sont plus utilisées.
+--
+
+* Extract Class
+* Extract Interface
+
+== Pour aller plus loin (en lien)
+
+* Design Patterns
+
+== Bad Smells
+
+Faire une selection de 5 
+
+== Cas du Legacy
+
+Reprendre présentation du legacy

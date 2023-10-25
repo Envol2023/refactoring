@@ -82,4 +82,28 @@
 * Replace Delegation with Inheritance
 // end::dealing_with_generalization[]
 
+
+
+==  Composing Methods: 
+
+
+=== Extract Method
+
+// tag::ComposingMethodsExtractMethod-en[]
+* Create a new method and name it in a way that makes its purpose self-evident.
+* Copy the code your're interested in into your new method. 
+* Delete the fragment from its old location and put a call for the new method there instead.
+* Find all variables used in this code fragment. If they're declared inside the fragment and not used outside of it, simply leave them unchanged—they'll become local variables for the new method.
+
+// end::ComposingMethodsExtractMethod-en[]
+
+
+// tag::ComposingMethodsExtractMethod-fr[]
+* Créez une nouvelle méthode et nommez-la de manière à ce que son objectif soit évident.
+* Copiez le code qui vous intéresse dans votre nouvelle méthode. 
+* Supprimez le fragment de son ancien emplacement et placez un appel à la nouvelle méthode à la place.
+* Recherchez toutes les variables utilisées dans ce fragment de code. Si elles sont déclarées à l'intérieur du fragment et ne sont pas utilisées à l'extérieur, laissez-les simplement inchangées - elles deviendront des variables locales pour la nouvelle méthode.
+// tag::ComposingMethodsExtractMethod-fr[]
+
+
 // end::all[]
