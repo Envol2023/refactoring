@@ -1417,4 +1417,11 @@ Faire une selection de 5
 
 == Cas du Legacy
 
+== evaluation effort 
+
+Pureté design vs temps et efforts à consacrer. 
+
+Une fois testée, on peut rendre plus propre 
+
+
 Reprendre présentation du legacy
