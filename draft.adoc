@@ -1114,6 +1114,17 @@ class BarometricSensor:
 
 ----
 
+== Techniques de recherche de responsabilité 
+
+Cf. Chapitre 16 de legacy 
+
+* Raconter verbalement 
+* Jouer avec des cartes CRC
+** qu'est-ce que je dois savoir ? 
+** avec qui j'interagis 
+** de quoi n aïs pas besoin
+* Écouter comment on parle du code
+
 
 == Exercice de recherche de responsabilité
 
@@ -1434,3 +1445,12 @@ Une fois testée, on peut rendre plus propre
 
 
 Reprendre présentation du legacy
+
+== Outils
+
+Call hierarchy 
+
+Drawio 
+
+Excalidraw
+
