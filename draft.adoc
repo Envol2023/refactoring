@@ -1115,6 +1115,283 @@ class BarometricSensor:
 ----
 
 
+== Exercice de recherche de responsabilité
+
+[source,python,attributes]
+-----
+@dataclass
+class Job:
+    id: str
+    cpu: float
+    memory: float
+    status: Statut = Status.PENDING
+    def is_pending(self) -> bool: ...
+    def is_running(self) -> bool: ...
+    def is_stopped(self) -> bool: ...
+    def is_finished(self) -> bool: ...
+
+@dataclass
+class Server:
+    id: str
+    cpu: float
+    memory: float
+    jobs : List[Job]
+
+    def submit(self, job): ...
+    def compute_used_cpu_and_memory_by_job(self, job) -> Tuple[float, float]: ...
+    def stop_job(self, job): ...
+
+
+@dataclass
+class JobDispatcher:
+    servers: list[Server]
+    job_queue: list[Job]
+
+    def has_server_enough_cpu_and_memory(self, server: Server, job: Job) -> bool:...
+    def is_over(used_cpu: float, used_memory: float, cpu: float, memory: float) -> bool: ...
+
+    def run(self):
+        for server in self.servers:
+            for job in self.job_queue:
+                if job.is_pending():                
+                    if self.has_server_enough_cpu_and_memory(server, job):
+                        server.submit(job)
+                if job.is_running():
+                    if job in server.jobs :
+                        used_cpu, used_memory = self.compute_used_cpu_and_memory_by_job(self, job)
+                        if self.is_over(used_cpu, used_memory, job.cpu, job.memory) :
+                            server.stop(job)
+            
+            if job.is_finished() or job.is_stopped():
+                job_queue.remove(job)
+
+            sleep(0.2)
+
+-----
+
+== Regroupement de Resources
+
+Le couple `cpu` et `memory` se répète sans cesse.
+
+[source,python,attributes]
+-----
+@dataclass
+class Job:
+    id: str
+    cpu: float      # <---- ici 
+    memory: float   # <---- ici 
+    ...
+
+
+@dataclass
+class Server:
+    id: str
+    cpu: float     # <---- ici 
+    memory: float  # <---- ici 
+    ...
+
+class JobDispatcher:
+    ...
+    def has_server_enough_cpu_and_memory(self, server: Server, job: Job) -> bool:...
+    def is_over(used_cpu: float, used_memory: float, cpu: float, memory: float) -> bool: ...    
+-----
+
+De plus il semblerait que des opérations conjointes aient toujours lieux ensemble.
+
+=== Plan d'action
+
+* Création d'une entité reconnue, autonome et potentiellement capable
+
+[source,python,attributes]
+-----
+@dataclass 
+class Resources:
+    cpu: float
+    memory: float
+-----
+
+
+* Evolution 
+
+[source,python,attributes]
+-----
+@dataclass
+class Job:
+    id: str
+    resources: Resources
+    #...
+
+@dataclass
+class Server:
+    id: str
+    resources: Resources
+    jobs : List[Job]
+    #...
+
+class JobDispatcher:
+    #...
+    def has_server_enough_resources(self, server: Server, job: Job) -> bool:...
+    def is_over(used_resources: Resources, job_resources: Resources) -> bool: ...    
+-----
+
+=== Déplacement des méthodes
+
+Est-ce que `JobDispatcher` a besoin d'en savoir autant sur le fonctionnement interne des ressources pour pouvoir les comparer ?
+
+[source,python,attributes]
+-----
+class JobDispatcher:
+    def has_server_enough_resources(self, server: Server, job: Job) -> bool:
+        return server.cpu > job.cpu and server.memory > job.memory
+
+    def is_over(used_resources: Resources, job_resources: Resources) -> bool:   
+        return used_resources.cpu > job.cpu or used_resources.memory > job.memory
+-----
+
+La plus qualifiée, c'est peut-être la classe `Resources` elle-même ?
+
+[source,python,attributes]
+-----
+@dataclass 
+class Resources:
+    cpu: float
+    memory: float
+
+    def is_enough(self, o: Resources):
+        return self.cpu > o.cpu and self.memory > o.memory
+
+    def is_over(self, o: Resources):
+        return self.cpu > o.cpu or self.memory > o.memory
+
+-----
+
+=> refactoring
+
+[source,python,attributes]
+-----
+class JobDispatcher:
+    def has_server_enough_resources(self, server: Server, job: Job) -> bool:
+        return server.resources.is_enough(job.resources)
+
+    def is_over(used_resources: Resources, job_resources: Resources) -> bool:   
+        return server.resources.is_over(job.resources)
+-----
+
+
+
+== Qui sait ?
+
+La classe JobDispatcher doit affecter des jobs à des serveurs.
+
+=== Réécriture des principales actions 
+
+Les détails noient la fonctionnalité => Réécriture de fonction de niveau N-1
+
+[source,python,attributes]
+-----
+class JobDispatcher:
+    #...
+    def run(self):
+        for server in self.servers:
+            for job in self.job_queue:
+                on_pending(job, server)
+                on_running_job(job, server)
+                on_finished_or_stopped_job(job, server)
+            sleep(0.2)
+-----
+
+Avec 
+
+[source,python,attributes]
+-----
+class JobDispatcher:
+    #...
+    def on_pending(job, server):
+        if job.is_pending():                
+            if self.has_server_enough_resources(server, job):
+                server.submit(job)            
+
+    def on_running(job, server):
+        if job.is_running():
+            if job in server.jobs :
+                used_resources = server.compute_used_resources_by_job(self, job)
+                if self.is_over(used_resources, job.resources) :
+                    server.stop(job)
+
+    def on_finished_or_stopped_job(job, server):
+        if job.is_finished() or job.is_stopped():
+            self.job_queue.remove(job)
+
+-----
+
+
+On remarquera que les interactions entre server et job ne concernent finalement que peu le `JobDispatcher`.
+
+Là nous avons un choix de conception à faire.
+
+* Soit le server ne sert qu'à exécuter des jobs, en quel cas on peut plus lier les deux 
+* Soit le server est plus généraliste, et la connaissance des job n'est pas nécessaire.
+
+Dans notre cas, nous allons considérer que le serveur est dédié à l'exécution de job, et donc, le lier n'est pas gênant. Nous ne faisons que déplacer les interactions job/ server sur le server qui a déjà une liste de jobs.
+
+
+
+[source,python,attributes]
+-----
+@dataclass
+class Server:
+    id: str
+    resources: Resources
+    jobs : List[Job]
+
+    def compute_used_resources_by_job(self, job: Job) -> Resources: ...
+    ...
+    def is_over(self, job: Job)-> bool:
+        if job in self.jobs :
+            used_resources = self.compute_used_resources_by_job(self, job)
+            return used_resources.is_over(job.resources)
+        return False
+
+    def accept(self, job: Job) -> bool:
+        return self.resources.is_enough(job.resources):
+
+-----
+
+
+[source,python,attributes]
+-----
+class JobDispatcher:
+    #...
+    def on_pending(job, server):
+        if job.is_pending() and server.accept(job):
+            server.submit(job)                
+
+    def on_running(job, server):
+        if job.is_running() and server.is_over(job):
+            server.stop(job)
+
+-----
+
+
+== Que doit faire le JobDispatcher
+
+Le `JobDispatcher` se concentre désormais sur la mise en relation des serveurs et des jobs, 
+
+[source,python,attributes]
+-----
+@dataclass
+class JobDispatcher:
+    servers: list[Server]
+    job_queue: list[Job]
+
+    def on_pending(job, server): ...
+    def on_running(job, server): ...
+    def on_finished_or_stopped_job(job, server): ...
+    def run(self): ...
+-----
+
+
+
 == Heritage vs Composition 
 
 TBD
