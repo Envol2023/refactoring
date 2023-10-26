@@ -1407,6 +1407,10 @@ class JobDispatcher:
 
 TBD
 
+== Bad smells de conception 
+
+TBD
+
 == Techniques de refactoring à utiliser
 
 [INFO]
