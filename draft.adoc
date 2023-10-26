@@ -1417,6 +1417,15 @@ Faire une selection de 5
 
 == Cas du Legacy
 
+Concepts 
+
+Interception points 
+
+An interception point is simply a point in your program where you can detect the effects of a particular change. Make this as close to your change points as you can.
+
+
+https://github.com/ThoughtWorksInc/WorkingEffectivelyWithLegacyCode
+
 == evaluation effort 
 
 Pureté design vs temps et efforts à consacrer. 
