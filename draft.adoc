@@ -318,6 +318,10 @@ image::images/reaction_en_chaine.gif[]
 
 Un rapide rappel sur les tests automatisés
 
+Introduire les doctest
+
+
+
 == Cognitif
 
 Le cerveau premier compilateur
@@ -1429,6 +1433,34 @@ Sinon vous pouvez aussi faire du refactoring "à la main" du moment que vous ave
 == Bad Smells
 
 Faire une selection de 5 
+
+=== Une méthode trop longue
+
+Symptômes
+
+* Vous êtes obligé de scroller de plus d'un écran pour parcourir une méthode d'un bout à l'autre.
+* Vous êtes perdu quand vous la parcourez.
+* Cela contrevient également les principes de code clean sur la lisibilité du code.
+
+Conseils
+
+* extraire des méthodes
+
+=== Une classe trop grosse
+
+Symptômes
+
+* Trop de propriétés (variables d'instance)
+* Du mal à définir ce qu'elle fait vraiment
+
+Conseils
+
+* Extraire des classes, 
+* Extraire des sous-classes, 
+* Extraire des interfaces,
+* En cas de gestion de collections avec des informations complémentaires, assembler la collection avec les propriétés supplémentaires en une seule et même classe. (Replace Data value with object)
+
+=== Une trop longue liste de paramètres 
 
 == Cas du Legacy
 
