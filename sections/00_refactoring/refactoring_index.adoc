@@ -1,0 +1,598 @@
+= Introduction
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+
+[.dark.background]
+[.center]
+[%notitle]
+== Introduction
+
+Refactoring et Agilité
+
+**BOF A REFAIRE**
+
+== Que faisons nous quand nous développons ?
+
+[%step]
+* Réponse à un besoin humain
+** Pas de besoin, pas de projet !
+* Traduction
+** Des concepts du monde des humains => code exécutable par un ordinateur
+** Du code exécuté => concepts manipulables par des humains
+* Plusieurs traductions, plusieurs univers
+** Client(e), Architecte, Développeuse et Développeur, Fonctionnel, Technique, Management 
+* Traduire, c'est trahir
+** Des univers aux fondamentaux différents
+
+== Comment s'assurer que nous développons bien ?
+
+[.left-column-2-3]
+--
+* Notion de Qualité Logicielle
+** Ensemble de caractéristiques attendues
+** https://en.wikipedia.org/wiki/ISO/IEC_9126[Norme Qualité Logicielle ISO 9126^]
+* Focus sur deux aspects
+** _Capacité fonctionnelle_, 
+*** Est-ce que le logiciel répond aux besoins fonctionnels exprimés ?
+** _Maintenabilité_
+*** Est-ce que le logiciel requiert peu d'effort à son évolution par rapport aux nouveaux besoins ?
+--
+
+[.right-column-1-3]
+--
+[.right]
+image::../images/ISO_9126_quality_(en).png[width=90%]
+[.x-small] 
+https://commons.wikimedia.org/wiki/File:ISO_9126_quality_(en).svg
+
+--
+
+
+=== Complexité
+
+* Complexité vs Complication ?
+** *_Complexe_* s'oppose à *_simple_* => *_indirecte_*,
+** *_Compliqué_* s'oppose à *_facile_* => *_difficile_*.
+
+[%step]
+* Complexité du projet
+** Des besoins humains, des outils techniques
+* La complexité engendre la complexité
+** Si un problème humain est complexe => le code ne peut pas être simple
+* Développement => activité complexe peut devenir vite très compliquée
+** Beaucoup d'éléments & d'aspects à prendre en compte
+
+
+[NOTE.notes]
+--
+Un logiciel est une solution en réponse à un besoin humain. Si ce besoin est simple, simple à exprimer, à formaliser, à traduire en code, que la traduction est assez directe, la solution sera simple également. Mais de tels besoins, à part des scripts très modestes, ne nécessitent pas de méthodologie.
+
+Dès que le besoin devient plus conséquent, qu'il est nécessaire de passer par plusieurs étapes de traductions, les choses deviennent beaucoup moins facile.
+Il s'agit de prendre en compte la notion de complexité
+
+Dans la construction d'une solution logicielle, de nombreux éléments sont souvent en interaction et s'influencent mutuellement. Plusieurs aspects à prendre en compte: la sécurité, la cohérence de l'application, les domaines métiers, les tests, etc. 
+L'un des risques principaux est de perdre de vue ce que l'on souhaite faire, de s'éparpiller, d'être un peu en état de stupeur devant l'ensemble des connaissances à mobiliser.
+--
+
+[.splash.background]
+[.center]
+[%notitle]
+=== Complexité
+
+Développer un logiciel, {cr}
+c'est garder la complexité **sous contrôle** 
+
+
+== Agilité 
+
+* Réponse à la complexité
+** Expériences passées submergées par la complexité
+* Adopter une démarche itérative et incrémentale
+** Ajouts de fonctionnalité successifs et feedback rapide du client
+** Ne pas prétendre à l'exhaustivité 
+** Se donner le droit de découvrir et changer
+
+=== Agilité
+
+* Sur le plan purement technique
+** Conception (_Software Design_) toujours en évolution
+** Une recherche de l'excellence technique
+* Sur le plan management 
+** Avoir confiance dans les personnes en charge du développement.
+** Une remise en cause et une adaptation permanente
+** Un rythme de travail **soutenable**
+
+[%step]
+L'agilité, c'est le changement
+
+== Maintenabilité
+
+Mesure de la facilité
+
+[%step]
+[.left-column]
+* Faciliter la *compréhension*
+* Faciliter l'*analyse*
+
+[%step]
+[.right-column]
+* Faciliter la *modification*
+* Faciliter les *tests*
+* Faciliter l'*assemblage des composants*
+
+[%step]
+[.reset-column]
+La maintenabilité est essentielle pour espérer faire évoluer un logiciel à un rythme soutenable 
+
+[NOTE.notes]
+--
+* Faciliter la compréhension
+** *Que* font les composants ?
+** *Comment* le font-il ?
+* Faciliter l'analyse
+** Trouver *qui* est responsable de *quoi*,
+** Évaluer l'*impact* d'une modification,
+** *Diagnostiquer* rapidement les *erreurs* en cours d'exécution.
+* Faciliter la modification
+** *Corriger* des bugs,
+** *Améliorer* des parties de code,
+*** Meilleures performances
+*** Économiser des ressources
+** _Le tout sans redouter que cela ne vous éclate à la figure._
+* Faciliter les tests
+** *Concevoir* des tests,
+** *Écrire* des tests,
+** Les *exécuter* le plus fréquemment possible.
+--
+
+== Dette technique
+
+[%step]
+* Choisir, c'est regretter
+** Développer, c'est faire des choix à court termes
+*** Respecter les contraintes de temps et de budget
+*** Faire avec les personnes/compétences/expertises disponibles
+* Choix à court terme => entropie naturelle
+** => Compromis, maladresses, manques de clairvoyances, renoncements
+** => Compréhension ou conception obsolète ou incomplète
+* Dette technique
+** _Dette_ : Choix accélérant le développement mais gênant son évolution
+** _Remboursement_ : Réécriture du code
+
+image::images/dette-technique_1.png[alt]
+
+[NOTE.notes]
+--
+Au cours d'un développement, il est naturel que des compromis, des maladresses ou des raccourcis soient commis. Cela fait parfois gagner du temps ou des ressources, parfois cela est du à un manque de clairvoyance ou plus simplement à une vision de la conception qui n'était pas la plus pertinente mais qui pénalisent la maintenabilité de l'application et sa faculté à évoluer.
+--
+
+=== Dette technique
+
+* Endettement
+** Ne pas rembourser la dette (réécrire le code)
+** => Augmentation du coût des intérêts
+*** => Faire évoluer le logiciel devient de plus en plus difficile
+**** Ajout de fonctionnalité coûteux
+**** Code "démotivant"
+**** Augmentation des bugs
+* Répartition de la consommation
+** moins la dette est _vite_ remboursée
+** plus elle coûte en temps pour être remboursée
+* La dette génère de la dette
+
+**METTRE GRAPHIQUE**
+
+=== Dette technique et culpabilisation
+
+* **ATTENTION** 
+** Une métrique de qualité, pas un sujet de culpabilisation
+** La dette est inhérente à tout projet
+** Ne pas _blâmer_ ou avoir honte de la dette
+* Gestion de la dette
+** En avoir conscience, en parler
+** La mesurer
+** La résorber
+
+https://www.lemondeinformatique.fr/actualites/lire-la-dette-technique-reste-mal-comprise-86974.html
+
+=== Comment mesurer la dette technique ?
+
+* Écart à ce qu'il aurait été souhaitable de faire
+** => Comment définir ce qu'il aurait été souhaitable de faire ?
+* Référentiel de bonnes pratiques
+** Heuristiques propre à chaque écosystème
+** Principes reconnus comme universel (Code Clean)
+** Les Design Patterns (GoF, GRASP, ...)
+* Référentiel de mauvaises pratiques
+*** Anti patterns
+*** Bad smells
+* Systèmes d'analyse qualité
+
+[NOTE.notes]
+--
+Les moteurs d'analyse qualité sont des outils très puissants, le plus connu étant sonarqube. Mais il n'est pas forcément nécessaire d'utiliser, encore moins de mettre en oeuvre, un tel système pour avoir une idée des écarts manifestes et corrigeables. Des linters suffisent.
+--
+
+
+== Refactoring : Définition
+
+La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
+
+[%step]
+* _Refactorisation (technique)_:
+** Modification de la structure interne d'un logiciel afin de le rendre plus facile à comprendre et moins coûteux à faire évoluer sans changer son comportement observable
+* _Refactoriser (processus)_: 
+** Restructurer un logiciel en appliquant une série de refactorisations sans changer son comportement observable
+
+
+=== Refactoring : Concepts clef
+
+[%step]
+* Amélioration _qualités internes_
+** => Préoccupation des développeuses et développeurs
+* Conservations _qualités externes_ observables
+** => Ne concerne pas les utilisatrices et utilisateurs
+** Iso-fonctionnalités
+* Allocations de ressources
+** => Préoccupation de la gestion de projet
+*** Le Product Owner ne peut pas ignorer le refactoring, 
+*** ni ses bénéfices, ni ses contraintes 
+
+
+[NOTE.notes]
+--
+La grille de lecture du refactoring ne porte pas sur l'exécution d'un programme, car on le suppose suffisamment satisfaisant, ne serait-ce que le temps de procéder à la modification de son code. Le refactoring se concentre la notion de modification du code et ses effets comme objets principaux. Il pourrait être considéré, dans sa forme la plus extrême, comme un jeu intellectuel, aux effets très concrets pourtant dans la vie d'un projet.
+--
+
+[.splash.background]
+=== Refactoring : L'évolution comme objet
+
+[quote, Martin Fowler]
+_____
+Le véritable test pour savoir si un code est bon est de mesurer sa facilité à le modifier
+_____
+
+
+=== Refactoring : L'évolution comme objet
+
+[%step]
+[.left-column]
+--
+* Capacité d'évolution du code 
+** A l'opposé du "Tombe-en-marche"
+--
+
+[%step]
+[.right-column]
+--
+* Minimisation des efforts
+** Eviter les réactions en chaine lors des modifications
+
+**DEPLACER N'EST PAS NECESSAIRE**
+[.right]
+image::images/reaction_en_chaine.gif[]
+--
+
+[NOTE.notes]
+--
+De même l'ingénierie navale cherche à minimiser l'impact des avaries et des voix d'eau sur un navire, le refactoring cherche à l'impact des modifications sur un code.  
+Et ce n'est pas parce que le navire flotte qu'il est dans un état satisfaisant.
+--
+
+=== Refactoring : Objectifs ?
+
+[.simple]
+* Faciliter la compréhension
+* Améliorer la conception
+* Améliorer la confiance
+* Être plus productif
+
+=== Refactoring : Quand ?
+
+[%step]
+* Quand refactoriser
+** Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
+** Quand la mise sous tests est problématique (_Testability_)
+** Quand le code semble obscure ou ésotérique, bien qu'il fonctionne
+** Quand des symptômes sont identifiés ( _Bad Smells_)
+** Quand des petits défauts sont repérés (_Boy Scout Rules_)
+** Lors d'une revue de code ou d'une analyse qualité
+* Quand ne **PAS** refactoriser ?
+** Quand il est plus facile de le réécrire from scratch
+*** On ne tire pas sur une ambulance :/
+** Quand il n'y a pas de bonnes raisons de le faire
+
+=== Refactoring : une activité particulière ?
+
+[%step]
+* Non, une activité _normale_
+** c'est une activité de développement !
+* Doit-elle être traiter à part ?
+** _Non_, cela fait partie de l'entretien du code
+** _Oui_, si dette écrasante => plan d'action et allocation dédiée
+* Management/Gestion de projet
+** Le refactoring =/= signe de problème
+*** Signe de bonne santé => des équipes consciencieuses
+** Principe agile : 
+*** => Faite confiance à vos équipes, elles savent ce qu'elles font.
+
+[NOTE.notes]
+--
+Le refactoring n'est pas une phase particulière. Elle fait partie des outils qu'un développeur(se) professionnel(le) doit utiliser
+
+Le manager doit comprendre qu'il fait partie de l'estimation de charge.
+Le manager ne doit pas se limiter à la livraison de fonctionnalité, de même que le gestionnaire d'une flotte d'avions ne doit se concentrer uniquement sur les rotations de ces aéronefs: négliger les opérations de maintenance, périodique ou quotidienne, c'est aller droit dans le mur.
+
+
+Le manager doit faire confiance à ces équipes de développement. C'est un principe Agile
+--
+
+[.splash.background]
+[.center]
+== Refactoring : Concrètement ?
+
+On parle on parle
+
+=== Refactoring : Concrètement ?
+
+* Ensemble de techniques et d'habitudes
+** Vous les pratiquez partiellement sans le savoir
+* Martin Fowler a listé environ 70 techniques dans un livre célèbre 
+
+[.center]
+image:images/refact2.jpg[]
+
+[NOTE.notes]
+--
+Martin Fowler a publié plusieurs éditions de son célèbre livre, d'un point de vue C/C++/Java à un point de vue Ruby puis Javascript.
+Tous 
+--
+
+== Techniques de refactoring
+
+
+[.left-column]
+--
+* Techniques divisées en 6 catégories
+** les plus connues 
+*** Plusieurs éditions
+*** <= le plus de ressources sur le web.
+* Très (Trop) nombreuses
+** Nous n'allons pas **toutes** les parcourir
+** Mais ça vaut le coup de les lire à tête reposée !
+--
+
+
+[%step]
+[.right-column]
+--
+include::_refact_listing.adoc[tag=categories]
+--
+
+:leveloffset: +1
+
+include::_refact_listing.adoc[tag=composing_methods]
+
+include::_refact_listing.adoc[tag=moving_features_between_objects]
+
+include::_refact_listing.adoc[tag=organizing_data]
+
+include::_refact_listing.adoc[tag=simplifying_conditional_expressions]
+
+include::_refact_listing.adoc[tag=making_method_calls_simpler]
+
+include::_refact_listing.adoc[tag=dealing_with_generalization]
+
+:leveloffset: -1
+
+== Refactoring : le cycle canonique
+
+Les techniques de refactoring sont des  **Recettes**
+
+[%step]
+[.left-column]
+--
+* Pensées pour être utilisables avec
+** Editeur de texte simple
+** Framework de tests
+* Une technique => des **petits pas**
+** Chaque pas modifie le code,
+** **MAIS** le laisse opérationnel
+--
+
+[%step]
+[.right-column]
+--
+* Cycle canonique
+** modifier
+** tester
+** commiter
+* A tout moment
+** Peut être suspendu en plein milieu
+** Peut-être reversible
+--
+
+== Exemple de refactoring canonique
+
+=== Extraire fonction
+
+[.left-column]
+.Code
+--
+[source,python,attributes]
+----
+from dataclasses import dataclass
+
+@dataclass
+class Shipment:
+    price: float
+
+@dataclass
+class Item:
+    price: float
+    quantity: int
+
+@dataclass
+class Order:
+    items: list[Item]
+
+def compute_invoice(shipment, order, discount):
+    order_price = 0
+    for item in order.items:
+        order_price = order_price + item.price * item.quantity
+    order_price = order_price + order_price * discount
+    return shipment.price + order_price    
+----
+--
+
+[.right-column]
+--
+.Tests
+[source,python,attributes]
+----
+def test_normal_situation():
+    #__given__
+    shipment = Shipment(price=12.0)
+    items=[Item(price=i*10.0, quantity=i) for i in range(5)]
+    order = Order(items)
+    expected = 342.0
+
+    #__when__
+    actual = compute_invoice(shipment=shipment, 
+                             order=order, 
+                             discount=0.1)
+
+    #__then__
+    assert round(expected, 2) == round(actual, 2)
+----
+--
+=== Recette
+
+* 1) Isoler le groupe d'instructions à extraire 
+
+[source,python,attributes]
+----
+def compute_invoice(shipment, order, discount):
+    # --8<------------------------------
+    order_price = 0
+    for item in order.items:
+        order_price = order_price + item.price * item.quantity
+    order_price = order_price + order_price * discount
+    # ------------------------------>8--
+    return shipment.price + order_price    
+----
+
+* 2) Créer une fonction dont le nom est révélateur de sa fonction
+
+[source,python]
+----
+def compute_invoice(shipment, order, discount):
+    # --8<------------------------------
+    order_price = 0
+    for item in order.items:
+        order_price = order_price + item.price * item.quantity
+    order_price = order_price + order_price * discount
+    # ------------------------------>8--
+    return shipment.price + order_price    
+
+def compute_order_total_price():
+    ...
+----
+
+=== !
+
+* 3) Copier les instructions
+
+[source,python,attributes]
+----
+def compute_invoice(shipment, order, discount):
+    # --8<------------------------------
+    order_price = 0
+    for item in order.items:
+        order_price = order_price + item.price * item.quantity
+    order_price = order_price + order_price * discount
+    # ------------------------------>8--
+    return shipment.price + order_price    
+
+def compute_order_total_price():
+    order_price = 0
+    for item in order.items:
+        order_price = order_price + item.price * item.quantity
+    order_price = order_price + order_price * discount
+----
+
+
+* 4) Chercher les paramètres nécessaires et les valeurs retournées
+
+[source,python,attributes]
+----
+def compute_order_total_price(order, discount):
+    order_price = 0
+    for item in order.items:
+        order_price = order_price + item.price * item.quantity
+    order_price = order_price + order_price * discount
+    return order_price
+----
+
+=== !
+
+* 5) Tester 
+
+[.center]
+image::images/capture_extraire_fonction_tests.png[alt]
+
+* 6) Substituer l'appel de la fonction aux instructions déplacées
+
+[source,python,attributes]
+----
+def compute_invoice(shipment, order, discount):
+    # --8<------------------------------
+    order_price = compute_order_total_price(order, discount)
+    # ------------------------------>8--
+    return shipment.price + order_price    
+----
+
+* 7) Tester
+* 8) Commiter 
+* Passer à la technique suivante si nécessaire
+
+=== Mon point de vue
+
+**Remettre à plus tard**
+
+* Le refactoring est un ensemble de techniques et d'habitudes, qui vont des plus simples aux plus complexes
+* Martin Fowler les a formalisé dans son célèbre ouvrage.
+* Point de vue personnel
+** J'en connaissais ou n'en pratiquais que quelques unes
+*** Culture Java, outils très puissants (Eclipse)
+** Je considérais certaines comme insignifiantes jusqu'à la lecture du livre de M. Folwer
+** Je recommande de les parcourir toutes et de lire la motivation derrière : elle est souvent très légitime 
+
+=== Refactoring : L'esprit plutôt que la lettre
+ 
+* Avoir un fil conducteur plutôt qu'un catalogue
+** Pertinence variable des méthode recensées
+*** Techniques moins cruciales grâce aux outils existants
+*** IDE, linters
+* Objectifs
+** Pour les développeuses et développeurs
+*** Lever le nez du guidon
+*** Prendre de la hauteur
+** Pour les chef(fes) de projet
+*** Comprendre l'importance du refactoring
+*** S'en faire l'avocat lors des arbitrages
+* Pour tous
+** _Evangéliser_ auprès de vos collègues
+
+=== Approche du refactoring selon trois axes
+
+
+** Cognitif
+** Conception
+** Testabilité
+
+// end::content[]

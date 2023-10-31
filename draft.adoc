@@ -69,9 +69,17 @@ Profils
 * Cette traduction est imparfaite, car ces deux visions ne sont pas bijectives
 * Traduire, c'est trahir
 
+=== Comment nous assurer que nous le faisons bien ?
+
+* Utiliser les https://en.wikipedia.org/wiki/ISO/IEC_9126[normes qualités 9126]
+* Nous allons nous limiter à deux aspects
+** _Capacité fonctionnelle_, en tant que réponse aux besoin d'un client, partie de sa satisfaction.
+** _Maintenabilité_
+
+
 === Complexité
 
-**Complexité inérante au problème**
+**Complexité inhérente au problème**
 
 La situation peut rapidement devenir complexe, surtout si le problème à régler n'est pas lui même simple. 
 
@@ -95,16 +103,11 @@ L'un des risques principaux est de perdre de vue ce que l'on souhaite faire, de 
 
 **=> Il va falloir gérer la complexité _à déplacer_ ?**
 
-=== Comment nous assurer que nous le faisons bien ?
 
-* Utiliser les https://en.wikipedia.org/wiki/ISO/IEC_9126[normes qualités 9126]
-* Nous allons nous limiter à deux aspects
-** _Capacité fonctionnelle_, en tant que réponse aux besoin d'un client, partie de sa satisfaction.
-** _Maintenabilité_
 
 === Agilité
 
-L'agilité est une démarche qui prend pour partie de ne pas prétendre dès le départ à être exhaustif, mais d'apporter des incréments de fonctionnalités et de s'assurer que le client est heureux.
+L'agilité est une démarche qui prend pour partie de ne pas prétendre dès le départ à être exhaustif, mais d'apporter des incréments de fonctionnalités et de s'assurer que le client est satisfait.
 
 Sur le plan purement technique, nous pouvons constater que
 
@@ -112,7 +115,21 @@ Sur le plan purement technique, nous pouvons constater que
 * Recherche de cycles courts et de feedback client
 * Conception (_Software Design_) toujours en évolution
 * Une recherche de l'excellence technique
+* Avoir confiance dans les personnes en charge du développement.
 * Une remise en cause et une adaptation permanente
+
+[NOTE.notes]
+--
+La question de la confiance accordée aux personnes en charge du développement est primordiale.
+
+Le manifeste dit _"The build comes around actuated people. Offer them the setting and support they have, and trust them to urge the task done."_
+
+Ce que l'on peut traduire par _"La construction s'appuie sur des personnes motivées. Offrez-leur le cadre et le soutien dont ils disposent et faites-leur confiance pour mener à bien leur tâche."_
+
+Du point de vue managérial, nous passons d'une culture de la surveillance de cette espèce d'ouvriers spécialisés que sont les développeurs à des acteurs digne de confiance qui sauront trouver des solutions.
+
+**Mais** ce point de vue va avec l'excellence. C'est à dire que en même temps, le manager doit s'assurer que l'excellence est possible, que les membres de l'équipes sont motivés, que leurs compétences peuvent s'épanouir et s'acquérir. Cela peut donc présupposer un accompagnement, notamment des débutants ou des personnes dont ce n'est pas le coeur de métier.
+--
 
 === TODO transition
 
@@ -214,39 +231,45 @@ La gestion de la dette technique passe par le _refactoring_ ou _refactorisation_
 
 === Refactoring : Concepts clef
 
-* La modifications du code en soi comme principal sujet
-** Comment bien procéder
-** La bonne exécution est considérée comme satisfaisante
 * Amélioration _qualités internes_
-** => préoccupation du développeur
-* Conservations _qualités externes_
-** => ne concerne pas l'utilisateur
+** => Préoccupation des développeuses et développeurs
+* Conservations _qualités externes_ observables
+** Focus sur l'agencement du code
+** Pas sur ce qu'il produit ou comment son exécution se comporte
+** => Ne concerne pas l'utilisateur
 **** L'utilisateur ne sait pas que le remaniement a eu lieu
-* Consommation de ressources
+* Allocations de ressources
 ** => Préoccupation de la gestion de projet
-*** Le Product Owner doit comprendre les bénéfices du refactoring 
+*** Le Product Owner ne peut pas ignorer le refactoring, 
+**** ni ses bénéfices, 
+**** ni ses contraintes 
 
 
 [NOTE.notes]
 --
-La grille de lecture du refactoring ne porte pas sur l'exécution d'un programme, car on le suppose suffisamment satisfaisant le temps de procéder à la modification de son code. Le refactoring se concentre la notion de modification du code et ses effets comme objets principaux. 
-De même l'ingénierie navale cherche à minimiser l'impact des avaries et des voix d'eau sur un navire, le refactoring cherche à l'impact des modifications sur un code.  
+La grille de lecture du refactoring ne porte pas sur l'exécution d'un programme, car on le suppose suffisamment satisfaisant, ne serait-ce que le temps de procéder à la modification de son code. Le refactoring se concentre la notion de modification du code et ses effets comme objets principaux. Il pourrait être considéré, dans sa forme la plus extrème, comme un jeu intellectuel, aux effets très concrets pourtant dans la vie d'un projet.
 --
 
-=== Refactoring : Mantra principale (renommer)
+=== Refactoring : L'évolution comme objet
 
-Expliquer ici que le refactoring se concentre sur la construction du code, et pas sur son exécution, que l'on supposera satisfaisante.
 
-Le refactoring se concentre sur le code et non pas sur l'exécutable. 
-Le refactoring vise à 
 
-* minimiser les efforts des humains, 
-* éviter les réactions en chaine lors des modifications
-* limiter ses efforts sur un aspect
+"Le veritable test pour savoir si un code est bon est de mesurer sa facilité à le modifier"
+
+* Le refactoring se concentre sur l'évolution du code 
+* Il est à l'opposé de la conception du "Tombe-en-marche"
+* Le refactoring veut minimiser les efforts des humains, 
+* Eviter les réactions en chaine lors des modifications
 
 image::images/reaction_en_chaine.gif[]
 
-**Mettre un chateau de cartes**
+
+[NOTE.notes]
+--
+De même l'ingénierie navale cherche à minimiser l'impact des avaries et des voix d'eau sur un navire, le refactoring cherche à l'impact des modifications sur un code.  
+Et ce n'est pas parce que le navire flotte qu'il est dans un état satisfaisant.
+--
+
 
 === Refactoring : Objectifs ?
 
@@ -256,16 +279,16 @@ image::images/reaction_en_chaine.gif[]
 * Améliorer la confiance
 * Être plus productif
 
-=== Faciliter la compréhension
+=== Faciliter la compréhension [à mettre dans la partie compréhension]
 
-* Faciliter
+* Compréhension
 ** Pour les futurs personnes qui reprendront le code
-** pour comprendre soi-même le code
+** Pour comprendre soi-même le code
 * Voir l'état du code tel qu'il est **réellement**
 ** Refactoriser permet de voir les abstractions cachées, les mécanismes utilisées
 ** "C'est comme nettoyer une fenêtre pour voir ce qu'il y a réellement dans le code"
 
-=== Améliorer la conception
+=== Améliorer la conception [à mettre dans la partie conception]
 
 * Entropie de la conception interne
 ** Perte du schéma originel, multiples intervenants, patches, mauvaises compréhensions 
@@ -275,7 +298,7 @@ image::images/reaction_en_chaine.gif[]
 ** dégradation de la cohérence
 
 
-=== Amliorer la confiance
+=== Amliorer la confiance [à mettre dans la partie testabilité]
 
 * La confiance dans un code repose sur les tests, et/ou des processus de qualité (revues de code)
 * Cercle vicieux
@@ -285,9 +308,9 @@ image::images/reaction_en_chaine.gif[]
 ** Peu de confiance => Difficulter à le faire évoluer sans risque
 ** Pas d'évolution => pas d'amélioration de la confiance
 
-=== Être plus productif
+=== Être plus productif [à mettre dans la prtie conclusion]
 
-* Dégradtion de la conception interne => dégradation productivité
+* Dégradation de la conception interne => dégradation productivité
 ** code plus délicat à tester
 ** code plus dur à faire évoluer, à débugger
 ** attractivitée décroissante (effet nouveau projet/side project)
@@ -302,6 +325,7 @@ Refactoring => investissement
 ** Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
 ** Quand la mise sous tests est problématique
 ** Quand le code semble obscure ou ésotérique, bien qu'il fonctionne
+** Quand des symptômes sont identifiés ( _Bad Smells_)
 ** Quand des petits défauts sont repérés (_Boy Scout Rules_)
 ** Lors d'une revue de code ou d'une analyse qualité
 
@@ -315,7 +339,7 @@ Refactoring => investissement
 Non, le refactoring n'est pas une phase particulière
 Elle fait partie des outils qu'un développeur(se) professionnel(le) doit utiliser
 
-Le manager doit comprendre qu'il fait partie de l'estimation de charge
+Le manager doit comprendre qu'il fait partie de l'estimation de charge.
 Le manager ne doit pas se limiter à la livraison de fonctionnalité, de même que le gestionnaire d'une flotte d'avions ne doit se concentrer uniquement sur les rotations de ces aéronefs: négliger les opérations de maintenance, périodique ou quotidienne, c'est aller droit dans le mur.
 
 
@@ -419,6 +443,134 @@ Un rapide rappel sur les tests automatisés
 
 Introduire les doctest
 
+=== Comment savoir qu'un test fonctionne ?
+
+Première solution : AYEZ CONFIANCE 
+Vous savez que votre code est presque parfait Vous espérez qu'il n'y a pas de bogue
+Mais la foi est une affaire privée...
+
+Deuxième solution : TESTER A LA MAIN
+Exécuter quelques cas d'utilisation, avec quelques paramètres et vérifier le résultat,Cela fonctionne assez bien... pour des programmes très courts,Ce n'est pas humainement viable lorsque la base de code grandit.
+ 
+Troisième solution : TESTS AUTOMATIQUES 
+Utiliser des tests exécutables, exécuter des tests à volonté,Nécessite un investissement mais très rentable.
+
+=== Philosophie d'un test
+
+Le test consiste à s'assurer du comportement 
+d'un objet testé (Objet sous test), dans un contexte donné, en vérifiant certaines assertions. (Assertions)
+
+
+Objet testé
+Application, programme, module, classe, fonction, ...
+Assertion : 
+Attentes concernant la condition, l'état, le résultat, le contenu, ...
+
+=== Déroulement d'un test
+
+**GWT**
+
+GIVEN a guitar that I use by strumming the strings
+WHEN I put my hand on the strings 
+THEN I can AFFIRM that the sound is muted.
+
+**AAS**
+
+Arrange
+Act
+Assert
+
+== Quel type de tests ?
+
+
+* Tests unitaires
+* Tests d'intégration
+* Tests d'acceptation
+
+=== Test Unitaire (Unit test)
+
+Test concernant une unité de programmation : une classe, une fonction, ... 
+
+Les tests unitaires sont des tests techniques créés et utilisés par les développeurs. 
+* l'intérieur du composant
+* les méthodes et les fonctions de l'ensemble de la classe
+
+=== Test d'intégration 
+
+Test portant sur plusieurs unités de programmation intégrées qui interagissent ensemble.
+
+Le test d'intégration est un test technique, créé et utilisé par les développeurs. 
+Le champ d'application du test d'intégration se concentre sur 
+* l'extérieur des composants
+* l'interaction entre les composants l'interface du composant
+les composants en tant que partie d'un système.
+
+=== Test d'acceptation
+
+Test d'un point de vue externe, utilisant une séquence significative d'actions.
+
+Le test d'acceptation est un test fonctionnel, créé et utilisé par les utilisateurs. 
+
+* le comportement de l'application d'un point de vue externe, 
+* sans connaissance du contenu technique.
+
+=== Focus sur le test unitaire
+
+* Rapide: 
+** Moins de 1 seconde
+* Indépendant
+** Les tests unitaires peuvent être exécutés dans n'importe quel ordre.
+** Aucune dépendance à l'égard de l'état des tests précédents, aucune influence sur les tests suivants.
+** Vous pouvez exécuter un test seulement ou tous les tests, cela ne devrait pas avoir d'importance.
+* Répétables
+** Les tests unitaires ne doivent pas être liés à l'environnement 
+***créseau, base de données, système de fichiers, paramètres utilisateur, données sur disque...
+** Les tests unitaires doivent donner les mêmes résultats indépendamment
+de l'ordinateur, de l'utilisateur, du temps
+Que tester ?
+
+=== Quoi tester
+
+Ne pas tout tester
+Tester les fonctionnalités importantes et/ou fondamentales
+Tester les conceptions complexes
+Tester les valeurs limites.
+Tester les exceptions et les erreurs.
+Tester les arguments illégaux ou les mauvaises entrées.
+
+=== C'est quoi un test ?
+
+En python avec pytest
+
+[source,python,attributes]
+----
+def is_a_planet(name): 
+    planets = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
+    return name in planet
+----
+
+[source,python,attributes]
+----
+def test_is_a_planet_with_lowercase():
+    # Given
+    name = 'mercury'
+    # When
+    response = is_a_planet(name)
+    # Assert
+    assert response == True
+
+def test_is_a_planet_with_mixedcase():
+    # Given
+    name = 'MerCury'
+    # When
+    response = is_a_planet(name)
+    # Assert
+    assert response == True
+
+----
+
+
+
 == Cognitif
 
 Le cerveau premier compilateur
@@ -518,6 +670,8 @@ Pour la sécurité dans la conception, cf NSFAW
 
 * La complexité sature les capacités du cerveau humain
 * Nous sommes plus performants sur de petits modèles qui tiennent dans notre mémoire de travail que sur de gros ensemble.
+
+**Recopoier image dans cours java ou Oop**
 
 image::images/zoom.gif[width=50%]
 
@@ -1575,7 +1729,6 @@ https://github.com/ThoughtWorksInc/WorkingEffectivelyWithLegacyCode
 Pureté design vs temps et efforts à consacrer. 
 
 Une fois testée, on peut rendre plus propre 
-
 
 Reprendre présentation du legacy
 

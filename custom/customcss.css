@@ -104,6 +104,19 @@ div.ulist > ul > li > div.ulist > ul > li > p {
 /* special slides */
 
 
+section.splash.background, 
+section.splash.background h1, 
+section.splash.background h2,
+section.splash.background h3,
+section.splash.background h4,
+section.splash.background h5,
+section.splash.background h6 {
+  color: #fff;
+  background: #627B81;
+}
+
+
+
 section.start.background, 
 section.start.background h1, 
 section.start.background h2,
