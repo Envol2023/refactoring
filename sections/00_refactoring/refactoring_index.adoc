@@ -572,27 +572,47 @@ def compute_invoice(shipment, order, discount):
 ** Je considérais certaines comme insignifiantes jusqu'à la lecture du livre de M. Folwer
 ** Je recommande de les parcourir toutes et de lire la motivation derrière : elle est souvent très légitime 
 
-=== Refactoring : L'esprit plutôt que la lettre
+== Refactoring : L'esprit plutôt que la lettre
  
 * Avoir un fil conducteur plutôt qu'un catalogue
-** Pertinence variable des méthode recensées
-*** Techniques moins cruciales grâce aux outils existants
+** Nombreuses techniques
+** Automatisation grâce aux outils existants
 *** IDE, linters
 * Objectifs
 ** Pour les développeuses et développeurs
-*** Lever le nez du guidon
-*** Prendre de la hauteur
+*** Lever le nez du guidon & prendre de la hauteur
 ** Pour les chef(fes) de projet
-*** Comprendre l'importance du refactoring
-*** S'en faire l'avocat lors des arbitrages
+*** Comprendre l'importance du refactoring & s'en faire l'avocat lors des arbitrages
 * Pour tous
 ** _Evangéliser_ auprès de vos collègues
 
-=== Approche du refactoring selon trois axes
 
+=== Approche du refactoring
 
+[.left-column-1-3]
+--
+* Trois axes
 ** Cognitif
 ** Conception
 ** Testabilité
+--
+
+[.middle-column-1-3]
+--
+* Deux fonctions 
+** Développement
+** Gestion de projet
+--
+
+
+[.right-column-1-3]
+--
+* Trois profils de compétences
+** Compétence annexe / Pratique Occasionnelle
+** Compétence principale / Pratique quotidienne
+** Expertise
+--
+
+
 
 // end::content[]

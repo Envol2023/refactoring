@@ -245,6 +245,11 @@ pre.CodeRay ~ .colist.arabic {
   float: left;
 }
 
+.middle-column-1-3 {
+  width: 33%;
+  float: left;
+}
+
 .right-column-2-3 {
   width: 67%;
   float: right;
