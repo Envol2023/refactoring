@@ -165,6 +165,8 @@ La maintenabilité est essentielle pour espérer faire évoluer un logiciel à u
 
 image::images/dette-technique_1.png[alt]
 
+image::images/dette-technique_2.png[alt]
+
 [NOTE.notes]
 --
 Au cours d'un développement, il est naturel que des compromis, des maladresses ou des raccourcis soient commis. Cela fait parfois gagner du temps ou des ressources, parfois cela est du à un manque de clairvoyance ou plus simplement à une vision de la conception qui n'était pas la plus pertinente mais qui pénalisent la maintenabilité de l'application et sa faculté à évoluer.
@@ -400,7 +402,7 @@ Les techniques de refactoring sont des  **Recettes**
 ** Editeur de texte simple
 ** Framework de tests
 * Une technique => des **petits pas**
-** Chaque pas modifie le code,
+** Chaque pas modifie le code jusqu'à ce qu'il soit valide,
 ** **MAIS** le laisse opérationnel
 --
 
@@ -408,13 +410,14 @@ Les techniques de refactoring sont des  **Recettes**
 [.right-column]
 --
 * Cycle canonique
-** modifier
-** tester
-** commiter
+
+image::images/cycle_refactoring.png[]
+
 * A tout moment
 ** Peut être suspendu en plein milieu
 ** Peut-être reversible
 --
+
 
 == Exemple de refactoring canonique
 
@@ -545,7 +548,9 @@ def compute_order_total_price(order, discount):
 [.center]
 image::images/capture_extraire_fonction_tests.png[alt]
 
-* 6) Substituer l'appel de la fonction aux instructions déplacées
+* 6) Commiter
+
+* 7) Substituer l'appel de la fonction aux instructions déplacées
 
 [source,python,attributes]
 ----
@@ -556,7 +561,7 @@ def compute_invoice(shipment, order, discount):
     return shipment.price + order_price    
 ----
 
-* 7) Tester
+* 8) Tester
 * 8) Commiter 
 * Passer à la technique suivante si nécessaire
 

@@ -2,19 +2,17 @@
 ifdef::backend-revealjs[]
 include::_inc_revealjs.adoc[]
 endif::[]
-include::_inc_context.adoc[]
-
-:print-detail: true
-:print-timing: true
-:ROLE: notes
-:include_options: tag=content
-
 ifndef::backend-revealjs[]
 :toc: left
 :toc-title: Table des matières
 :toclevels: 4
 :doctype: book
 endif::[]
+include::_inc_context.adoc[]
+:print-detail: true
+:print-timing: true
+:ROLE: notes
+:include_options: tag=content
 
 
 Content for ENVOL 2023 and further
