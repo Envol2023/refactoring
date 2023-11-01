@@ -340,12 +340,11 @@ image::images/good_practices-scale_3.svg[]
 * Annoncer clairement l'intention dans son nom
 ** En suivant les règles de nommage
 * Limiter son contenu à un nombre réduit de lignes
+** **Code Clean** => 5 à 10 lignes max
 ** Extraire les blocs d'instruction dans des fonction subalternes
 * Mettre les choses importantes en avant
 ** Mettre les fonctions de plus haut niveau en début de texte
 ** Mettre les fonctions de plus bas niveau en fin de texte
-
-
 
 
 == Quels techniques de refactoring
