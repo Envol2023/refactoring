@@ -1,0 +1,555 @@
+= Naming
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+//tag::content[]
+
+
+[.subsection.background]
+[.center]
+[%notitle]
+== Rendez votre code lisible: nommage
+
+Rendez votre code lisible
+
+[.huge]#Le nommage#
+
+
+[.splash.background]
+[%notitle]
+=== N'économisez pas vos caractères
+
+[.huge.center]
+N'économisez pas vos caractères
+
+[.fragment.huge.center]
+Vous faites du +
+*développement*.
+
+[.fragment.huge.center]
+\...pas de la  +
+*compression* !
+
+=== N'économisez pas vos caractères
+
+Vous vous adressez avant tout au cerveau humain.
+
+C'est la compréhension qui compte.
+
+=== La compréhension d'abord
+[.center]
+Comparer
+
+[.left-column.huge]
+[source,python]
+----
+if p.has_ha():
+    bd.srb()
+    bd.call_mc()
+----
+
+[.fragment.right-column.huge]
+[source,python]
+----
+if passenger.has_heart_attack():
+    bus_driver.stop_running_bus()
+    bus_driver.call_medical_center()
+----
+
+[.reset-column]
+[.fragment]
+Vous *devez* le plus *explicite* possible.
+
+
+=== Facilitez la compréhension !
+
+
+[.left-column.center]
+--
+Ce que nous voulons...
+
+image::images/writing-direct_0.svg[]
+--
+
+[.right-column.fragment]
+[.center]
+--
+Ce que nous avons trop souvent...
+
+image::images/writing-direct_1.svg[]
+--
+
+[.reset-column]
+[.fragment.center]
+--
+Demandez vous si la lecture de votre code est *directe* ou *ambiguë*.
+--
+
+
+
+=== La compréhension d'abord
+
+[.ppt]
+* Éviter les noms de une, deux ou trois lettres
+** Sauf pour les expressions mathématiques et les conventions propres aux domaines métiers.
+
+[.fragment]
+--
+Évident
+[.huge]
+[source,python]
+----
+e = m * c*c
+----
+--
+
+[.fragment]
+--
+Euh...
+[.huge]
+[source,python]
+----
+a = b.c[i].d()
+----
+--
+
+ifdef::mode_slide[]
+=== La compréhension d'abord
+endif::mode_slide[]
+
+[.ppt]
+* Éviter les noms abrégés *déroutants*
+** Pour les types,
+** Les membres et les méthodes,
+** Les variables et arguments
+
+ifdef::mode_slide[]
+[transition=none]
+=== La compréhension d'abord
+endif::mode_slide[]
+
+[.ppt]
+--
+* Éviter les noms abrégés *déroutants*
+--
+
+Version abrégée
+//[.big]
+[source,python]
+----
+class UsrComProvSrv:
+  def new_com_sys(self, srt: RegSysT) -> ComSys :
+    ...
+----
+
+//[.big]
+[.fragment]
+--
+Version directe
+[source,python]
+----
+class UserCommunicationProviderService :
+
+  def new_communication_system(self, srt: RegisteredSystemType) -> CommunicationSystem :
+    ...
+
+}
+----
+--
+
+ifdef::mode_slide[]
+[transition=none]
+=== La compréhension d'abord
+endif::mode_slide[]
+
+[.ppt]
+* Eviter les noms *imprononçables*
+** Comme "_kFrtCtrl_" for "_Key Frontal Controller_".
+** Parce que devez pouvoir en discuter sans bûter en permanence.
+
+
+[NOTE.notes]
+--
+En effet dans une revue de code, imaginez la conversation
+
+"- Et keufreucétreuleuleu là, elle pourrait pas être initialiée avecnt freukreutreleu ? +
+- Tu parles de kaeffaircétéairhel ? +
+- Mais non, de kafreuka... Argh ! Celle là lààààààà !! (gros doigt sur l'écran)
+"
+--
+
+ifdef::mode_slide[]
+[%notitle]
+[.splash.background.center]
+== Utilisez des noms significatifs
+
+
+Pour éviter +
+_de s'embrouiller inutilement_, +
+[.huge]#restez  +
+le plus 
+*proche* +
+possible
+des mots +
+*humains*.#
+
+endif::mode_slide[]
+
+ifndef::mode_slide[]
+[%notitle]
+[.center]
+=== Utilisez des noms significatifs
+
+
+Pour éviter _de s'embrouiller inutilement_, restez le plus 
+*proche* possible des mots *humains*.
+
+Faciliter le lien entre le monde des idées et celui du code.
+endif::mode_slide[]
+
+
+[%notitle]
+[.center]
+=== Oui mais...
+
+_"Oui, mais, taper des noms significatifs ça prend trop de temps"_
+
+_"Oui, mais les noms courts, ça réduit les risques d'erreur..."_
+
+
+=== Autocomplete
+
+Actuellement, c'est tout simplement *faux* ! Tous les outils _sérieux_ font de l'autocomplétion.
+
+[.left-column]
+* `CTRL + SPACE`
+** Eclipse, Pycharm, Intellij, VsCode, SublimeText, ...
+* `CTRL + P`
+** Vim
+* `TAB`
+** EMACS, IPython, Jupyter
+
+[.right-column]
+[.center]
+image::images/autocomplet_vim_small.gif[]
+
+image::images/autocomplete.gif[]
+
+ifdef::mode_slide[]
+[.splash.background.center]
+[%notitle]
+=== Stop aux noms courts
+
+endif::mode_slide[]
+
+[.big]
+--
+Utiliser des noms courts {cr}
+ne fait pas gagner de temps.  
+[.fragment]
+Cela n'évite pas les erreurs, {cr}
+[.fragment.big]
+Cela évite juste d'être {cr}
+[.huge]#*compris*#.
+--
+
+ifdef::mode_slide[]
+[%notitle]
+[.center]
+=== Utilisez des noms significatifs
+endif::mode_slide[]
+
+Prenez le temps de trouver un *bon* nom.
+
+image::images/searching_meaningful_variable_name2.png[height=600]
+
+[NOTE.notes]
+--
+Getting a meaningful name is so important that's it's a joke in developement community.
+--
+
+[.center]
+== Règles de nommage
+
+Guide universel pour le nommage.
+
+=== Nommage: Aussi court que sa portée
+
+[.center]
+Le nom +
+[.huge]#_**peut**_# +
+( et non _doit_ ) +
+être aussi [.huge]#*court*# +
+que sa [.huge]#*portée*#.
+
+ifdef::mode_slide[]
+=== Nommage: Aussi court que sa portée
+endif::mode_slide[]
+
+[.center]
+Le nom _**peut**_ ( et non _doit_ ) +
+être aussi *court* que sa *portée*.
+
+[.huge]
+[source,python]
+----
+def find_people_by_name(persons: List[Person], name: str):
+    for p in persons: 
+      n = p.getName() <1>
+      if name == n: <2>
+        return p <3>
+----
+<1> nom court _p_ défini une ligne au dessus
+<2> nom court _n_ défini une ligne au dessus
+<3> _p_ est retourné. *FIN DE l'HISTOIRE*
+
+ifdef::mode_slide[]
+=== Nommage: Aussi court que sa portée
+endif::mode_slide[]
+
+[.big]
+[source,python]
+----
+co = complaintService.getNext();
+c = co.getCustomer();
+...
+# bla bla
+# 500 lignes plus loin
+...
+if co.is_closed():
+  cs.send_notification(c, co)
+----
+
+[.center]
+vs
+
+[.big]
+[source,python]
+----
+complaint = complaintService.getNext();
+customer = co.getCustomer();
+...
+# bla bla
+# 500 lignes plus loin
+...
+if complaint.is_closed():
+  customer_service.send_notification(customer, complaint)
+----
+
+=== Nommage: Suivez les conventions universelles
+
+ifndef::mode_slide[]
+Il existe des conventions quasiment universelles et qui transcendent les langages. Elles sont simples à mettre en oeuvre, directes et faciles à reconnaître.
+endif::mode_slide[]
+
+* Objet, classe, variable, propriété, argument -> **NOM**.
+
+[.big]
+[source,python]
+----
+user = User()
+document = Document(kind=Document.MOTIVATION_LETTER)
+----
+
+
+[.fragment]
+--
+* Action, fonction, méthode -> **VERBE**.
+
+[.big]
+[source,python]
+----
+def find_people(name)
+
+plane.take_off()
+----
+--
+
+[.fragment]
+--
+* Collection, liste, ensemble -> **PLURIEL**.
+
+[.big]
+[source,python]
+----
+actors = find_actors_for_movie(movie)
+actor_names = collect_actor_names(actors)
+----
+--
+
+
+ifdef::mode_slide[]
+=== Nommage: Suivez les conventions universelles
+endif::mode_slide[]
+
+
+* Map : indiquer la *clef* pour ne pas confondre avec des collections.
+
+[.big]
+----
+<subject>_by_<key>()
+
+<subject>_to_<key>()
+----
+
+Comme
+
+[.big]
+[source,python]
+----
+actors_by_movie.get(movie)
+countries_to_actors.put("fr", find_actors_in_country("fr"))
+----
+
+=== Nommage: L'action doit dire ce qu'elle fait
+
+* Suivre le schéma
+
+[.big]
+----
+<action>_<sujet>()
+----
+
+L'action est un *verbe* s'appliquant à *sujet*.
+
+Exemple
+
+[.big]
+[source,python]
+----
+bring_camera_to_stage(camera, "scene 1.3")
+
+move_actors_to(actors, "_new _york")
+
+build_decorations_settings("scene 1.3")
+----
+
+=== Nommage: Inclure des informations utiles
+
+Indiquer dans le nom de la méthode les éléments qui aideront à la comprendre
+rien qu'à la lecture du nom.
+
+[.simple]
+* _By_
+* _In_
+* _With_
+* _And_
+
+[.big]
+[source,python]
+----
+find_actors_by_name(name)
+
+find_actors_by_name_in_movie(actor_name, movie_name)
+
+find_all_actors_by_movie_and_country(movie_name, country_name)
+----
+
+*Le nom doit rester lisible à haute voix*
+
+=== Nommage: Utilisez des antonymes pour clôturer
+
+[.simple]
+* _begin_ -> _end_
+* _open_ -> _close_
+* _create_ -> _destroy_
+* _start_ -> _stop_
+*  ...
+
+[.big]
+[source,python]
+----
+session.open();
+action.start();
+...
+action.stop();
+session.close();
+----
+
+
+== Les commentaires comme informations lisibles
+
+ifndef::mode_slide[]
+Les commentaires sont un sujet épineux, sur lequel il un défaut de consensus et une dimension culturelle très forte.
+
+Dans certains domaines, ils doivent être abondants et plétoriques (spatial, nucléaire, défense)
+
+Dans d'autres, il doivent se limiter au strict nécessaire.
+
+Voici une position neutre dans cette bataille.
+
+endif::mode_slide[]
+
+* Obligatoires
+** Pour les API publiques, partagées
+** Expliquer 
+*** ce que fait le code, 
+*** comment l'utiliser, 
+*** parfois la raison d'être.
+* Attention aux normes
+** https://gist.github.com/ashishrana160796/4ac492caa9b306eac0adb3716e8b76d3[*pythondoc*].
+** https://docs.oracle.com/en/java/javase/19/docs/specs/javadoc/doc-comment-spec.html[**javadoc**]
+
+
+=== Les commentaires comme code humain
+
+ifndef::mode_slide[]
+Les commentaires sont une forme de code à destination presque exclusive des humains.
+
+Ils n'en reste pas moins une charge de maintenance.
+
+Rien de pire qu'un commentaire qui prend le lecteur à contre sens du code.
+
+endif::mode_slide[]
+
+
+[.ppt]
+* Même si à destination des humains seulement
+** Les commentaires doivent être en phase avec le code.
+** Rien de pire qu'un commentaire contredisant le code
+** => *Maintenance* à assurer
+
+
+ifndef::mode_slide[]
+Le code commenté est très perturbant. Il est impossible de statuer sur son importance.
+Est-il là pour garder un algorithme très important mais pas encore utilisé ? Plus utilisé ? Est-ce une trace d'un futur ? D'un passé ?
+
+Devant toutes ces interrogations, il n'y a pas de pitié à avoir: dès que le code a un statut suffisamment stable, qu'il est partagé à l'extérieur, qu'il passe en recette, qu'il quitte le statut _en développement_, il faut le supprimer.
+
+endif::mode_slide[]
+
+[.ppt]
+* Code commenté
+** Statut *très* temporaire 
+** Pas de pitié, à dégager !
+
+=== Code Never Lie, Comment Sometimes Do
+
+[.ppt]
+* Le code ne ment jamais.
+** Les commentaires sont parfois faux.
+** C'est le code qui s'exécute, pas les commentaires.
+* Commentaires symptomatiques
+** Portion de code nécessitant un commentaire d'explication
+*** => Problème de design !
+*** Mauvaise nommage des éléments ?
+*** Mauvaise isolation des fonctions ?
+* Le code doit être *auto-explicatif*
+** Dans l'absolu, il doit pouvoir se passer de commentaires.
+
+
+[.flash.background.center]
+[%notitle]
+[.big]
+=== Commentaires suffisants
+
+Si vous avez besoin d'*améliorer* un *commentaire* {cr}
+pour *mieux expliquer* un _code_, {cr}
+_laissez tomber le commentaire_ {cr} 
+et *améliorez* le _code_ plutôt.
+
+include::code_is_text_naming_exemple_collect_stars.adoc[]
+
+//end::content[]

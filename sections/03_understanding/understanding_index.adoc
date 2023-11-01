@@ -1,0 +1,62 @@
+= Understanding
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+
+
+[.subsection.background]
+[.center]
+[%notitle]
+== Bonne pratique: Rendez votre code lisible
+
+Bonne pratique
+
+[.huge]#Rendez votre code lisible#
+
+== Rendez votre code lisible
+
+[.ppt]
+* Comme tout écrit, le code dit quelque chose.
+** Il dit ce qu'il fait (*WHAT*) et comment (*HOW*) il le fait.
+** Encore faut-il que ce soit lisible...
+
+[.fragment.ppt]
+* Laisser le code raconter son histoire
+** Plus il est **auto-explicatif**, plus il est **facile** à maintenir.
+** Plus il demande d'effort à lire, moins il sera compréhensible
+
+
+ifndef::hide_prez[]
+[%notitle]
+== Rendez votre code lisible
+endif::hide_prez[]
+
+[.huge.center]
+Vous *lisez* votre code +
+10 fois plus +
+que vous ne l'*écrivez*.
+
+[.fragment.ppt]
+* Vous l'écrivez *une fois*, mais vous le lisez
+** pour _vérifier_ qu'il est valide,
+** pour _comprendre_ ce qu'il fait,
+** pour vous _rappeler_ où vous en êtes,
+** pour le _recopier_ dans un autre code,
+
+[.fragment]
+* et pour le **réécrire**.
+
+== Rendez votre code lisible 
+
+[.ppt]
+* Donner des *bons* noms aux éléments du code 
+** Les choses n'existent pour notre cerveau que si elles ont un nom qui lui parle.
+* Diviser en petits paragraphes ciblés
+** Pour garder le cerveau focalisé et éviter qu'il ne se perde dans les détails.
+
+include::code_is_text_naming.adoc[{include_options}]
+
+// end::content[]

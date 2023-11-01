@@ -38,7 +38,7 @@ include::./sections/02_brain/brain_index.adoc[{include_options}]
 
 == Améliorer la compréhension
 
-// include::./sections/03_understanding/understanding_index.adoc[{include_options}]
+include::./sections/03_understanding/understanding_index.adoc[{include_options}]
 
 == Améliorer la conception
 
