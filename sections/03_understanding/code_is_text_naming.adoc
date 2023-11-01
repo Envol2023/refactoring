@@ -550,6 +550,27 @@ pour *mieux expliquer* un _code_, {cr}
 _laissez tomber le commentaire_ {cr} 
 et *améliorez* le _code_ plutôt.
 
-include::code_is_text_naming_exemple_collect_stars.adoc[]
+
+[.end.background]
+=== Résumé
+
+* Ecrire du code pour les humains
+** Vous le lisez 10 fois plus que vous ne l'écrivez
+** Ne soyez pas un compresseur !
+* Nommer
+** Peut être aussi court que le champ d'application
+** Variables, propriétés -> **Nom**
+** Fonctions, méthodes -> **Verbe** -> **<verb>_<subject>**
+** Collections, listes, ensembles -> **Pluriels**
+** Cartes, dictionnaires -> **<value>_by_<key>**
+** Composer le nom avec des indicateurs
+*** _By_, _And_, _With_, _All_ ...
+** Utiliser des antonymes ( `open` -> `close`, `create`-> `destroy`)
+
+
+[.subsection.background]
+[.center]
+[%notitle]
+== Rendez votre code lisible: 
 
 //end::content[]

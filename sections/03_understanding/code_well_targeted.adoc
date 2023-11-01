@@ -1,0 +1,274 @@
+= Split code (remporatire)
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+
+[.black.background]
+[.center]
+== Coder, ce n'est pas empiler des lignes de code
+
+image::images/wikipedia_Digital_rain_animation_small_letters_shine.gif[]
+
+Coder, c'est structurer un texte pour mettre en relief les préoccupations (_Concern_)
+
+== Identifier et isoler les préoccupations 
+
+* Une préoccupation annonce son **intention** (_WHAT_).
+** une réponse courte à la question 
+*** _"Qu'est-ce que ça fait ?"._
+* Une préoccupation n'est pas une *implementation* (_HOW_).
+** Elle ne répond pas à la question 
+*** _"Comment ça fait"._
+
+== Montrer les intentions avant les implementations
+
+
+[source,python,attributes]
+----
+def report_starship_availability_for(patrol):
+    rpt = Report()
+...
+    avg_coms = avg_coms()
+    req_qty = p.duration * avg_coms * SEC_COEFF + MIN
+    if req_qty > get_nrj() :
+        rpt.register('propulsion_energy','NotEnoughEnergy',CRITICAL)
+    t_rep = 0
+    for eng in get_engs():
+        fails = get_fails(engine) 
+        t_rep = t_rep + eval_rep_time(eng, fails)
+    if t_rep > ( now() - p.departure ):
+        rpt.register('engine_check','ReparationTooLong',CRITICAL)
+...
+    if rpt.find_issues_by_level(CRITICAL) :
+        status = NOT_AVAILABLE
+    else
+        status = evaluate_risks_from_report(rpt)
+    rpt.set_status(status)
+    return rpt
+----
+
+=== ! 
+
+Identification des blocks d'instructions
+
+[source,python,attributes]
+----
+def report_starship_availability_for(patrol):
+    rpt = Report()
+...
+#--8<----------------------------------------------------------------
+    avg_coms = avg_coms()
+    req_qty = p.duration * avg_coms * SEC_COEFF + MIN
+    if req_qty > get_nrj() :
+        rpt.register('propulsion_energy','NotEnoughEnergy',CRITICAL)
+    t_rep = 0
+    for eng in get_engs():
+        fails = get_fails(engine) 
+        t_rep = t_rep + eval_rep_time(eng, fails)
+    if t_rep > ( now() - p.departure ):
+        rpt.register('engine_check','ReparationTooLong',CRITICAL)
+#--------------------------------------------------------------->8---        
+...
+    if rpt.find_issues_by_level(CRITICAL) :
+        status = NOT_AVAILABLE
+    else
+        status = evaluate_risks_from_report(rpt)
+    rpt.set_status(status)
+    return rpt
+----
+
+[%step]
+[.simple]
+* Oh désolé, c'est la version _compressée_...
+
+=== ! 
+
+Voici la version normale, pour humain 
+
+[.big]
+[source,python,attributes]
+----
+...
+    average_energy_per_day = get_average_propulsion_energy_consumption_per_day()
+    required_energy_level = patrol.duration * average_energy_per_day * SECURITY_COEFF + MINIMAL
+    if required_energy_level > get_actual_stocked_energy() :
+        report.register('propulsion_energy','NotEnoughEnergy', CRITICAL)
+    time_repair = 0
+    for engine in get_engines():
+        failures = get_failures(engine) 
+        time_repair = time_repair + evaluate_reparation_time(engine, failures)
+    if time_repair > ( now() - patrol.departure ):
+        report.register('engine_check','ReparationTooLong', CRITICAL)
+...
+----
+
+=== ! 
+
+Commenter les blocs de code pour y voir clair
+
+[.big]
+[source,python,attributes]
+----
+    #-- Check propulsion energy against patrol duration --
+    average_energy_per_day = get_average_propulsion_energy_consumption_per_day()
+    required_energy_level = patrol.duration * average_energy_per_day * SECURITY_COEFF + MINIMAL
+    if required_energy_level > get_actual_stocked_energy() :
+        report.register('propulsion_energy','NotEnoughEnergy', CRITICAL)
+    time_repair = 0
+
+    #-- Check engines reparation delay against patrol departure --    
+    for engine in get_engines():
+        failures = get_failures(engine) 
+        time_repair = time_repair + evaluate_reparation_time(engine, failures)
+    if time_repair > ( now() - patrol.departure ):
+        report.register('engine_check','ReparationTooLong', CRITICAL)
+...
+----
+
+[%step]
+[.simple]
+* Vous avez répondu à la question **Que font-ils ?**
+** _Vérification de l'énergie de propulsion par rapport à la durée de la patrouille._
+** _Vérification du délai de réparation des moteurs par rapport au départ de la patrouille._
+
+=== ! 
+
+Passer de la compréhension par les _commentaires_
+
+[.big]
+[source,python,attributes]
+----
+    #-- Check propulsion energy against patrol duration --
+    average_energy_per_day = get_average_propulsion_energy_consumption_per_day()
+    required_energy_level = patrol.duration * average_energy_per_day * SECURITY_COEFF + MINIMAL
+    if required_energy_level > get_actual_stocked_energy() :
+        report.register('propulsion_energy','NotEnoughEnergy', CRITICAL)
+    time_repair = 0
+----
+
+A la compréhension par le _code_
+
+[.big]
+[source,python,attributes]
+----
+def check_propulsion_energy_against_duration(report, patrol_duration):
+    average_energy_per_day = get_average_propulsion_energy_consumption_per_day()
+    required_energy_level = patrol_duration * average_energy_per_day * SECURITY_COEFF + MINIMAL
+    if required_energy_level > get_actual_stocked_energy() :
+        report.register('propulsion_energy','NotEnoughEnergy', CRITICAL)
+----
+
+=== !
+
+[.simple]
+* Séparation distincte entre l'**intention** (_WHAT_) ...
+
+[.big]
+[source,python]
+----
+def check_propulsion_energy_against_duration(report, patrol_duration):
+    ...
+----
+
+[.simple]
+* ... et l'**implémentation** (_HOW_)
+
+[.big]
+[source,python,attributes]
+----
+def ...:
+    average_energy_per_day = get_average_propulsion_energy_consumption_per_day()                
+    required_energy_level = patrol_duration * average_energy_per_day * SECURITY_COEFF + MINIMAL 
+    if required_energy_level > get_actual_stocked_energy() :                                     
+        report.register('propulsion_energy','NotEnoughEnergy', CRITICAL)
+----
+
+
+=== !
+
+[.big]
+[source,python,attributes]
+----
+def report_starship_availability_for(patrol):
+    report = Report()
+...
+    #-- Check propulsion energy against patrol duration --
+    check_propulsion_energy_against_duration(report, patrol.duration)
+    #-- Check engines reparation delay against patrol departure --
+    check_engines_reparation_delay_against_departure(report, patrol.departure)
+...
+    if report.find_issues_by_level(CRITICAL) :
+        status = NOT_AVAILABLE
+    else
+        status = evaluate_risks_from_report(report)
+    report.set_status(status)
+    return report
+----
+
+=== !
+
+[.big]
+[source,python,attributes]
+----
+def report_starship_availability_for(patrol):
+    report = Report()
+...
+    check_propulsion_energy_against_duration(report, patrol.duration)
+    check_engines_reparation_delay_against_departure(report, patrol.departure)
+...
+    if report.find_issues_by_level(CRITICAL) :
+        status = NOT_AVAILABLE
+    else
+        status = evaluate_risks_from_report(report)
+    report.set_status(status)
+    return report
+----
+
+=== !
+
+[.simple]
+* Et en continuant ce processus
+
+[.big]
+[source,python,attributes]
+----
+def report_starship_availability_for(patrol):
+    report = Report()
+
+    check_propulsion_energy_against_duration(report, patrol.duration)
+    check_engines_reparation_delay_against_departure(report, patrol.departure)
+    resolve_status(report)
+
+    return report
+----
+
+[%step]
+* Et cela est plus facile à lire à haute voix ...
+
+== Séparer l'intention de l'implémentation
+
+* Si nous commençons à écrire les choses
+** rapidement piégé par les détails de la mise en œuvre,
+** bataille avec les outils,
+* Et ce, sans savoir vraiment ce que vous voulez vraiment.
+
+
+== Principes sur l'écriture des fonctions
+
+* Annoncer clairement l'intention dans son nom
+* Limiter son contenu à un nombre réduit de lignes
+** Extraire les blocs d'instruction dans des fonction subalternes
+
+
+
+== Quels techniques de refactoring
+
+* `Extract Method`
+
+
+== Exercice
+
+// end::content[]

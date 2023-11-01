@@ -7,31 +7,43 @@ endif::[]
 // tag::content[]
 
 
+
+[.start.background]
+[.center]
+== Améliorer la compréhension
+
+Refactoring, niveau élémentaire.
+
+ifdef::mode_slide[]
+=== Améliorer la compréhension
+endif::[]
+
+* Lisibilité
+* Structuration
+
 [.subsection.background]
 [.center]
 [%notitle]
-== Bonne pratique: Rendez votre code lisible
+== Rendre le code lisible
 
-Bonne pratique
+[.huge]#Rendre le code lisible#
 
-[.huge]#Rendez votre code lisible#
-
-== Rendez votre code lisible
+== Rendre le code lisible
 
 [.ppt]
 * Comme tout écrit, le code dit quelque chose.
-** Il dit ce qu'il fait (*WHAT*) et comment (*HOW*) il le fait.
+** Il dit ce qu'il fait (*_WHAT_*) et comment (*_HOW_*) il le fait.
 ** Encore faut-il que ce soit lisible...
 
 [.fragment.ppt]
 * Laisser le code raconter son histoire
-** Plus il est **auto-explicatif**, plus il est **facile** à maintenir.
-** Plus il demande d'effort à lire, moins il sera compréhensible
+** Plus il est **auto-explicatif**, plus il est **facile** à comprendre.
+** Plus il demande d'efforts à lire, moins il est maintenable
 
 
 ifndef::hide_prez[]
 [%notitle]
-== Rendez votre code lisible
+== Rendre le code lisible
 endif::hide_prez[]
 
 [.huge.center]
@@ -49,14 +61,15 @@ que vous ne l'*écrivez*.
 [.fragment]
 * et pour le **réécrire**.
 
-== Rendez votre code lisible 
+== Rendre le code lisible 
 
-[.ppt]
 * Donner des *bons* noms aux éléments du code 
 ** Les choses n'existent pour notre cerveau que si elles ont un nom qui lui parle.
 * Diviser en petits paragraphes ciblés
 ** Pour garder le cerveau focalisé et éviter qu'il ne se perde dans les détails.
 
 include::code_is_text_naming.adoc[{include_options}]
+
+include::code_well_targeted.adoc[{include_options}]
 
 // end::content[]
