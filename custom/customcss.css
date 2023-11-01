@@ -111,8 +111,9 @@ section.splash.background h3,
 section.splash.background h4,
 section.splash.background h5,
 section.splash.background h6 {
-  color: #fff;
-  background: #627B81;
+  background: #2d5986;
+  color: #ffffff;
+  text-shadow: 0 0 20px #333;
 }
 
 
@@ -159,6 +160,17 @@ section.dark.background h5,
 section.dark.background h6 {
   color: #fff;
   background: #4e5454;
+}
+
+section.black.background, 
+section.black.background h1, 
+section.black.background h2,
+section.black.background h3,
+section.black.background h4,
+section.black.background h5,
+section.black.background h6 {
+  color: #fff;
+  background: #000000;
 }
 
 .inverse a {

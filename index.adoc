@@ -28,12 +28,12 @@ include::./sections/00_refactoring/refactoring_index.adoc[{include_options}]
 
 == Tests
 
-// include::./sections/01_tests/tests_index.adoc[{include_options}]
+include::./sections/01_tests/tests_index.adoc[{include_options}]
 
 
 == Voyage à l'intérieur du cerveau
 
-// include::./sections/02_brain/brain_index.adoc[{include_options}]
+include::./sections/02_brain/brain_index.adoc[{include_options}]
 
 
 == Améliorer la compréhension

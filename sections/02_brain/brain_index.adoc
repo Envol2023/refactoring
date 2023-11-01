@@ -1,0 +1,180 @@
+= Vue du cerveau
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+
+[.subsection.background]
+[.center]
+[%notitle]
+== Coder pour les humains
+
+Directive de développement n°1
+
+ifndef::hide_prez[]
+[.black.background]
+[.center]
+[%notitle]
+=== Coder pour les humains
+
+image::https://marcdexet-cnrs.github.io/devworkshop5_tips_for_maintainability/images/arrival-movie-2016-i-am-human-scene.jpg[]
+endif::hide_prez[]
+
+[.splash.background]
+[.center]
+[%notitle]
+=== Coder pour les humains
+
+ifndef::hide_prez[]
+[.huge]
+--
+[.fragment]
+*Code*
+[.fragment]
+For 
+[.fragment]
+*Human*
+--
+endif::hide_prez[]
+
+[.fragment]
+Coder pour les humains
+
+
+[.center]
+=== Coder pour les humains
+
+
+[quote,Martin Fowler]
+____
+_Any fool_ can write code  
+that a _**computer**_ can understand.  
+
+_Good programmers_ write code  
+that _**humans**_ can understand
+____
+
+
+[.subsection.background]
+[.center]
+== Bonnes Pratiques
+
+[.big]#Tenir compte de nos limites#
+
+== Notre cerveau
+
+* Premier processeur à faire tourner votre code
+** Avant même d'être compilé et exécuté
+** Le code doit _sembler correct_ à première vue
+
+[.fragment]
+* Bons côtés du cerveau
+** Détecte facilement les motifs et les similitudes,
+** Apprend, extrapole et généralise très vite.
+
+[.fragment]
+* Mauvais côtés du cerveau
+** Une mémoire à court terme limitée _"The Magical Number Seven, Plus or Minus Two"_,
+** Déteste les tâches répétitives et ennuyeuses
+** Réinterprète tout ce qu'on lui soumet
+** => Et a des _biais cognitifs et culturels_.
+
+[.fragment]
+--
+et il en a beaucoup !
+--
+
+[.center]
+[%notitle]
+=== Biais cognitifs
+
+image::images/biases_index.png[width=1000]
+
+
+=== Ne pas générer de dissonance
+
+[.center]
+image::images/dissonances.gif[]
+
+[.left-column-1-3]
+--
+Dans votre conception
+[source,python]
+----
+from cars import plane
+
+class Dog(Horse):
+    
+    def fly(self):
+        ...
+
+----
+--
+
+[.middle-column-1-3]
+--
+Dans votre code
+[source,python]
+----
+dog = 1
+fish = Engine()
+cat.fly()
+----
+--
+
+[.right-column-1-3]
+--
+Dans vos commentaires
+[source,python]
+----
+# Use intensity = signal * cos(theta/2)
+intensity = signal * sin(theta) /2
+
+# Don't use !!
+use()
+----
+--
+
+[.splash.background]
+[.center]
+=== Ne pas surcharger la cartographie mentale
+
+Le cerveau n'est très *bon* +
+à suivre des cheminements *compliqués* ou à garder des références *arbitraires* en mémoire
+
+image::images/commons.wikimedia.org.DijkstraDemo.gif[width=300]
+
+[.fragment]
+Garder les choses aussi [.huge]*simple* et [.huge]*directes* que possible +
+pour ne pas perdre le fil.
+
+
+[NOTE.notes]
+--
+Nous avons des habitudes assez contre-productives, dont nous ignorons l'origine. Nous nous mettons sans cesse des batons dans les roues en écrivons des portions de code qui, à chaque lecture, demande des efforts conséquents pour comprendre à nouveau ce qui s'y passe.
+
+Des variables aux noms obscures, des emboîtements de conditions avec plusieurs niveaux de conditions logiques tels qu'à la fin, nous ne savons plus ce que nous regardions. 
+
+Se mettre ainsi en difficulté entraîne à la fin une lassitude dangereuse pour votre efficacité et votre pertinence.
+--
+
+[.splash.background]
+[.center]
+=== Fournir régularité et consistance
+
+Le cerveau reconnaît les *motifs* si ils sont *visibles*.
+
+image::images/imagurc_BOMf4.jpg[width=500]
+
+
+[NOTE.notes]
+--
+Comme dans une ville, si l'uniformité est ennuyeuse, l'absence de motif, qui faisait son charme au début, devient un fardeau dans l'urgence et la précipitation. 
+Un plan clair, dont la logique se comprend d'un coup d'oeil, n'est pas des plus spontanés, mais est très efficace. Le cerveau en comprend aisément les cheminements et la logique. Il ira directement à l'essentiel.
+--
+
+
+// end::content[]
+

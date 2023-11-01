@@ -78,10 +78,12 @@ Dans la construction d'une solution logicielle, de nombreux éléments sont souv
 L'un des risques principaux est de perdre de vue ce que l'on souhaite faire, de s'éparpiller, d'être un peu en état de stupeur devant l'ensemble des connaissances à mobiliser.
 --
 
+ifdef::mode_slide[]
 [.splash.background]
 [.center]
 [%notitle]
 === Complexité
+endif::mode_slide[]
 
 Développer un logiciel, {cr}
 c'est garder la complexité **sous contrôle** 
@@ -96,7 +98,9 @@ c'est garder la complexité **sous contrôle**
 ** Ne pas prétendre à l'exhaustivité 
 ** Se donner le droit de découvrir et changer
 
+ifdef::mode_slide[]
 === Agilité
+endif::mode_slide[]
 
 * Sur le plan purement technique
 ** Conception (_Software Design_) toujours en évolution
@@ -299,7 +303,7 @@ Et ce n'est pas parce que le navire flotte qu'il est dans un état satisfaisant.
 * Quand refactoriser
 ** Avant d'ajouter une nouvelle fonctionnalité (_Feature_)
 ** Quand la mise sous tests est problématique (_Testability_)
-** Quand le code semble obscure ou ésotérique, bien qu'il fonctionne
+** Quand le code semble obscure ou ésotérique, bien qu'il fonctionne (_Understanding_)
 ** Quand des symptômes sont identifiés ( _Bad Smells_)
 ** Quand des petits défauts sont repérés (_Boy Scout Rules_)
 ** Lors d'une revue de code ou d'une analyse qualité
@@ -308,7 +312,7 @@ Et ce n'est pas parce que le navire flotte qu'il est dans un état satisfaisant.
 *** On ne tire pas sur une ambulance :/
 ** Quand il n'y a pas de bonnes raisons de le faire
 
-=== Refactoring : une activité particulière ?
+=== Refactoring : une activité particulière ?c
 
 [%step]
 * Non, une activité _normale_

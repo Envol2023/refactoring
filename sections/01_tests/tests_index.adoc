@@ -1,0 +1,191 @@
+= Tests
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+
+[.start.background]
+== Test 101
+
+Un rapide rappel sur les tests automatisés
+
+=== Comment savoir qu'un test fonctionne ?
+
+[%step]
+* Première solution : **AYEZ CONFIANCE** 
+** Vous pensez que votre code est _presque_ parfait 
+** Vous espérez qu'il n'y a pas de bogue
+** => _Mais la foi est une affaire privée..._
+* Deuxième solution : **TESTER A LA MAIN**
+** Exécuter quelques cas d'utilisation, avec quelques paramètres et vérifier le résultat,
+** Cela fonctionne assez bien... pour des programmes très courts,
+** => _Ce n'est pas humainement viable lorsque la base de code grandit._
+* Troisième solution : **TESTS AUTOMATIQUES** 
+** Utiliser des tests *exécutables*, 
+** Exécuter des tests *à volonté*,
+** => _Nécessite un investissement mais très rentable._
+
+=== Philosophie d'un test
+
+* Objectif d'un test
+** S'assurer du *comportement* 
+** d'un *objet testé* (_Objet sous test_), 
+** dans un *contexte donné*, 
+** en vérifiant des *assertions*. (_Assertions_)
+
+* Objet testé
+** Application, programme, module, classe, fonction, ...
+* Assertion : 
+** Attentes concernant la condition, l'état, le résultat, le contenu, ...
+
+=== Déroulement d'un test
+
+* Patterns de test
+** Séquencement d'action pour les rendre plus lisibles
+* **GWT**
+** *GIVEN*
+** *WHEN* 
+** *THEN*
+* **AAS**
+** *ARRANGE*
+** *ACT*
+** *ASSERT*
+
+== Quel type de tests ?
+
+* Tests unitaires
+* Tests d'intégration
+* Tests d'acceptation
+
+=== Tests unitaires
+
+* Tests **techniques**
+** Créés et utilisés par les *développeurs* de l'unité.
+** Concernent
+*** Une unité de programmation : une classe, une fonction, ... 
+** Se concentrent sur l'**intérieur** du composant
+*** Les méthodes et les fonctions 
+*** La classe entière
+
+image::images/categories_of_test_3.png[width=50%]
+
+=== Tests d'intégration 
+
+* Tests **techniques**
+** Créés et utilisés par les *développeurs* de l'application.
+** Concernent
+*** _plusieurs_ unités de programmation en interaction.
+** Se concentrent sur *l'extérieur* des composants
+*** L'interaction entre composants 
+*** L'interface du composant
+*** Composants en tant que partie d'un système.
+
+image::images/categories_of_test_4.png[width=50%]
+
+=== Tests d'acceptation
+
+* Tests **fonctionnels**
+** Crées (souvent avec les *développeurs*) et utilisés par les *fonctionnels*
+** Concernent 
+*** Les fonctionnalités utilisables
+*** Sans connaissance du contenu technique
+** Se concentrent sur **l'extérieur** du système
+*** Comportement observable
+*** Réponse à une séquence significative d'actions.
+
+image::images/categories_of_test_5.png[width=50%]
+
+=== Focus sur les tests unitaires
+
+[%step]
+* Rapides 
+** De l'ordre de la seconde
+* Indépendants
+** Exécutables dans n'importe quel ordre
+*** Seuls ou en masse;
+*** Aucune dépendance aux tests précédents, 
+*** Aucune influence sur les tests suivants.
+* Répétables
+** Même tests unitaires => mêmes résultats
+** Aucune dépendance à l'environnement 
+*** réseau, base de données, système de fichiers, paramètres utilisateur, données sur disque...
+*** Ordinateur, utilisateur, temps, date d'exécution
+
+=== Exemple de test simple ?
+
+[.left-column]
+--
+* Python 
+** =>  `pytest`
+
+
+[source,python,attributes]
+----
+def is_a_planet(name): 
+    planets = ['mercury', 'venus', 'earth', 
+               'mars', 'jupiter', 'saturn', 
+               'uranus', 'neptune']
+    return name in planets
+----
+
+[source,python,attributes]
+----
+def test_is_a_planet_with_lowercase():
+    # Given
+    name = 'mercury'
+    # When
+    response = is_a_planet(name)
+    # Assert
+    assert response == True
+
+def test_is_a_planet_with_mixedcase():
+    # Given
+    name = 'MerCury'
+    # When
+    response = is_a_planet(name)
+    # Assert
+    assert response == True
+
+----
+
+--
+
+[.right-column]
+--
+* Autres proposition
+** `java` =>  `Junit`, `Mockito`
+** `C/C++` => `Unicity`
+** https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks
+--
+
+[NOTE.notes]
+--
+
+* *Doctest* 
+** Bibliothèque standard
+** Mettre les tests dans le code en tant que documentation
++
+[source,python,attributes]
+----
+def is_a_planet(name):
+    """
+    >>> is_a_planet("mercury")    
+    True
+    >>> is_a_planet("Foobar")
+    False
+    >>> is_a_planet("MerCurY")
+    True    
+    """
+    planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"]
+
+    return name in planets
+----
++
+** Les exécuter avec `pytest --doctest-modules`
+--
+
+
+
+// end::content[]
