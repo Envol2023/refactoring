@@ -255,17 +255,102 @@ def report_starship_availability_for(patrol):
 ** bataille avec les outils,
 * Et ce, sans savoir vraiment ce que vous voulez vraiment.
 
+== Séparer l'intention de l'implémentation
+
+[.simple]
+Vous avez l'idée de ce que vous voulez, de l'*intention*, d'une manière très abstraite.
+
+[.center]
+image::images/good_practices-what_how_call_hierarchie_0.svg[]
+
+
+== Séparer l'intention de l'implémentation
+
+[.simple]
+Vous réfléchissez à la manière d'obtenir, d'une manière un peu moins abstraite
+
+[.center]
+image::images/good_practices-what_how_call_hierarchie_1.svg[]
+
+[.simple]
+mais pas très poussée.
+
+
+
+== Séparer l'intention de l'implémentation
+
+[.simple]
+L'**implementation** est constituée du  flux de contrôle des instructions
+
+[.center]
+image::images/good_practices-what_how_call_hierarchie_2.svg[]
+
+
+== Séparer l'intention de l'implémentation
+
+[.simple]
+Chaque instruction est en soi un objectif à atteindre
+
+[.center]
+image::images/good_practices-what_how_call_hierarchie_3.svg[]
+
+... une **intention** à un niveau moins abstrait
+
+== Séparer l'intention de l'implémentation
+
+[.simple]
+Et ainsi de suite...
+
+[.center]
+image::images/good_practices-what_how_call_hierarchie_4.svg[]
+
+== Séparer l'intention de l'implémentation
+
+[.simple]
+Jusqu'à atteindre les primitives du langage, des libraries, voire de l'OS
+
+
+[.center]
+image::images/good_practices-what_how_call_hierarchie_7.svg[]
+
+
+== The "WHAT then HOW" chaining.
+
+image::images/good_practices-scale_0.svg[]
+
+== The "WHAT then HOW" chaining.
+
+image::images/good_practices-scale_1.svg[]
+
+== ! 
+
+Passer d'un niveau supérieur à un niveau inférieur.
+
+image::images/good_practices-scale_2.svg[]
+
+
+== ! 
+
+Passer d'un niveau supérieur à un niveau inférieur.
+
+image::images/good_practices-scale_3.svg[]
 
 == Principes sur l'écriture des fonctions
 
 * Annoncer clairement l'intention dans son nom
+** En suivant les règles de nommage
 * Limiter son contenu à un nombre réduit de lignes
 ** Extraire les blocs d'instruction dans des fonction subalternes
+* Mettre les choses importantes en avant
+** Mettre les fonctions de plus haut niveau en début de texte
+** Mettre les fonctions de plus bas niveau en fin de texte
+
 
 
 
 == Quels techniques de refactoring
 
+* `Rename`
 * `Extract Method`
 
 
