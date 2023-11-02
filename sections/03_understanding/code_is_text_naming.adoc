@@ -389,9 +389,9 @@ endif::mode_slide[]
 
 [.big]
 ----
-<subject>_by_<key>()
+<subjects>_by_<key>()
 
-<subject>_to_<key>()
+<subjects>_to_<key>()
 ----
 
 Comme
