@@ -101,7 +101,7 @@ Demandez vous si la lecture de votre code est *directe* ou *ambiguë*.
 [.huge]
 [source,python]
 ----
-e = m * c*c
+e = 1/2 * m * v * v
 ----
 --
 
