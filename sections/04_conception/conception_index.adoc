@@ -78,39 +78,46 @@ notamment https://archive-devlog.cnrs.fr/_media/nmsaw2016/anf-nmsaw-module-3.2-b
 * Saturation de nos capacités cognitives
 ** Petit buffer pour charger un contexte en entier
 ** Dispersion sur des sujets très différents
-* Casser la complexité
-** Casser le gros problème en plusieurs petits problèmes
+* Décomposer le gros problème 
+** En plusieurs petits problèmes
+** Reliés entre eux
+** Plus faciles à isoler, à maîtriser
 
 [%step]
 [.right-column-1-3]
 image::images/breakdown-problem.gif[height=50%]
 
-
-[.subsection.background]
-[%notitle]
-== Comment réduire le nombre d'éléments ? 
-
-Trouver un ordre sous-jacent 
-
-
 include::breakdown.adoc[]
 
 == Modularité
 
-* Condition nécessaire à la modularisation
-** En application la décomposition d'un ensemble complexe en sous-éléments moins complexes, nous faisons un premier pas vers la modularisation.
-** C'est une condition nécessaire mais pas suffisante. 
-* Un sous-composant peut-être considéré comme un module si 
-** il est suffisamment 
-*** autosuffisant, 
-*** identifiable 
-*** et potentiellement réutilisable.
+[.left-column-2-3]
+--
+[%step]
+* Décomposition 
+** => réduction de la complexité
+* Modularisation
+** Percevoir le système comme un jeu de construction 
+* Module
+** Entité du langage 
+*** _module python, package java, classes, ..._
+** identifiable 
+** suffisamment autosuffisant, 
+** potentiellement réutilisable.
+--
 
-Cela permet de percevoir un système complexe comme un jeu de construction.
-
+[.right-column-1-3]
+--
 image::images/as_legos.jpg[]
+--
 
+[NOTE.notes]
+--
+En applicant la décomposition d'un ensemble complexe en sous-éléments moins complexes, nous faisons un premier pas vers la modularisation.
+C'est à dire que nous cherchons à obtenir des sous-composants que nous pouvons manipuler, sur lesquels nous concentrer, et au besoin, remonter notre attention à un niveau au dessus pour avoir une vision plus globale.
 
+Avoir un ensemble isolé est une condition nécessaire mais pas suffisante pour considérer un sous-composant comme un module. Dans l'idéal, il faudrait qu'il soit identifiable, suffisamment autosuffisant et potentiellement réutilisable.
+--
 
 [.splash.background]
 [.center]
@@ -184,8 +191,9 @@ def drop_blue(colors):
 == Comment relier les données et les traitements ?
 
 --
+[%step]
 Une question _pas si_ évidente
-
+[%step]
 Plusieurs réponses
 --
 
@@ -199,7 +207,7 @@ Réponses => paradigmes de programmation
 * ...
 --
 
-== Procedural
+== Procédural
 
 [.left-column-2-3]
 --
@@ -214,7 +222,7 @@ procedure(entity)
 ----
 
 * *Marionnettiste*
-** Entités inertes et passives d'un côté 
+** Données inertes et passives d'un côté 
 ** Procédures actives de l'autre côté
 --
 
@@ -224,7 +232,7 @@ procedure(entity)
 image::images/puppet_master.png[]
 --
 
-== Procedural
+== Procédural
 
 [.left-column-2-3]
 --
@@ -242,14 +250,14 @@ image::images/puppet_master_relationship.png[]
 --
 
 
-== Data structuring
+== Structuration
 
 --
-* Une meilleure structuration des données aiderait
-** La _forme_ des données détermine l'expressivité de la procédure
-* Une conception intelligente des données 
-** Mettre en avant ce qui est important 
-** Mettre en arrière les détails non pertinents
+* La _forme_ des données détermine l'expressivité de la procédure
+* Une meilleure structuration pour 
+** => Mettre en avant ce qui est important 
+** => Mettre en arrière les détails non pertinents
+
 --
 
 include::bob_the_rover.adoc[{include_options}]
@@ -260,9 +268,128 @@ include::bob_the_rover.adoc[{include_options}]
 
 Regrouper données et traitements aide à réduire la complexité.
 
+== Comment établir un module ?
+
+* Frontière
+** Séparation entre composants
+** Frontière au sein des sous-composant
+** Question d'échelle où l'on se place
+* Critères
+** Comment savoir ce qui va ensemble et ce qui est différent ?
+* Interface
+** Comment interagir avec les autres modules
+
+[NOTE.notes]
+--
+Les mathématiques ont développé la théorie des ensembles pour traiter de ce genre de question. Toutefois, aussi belle et pertinente soit-elle, ce n'est pas forcément elle qui va être la plus utile au quotidien aux développeuses et développeurs qui doivent faire face à tas de lignes de code qui sont tout simplement impossible à comprendre sans sentir le tournis.
+
+Ce que veulent faire ces personnes, c'est trouver le moyen d'établir les frontières et les critères qui permettent de savoir si un ensemble d'instructions font parties d'un ensemble ou non.
+
+Cette question est presque d'ordre générale pour l'humain : il passe son temps, parfois à son corps défendant, à tout classer. Les événements, les éléments de la nature, les sons, les situations et aussi les autres humains, afin de pouvoir se faire l'économie d'une réflexion et d'une écoute. De même que le cerveau filtre ce qu'il veut ignorer pour éviter la saturation, comme l'herbe dans le dos quand nous sommes allongés au soleil dans un parc, mais qu'il est capable de regarder attentivement sur des araignées et des fourmis sont aperçues dans le proche voisinage.
+
+Établir des frontières, des interfaces, des critères, c'est une technique de minimisation de l'effort cognitif.
+Ca tombe bien, car c'est notre objectif aussi.
+--
+
+== Cohésion, couplage et abstraction
+
+Pour qualifier un module, on utilise souvent trois propriétés
+
+* La cohésion d'un module
+* Le couplage entre modules
+* Le niveau d'abstraction du module
+
+=== Cohésion
+
+[quote]
+____
+La cohésion indique à quel point les différentes parties d'un module sont liées entre elles et comment elles se concentrent sur la réalisation d'un objectif commun spécifique.
+____
+
+[%step]
+* Faible cohésion
+** Le lien entre les composants est inexistant ou futile.
+* Forte cohésion
+** Les composants contribuent à une seule et unique tâche bien spécifique.
+
+=== Couplage
+
+[quote]
+____
+Le couplage indique à quel point des modules différents sont interdépendants.
+____
+
+[%step]
+* Faible couplage
+** Les composants des modules n'échangent pas d'information.
+* Fort couplage
+** les composants des modules lisent et écrivent directement leurs données respectives.
+
+== Abstraction
+
+[quote]
+____
+L'abstraction est la représentation des caractéristiques essentielle d'une entité sans se préoccuper de sa forme concrète.
+____
+
+== Plus de détails
+
+=== 7 types de cohésion 
+
+[.smaller]
+Selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
+
+* **Accidentel** : 
+** Lien entre composants inexistant ou futile.
+* **Logique** : 
+** Les composants sont reliés logiquement par un ou plusieurs critères communs.
+*** Exemple : _les composants sont rangés par type (Controller, Model, View en MVC)_
+* **Temporel** : 
+** Les composants doivent être appelés au cours de la même période de temps.
+
+[NOTE.notes]
+--
+La cohésion logique est un rapprochement par proximité. Par exemple les composants font des choses similaires, mais sans relations entre eux, comme par exemple le fait de placer tous les drivers dans un même module, même si ils s'ignorent mutuellement.
+--
+
+=== 7 types de cohésion  
+
+* **Procédural** : 
+** Les composants doivent être appelés dans un ordre spécifique.
+* **Communicationnel** : 
+** Les composants manipulent le même ensemble spécifique de données.
+* **Séquentiel** : 
+** Les composants qui manipulent le même ensemble de données doivent être appelés dans un ordre spécifique.
+* **Fonctionnel** : 
+** Les composants contribuent à une seule et unique tâche bien spécifique.
 
 
 
+=== 7 types de couplages
+
+Selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
+
+**7 niveaux de dépendances ou couplages**
+
+* **Sans couplage**
+** les composants n'échangent pas d'information.
+* **Par données**
+** les composants échangent de l'information par des méthodes utilisant des arguments (paramètres) de type simple (nombre, chaîne de caractères, tableau).
+* **Par paquet**
+** les composants échangent de l'information par des méthodes utilisant des arguments de type composé (structure, classe).
+* **Par contrôle**
+** les composants se passent ou modifient leur contrôle par changement d'un drapeau (verrou).
+
+=== 7 types de couplages
+
+**7 niveaux de dépendances ou couplages**
+
+* **Externe**
+** les composants échangent de l'information par un moyen de communication externe (fichier, pipeline, lien de communication).
+* **Commun (global)**
+** les composants échangent de l'information via un ensemble de données (variables) commun.
+* **Par contenu (interne)**
+** les composants échangent de l'information en lisant et écrivant directement dans leurs espaces de données (variables) respectifs.
 
 
 [.end.background]

@@ -42,11 +42,10 @@ image:images/rover_1_wheel.png[width=200]
 [.center]
 *_Procédure_*
 
-[.smaller]
-* `move(...)` 
-** Déplace le rover en fonction de
-*** `destination`, la destination
-*** `required_speed`, la vitesse requise
+[.smaller.simple]
+* `move(...)` -> déplace le rover en fonction de
+** `destination`, la destination
+** `required_speed`, la vitesse requise
 --
 
 
@@ -93,6 +92,7 @@ def move(radius,
 ----
 --
 
+[%step]
 * Comme une formule mathématique
 ** Pas de distinction entre ce qui est important, secondaire, temporaire...
 ** Pas de regroupement par domaine, proximité, ...
@@ -344,8 +344,12 @@ image::images/expressiveness.png[]
 == Structuration des données
 
 [%step]
-Nous avons donc des structures de données d'un côté {cr} 
-des traitements associées ces structures de l'autre.
+Nous avons donc {cr}
+des *structures de données* d'un côté, {cr} 
+[%step]
+des *traitements*, {cr}
+associés à ces *structures* {cr}
+de l'autre.
 
 [%step]
 Et si nous avions les deux ensemble ?
@@ -354,20 +358,22 @@ Et si nous avions les deux ensemble ?
 
 == Object Oriented Programing
 
-[.left-column]
+[.left-column-2-3]
 --
 * Entité en tant que _tout_
 ** _Objet_
 ** _Données_ et _procédures_ sous le même toit
 * L'entité 
 ** a des propriétés la décrivant, 
-** a des comportements, elle est active.
+** a des comportements agissant sur ces propriétés
+** => elle est active.
 * Cognitivement 
 ** Toutes les connaissances regroupées dans l'entité
+** => moindre dispersion
 --
 
 [.center]
-[.right-column]
+[.right-column-1-3]
 --
 image::images/sameroof.png[]
 --
@@ -383,8 +389,8 @@ image::images/sameroof.png[]
 [.right-column]
 --
 * Unité cohérente de programmation
-** Les relations sont évidentes
-** Les procédures sont proches des structures de données auxquelles elles sont dédiées.
+** Procédures proches des structures de données auxquelles elles sont dédiées.
+** Relations plus évidentes
 --
 
 [.center]
