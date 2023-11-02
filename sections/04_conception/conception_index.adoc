@@ -85,9 +85,12 @@ notamment https://archive-devlog.cnrs.fr/_media/nmsaw2016/anf-nmsaw-module-3.2-b
 [.right-column-1-3]
 image::images/breakdown-problem.gif[height=50%]
 
+
+[.subsection.background]
+[%notitle]
 == Comment réduire le nombre d'éléments ? 
 
-Trouver un ordre sous-jacent. 
+Trouver un ordre sous-jacent 
 
 
 include::breakdown.adoc[]

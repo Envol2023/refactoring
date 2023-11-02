@@ -1,6 +1,13 @@
 == Breakdowns
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
 --
@@ -9,49 +16,75 @@ Notre cerveau ne sait pas comment appréhender la situation.
 --
 
 [.center]
-Complexe et compliqué
+Situation complexe et compliquée {cr}
+Beaucoup d'éléments et de relations.
 
 [.center]
 image::images/design-complexite_1.png[height=50%]
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
-La première étape consiste à repérer des "clusters", des regroupements d'éléments particulièrement reliés entre eux.
+La première étape consiste à repérer des "clusters", des regroupements d'éléments particulièrement reliés.
 
 [.center]
-Distinction de clusters
+Recherche de regroupements d'éléments (_clusters_)
 
 [.center]
 image::images/design-complexite_2.png[height=50%]
 
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
 
-[NOTE.notes]
-Ensuite il faut les identifier ou au moins les nommer.
 
 [.center]
-Identifications de clusters
+Recherche de regroupements d'éléments (_clusters_)
 
 [.center]
 image::images/design-complexite_3.png[height=50%]
 
 
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
-Après, il faut créer des ensemble les plus disjoints possibles
+Ensuite il faut les identifier ou au moins les nommer.
 
 [.center]
-Regroupement par clusters
+Identification ou dénomination des clusters
 
 [.center]
 image::images/design-complexite_4.png[height=50%]
 
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
 Et isoler ces ensembles autant que possible les uns des autres en conservant les relations.
@@ -63,53 +96,119 @@ Et isoler ces ensembles autant que possible les uns des autres en conservant les
 image::images/design-complexite_5.png[height=50%]
 
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
 En prenant de la hauteur, le problème peut être appréhendé comme un ensemble plus réduit.
 
 [.center]
-Complexité réduite à haute échelle, zoom vers le haut
+Complexité réduite à haute échelle
 
+[.left-column-1-3]
+image::images/design-complexite_5.png[height=50%]
+
+[.middle-column-1-3]
 [.center]
+[.decale-bas]
+Zoom arrière
+
+[.right-column-1-3]
 image::images/design-complexite_6.png[height=50%]
 
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
 En zoomant sur un composant, il est engin possible de ce focaliser plus aisément
 
 [.center]
-Focus sur un sous-composant, zoom vers le bas
+Focus sur un sous-composant
 
+[.left-column-1-3]
+image::images/design-complexite_5.png[height=50%]
+
+[.middle-column-1-3]
 [.center]
+[.decale-bas]
+=>
+
+[.right-column-1-3]
 image::images/design-complexite_7.1.png[height=50%]
 
-
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
 Voire de le considérer de façon totalement ou presque, isolé.
 
 [.center]
-Limitation à un sous-composant de niveau N+1
+Limitation à un sous-composant de niveau d'abstraction N-1
 
+[.left-column-1-3]
+image::images/design-complexite_7.1.png[height=50%]
+
+[.middle-column-1-3]
 [.center]
+[.decale-bas]
+Zoom avant
+
+[.right-column-1-3]
 image::images/design-complexite_7.2.png[height=50%]
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
 Ce processus peut se renouveler au sein du sous-composant lui-même
 
 [.center]
-Décomposition en sous composants de niveau N+2
+Décomposition en sous composants de niveau d'abstraction N-2
 
+[.left-column-1-3]
+image::images/design-complexite_7.2.png[height=50%]
+
+[.middle-column-1-3]
 [.center]
+[.decale-bas]
+=>
+
+[.right-column-1-3]
 image::images/design-complexite_8.png[height=50%]
 
+ifdef::mode_slide[]
+[%notitle]
 === Breakdown
+endif::[]
+ifndef::mode_slide[]
+**Etape {counter:step_breakdown}**
+endif::[]
+
 
 [NOTE.notes]
 Permettant de pouvoir mieux cerner une partie précise et réduite du système
@@ -117,5 +216,13 @@ Permettant de pouvoir mieux cerner une partie précise et réduite du système
 [.center]
 Focus sur un sous-composant, zoom vers le bas
 
+[.left-column-1-3]
+image::images/design-complexite_8.png[height=50%]
+
+[.middle-column-1-3]
 [.center]
+[.decale-bas]
+=>
+
+[.right-column-1-3]
 image::images/design-complexite_9.png[height=50%]
