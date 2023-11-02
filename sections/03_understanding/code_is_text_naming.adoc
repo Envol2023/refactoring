@@ -312,8 +312,8 @@ endif::mode_slide[]
 [.big]
 [source,python]
 ----
-co = complaintService.getNext();
-c = co.getCustomer();
+co = complaint_service.next()
+c = co.get_customer()
 ...
 # bla bla
 # 500 lignes plus loin
@@ -328,8 +328,8 @@ vs
 [.big]
 [source,python]
 ----
-complaint = complaintService.getNext();
-customer = co.getCustomer();
+complaint = complaint_service.next()
+customer = co.get_customer()
 ...
 # bla bla
 # 500 lignes plus loin
