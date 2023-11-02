@@ -43,7 +43,7 @@ Un rapide rappel sur les tests automatisés
 === Déroulement d'un test
 
 * Patterns de test
-** Séquencement d'action pour les rendre plus lisibles
+** Séquencement d'actions pour les rendre plus lisibles
 * **GWT**
 ** *GIVEN*
 ** *WHEN* 
