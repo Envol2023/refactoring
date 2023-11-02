@@ -21,6 +21,14 @@ endif::[]
 * Lisibilité
 * Structuration
 
+[NOTE.notes]
+--
+Travailler sur la compréhension revient à travailler sur l'objet code en tant que texte.
+Le code est un ensemble de mots qui font sens, pour l'humain et pour la machine.
+
+C'est le premier niveau de refactorisation, accessible à tous, et ne demandant que peu de temps et d'expertise.
+--
+
 [.subsection.background]
 [.center]
 [%notitle]
@@ -71,5 +79,14 @@ que vous ne l'*écrivez*.
 include::code_is_text_naming.adoc[{include_options}]
 
 include::code_well_targeted.adoc[{include_options}]
+
+
+[.end.background]
+[.center]
+== Améliorer la compréhension
+
+Nous avons vu
+
+TBD
 
 // end::content[]

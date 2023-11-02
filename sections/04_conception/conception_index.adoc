@@ -1,0 +1,268 @@
+= Conception
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+
+
+[.start.background]
+[.center]
+== Améliorer la conception
+
+Améliorer la conception : niveau compétence
+
+=== Conception Logicielle
+
+* Conception vs Architecture ?
+** Limites pas toujours nettes <= cas des frameworks _invasifs_.
+* Architecture : 
+** Description haut niveau de la solution, 
+** Éloignée des contingences du language.
+** Lien exigences fonctionnelles <--> réponses apportées.
+* Conception
+** Proche du code et du langage
+** Définition des entités, des données et des traitements
+** Utilisation des paradigmes (OOP, fonctionnel, impératifs, ...) 
+
+
+[NOTE.notes]
+--
+Architecture logicielle vs conception logicielle.
+
+La différence entre les deux peut être plus ou moins nette, notamment en fonction de la complexité et la taille du logiciel.
+
+Nous retiendrons que l'architecture logicielle est une description de haut-niveau, aussi agnostique et indépendante de l'écosystème (langages, frameworks…,) que possible.
+Elle fait le lien entre les exigences fonctionnelles et les réponses apportées.
+
+La conception logicielle s'attache plus à la structuration du code, des données et des traitements, la définition des entités et l'utilisation des mécanismes du paradigme utilisé (OOP, fonctionnel, impératif…,) 
+
+Dans certaines situations, le framework sous-jacent est tellement invasif qu'il à tendance à contraindre l'architecture logicielle.
+Nous ne nous étendrons pas sur la pertinence ou non de ce mode de fonctionnement.
+--
+
+=== Refactoring de la conception
+
+* Améliorations des aspects _internes_ uniquement
+** Gestion de la complexité
+*** Frein à la compréhension
+*** Frein à la capacité d'évolution 
+** Réduction de la dette technique du passé en gardant un oeil sur l'avenir
+** Améliorer le niveau de confiance
+*** Rendre le code plus testable pour le rendre plus testé
+* Conservation du comportement observable
+** Aspect _Fonctionnel_ conservé
+** Aspects _Sécurité_ et _Performance_ supposés conservés
+
+
+[NOTE.notes]
+--
+
+Le comportement observable, c'est ce que perçoit un utilisateur du système _de l'extérieur_, ce que nous pouvons résumer grossièrement à trois aspects : les fonctionnalités offertes, la sécurité, les performances.
+
+Dans le cadre du refactoring, nous considérons qu'aucune évolution dans ces 3 domaines n'est à considérer, même s'il est effectivement courant de faire un refactoring pour améliorer les performances ou minimiser la consommation de ressources.
+
+Pour la sécurité dans la conception, vous pouvez voir les documents de l'ANF https://archive-devlog.cnrs.fr/anf-nmsaw2016, 
+notamment https://archive-devlog.cnrs.fr/_media/nmsaw2016/anf-nmsaw-module-3.2-bonne_pratiques.pdf  et https://archive-devlog.cnrs.fr/_media/nmsaw2016/anf-nmsaw-module-3.4-principes.pdf
+
+--  
+
+== Gestion de la complexité
+
+[%step]
+[.left-column-2-3]
+* La complexité croit avec
+** le nombre d'éléments distincts à prendre en compte
+** le nombre d'interactions entre éléments
+* Saturation de nos capacités cognitives
+** Petit buffer pour charger un contexte en entier
+** Dispersion sur des sujets très différents
+* Casser la complexité
+** Casser le gros problème en plusieurs petits problèmes
+
+[%step]
+[.right-column-1-3]
+image::images/breakdown-problem.gif[height=50%]
+
+
+include::breakdown.adoc[]
+
+== Modularité
+
+* Condition nécessaire à la modularisation
+** En application la décomposition d'un ensemble complexe en sous-éléments moins complexes, nous faisons un premier pas vers la modularisation.
+** C'est une condition nécessaire mais pas suffisante. 
+* Un sous-composant peut-être considéré comme un module si 
+** il est suffisamment 
+*** autosuffisant, 
+*** identifiable 
+*** et potentiellement réutilisable.
+
+Cela permet de percevoir un système complexe comme un jeu de construction.
+
+image::images/as_legos.jpg[]
+
+
+
+[.splash.background]
+[.center]
+[%notitle]
+== What is a program ?
+
+[.huge]
+--
+Programme = Données + Traitements
+--
+
+== Programme = Données + Traitements
+
+[.center]
+image::images/data_algo.png[]
+
+
+== Programme = Données + Traitements
+
+[.left-column]
+--
+**Données**
+
+* _Partie passive_
+** Variables, constantes, _valeurs_
+** État des entités
+* Différentes structurations
+** Scalaires, conteneurs, structures, ...
+
+[.big]
+[source,python]
+----
+a = 1
+name = 'John Doe'
+colors = ['red', 'blue', 'green']
+book = {'title': 'Python', 'pages': 324}
+...
+----
+--
+
+[.right-column]
+[.fragment]
+--
+**Traitements**
+
+* _Partie active_
+** Créer ou modifier des _données_
+** Se comporter
+* Procédures
+** Fonctions, méthodes
+
+[.big]
+[source,python]
+----
+# computations
+b = a*a
+
+def transform_to_french_title(input: str)
+    return input[0].upper()+input[1:]
+
+# modifications
+def drop_blue(colors):
+    colors.remove('blue')
+
+...
+----
+--
+
+
+[.center]
+== Comment relier les données et les traitements ?
+
+--
+Une question _pas si_ évidente
+
+Plusieurs réponses
+--
+
+[%step]
+--
+Réponses => paradigmes de programmation
+
+* *Procédural*
+* *Objet*
+* *Fonctionnel* 
+* ...
+--
+
+== Procedural
+
+[.left-column-2-3]
+--
+* Paradigme habituel
+** Le plus facile et le plus ancien
+
+[.big]
+[source,python]
+----
+entity = ...
+procedure(entity)
+----
+
+* *Marionnettiste*
+** Entités inertes et passives d'un côté 
+** Procédures actives de l'autre côté
+--
+
+[.right]
+[.right-column-1-3]
+--
+image::images/puppet_master.png[]
+--
+
+== Procedural
+
+[.left-column-2-3]
+--
+* *Disjoint*
+** La relation doit être établie
+* *Déséquilibrée*
+** Les traitements détiennent toutes les *connaissances*.
+** Les structures de données sont "stupides".
+--
+
+[.right]
+[.right-column-1-3]
+--
+image::images/puppet_master_relationship.png[]
+--
+
+
+== Data structuring
+
+--
+* Une meilleure structuration des données aiderait
+** La _forme_ des données détermine l'expressivité de la procédure
+* Une conception intelligente des données 
+** Mettre en avant ce qui est important 
+** Mettre en arrière les détails non pertinents
+--
+
+include::bob_the_rover.adoc[{include_options}]
+
+[.splash.background]
+[.center]
+== Regrouper
+
+Regrouper données et traitements aide à réduire la complexité.
+
+
+
+
+
+
+[.end.background]
+[.center]
+== Améliorer la conception : conclusion
+
+Améliorer la conception : niveau compétence
+
+
+// end::content[]

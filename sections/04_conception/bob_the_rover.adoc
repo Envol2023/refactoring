@@ -1,0 +1,416 @@
+= Bob le Rover
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+
+
+== Bob le Rover
+
+Vous programmez un _rover_ avec une seule roue 
+
+[.center]
+
+image::images/rover_1_wheel.png[]
+
+
+=== Bob le Rover
+
+[.center]
+image:images/rover_1_wheel.png[width=200]
+
+[.left-column]
+--
+[.center]
+*_Données_*
+
+[.simple]
+[.smaller]
+* `radius` -> wheel radius (m)
+* `weight` -> rover weight (kg)
+* `speed` -> rover speed (m/s)
+* `position` -> Position on map (x,y)
+* `consumption_coef` -> Polynomial to compute consumption according to speed
+* `battery_capacity` -> Capacity in kWh
+* `battery_level` -> Remain level (kW)
+--
+
+[.right-column]
+--
+[.center]
+*_Procédure_*
+
+[.smaller]
+* `move(...)` 
+** Déplace le rover en fonction de
+*** `destination`, la destination
+*** `required_speed`, la vitesse requise
+--
+
+
+=== Bob le Rover
+
+* Sans structuration
+
+[.left-column]
+--
+[.center]
+*_Données_*
+
+[.big]
+[source,python]
+----
+radius = 1
+weight = 100
+speed = 0.
+position = [0.,0.]
+...
+----
+--
+
+
+[.right-column]
+--
+[.center]
+*_Procédure_*
+
+[.big]
+[source,python]
+----
+
+def move(radius, 
+        weight,
+        speed,
+        position,
+        consumption_coef,
+        battery_capacity,
+        battery_level,
+
+        destination,
+        required_speed)
+----
+--
+
+* Comme une formule mathématique
+** Pas de distinction entre ce qui est important, secondaire, temporaire...
+** Pas de regroupement par domaine, proximité, ...
+
+=== Structuration des données
+
+* En tant que _simples_ de conteneurs
+
+[.left-column]
+--
+[.center]
+*_Données_*
+
+[.big]
+[source,python]
+----
+rover= {
+    'weight': 10,
+    'position': [0., 0.],
+    'speed': 0.
+}
+engine = { 'consumption_coef': [0., 3.45, 12.] }
+
+battery = { 'capacity': 120, 'level': 12.2 }
+
+...
+----
+--
+
+[.right-column]
+--
+[.center]
+*_Procédure_*
+
+[.big]
+[source,python]
+----
+def move(rover, 
+        engine, 
+        wheel, 
+        battery,
+
+        destination,
+        required_speed)
+----
+--
+
+== Structuration des données
+
+* Comme un _tout_ (conteneur unique)
+
+[.left-column]
+--
+[.center]
+*_Données_*
+
+[.big]
+[source,python]
+----
+rover= {
+    'weight': 10,
+    'position': [0., 0.],
+    'speed': 0.
+
+    'engine' :{ 'consumption_coef': [0., 3.45, 12.] },
+
+    'battery': { 'capacity': 120, 'level': 12.2 },
+    ...
+}
+...
+----
+--
+
+[.right-column]
+--
+[.center]
+*_Procédure_*
+
+
+[.big]
+[source,python]
+----
+def move(rover, 
+
+        destination,
+        required_speed)
+----
+--
+
+== Structuration des données
+
+[%noheader]
+[cols="a,2a,4a"]
+|===
+
+| [.small]
+Sans structuration
+
+| --
+[source,python]
+----
+radius = 1
+weight = 100
+speed = 0.
+position = [0.,0.]
+...
+----
+
+--
+
+| --
+[source,python]
+----
+def move(radius, 
+        weight,
+        speed,
+        position,
+        consumption_coef,
+        battery_capacity,
+        battery_level,
+
+        destination,
+        required_speed)
+----
+--
+
+| [.small]
+Conteneurs simples
+
+| --
+[source,python]
+----
+rover= {
+    'weight': 10,
+    'position': [0., 0.],
+    'speed': 0.
+}
+engine = { 'consumption_coef': [0., 3.45, 12.] }
+
+battery = { 'capacity': 120, 'level': 12.2 }
+----
+--
+
+| --
+[source,python]
+----
+def move(rover, 
+        engine, 
+        wheel, 
+        battery,
+
+        destination,
+        required_speed)
+----
+--
+
+
+| [.small]
+Comme un tout
+
+| --
+[source,python]
+----
+rover= {
+    'weight': 10,
+    'position': [0., 0.],
+    'speed': 0.
+
+    'engine' :{ 'consumption_coef': [0., 3.45, 12.] },
+
+    'battery': { 'capacity': 120, 'level': 12.2 },
+    ...
+}
+----
+--
+
+| --
+[source,python]
+----
+def move(rover, 
+
+        destination,
+        required_speed)
+----
+--
+
+|===
+
+== Structuration des données
+
+--
+*  La _forme_ des données influence la perception
+** Une structuration intelligente des données 
+*** Diminue le nombre d'éléments en jeux.
+*** Met en avant les concepts, met en retrait les détails
+--
+
+[.left-column-1-3]
+--
+[.big]
+[source,python]
+----
+def move(radius, 
+        weight,
+        speed,
+        position,
+        consumption_coef,
+        battery_capacity,
+        battery_level,
+
+        destination,
+        required_speed)
+----
+--
+
+[.middle-column-1-3]
+--
+[.center]
+=> 
+--
+
+
+
+[.right-column-1-3]
+--
+[.big]
+[source,python]
+----
+def move(rover, 
+        destination,
+        required_speed)
+----
+--
+
+== Structuration des données
+--
+*  La _forme_ des données influence la perception
+** Une structuration intelligente des données 
+*** Diminue le nombre d'éléments en jeux.
+*** Met en avant les concepts, met en retrait les détails
+--
+
+[.center]
+image::images/expressiveness.png[]
+
+[.splash.background]
+[.center]
+[%notitle]
+== Structuration des données
+
+[%step]
+Nous avons donc des structures de données d'un côté {cr} 
+des traitements associées ces structures de l'autre.
+
+[%step]
+Et si nous avions les deux ensemble ?
+
+
+
+== Object Oriented Programing
+
+[.left-column]
+--
+* Entité en tant que _tout_
+** _Objet_
+** _Données_ et _procédures_ sous le même toit
+* L'entité 
+** a des propriétés la décrivant, 
+** a des comportements, elle est active.
+* Cognitivement 
+** Toutes les connaissances regroupées dans l'entité
+--
+
+[.center]
+[.right-column]
+--
+image::images/sameroof.png[]
+--
+
+
+== Object Oriented Programing
+
+[.left-column]
+--
+* La POO permet d'organiser le code
+** Données et algorithme en une seule entité
+--
+[.right-column]
+--
+* Unité cohérente de programmation
+** Les relations sont évidentes
+** Les procédures sont proches des structures de données auxquelles elles sont dédiées.
+--
+
+[.center]
+image::images/procedural_vs_object.png[]
+
+== Taille du projet
+
+Pour un petit projet, l'opposition entre procédural et OOP n'est pas un problème majeur.
+
+[.center]
+image::images/data_algo.png[]
+
+== Taille du projet
+
+Mais pour des projets plus importants...
+
+[.center]
+image::images/big_project.png[]
+
+== Taille du projet
+
+C'est un modèle de réduction de la complexité
+
+
+[.center]
+image::images/big_project_as_oop.png[]
+
+
+// end::content[]

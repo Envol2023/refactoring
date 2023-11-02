@@ -1,0 +1,121 @@
+== Breakdowns
+
+=== Breakdown
+
+[NOTE.notes]
+--
+La technique consiste à passer d'une situation confuse à une situation plus simple où des éléments sont en relation entre eux sans distinction.
+Notre cerveau ne sait pas comment appréhender la situation.
+--
+
+[.center]
+Complexe et compliqué
+
+[.center]
+image::images/design-complexite_1.png[height=50%]
+
+=== Breakdown
+
+[NOTE.notes]
+La première étape consiste à repérer des "clusters", des regroupements d'éléments particulièrement reliés entre eux.
+
+[.center]
+Distinction de clusters
+
+[.center]
+image::images/design-complexite_2.png[height=50%]
+
+
+=== Breakdown
+
+[NOTE.notes]
+Ensuite il faut les identifier ou au moins les nommer.
+
+[.center]
+Identifications de clusters
+
+[.center]
+image::images/design-complexite_3.png[height=50%]
+
+
+
+=== Breakdown
+
+[NOTE.notes]
+Après, il faut créer des ensemble les plus disjoints possibles
+
+[.center]
+Regroupement par clusters
+
+[.center]
+image::images/design-complexite_4.png[height=50%]
+
+
+=== Breakdown
+
+[NOTE.notes]
+Et isoler ces ensembles autant que possible les uns des autres en conservant les relations.
+
+[.center]
+Établissement des frontières
+
+[.center]
+image::images/design-complexite_5.png[height=50%]
+
+
+=== Breakdown
+
+[NOTE.notes]
+En prenant de la hauteur, le problème peut être appréhendé comme un ensemble plus réduit.
+
+[.center]
+Complexité réduite à haute échelle, zoom vers le haut
+
+[.center]
+image::images/design-complexite_6.png[height=50%]
+
+
+=== Breakdown
+
+[NOTE.notes]
+En zoomant sur un composant, il est engin possible de ce focaliser plus aisément
+
+[.center]
+Focus sur un sous-composant, zoom vers le bas
+
+[.center]
+image::images/design-complexite_7.1.png[height=50%]
+
+
+=== Breakdown
+
+[NOTE.notes]
+Voire de le considérer de façon totalement ou presque, isolé.
+
+[.center]
+Limitation à un sous-composant de niveau N+1
+
+[.center]
+image::images/design-complexite_7.2.png[height=50%]
+
+=== Breakdown
+
+[NOTE.notes]
+Ce processus peut se renouveler au sein du sous-composant lui-même
+
+[.center]
+Décomposition en sous composants de niveau N+2
+
+[.center]
+image::images/design-complexite_8.png[height=50%]
+
+=== Breakdown
+
+[NOTE.notes]
+Permettant de pouvoir mieux cerner une partie précise et réduite du système
+
+[.center]
+Focus sur un sous-composant, zoom vers le bas
+
+[.center]
+image::images/design-complexite_9.png[height=50%]

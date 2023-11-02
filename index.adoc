@@ -42,7 +42,7 @@ include::./sections/03_understanding/understanding_index.adoc[{include_options}]
 
 == Améliorer la conception
 
-// include::./sections/04_conception/conception_index.adoc[{include_options}]
+include::./sections/04_conception/conception_index.adoc[{include_options}]
 
 == Améliorer la testabilité
 
