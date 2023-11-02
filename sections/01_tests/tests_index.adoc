@@ -11,7 +11,7 @@ endif::[]
 
 Un rapide rappel sur les tests automatisés
 
-=== Comment savoir qu'un test fonctionne ?
+=== Comment savoir qu'un code fonctionne ?
 
 [%step]
 * Première solution : **AYEZ CONFIANCE** 
