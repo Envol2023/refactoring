@@ -19,7 +19,7 @@ Améliorer la conception : niveau compétence
 ** Limites pas toujours nettes <= cas des frameworks _invasifs_.
 * Architecture : 
 ** Description haut niveau de la solution, 
-** Éloignée des contingences du language.
+** Éloignée des contingences du langage.
 ** Lien exigences fonctionnelles <--> réponses apportées.
 * Conception
 ** Proche du code et du langage
@@ -129,13 +129,13 @@ Avoir un ensemble isolé est une condition nécessaire mais pas suffisante pour 
 Programme = Données + Traitements
 --
 
-== Programme = Données + Traitements
+=== Programme = Données + Traitements
 
 [.center]
 image::images/data_algo.png[]
 
 
-== Programme = Données + Traitements
+=== Programme = Données + Traitements
 
 [.left-column]
 --
@@ -188,7 +188,7 @@ def drop_blue(colors):
 
 
 [.center]
-== Comment relier les données et les traitements ?
+=== Comment relier les données et les traitements ?
 
 --
 [%step]
@@ -207,7 +207,7 @@ Réponses => paradigmes de programmation
 * ...
 --
 
-== Procédural
+=== Procédural
 
 [.left-column-2-3]
 --
@@ -232,7 +232,7 @@ procedure(entity)
 image::images/puppet_master.png[]
 --
 
-== Procédural
+=== Procédural
 
 [.left-column-2-3]
 --
@@ -250,7 +250,7 @@ image::images/puppet_master_relationship.png[]
 --
 
 
-== Structuration
+=== Structuration
 
 --
 * La _forme_ des données détermine l'expressivité de la procédure
@@ -270,20 +270,26 @@ Regrouper données et traitements aide à réduire la complexité.
 
 == Comment établir un module ?
 
-* Frontière
-** Séparation entre composants
-** Frontière au sein des sous-composant
-** Question d'échelle où l'on se place
+[.left-column]
+--
 * Critères
 ** Comment savoir ce qui va ensemble et ce qui est différent ?
 * Interface
+** Séparation entre composants
 ** Comment interagir avec les autres modules
+--
+
+[.right-column]
+--
+[.right.middle]
+image::images/design-module.png[height=40%]
+--
 
 [NOTE.notes]
 --
 Les mathématiques ont développé la théorie des ensembles pour traiter de ce genre de question. Toutefois, aussi belle et pertinente soit-elle, ce n'est pas forcément elle qui va être la plus utile au quotidien aux développeuses et développeurs qui doivent faire face à tas de lignes de code qui sont tout simplement impossible à comprendre sans sentir le tournis.
 
-Ce que veulent faire ces personnes, c'est trouver le moyen d'établir les frontières et les critères qui permettent de savoir si un ensemble d'instructions font parties d'un ensemble ou non.
+Ce que veulent faire ces personnes, c'est trouver le moyen d'établir les critères qui permettent de savoir si un ensemble d'instructions font parties d'un ensemble ou non.
 
 Cette question est presque d'ordre générale pour l'humain : il passe son temps, parfois à son corps défendant, à tout classer. Les événements, les éléments de la nature, les sons, les situations et aussi les autres humains, afin de pouvoir se faire l'économie d'une réflexion et d'une écoute. De même que le cerveau filtre ce qu'il veut ignorer pour éviter la saturation, comme l'herbe dans le dos quand nous sommes allongés au soleil dans un parc, mais qu'il est capable de regarder attentivement sur des araignées et des fourmis sont aperçues dans le proche voisinage.
 
@@ -319,77 +325,614 @@ ____
 Le couplage indique à quel point des modules différents sont interdépendants.
 ____
 
+// [.at-top-right]
+// image::images/coupling.gif[height=300px]
+
 [%step]
 * Faible couplage
 ** Les composants des différents modules n'échangent pas d'information.
 * Fort couplage
 ** les composants des différents modules lisent et modifient directement leurs données respectives.
 
-== Abstraction
+=== Abstraction
 
 [quote]
 ____
-L'abstraction est la représentation des caractéristiques essentielle d'une entité sans se préoccuper de sa forme concrète.
+L'abstraction est la représentation des caractéristiques essentielles d'une entité sans se préoccuper de sa forme concrète.
 ____
 
-== Plus de détails
+include::_cohesion_coupling_combinaisons.adoc[]
 
-=== 7 types de cohésion 
+include::_cohesion_coupling_types.adoc[]
 
-[.smaller]
-Selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
+include::_typing.adoc[]
 
-* **Accidentel** : 
-** Lien entre composants inexistant ou futile.
-* **Logique** : 
-** Les composants sont reliés logiquement par un ou plusieurs critères communs.
-*** Exemple : _les composants sont rangés par type (Controller, Model, View en MVC)_
-* **Temporel** : 
-** Les composants doivent être appelés au cours de la même période de temps.
+== Définition d'un bon module
+
+[%step]
+* Caractérisation d'un bon module
+*** Forte cohésion
+*** Faible couplage
+*** Niveau d'abstraction adapté
+* Objectifs du refactoring
+** Transformer le code de façon à avoir de _bons_ modules
+
+=== Couplage et cohésion
+
+[%step]
+* Couplage et Cohésion sont sur un bateau...
+* Notions liées
+** Cohésion -> vision intra-module
+** Couplage -> vision inter-modules
+* Notions résiduelles
+** Couplage _résiduel_ => coopération nécessaire pour atteindre des objectifs de haut-niveau
+** Cohésion parfaite => pas facile à conserver lors des évolutions
+* Pas évidentes à mesurer
+** Existence de métriques mais très théorique et peu utilisables
+* Comment pouvons nous **améliorer les choses** ?
+** Maintenant que nous savons ?
 
 [NOTE.notes]
 --
-La cohésion logique est un rapprochement par proximité. Par exemple les composants font des choses similaires, mais sans relations entre eux, comme par exemple le fait de placer tous les drivers dans un même module, même si ils s'ignorent mutuellement.
+Il existe des métriques, mais elles ne sont pas évidentes à utiliser au quotidien.
+
+
+
+REP (Reuse/Release Equivalence Principle)
+"the granule of reuse is the granule of release"
+
+CCP (Common Closure Principle)
+"Gather into components those classes that change for the same reasons and at the same times. Separate into different components those classes that change at different times and for different reason"
+
+A component (class, method, …) should not have multiple reasons to change
+
+CRP (Common Reuse Principle)
+"Don’t force users of a component to depend on things they don’t need."
 --
 
-=== 7 types de cohésion  
+[.splash.background]
+[.center]
+[%notitle]
+=== Couplage et cohésion
 
-* **Procédural** : 
-** Les composants doivent être appelés dans un ordre spécifique.
-* **Communicationnel** : 
-** Les composants manipulent le même ensemble spécifique de données.
-* **Séquentiel** : 
-** Les composants qui manipulent le même ensemble de données doivent être appelés dans un ordre spécifique.
-* **Fonctionnel** : 
-** Les composants contribuent à une seule et unique tâche bien spécifique.
+Couplage et cohésion traduisent le niveau de connaissances nécessaires 
+
+L'objectif de la refactorisation est de minimiser ces connaissances.
+
+=== Couplage et cohésion > subdivision du travail
+
+[.left-column-2-3]
+--
+* Analogie pour orienter le refactoring
+** Système complexe faisant appel à plusieurs domaines d'expertise
+** Des expert(e)s
+--
+[.right-column-1-3]
+--
+image:images/design-system-expert_0.svg[]
+image:images/design-system-expert_2.svg[]
+--
+
+=== Couplage et cohésion > subdivision du travail
+
+[.left-column-2-3]
+--
+* Décomposition 
+** du système  -> en sous-systèmes _moins complexes_ 
+** du travail -> tâche par domaine d'expertise
+--
+[.right-column-1-3]
+--
+image:images/design-system-expert_1.svg[]
+image:images/design-system-expert_3.svg[]
+--
+
+=== Couplage et cohésion > subdivision du travail
+
+[.left-column-2-3]
+--
+* Pourquoi ?
+** Pour les confier à **ceux qui savent** 
+** -> Un module <==> un(e) expert(e)
+* Expert(e)
+** Connaît très bien son domaine, sa culture, ses règles 
+*** => *Forte Cohésion*
+** Ne devrait en savoir plus que nécessaire sur les autres domaines 
+*** => *Faible Couplage*
+* Démarche d'optimisation
+** Maximiser la compétence, 
+** Minimiser les risques de mauvaise compréhension
+** Minimiser les modifications en cascade
+
+--
+
+[.right-column-1-3]
+--
+image:images/design-system-expert_4.svg[]
+--
+
+
+[NOTE.notes]
+--
+Imaginer que vous avez le logiciel de vol d'un instrument spatial embarqué sur un satellite dans le cadre d'une mission de l'ESA.
+Le logiciel de vol est composé 
+
+* d'un système de communication avec le logiciel de bord du satellite, 
+* d'un module de la mémoire de bord, 
+* d'un module de dialogue et pilotage avec le système optique, 
+* d'un module de dialogue avec les sondes de températures, 
+* d'un module de dialogue avec les systèmes de calibration, les systèmes mécaniques etc...
+
+On perçoit aisément que les domaines d'expertises sont très variés, et que la bonne attitude est de confier les modules à ceux qui savent.
+
+C'est la subdivision du travail en fonction de l'expertise nécessaire. Vous n'allez pas confier le module de pilotage du système optique au service thermique !
+
+Pourquoi ?
+
+Parce que vous faites l'hypothèse raisonnable que les experts font mieux ce pour quoi ils sont experts que lorsqu'ils vont s'aventurer dans un domaine en dehors de leur expertise.
+Car ainsi, ils se focalisent sur ce qu'ils savent très bien faire et minimisent les connaissances nécessaires.
+--
+
+=== Couplage et cohésion > gestion de la connaissance
+
+[.left-column]
+--
+* Cohésion
+** Vision *intra*-module
+** *Minimisation* de la connaissance nécessaire
+*** *Concentration* sur un domaine d'expertise, 
+*** À l'*intérieur* de ses frontières
+
+[.center]
+image::images/design-cohesion_vs_coupling_0.png[height=300]
+--
+
+[.right-column]
+--
+* Couplage
+** Vision *inter*-modules
+** *Augmentation* de la connaissance nécessaire
+*** *Dispersion* au delà du domaine d'expertise, 
+*** À l'*extérieur* des frontières
+
+[.center]
+image::images/design-cohesion_vs_coupling_1.png[height=300]
+--
+
+[NOTE.notes]
+--
+La cohésion correspond à la minimisation des connaissances nécessaires à la compréhension d'un module. C'est une vision interne au module.
+
+* Un module à forte cohésion pourrait être placé sous la responsabilité d'un expert dont le savoir est concentré sur un domaine précis à une échelle donnée.
+
+Par exemple au sein d'un logiciel de vol tel que décrit précédemment, le module pilotage de l'électronique principale sera plutôt confié à un ou une spécialiste de l'électronique de l'instrument.
+Au sein de ce module pilotage
+
+* la partie compression de données peut être confié à un expert compression
+* la partie gestion de la puissance confié à un expert électronique de puissance
+* etc...
+
+Le couplage correspond à l'augmentation de la connaissance nécessaire de plusieurs domaines d'expertise.
+Du point de vue d'un concepteur de module, le couplage implique une connaissance plus ou moins poussée de modules autre que le sien.
+
+Pour reprendre notre exemple, un fort couplage serait que le concepteur la partie compression sache comment le module optique fonctionne intimement.
+--
+
+[.splash.background]
+[%notitle]
+[.center]
+=== Couplage et cohésion
+
+[%step]
+Définissez vos modules comme si vous aviez une armée d'expert(e)s à votre disposition.
+[%step]
+Chaque module est associé à un expert, réel ou dans votre tête, et un seul.
+[%step]
+La compréhension et la conception d'un module ne nécessite qu'une casquette d'expert.
+
+
+== Nature de l'interface
+
+[.left-column-2-3]
+--
+* L'interface
+** Sépare les modules
+** Permet les interactions modules
+* Plusieurs types d'interfaces
+** Espaces de nommage => packaging, modules python 
+** Interface => au sens moyen d'interagir
+* Objectif conception 
+** *Minimiser* les impacts des _modifications_ en cas d'évolution des structures internes
+** Produire des modules à forte cohésion et faible couplage
+--
+[.right-column-1-3]
+[.center]
+image::images/design-cohesion_vs_coupling_2.png[height=300]
+
+[NOTE.notes]
+--
+L'interface sert de frontière entre les modules. Ces frontières sont de plusieurs nature.
+Par exemple l'espace de nommage dans lequel les entités sont organisé définit une frontière et suivant les écosystèmes des intimités différentes.
+
+Par exemple, _java_ prévoit un niveau de visibilité, _protected_ qui permet une visibilité par tous les membres du même _package_.
+
+Python peut, en jouant sur les initialisations de packages au sein des `__init__.py`, offrir une visibilité _choisie_ en fonction de ce que le concepteur veut montrer, mais cela reste encore très libéral. Python est un langage de gentlemen, et un gentlemen est censé se garder de regarder là où il ne doit pas.
+
+--
+
+[.splash.background]
+[.center]
+[%notitle]
+=== Nature de l'interface
+
+Comment améliorer les interfaces pour répondre à ces exigences ?
+
+[%step]
+**Rendre l'interface la plus abstraite possible**
+
+=== Abstraction
+
+* Description *minimale* d'un module
+** Interactions, services fondamentaux
+* Utilisateur du module
+** Minimisation des connaissances => _Que dois-je savoir au minimum pour utiliser ce module ?_
+* Concepteur du module
+** Minimisation de l'exposition => _Que dois-je montrer au minimum pour être utiliser ?_
+
+=== Abstraction et contractualisation 
+
+* Compréhension
+** L'abstraction est plus facile à manipuler, définir, échanger
+* Élément de communication 
+** Entre utilisateurs et concepteurs
+* Contractualisation 
+** Engagement des concepteurs envers ses utilisateurs
+** Formalisation des exigences minimales des utilisateur envers des concepteurs
+* Liberté d'action pour le concepteur
+** Tant que l'interface (contrat) est respectée, tout est possible
 
 
 
-=== 7 types de couplages
+=== Illustration des bénéfices de l'abstraction
 
-Selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
+[.center]
+image::images/M2_OSAE-interface.svg[]
 
-**7 niveaux de dépendances ou couplages**
+* 3 composants différents
 
-* **Sans couplage**
-** les composants n'échangent pas d'information.
-* **Par données**
-** les composants échangent de l'information par des méthodes utilisant des arguments (paramètres) de type simple (nombre, chaîne de caractères, tableau).
-* **Par paquet**
-** les composants échangent de l'information par des méthodes utilisant des arguments de type composé (structure, classe).
-* **Par contrôle**
-** les composants se passent ou modifient leur contrôle par changement d'un drapeau (verrou).
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
 
-=== 7 types de couplages
+[.center]
+image::images/M2_OSAE-interface_0-1_.svg[]
 
-**7 niveaux de dépendances ou couplages**
+* 3 modules différents
+** Avec des structures internes.
 
-* **Externe**
-** les composants échangent de l'information par un moyen de communication externe (fichier, pipeline, lien de communication).
-* **Commun (global)**
-** les composants échangent de l'information via un ensemble de données (variables) commun.
-* **Par contenu (interne)**
-** les composants échangent de l'information en lisant et écrivant directement dans leurs espaces de données (variables) respectifs.
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_0-2_.svg[]
+
+* 3 modules différents
+** Avec des structures internes *et des interfaces.*
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_1_.svg[]
+
+* Communication
+** un composant _interne_ doit interagir avec le module du milieu
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_2_.svg[]
+
+* Communication
+** un composant _interne_ doit interagir avec le module du milieu
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_3_.svg[]
+
+* Communication
+** Cette interaction modifie son état interne.
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_4_.svg[]
+
+* Communication
+** Il veut communiquer son état à celui de gauche
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_5_.svg[]
+
+* Communication
+** Il veut communiquer son état à celui de gauche
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_6_.svg[]
+
+* Communication
+** Ce message modifie son état interne.
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+--
+* De l'extérieur _(utilisateur)_,
+** seules les interfaces sont perceptibles
+
+[.center]
+image::images/M2_OSAE-interface_7_.svg[]
+--
+
+[%step]
+--
+* De l'intérieur _(concepteur)_,
+** seules les interfaces sont à prendre en compte
+
+[.center]
+image::images/M2_OSAE-interface_8_.svg[]
+--
+
+
+=== Abstraction de l'interface
+
+[%step]
+* Avantages
+** Fournit *stabilité* et *simplicité* de manipulation
+** Permet de communiquer et contractualiser entre groupe de personnes
+** Est concentrée sur la représentation (modélisation) 
+** Cache les détails d'implémentation
+* Inconvénients
+** Un peu _overkill_ dans des cas très simples
+** Ne permet pas de faire "tourner" le code
+
+
+== Cohésion, Cohérence et Abstraction
+
+[.left-column-2-3]
+--
+* Orientation du refactoring
+** Renforcer la cohésion du module
+** Diminuer le couplage entre modules
+** Accroître l'abstraction de l'interface
+* Refactoring => Minimisation 
+** De la **connaissance** 
+*** Pour la compréhension, donc la conception
+** Des efforts pour faire **évoluer** la conception
+--
+
+[%step]
+[.right-column-1-3]
+--
+* => Éviter 
+** les effets de bords 
+** et réactions en chaîne
+[.center]
+
+image::images/reaction_en_chaine.gif[]
+--
+
+== Technique de refactoring pour améliorer la conception
+
+* `Extract Method`
+* `Move Method`
+* `Move Field`
+* `Extract Class`
+
+
+[.subsection.background]
+[.center]
+== Principes de conceptions fondamentaux
+
+=== Principes de conceptions fondamentaux
+
+* Les principes à connaître absolument sont 
+** Separation of Concern
+** Single Responsibility Principle
+
+=== Separation of concern
+
+* Séparer les composants par type de préoccupation
+** C'est bon, je pense qu'on a tous compris...
+** Identifier, séparer, déplacer, regrouper...
+
+=== Single Responsibility Principle
+
+_You have one job, only one job_
+
+[%step]
+* Ce principe s'applique aussi bien 
+** aux fonctions 
+** qu'aux classes
+
+
+=== Single Responsibility Principle: fonctions
+
+**Règle d'Or**
+
+[quote,Uncle Bob,Code Clean]
+____
+Une fonction ne doit faire **qu'une** chose, une **seule** chose, mais bien.
+____
+
+=== Illustration 
+
+[.left-column]
+--
+[source,python]
+----
+def end_process(process: Process, ctx: Context):
+    process.end() <1>
+
+    file = ctx.get_file() <2>
+    if file: 
+        with open(file,'w') as f:
+            ... # Do something with file
+    user = ctx.get_user() <3>
+    if user: 
+        ... # Do something with user
+----
+[.smaller]
+<1> Gestion d'un process
+<2> Récupération et gestion d'un fichier
+<3> Récupération et gestion d'un utilisateur
+--
+
+[.right-column]
+--
+[.smaller]
+* Constat
+** Gestion d'un process d'un côté
+** Gestion d'un fichier et d'un utilisateur de l'autre
+--
+=== Illustration 
+
+[.left-column]
+--
+[source,python]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+
+    save_file_alert_user(ctx) <1>
+
+def save_file_alert_user(ctx: Context): <2>
+    file = ctx.get_file()
+    user = ctx.get_user()
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+    if user:
+        ... # Do something with user
+
+----
+[.smaller]
+<1> Séparation des préoccupations
+<2> Création d'une fonction `save_file_alert_user`
+--
+
+[.right-column]
+--
+* Mais `save_file_alert_user` ...
+** n'est pas réutilisable en dehors de ce cas d'usage
+** fait deux choses très différentes
+** => 2 domaines d'expertise impliqués
+*** _Spécialiste de la sauvegarde des fichiers_ 
+***  _Spécialiste des communications avec l'utilisateur_
+--
+=== Illustration 
+
+[source,python,attributes]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+    save_file(ctx.get_file()) <1>
+    alert_user(ctx.get_user()) <2>
+
+def save_file(file): <1>
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+def alert_user(user): <2>
+    if user:
+        ... # Do something with user
+----
+[.smaller]
+<1> `save_file` relève du domaine d'expertise _Spécialiste de la sauvegarde des fichiers_  et lui seul
+<2> `alert_user` relève du domaine d'expertise _Spécialiste des communications avec l'utilisateur_ et lui seul
+
+=== Illustration 
+
+[source,python,attributes]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+    do_post_process(ctx) <1>
+
+def do_post_process(ctx: Context): <2>
+    save_file(ctx.get_file())
+    alert_user(ctx.get_user())
+
+def save_file(file): <3>
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+def alert_user(user): <4>
+    if user:
+        ... # Do something with user
+----
+[.smaller]
+<1> Introduction de `do_post_process`
+<2> `do_post_process` cache des détails sans importance du point de vue du _Spécialiste de la gestion des processus_ mais est *adaptable* suivant les situations.
+<3> `save_file` fait une seule chose, mais bien
+<4> `alert_user` fait une seule chose, mais bien
+
+
+
+=== Single Responsibility Principe : application à une classe
+
+[Quote]
+___
+ _une classe ne doit changer que pour une seule raison_
+___
+
+[%step]
+_Formulée ainsi, cette définition semble énigmatique, sauf si ...__
+
+=== Single Responsibility Principe : application à une classe
+
+* si on le relit avec la règle d'or : 
+
+[Quote]
+___
+ _Comme une classe ne doit prendre en charge qu'une seule responsabilité, et bien le faire, seule une évolution de cette responsabilité peut motiver la modification de la classe._
+___
 
 
 [.end.background]

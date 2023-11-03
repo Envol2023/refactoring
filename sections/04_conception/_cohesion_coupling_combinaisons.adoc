@@ -1,0 +1,63 @@
+== Cohésion et couplage : illustrations
+
+[.left-column]
+[.center]
+--
+*Cohésion*
+
+image::images/design-cohesion_vs_coupling_0.png[width=50%]
+--
+
+[.right-column]
+[.center]
+--
+*Couplage*
+
+image::images/design-cohesion_vs_coupling_1.png[width=50%]
+--
+
+
+ifdef::mode_slide[]
+=== Cohésion et couplage : illustrations
+endif::[]
+
+[.center]
+--
+Faible cohésion, fort couplage
+
+image::images/design-Low_cohesion_high_coupling.png[height=300]
+--
+
+
+ifdef::mode_slide[]
+=== Cohésion et couplage : illustrations
+endif::[]
+
+[.center]
+--
+Forte cohésion, fort couplage
+
+image::images/design-high_cohesion_high_coupling.drawio.png[height=300]
+--
+
+ifdef::mode_slide[]
+=== Cohésion et couplage : illustrations
+endif::[]
+
+[.center]
+--
+Faible cohésion, faible couplage
+
+image::images/design-low_cohesion_low_coupling.png[height=300]
+--
+
+ifdef::mode_slide[]
+=== Cohésion et couplage : illustrations
+endif::[]
+
+[.center]
+--
+Forte cohésion, faible couplage
+
+image::images/design-high_cohesion_low_coupling.png[height=300]
+--

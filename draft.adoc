@@ -851,7 +851,7 @@ En programmation Orientée Objet, nous rencontrons généralement deux type prin
 * l'interface, qui décrit uniquement les attributs et les interactions possibles d'un type, sans se préoccuper de comment le faire. Une interface correspond au **WHAT** sans **HOW**
 * la classe abstraite, qui décrit les attributs et les interactions possibles d'un type, mais en fournit également une concrétisation partielle. La classe abstraite ne peut exister sans rafinement possible. Elle répond à la fois à la question **WHAT** et partiellement à **HOW**
 
-=== Abstraction par langage
+== Abstraction par langage
 
 === Abstraction en java
 
@@ -1078,7 +1078,7 @@ C'est le subdivision du travail en fonction de l'expertise nécessaire. Vous n'a
 Pourquoi ?
 
 Parce que vous faite l'hypothèse raisonnable que les experts font mieux ce pour quoi ils sont experts que lorsqu'ils vont s'aventurer dans un domaine en dehors de leur expertise.
-Car ainsi il se focalisent sur ce qu'ils savent très bien faire et minimisent les connaissances nécessaires
+Car ainsi il se focalisent sur ce qu'ils savent très bien faire et minimisent les connaissances nécessaires.
 
 
 == Cohésion et connaissance
@@ -1092,7 +1092,7 @@ Car ainsi il se focalisent sur ce qu'ils savent très bien faire et minimisent l
 
 [NOTE.notes]
 --
-La cohésion correspond à la minimisation des connaissance nécessaire à la compréhension d'un module. C'est une vision interne au module.
+La cohésion correspond à la minimisation des connaissances nécessaires à la compréhension d'un module. C'est une vision interne au module.
 
 * Un module à forte cohésion pourrait être placé sous la responsabilité d'un expert dont le savoir est concentré sur un domaine précis à une échelle donnée.
 

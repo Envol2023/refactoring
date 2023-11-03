@@ -1,0 +1,59 @@
+== Plus de détails
+
+=== 7 types de cohésion 
+
+[.smaller]
+Selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
+
+* **Accidentel** : 
+** Lien entre composants inexistant ou futile.
+* **Logique** : 
+** Les composants sont reliés logiquement par un ou plusieurs critères communs.
+*** Exemple : _les composants sont rangés par type (Controller, Model, View en MVC)_
+* **Temporel** : 
+** Les composants doivent être appelés au cours de la même période de temps.
+
+[NOTE.notes]
+--
+La cohésion logique est un rapprochement par proximité. Par exemple les composants font des choses similaires, mais sans relations entre eux, comme par exemple le fait de placer tous les drivers dans un même module, même si ils s'ignorent mutuellement.
+--
+
+=== 7 types de cohésion  
+
+* **Procédural** : 
+** Les composants doivent être appelés dans un ordre spécifique.
+* **Communicationnel** : 
+** Les composants manipulent le même ensemble spécifique de données.
+* **Séquentiel** : 
+** Les composants qui manipulent le même ensemble de données doivent être appelés dans un ordre spécifique.
+* **Fonctionnel** : 
+** Les composants contribuent à une seule et unique tâche bien spécifique.
+
+
+
+=== 7 types de couplages
+
+Selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
+
+**7 niveaux de dépendances ou couplages**
+
+* **Sans couplage**
+** les composants n'échangent pas d'information.
+* **Par données**
+** les composants échangent de l'information par des méthodes utilisant des arguments (paramètres) de type simple (nombre, chaîne de caractères, tableau).
+* **Par paquet**
+** les composants échangent de l'information par des méthodes utilisant des arguments de type composé (structure, classe).
+* **Par contrôle**
+** les composants se passent ou modifient leur contrôle par changement d'un drapeau (verrou).
+
+=== 7 types de couplages
+
+**7 niveaux de dépendances ou couplages**
+
+* **Externe**
+** les composants échangent de l'information par un moyen de communication externe (fichier, pipeline, lien de communication).
+* **Commun (global)**
+** les composants échangent de l'information via un ensemble de données (variables) commun.
+* **Par contenu (interne)**
+** les composants échangent de l'information en lisant et écrivant directement dans leurs espaces de données (variables) respectifs.
+

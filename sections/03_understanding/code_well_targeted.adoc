@@ -3,6 +3,7 @@ include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
 :imagesdir: ../
 endif::[]
+:icons: font
 
 // tag::content[]
 
@@ -19,11 +20,11 @@ Coder, c'est structurer un texte pour mettre en relief les préoccupations (_Con
 * Une préoccupation annonce son **intention** (_WHAT_).
 ** une réponse courte à la question 
 *** _"Qu'est-ce que ça fait ?"._
-* Une préoccupation n'est pas une *implementation* (_HOW_).
+* Une préoccupation n'est pas une *implémentation* (_HOW_).
 ** Elle ne répond pas à la question 
 *** _"Comment ça fait"._
 
-== Montrer les intentions avant les implementations
+=== Montrer les intentions avant les implémentations
 
 
 [source,python,attributes]
@@ -161,6 +162,24 @@ def check_propulsion_energy_against_duration(report, patrol_duration):
         report.register('propulsion_energy','NotEnoughEnergy', CRITICAL)
 ----
 
+[%step]
+--
+La sémantique du commentaire doit transparaître dans le nom de la fonction
+[.big]
+[source,python,attributes]
+----
+    #-- Check propulsion energy against patrol duration --
+----
+
+[.center]
+icon:arrow-down[]
+
+[.big]
+[source,python,attributes]
+----
+def check_propulsion_energy_against_duration(report, patrol_duration):
+----
+--
 === !
 
 [.simple]
@@ -255,7 +274,7 @@ def report_starship_availability_for(patrol):
 ** bataille avec les outils,
 * Et ce, sans savoir vraiment ce que vous voulez vraiment.
 
-== Séparer l'intention de l'implémentation
+=== Séparer l'intention de l'implémentation
 
 [.simple]
 Vous avez l'idée de ce que vous voulez, de l'*intention*, d'une manière très abstraite.
@@ -264,7 +283,7 @@ Vous avez l'idée de ce que vous voulez, de l'*intention*, d'une manière très 
 image::images/good_practices-what_how_call_hierarchie_0.svg[]
 
 
-== Séparer l'intention de l'implémentation
+=== Séparer l'intention de l'implémentation
 
 [.simple]
 Vous réfléchissez à la manière d'obtenir, d'une manière un peu moins abstraite
@@ -277,16 +296,16 @@ mais pas très poussée.
 
 
 
-== Séparer l'intention de l'implémentation
+=== Séparer l'intention de l'implémentation
 
 [.simple]
-L'**implementation** est constituée du  flux de contrôle des instructions
+L'**implémentation** est constituée du flux de contrôle des instructions
 
 [.center]
 image::images/good_practices-what_how_call_hierarchie_2.svg[]
 
 
-== Séparer l'intention de l'implémentation
+=== Séparer l'intention de l'implémentation
 
 [.simple]
 Chaque instruction est en soi un objectif à atteindre
@@ -294,9 +313,9 @@ Chaque instruction est en soi un objectif à atteindre
 [.center]
 image::images/good_practices-what_how_call_hierarchie_3.svg[]
 
-... une **intention** à un niveau moins abstrait
+\... une **intention** à un niveau moins abstrait
 
-== Séparer l'intention de l'implémentation
+=== Séparer l'intention de l'implémentation
 
 [.simple]
 Et ainsi de suite...
@@ -304,7 +323,7 @@ Et ainsi de suite...
 [.center]
 image::images/good_practices-what_how_call_hierarchie_4.svg[]
 
-== Séparer l'intention de l'implémentation
+=== Séparer l'intention de l'implémentation
 
 [.simple]
 Jusqu'à atteindre les primitives du langage, des libraries, voire de l'OS
@@ -314,25 +333,30 @@ Jusqu'à atteindre les primitives du langage, des libraries, voire de l'OS
 image::images/good_practices-what_how_call_hierarchie_7.svg[]
 
 
-== The "WHAT then HOW" chaining.
 
+== Hiérarchisation WHAT then HOW
+
+[.center]
 image::images/good_practices-scale_0.svg[]
 
-== The "WHAT then HOW" chaining.
+=== Hiérarchisation WHAT then HOW
 
+[.center]
 image::images/good_practices-scale_1.svg[]
 
-== ! 
+=== ! 
 
 Passer d'un niveau supérieur à un niveau inférieur.
 
+[.center]
 image::images/good_practices-scale_2.svg[]
 
 
-== ! 
+=== ! 
 
 Passer d'un niveau supérieur à un niveau inférieur.
 
+[.center]
 image::images/good_practices-scale_3.svg[]
 
 == Principes sur l'écriture des fonctions

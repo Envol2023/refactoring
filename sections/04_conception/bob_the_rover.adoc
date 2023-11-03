@@ -140,7 +140,7 @@ def move(rover,
 ----
 --
 
-== Structuration des données
+=== Structuration des données
 
 * Comme un _tout_ (conteneur unique)
 
@@ -182,7 +182,7 @@ def move(rover,
 ----
 --
 
-== Structuration des données
+=== Structuration des données
 
 [%noheader]
 [cols="a,2a,4a"]
@@ -281,7 +281,7 @@ def move(rover,
 
 |===
 
-== Structuration des données
+=== Structuration des données
 
 --
 *  La _forme_ des données influence la perception
@@ -327,7 +327,7 @@ def move(rover,
 ----
 --
 
-== Structuration des données
+=== Structuration des données
 --
 *  La _forme_ des données influence la perception
 ** Une structuration intelligente des données 
@@ -341,7 +341,7 @@ image::images/expressiveness.png[]
 [.splash.background]
 [.center]
 [%notitle]
-== Structuration des données
+=== Structuration des données
 
 [%step]
 Nous avons donc {cr}
@@ -356,7 +356,7 @@ Et si nous avions les deux ensemble ?
 
 
 
-== Object Oriented Programing
+=== Object Oriented Programing
 
 [.left-column-2-3]
 --
@@ -379,38 +379,26 @@ image::images/sameroof.png[]
 --
 
 
-== Object Oriented Programing
-
-[.left-column]
---
-* La POO permet d'organiser le code
-** Données et algorithme en une seule entité
---
-[.right-column]
---
-* Unité cohérente de programmation
-** Procédures proches des structures de données auxquelles elles sont dédiées.
-** Relations plus évidentes
---
+=== Object Oriented Programing
 
 [.center]
 image::images/procedural_vs_object.png[]
 
-== Taille du projet
+=== Taille du projet
 
 Pour un petit projet, l'opposition entre procédural et OOP n'est pas un problème majeur.
 
 [.center]
 image::images/data_algo.png[]
 
-== Taille du projet
+=== Taille du projet
 
 Mais pour des projets plus importants...
 
 [.center]
 image::images/big_project.png[]
 
-== Taille du projet
+=== Taille du projet
 
 C'est un modèle de réduction de la complexité
 

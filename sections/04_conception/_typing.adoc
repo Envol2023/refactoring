@@ -1,0 +1,384 @@
+== Abstraction par langage
+
+* En java
+* En python
+
+=== Abstraction en java
+
+[.left-column]
+--
+[.center]
+Interface
+
+
+[.big]
+[source,java,attributes]
+----
+interface Door {
+
+    void open();
+
+    void close();
+
+    boolean isOpened();
+}
+----
+--
+
+[.right-column]
+--
+[.center]
+Classe abstraite
+
+[.big]
+[source,java,attributes]
+----
+abstract class AbstractDoor {
+
+    private boolean status;
+
+    protected abstract boolean doOpen();
+    protected abstract boolean doClose();
+
+    void open(){
+        status = doOpen();
+    }
+
+    void close(){
+        status = ! doClose();
+    }
+
+    boolean isOpened() {
+        return status;
+    }
+}
+----
+--
+
+=== Abstraction en java
+
+[.left-column]
+--
+[.center]
+Classe abstraite
+
+[.big]
+[source,java,attributes]
+----
+abstract class AbstractDoor {
+
+    private boolean status;
+
+    protected abstract boolean doOpen();
+    protected abstract boolean doClose();
+
+    void open(){
+        status = doOpen();
+    }
+
+    void close(){
+        status = ! doClose();
+    }
+
+    boolean isOpened() {
+        return status;
+    }
+}
+----
+--
+
+[.right-column]
+--
+[.center]
+Concrétisation
+
+[.big]
+[source,java]
+----
+class DrawbridgeDoor extends AbstractDoor {
+    private Drawbridge bridge = new Drawbridge();
+
+    protected boolean doOpen(){
+        this.bridge.lift(true);
+        return this.bridge.isLifted();
+    }
+    protected boolean doClose() {
+        this.bridge.lift(false);
+        return ! this.bridge.isLifted();
+
+    }
+}
+----
+--
+
+=== Abstraction en java
+
+
+ou utilisation de l'interface `Door`
+
+[.left-column]
+--
+[.center]
+Concrétisation
+
+[.big]
+[source,java]
+----
+class DrawbridgeDoor implements Door {
+    private Drawbridge bridge = new Drawbridge();
+
+    void open(){
+        this.bridge.lift(true);
+    }
+    void close(){
+        this.bridge.lift(false);
+    }
+    boolean isOpened() {
+        return this.buld.isLifted();
+    }    
+}
+----
+--
+
+[.right-column]
+--
+[.center]
+ou un mix des deux
+
+[.big]
+[source,java,attributes]
+----
+abstract class AbstractDoor implements Door{
+    ...
+}
+class DrawbridgeDoor extends AbstractDoor {
+    ...
+}
+----
+--
+
+== Abstraction en Python
+
+* Duck walking
+* AbstractClass
+* Prototype
+
+=== Abstraction en Python : Duck Walking
+
+[NOTE.notes]
+--
+Le python est un langage de gentlemen, qui se comportent comme il se doit.
+Aussi Python n'a pas les mécanismes de Java, comme un typage fort et statique.
+Le python ne vérifie jamais le type d'une entitée, il se contente d'utiliser les méthodes qui sont attendues.
+
+Il n'y a pas de mot-clef interface comme en _java_ !
+
+La principale abstraction en Python, c'est le Duck Walking
+--
+
+* Langage de gentlemen
+** Presque tout est accessible 
+** Pas de mécanisme de typage fort, pas de vérification à l'exécution
+* Validation laissée à des outils tiers
+* Duck Walking
+** Principale abstraction
+
+[quote]
+____
+si ça ressemble à un canard, si ça nage comme un canard et si ça cancane comme un canard, c'est un canard
+____
+
+
+=== Abstraction en Python : Duck Walking
+
+[.left-column]
+--
+[.center]
+Type _Porte_
+
+[.big]
+[source,python]
+----
+class Door:
+  def open(self):
+    ...
+  def close(self):
+    ...
+  def lock(self):
+    ...
+
+----
+
+[.center]
+Type _Four_
+
+[.big]
+[source,python]
+----
+class Oven:
+  def open(self):
+    ...
+  def close(self):
+    ...
+  def heat(self, temperature):
+    ...
+----
+--
+
+[.right-column]
+--
+[.center]
+Fonction conçue pour une _Porte_
+
+[.big]
+[source,python]
+----
+def open_and_close(door: Door):
+    door.open() # <--- Expected
+
+    do_something()
+    
+    door.close() # <--- Expected
+----
+
+[.center]
+Fonctionne avec une _Porte_
+
+[.big]
+[source,python]
+----
+
+door = Door()
+open_and_close(door)
+----
+
+[.center]
+Fonctionne avec un _Four_
+
+[.big]
+[source,python]
+----
+oven = Oven()
+open_and_close(oven)
+----
+--
+
+=== !
+
+Alors qu'en java
+
+[.big]
+[source,java,attributes]
+----
+class Operator {
+    void openAndClose(Door door) { ... }
+}
+
+operator.openAndClose(new Door()) // OK
+operator.openAndClose(new Oven()) // KO ne compile pas
+----
+
+=== Abstraction en Python : renforcement avec ABC
+
+* Module abc - Abstract Base Classes
+** Vérifie que des méthode abstraites sont redéfinies
+*** Au runtime
+*** Vérifie toujours le _Duck Walking_
+
+[.left-column]
+--
+[.center]
+Classe _abstraite_
+[.big]
+[source,python]
+----
+from abc import ABC, abstractmethod
+
+class Door(ABC):
+    
+    @abstractmethod
+    def lock(self):
+        ...
+----
+[.center]
+Classe _dérivée_
+[.big]
+[source,python]
+----
+class Oven(Door):
+    ...
+----
+--
+
+[.right-column]
+--
+[.center]
+Instanciation
+[.big]
+[source,python]
+----
+oven = Oven()
+----
+[.center]
+Erreur au runtime
+[.big]
+[source,python]
+----
+TypeError: Can't instantiate abstract class Oven with abstract method lock
+----
+--
+
+=== Abstraction en Python : renforcement avec Protocole
+
+[.left-column]
+--
+[.center]
+Définition d'un _protocole_
+[.big]
+[source,python]
+----
+from typing import Protocol, runtime_checkable
+
+@runtime_checkable
+class Openable(Protocol):
+    def open(self): ...
+    def close(self): ...
+----
+
+[.center]
+Définition d'un type attendu
+[.big]
+[source,python]
+----
+def open_and_close(openable: Openable):
+    openable.open() # <--- Expected
+
+    do_something()
+    
+    openable.close() # <--- Expected
+----
+--
+
+[.right-column]
+--
+[.center]
+Toujours pas vérifiable au runtime
+[.big]
+[source,python]
+----
+class Oven:
+    def open(self): ...
+    def close(self): ...
+    def heat(self, temperature): ...
+----
+
+[.center]
+Mais par les outils tiers
+
+[.big]
+[source,python]
+----
+isinstance(Oven(), Openable)
+True
+----
+--
