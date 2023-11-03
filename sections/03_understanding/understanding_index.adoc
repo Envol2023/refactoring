@@ -81,6 +81,10 @@ include::code_is_text_naming.adoc[{include_options}]
 include::code_well_targeted.adoc[{include_options}]
 
 
+== Bad smells 
+
+Mettre ici bad smells sur le thème de l'écriture. 
+
 [.end.background]
 [.center]
 == Améliorer la compréhension
