@@ -321,9 +321,9 @@ ____
 
 [%step]
 * Faible couplage
-** Les composants des modules n'échangent pas d'information.
+** Les composants des différents modules n'échangent pas d'information.
 * Fort couplage
-** les composants des modules lisent et écrivent directement leurs données respectives.
+** les composants des différents modules lisent et modifient directement leurs données respectives.
 
 == Abstraction
 
