@@ -511,7 +511,7 @@ def compute_invoice(shipment, order, discount):
     return shipment.price + order_price    
 ----
 
-* 2) Créer une fonction dont le nom est révélateur de sa fonction
+* 2) Créer une fonction dont le nom est révélateur
 
 [source,python]
 ----
@@ -591,17 +591,19 @@ def compute_invoice(shipment, order, discount):
 * 8) Commiter 
 * Passer à la technique suivante si nécessaire
 
-=== Mon point de vue
+=== Mon point de vue personnel
 
-**Remettre à plus tard**
 
-* Le refactoring est un ensemble de techniques et d'habitudes, qui vont des plus simples aux plus complexes
-* Martin Fowler les a formalisé dans son célèbre ouvrage.
-* Point de vue personnel
+* Le refactoring => ensemble de techniques et d'habitudes, 
+** qui vont des plus simples aux plus complexes
+* Je suis de culture _Java_
+** => Refactoring nécessaire
+** => Disponibles dans Eclipse
 ** J'en connaissais ou n'en pratiquais que quelques unes
-*** Culture Java, outils très puissants (Eclipse)
-** Je considérais certaines comme insignifiantes jusqu'à la lecture du livre de M. Folwer
-** Je recommande de les parcourir toutes et de lire la motivation derrière : elle est souvent très légitime 
+* Je considérais certaines comme insignifiantes
+** => jusqu'à la lecture du livre de M. Folwer
+
+*Je recommande de les parcourir toutes et de lire la motivation derrière : elle est souvent très légitime*
 
 [.splash.background]
 [.center]
