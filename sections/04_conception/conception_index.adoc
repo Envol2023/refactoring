@@ -277,7 +277,7 @@ Regrouper données et traitements, au sein d'un même module, aide à réduire l
 * Critères
 ** Comment savoir ce qui va ensemble et ce qui est différent ?
 * Interface
-** Séparation entre composants
+** Séparation entre modules 
 ** Comment interagir avec les autres modules
 --
 
@@ -354,9 +354,7 @@ include::_cohesion_coupling_types.adoc[]
 * Notions liées
 ** Cohésion -> vision intra-module
 ** Couplage -> vision inter-modules
-* Notions résiduelles
 ** Couplage _résiduel_ => coopération nécessaire pour atteindre des objectifs de haut-niveau
-** Cohésion parfaite => pas facile à conserver lors des évolutions
 * Pas évidentes à mesurer
 ** Existence de métriques mais très théorique et peu utilisables
 * Comment pouvons nous **améliorer les choses** ?
@@ -388,6 +386,9 @@ CRP (Common Reuse Principle)
 Couplage et cohésion traduisent le niveau de connaissances nécessaires 
 
 L'objectif de la refactorisation est de minimiser ces connaissances.
+
+[%step] 
+Comment _sentir_ cette minimisation ? 
 
 === Couplage et cohésion > subdivision du travail
 
