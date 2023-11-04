@@ -346,20 +346,6 @@ include::_cohesion_coupling_combinaisons.adoc[]
 
 include::_cohesion_coupling_types.adoc[]
 
-include::_typing.adoc[]
-
-== Définition d'un bon module
-
-*A déplacer plus bas*
-
-[%step]
-* Caractérisation d'un bon module
-*** Forte cohésion
-*** Faible couplage
-*** Niveau d'abstraction adapté
-* Objectifs du refactoring
-** Transformer le code de façon à avoir de _bons_ modules
-
 === Couplage et cohésion
 
 [%step]
@@ -533,20 +519,31 @@ Chaque module est associé à un expert, réel ou dans votre tête, et un seul.
 [%step]
 La compréhension et la conception d'un module ne nécessite qu'une casquette d'expert.
 
+[.splash.background]
+[.center]
+[%notitle]
+== Interface du module
 
-== Nature de l'interface
+* Ok, un *bon* module c'est :
+** Une *forte* cohésion
+** Un *faible* couplage
+
+[%step]
+Mais qu'en est-il de l'interface ?
+
+== Interface du module
 
 [.left-column-2-3]
 --
 * L'interface
 ** Sépare les modules
-** Permet les interactions modules
+** Permet les interactions inter-modules
 * Plusieurs types d'interfaces
 ** Espaces de nommage => packaging, modules python 
 ** Interface => au sens moyen d'interagir
 * Objectif conception 
 ** *Minimiser* les impacts des _modifications_ en cas d'évolution des structures internes
-** Produire des modules à forte cohésion et faible couplage
+
 --
 [.right-column-1-3]
 [.center]
@@ -566,7 +563,7 @@ Python peut, en jouant sur les initialisations de packages au sein des `__init__
 [.splash.background]
 [.center]
 [%notitle]
-=== Nature de l'interface
+=== Interface du module
 
 Comment améliorer les interfaces pour répondre à ces exigences ?
 
@@ -585,7 +582,9 @@ Comment améliorer les interfaces pour répondre à ces exigences ?
 * Utilisateur du module
 ** Minimisation des connaissances => _Que dois-je savoir au minimum pour utiliser ce module ?_
 * Concepteur du module
-** Minimisation de l'exposition => _Que dois-je montrer au minimum pour être utiliser ?_
+** Minimisation de l'exposition => _Que dois-je montrer au minimum pour être utilisable ?_
+
+include::_typing.adoc[]
 
 === Exemple d'interface 
 
@@ -650,7 +649,7 @@ class Communicator(Protocol):
 image:images/interface_as_contract.svg[]
 
 
-=== Abstraction comme minimisation du couplage
+== Abstraction comme minimisation du couplage
 
 include::_contract_coupling_illustration_schema.adoc[{include_options}]
 

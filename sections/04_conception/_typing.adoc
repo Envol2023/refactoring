@@ -55,6 +55,7 @@ abstract class AbstractDoor {
 ----
 --
 
+
 === Abstraction en java
 
 [.left-column]
@@ -66,23 +67,13 @@ Classe abstraite
 [source,java,attributes]
 ----
 abstract class AbstractDoor {
-
-    private boolean status;
+    //...
 
     protected abstract boolean doOpen();
+
     protected abstract boolean doClose();
 
-    void open(){
-        status = doOpen();
-    }
-
-    void close(){
-        status = ! doClose();
-    }
-
-    boolean isOpened() {
-        return status;
-    }
+    //...
 }
 ----
 --
@@ -90,22 +81,23 @@ abstract class AbstractDoor {
 [.right-column]
 --
 [.center]
-Concrétisation
+Concrétisation par _extension_
 
 [.big]
 [source,java]
 ----
 class DrawbridgeDoor extends AbstractDoor {
+
     private Drawbridge bridge = new Drawbridge();
 
     protected boolean doOpen(){
         this.bridge.lift(true);
         return this.bridge.isLifted();
     }
+
     protected boolean doClose() {
         this.bridge.lift(false);
         return ! this.bridge.isLifted();
-
     }
 }
 ----
@@ -119,7 +111,7 @@ ou utilisation de l'interface `Door`
 [.left-column]
 --
 [.center]
-Concrétisation
+Concrétisation par _implémentation_
 
 [.big]
 [source,java]
@@ -159,11 +151,16 @@ class DrawbridgeDoor extends AbstractDoor {
 
 == Abstraction en Python
 
-* Duck walking
-* AbstractClass
-* Prototype
-
-=== Abstraction en Python : Duck Walking
+* Langage de gentlemen
+** Presque tout est accessible 
+** Pas de mécanisme de typage fort, 
+** Pas de vérification à l'exécution
+* Validation laissée à des outils *tiers*
+** `Mypy`, `Pytype`, `Pyright/Pylance`
+* Abstractions
+** Duck walking
+** Abstract Base Classes
+** Protocol
 
 [NOTE.notes]
 --
@@ -176,17 +173,19 @@ Il n'y a pas de mot-clef interface comme en _java_ !
 La principale abstraction en Python, c'est le Duck Walking
 --
 
-* Langage de gentlemen
-** Presque tout est accessible 
-** Pas de mécanisme de typage fort, pas de vérification à l'exécution
-* Validation laissée à des outils *tiers*
-** Mypy, Pytype, Pyright/Pylance
+
+=== Abstraction en Python : Duck Walking
+
 * Duck Walking
 ** Principale abstraction
 
+[.center]
 [quote]
 ____
-si ça ressemble à un canard, si ça nage comme un canard et si ça cancane comme un canard, c'est un canard
+Si ça ressemble à un canard, {cr}
+si ça nage comme un canard {cr}
+et si ça cancane comme un canard, {cr}
+c'est un canard
 ____
 
 
@@ -207,12 +206,13 @@ class Door:
     ...
   def lock(self):
     ...
-
 ----
+--
 
+[.right-column]
+--
 [.center]
 Type _Four_
-
 [.big]
 [source,python]
 ----
@@ -226,7 +226,7 @@ class Oven:
 ----
 --
 
-[.right-column]
+[.reset-column]
 --
 [.center]
 Fonction conçue pour une _Porte_
@@ -235,24 +235,27 @@ Fonction conçue pour une _Porte_
 [source,python]
 ----
 def open_and_close(door: Door):
-    door.open() # <--- Expected
-
-    do_something()
-    
-    door.close() # <--- Expected
+    door.open() # <--- Si ça ouvre comme une porte
+    door.close() # <--- Si ça ferme comme une porte
 ----
+--
 
+[%step]
+[left-column]
+--
 [.center]
 Fonctionne avec une _Porte_
-
 [.big]
 [source,python]
 ----
-
 door = Door()
 open_and_close(door)
 ----
+--
 
+[%step]
+[.right-column]
+--
 [.center]
 Fonctionne avec un _Four_
 
@@ -276,15 +279,14 @@ class Operator {
 }
 
 operator.openAndClose(new Door()) // OK
+
 operator.openAndClose(new Oven()) // KO ne compile pas
 ----
 
-=== Abstraction en Python : renforcement avec ABC
+=== Abstraction en Python : Abstract Base Classes
 
 * Module abc - Abstract Base Classes
-** Vérifie que des méthode abstraites sont redéfinies
-*** Au runtime
-*** Vérifie toujours le _Duck Walking_
+** Vérifie que des méthode abstraites sont redéfinies à l'instanciation
 
 [.left-column]
 --
@@ -296,22 +298,30 @@ Classe _abstraite_
 from abc import ABC, abstractmethod
 
 class Door(ABC):
-    
+    def open(self):
+        ...
+    def close(self):
+        ...    
     @abstractmethod
     def lock(self):
         ...
 ----
+--
+
+[.right-column]
+--
 [.center]
 Classe _dérivée_
 [.big]
 [source,python]
 ----
 class Oven(Door):
-    ...
+    ... # <-- pas de redéfinitions de @abstractmethod lock
 ----
 --
 
-[.right-column]
+[%step]
+[.reset-column]
 --
 [.center]
 Instanciation
@@ -323,13 +333,13 @@ oven = Oven()
 [.center]
 Erreur au runtime
 [.big]
-[source,python]
+[source]
 ----
 TypeError: Can't instantiate abstract class Oven with abstract method lock
 ----
 --
 
-=== Abstraction en Python : renforcement avec Protocole
+=== Abstraction en Python : Protocol
 
 [.left-column]
 --
@@ -338,14 +348,16 @@ Définition d'un _protocole_
 [.big]
 [source,python]
 ----
-from typing import Protocol, runtime_checkable
+from typing import Protocol
 
-@runtime_checkable
 class Openable(Protocol):
     def open(self): ...
     def close(self): ...
 ----
+--
 
+[.right-column]
+--
 [.center]
 Définition d'un type attendu
 [.big]
@@ -360,26 +372,37 @@ def open_and_close(openable: Openable):
 ----
 --
 
-[.right-column]
+[%step]
+[.reset-column]
 --
 [.center]
-Toujours pas vérifiable au runtime
+Toujours pas vérifié au runtime
 [.big]
 [source,python]
 ----
-class Oven:
+class Letter:
     def open(self): ...
-    def close(self): ...
-    def heat(self, temperature): ...
-----
 
+open_and_close(Letter()) # <-- Python n'y voit que du feu
+----
+[source]
+----
+...
+  File "demo.py", line 11, in open_and_close
+    openable.close()  # <--- Expected
+AttributeError: 'Letter' object has no attribute 'close'
+----
+--
+
+[%step]
+--
 [.center]
-Mais par les outils tiers
-
-[.big]
-[source,python]
+Mais vérifiable _en amont_ par des outils tiers
+[source,bash,attributes]
 ----
-isinstance(Oven(), Openable)
-True
+$> mypy .
+demo.py:16: error: Argument 1 to "open_and_close" has incompatible type "Letter"; expected "Openable"  [arg-type]
+demo.py:16: note: "Letter" is missing following "Openable" protocol member:
+demo.py:16: note:     close
 ----
 --

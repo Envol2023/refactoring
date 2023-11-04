@@ -1,5 +1,7 @@
 == Cohésion et couplage : illustrations
 
+Illustration de combinaisons _cohésion_ et _couplage_.
+
 [.left-column]
 [.center]
 --
