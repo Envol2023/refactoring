@@ -1,0 +1,135 @@
+= Illustration des bénéfices de l'abstraction
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+== Illustration des bénéfices de l'abstraction
+
+
+[.center]
+image::images/M2_OSAE-interface.svg[]
+
+* 3 modules différents
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_0-1_.svg[]
+
+* 3 modules différents
+** Avec des structures internes.
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_0-2_.svg[]
+
+* 3 modules différents
+** Avec des structures internes *et des interfaces.*
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_1_.svg[]
+
+* Communication
+** un composant _interne_ doit interagir avec le module du milieu
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_2_.svg[]
+
+* Communication
+** un composant _interne_ doit interagir avec le module du milieu
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_3_.svg[]
+
+* Communication
+** Cette interaction modifie son état interne.
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_4_.svg[]
+
+* Communication
+** Il veut communiquer son état à celui de gauche
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_5_.svg[]
+
+* Communication
+** Il veut communiquer son état à celui de gauche
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+[.center]
+image::images/M2_OSAE-interface_6_.svg[]
+
+* Communication
+** Ce message modifie son état interne.
+
+ifdef::mode_slide[]
+[transition=none]
+[%notitle]
+=== Schéma Interface
+endif::mode_slide[]
+
+--
+* De l'extérieur _(utilisateur)_,
+** Seules les interfaces sont perceptibles
+
+[.center]
+image::images/M2_OSAE-interface_7_.svg[]
+--
+
+[%step]
+--
+* De l'intérieur _(concepteur)_,
+** seules les interfaces sont à prendre en compte
+
+[.center]
+image::images/M2_OSAE-interface_8_.svg[]
+--
+// end::content[]

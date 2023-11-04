@@ -1,0 +1,238 @@
+= Ne tenir compte que du contrat
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++
+
+== Ne tenir compte que du contrat
+
+[.left-column]
+[.center]
+--
+Soit un composant de type *A* {cr}
+_utilisant_ {cr}
+un composant de type *B*.
+
+Il y a  un *_couplage_* entre *A* et *B*.
+--
+
+[.right-column]
+[.center]
+--
+image::images/flexibility-bound2interface_0.svg[{image_options}]
+--
+
+
+ifdef::mode_slide[]
+[transition=fade]
+[%notitle]
+=== Ne tenir compte que du contrat
+endif::[]
+
+ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
+
+
+[.left-column]
+[.center]
+--
+Si *B* change, *A* est  certainement obliger de  s'_adapter_.
+--
+
+
+[.right-column]
+[.center]
+--
+image::images/flexibility-bound2interface_1.svg[{image_options}]
+--
+
+ifdef::mode_slide[]
+[transition=fade]
+[%notitle]
+=== Ne tenir compte que du contrat
+endif::[]
+
+ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
+
+[.center]
+Sur des chaînes de composants...
+[.left-column-1-3]
+[.center]
+--
+image::images/flexibility-bound2interface_propagation_0.svg[]
+--
+
+[.middle-column-1-3]
+--
+ifdef::mode_slide[]
+Toute modification risque de propager {cr} 
+*une obligation de s'adapter* {cr}
+à l'ensemble de la chaîne.
+endif::mode_slide[]
+--
+
+[.right-column-1-3]
+[.center]
+--
+image::images/flexibility-bound2interface_propagation_1.svg[]
+--
+
+ifdef::mode_slide[]
+[transition=fade]
+[%notitle]
+=== Ne tenir compte que du contrat
+endif::[]
+
+ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
+
+
+[.left-column]
+[.center]
+--
+
+*A* ne doit *PAS dépendre* {cr}
+de ce qu'[.big]#*EST*# sa dépendance, {cr}
+mais {cr}
+de ce qu'[.big]#*OFFRE*# sa dépendance.
+--
+
+[.right-column]
+[.center]
+--
+image::images/flexibility-bound2interface_2.svg[{image_options}]
+--
+
+
+ifdef::mode_slide[]
+[transition=fade]
+[%notitle]
+=== Ne tenir compte que du contrat
+endif::[]
+
+ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
+
+
+
+[.left-column]
+[.center]
+--
+* Exemple de contrat: "Navigateur Web" 
+** _Accéder à un contenu à partir d'une URL_
+** _Afficher un contenu HTML_
+** _Soumettre un formulaire HTTP_
+** ...
+* Vous êtes découplé d'un navigateur précis, non ?
+--
+
+[.right-column]
+--
+image::images/browser_contract.gif[]
+--
+
+
+ifdef::mode_slide[]
+[transition=fade]
+[%notitle]
+=== Ne tenir compte que du contrat
+endif::[]
+
+ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
+
+
+[.left-column]
+[.center]
+--
+Donc, tant que le composant *B* {cr}
+*_respecte_* le contrat, {cr}
+il peut être _n'importe quoi_.
+
+*_Respecter_* le contrat {cr}
+=> *implémenter* le contrat.
+--
+
+[.right-column]
+[.center]
+--
+image::images/flexibility-bound2interface_3.svg[{image_options}]
+--
+
+ifdef::mode_slide[]
+[transition=fade]
+[%notitle]
+=== Ne tenir compte que du contrat
+endif::[]
+
+ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
+
+
+[.left-column]
+[.center]
+--
+Donc, tant que le composant {cr}
+*_respecte_* le contrat, {cr}
+il peut être modifié.
+
+Aucune importance...
+--
+
+[.right-column]
+[.center]
+--
+image::images/flexibility-bound2interface_4.svg[{image_options}]
+--
+
+ifdef::mode_slide[]
+[transition=fade]
+[%notitle]
+=== Ne tenir compte que du contrat
+endif::[]
+
+ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
+
+
+[.left-column]
+[.center]
+--
+Mais si le contrat change, {cr}
+alors les deux composants doivent changer.
+--
+
+[.right-column]
+[.center]
+--
+image::images/flexibility-bound2interface_5.svg[{image_options}]
+--
+
+
+ifdef::mode_slide[]
+[transition=fade]
+[%notitle]
+=== Ne tenir compte que du contrat
+endif::[]
+
+ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
+
+
+[.left-column]
+[.center]
+--
+Du point de vue de *A*, {cr}
+*seul* le contrat _"B contract"_ existe.
+
+
+Ce contract, c'est l'abstraction de l'interface
+--
+
+[.right-column]
+[.center]
+--
+image::images/flexibility-bound2interface_5bis.svg[{image_options}]
+--
+
+ifndef::mode_slide[:leveloffset: -1]
+//-+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+
+// end::content[]

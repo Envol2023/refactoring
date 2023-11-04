@@ -1,7 +1,7 @@
 = Conception
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
-:imagesdir: ../
+:imagesdir: ../../
 endif::[]
 :toc:
 
@@ -590,14 +590,46 @@ Comment améliorer les interfaces pour répondre à ces exigences ?
 
 === Exemple d'interface 
 
-Module de communication 
+* Module de communication 
+** Définition `Message`
+** Définition `Communicator`
+* Strict minimum
 
-Communicator
-Send 
-Receive 
-Message 
+[.left-column]
+--
+[.center]
+Java
+[.big]
+[source,java]
+----
+interface Message {
+    public String getId();
+    public String getContent();
+}
 
-Mettre ici schéma découplage 
+interface Communicator {
+    public Message receive();
+    public void send(Message msg);
+}
+----
+--
+
+[.right-column]
+--
+[.center]
+Python
+[.big]
+[source,python]
+----
+class Message(Protocol):
+    def get_id() -> str: ...
+    def get_content() -> str: ...
+
+class Communicator(Protocol):
+    def receive() -> Message:...
+    def send(msg: Message) -> None: ...
+----
+--
 
 === Abstraction et contractualisation 
 
@@ -611,133 +643,17 @@ Mettre ici schéma découplage
 * Liberté d'action pour le concepteur
 ** Tant que l'interface (contrat) est respectée, tout est possible
 
+**Réecrire**
 
-
-=== Illustration des bénéfices de l'abstraction
-
-[.center]
-image::images/M2_OSAE-interface.svg[]
-
-* 3 modules différents
-
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
+=== Exemple de contractualisation 
 
 [.center]
-image::images/M2_OSAE-interface_0-1_.svg[]
+image:images/interface_as_contract.svg[]
 
-* 3 modules différents
-** Avec des structures internes.
 
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
+=== Abstraction comme minimisation du couplage
 
-[.center]
-image::images/M2_OSAE-interface_0-2_.svg[]
-
-* 3 modules différents
-** Avec des structures internes *et des interfaces.*
-
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
-
-[.center]
-image::images/M2_OSAE-interface_1_.svg[]
-
-* Communication
-** un composant _interne_ doit interagir avec le module du milieu
-
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
-
-[.center]
-image::images/M2_OSAE-interface_2_.svg[]
-
-* Communication
-** un composant _interne_ doit interagir avec le module du milieu
-
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
-
-[.center]
-image::images/M2_OSAE-interface_3_.svg[]
-
-* Communication
-** Cette interaction modifie son état interne.
-
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
-
-[.center]
-image::images/M2_OSAE-interface_4_.svg[]
-
-* Communication
-** Il veut communiquer son état à celui de gauche
-
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
-
-[.center]
-image::images/M2_OSAE-interface_5_.svg[]
-
-* Communication
-** Il veut communiquer son état à celui de gauche
-
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
-
-[.center]
-image::images/M2_OSAE-interface_6_.svg[]
-
-* Communication
-** Ce message modifie son état interne.
-
-ifdef::mode_slide[]
-[transition=none]
-[%notitle]
-=== Schéma Interface
-endif::mode_slide[]
-
---
-* De l'extérieur _(utilisateur)_,
-** seules les interfaces sont perceptibles
-
-[.center]
-image::images/M2_OSAE-interface_7_.svg[]
---
-
-[%step]
---
-* De l'intérieur _(concepteur)_,
-** seules les interfaces sont à prendre en compte
-
-[.center]
-image::images/M2_OSAE-interface_8_.svg[]
---
+include::_contract_coupling_illustration_schema.adoc[{include_options}]
 
 
 === Abstraction de l'interface
