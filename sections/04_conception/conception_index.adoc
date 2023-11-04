@@ -91,16 +91,15 @@ include::breakdown.adoc[]
 [.left-column-2-3]
 --
 [%step]
-* Décomposition 
-** => réduction de la complexité
 * Modularisation
 ** Percevoir le système comme un jeu de construction 
+** Décomposition => réduction de la complexité
 * Module
 ** Entité du langage 
 *** _module python, package java, classes, ..._
-** identifiable 
-** suffisamment autosuffisant, 
-** potentiellement réutilisable.
+** Identifiable 
+** Suffisamment autosuffisant, 
+** Potentiellement réutilisable.
 --
 
 [.right-column-1-3]
@@ -238,7 +237,7 @@ image::images/puppet_master.png[]
 
 [.left-column-2-3]
 --
-* *Disjoint*
+* *Disjointe*
 ** La relation doit être établie
 * *Déséquilibrée*
 ** Les traitements détiennent toutes les *connaissances*.
@@ -284,7 +283,7 @@ Regrouper données et traitements, au sein d'un même module, aide à réduire l
 [.right-column]
 --
 [.right.middle]
-image::images/design-module.png[height=40%]
+image::images/design-module.svg[]
 --
 
 [NOTE.notes]
@@ -711,12 +710,28 @@ image::images/reaction_en_chaine.gif[]
 * Les principes à connaître absolument sont 
 ** Separation of Concern
 ** Single Responsibility Principle
+** Interface Segregation Principle
+
+== Separation of concern
+
+* Améliorer la conception > Principes fondamentaux
+** **=> Separation of Concern**
+** Single Responsibility Principle
+** Interface Segregation Principle
 
 === Separation of concern
 
 * Séparer les composants par type de préoccupation
 ** C'est bon, je pense qu'on a tous compris...
 ** Identifier, séparer, déplacer, regrouper...
+
+
+=== Single Responsibility Principle
+
+* Améliorer la conception > Principes fondamentaux
+** Separation of Concern
+** **=> Single Responsibility Principle**
+** Interface Segregation Principle
 
 === Single Responsibility Principle
 
@@ -756,7 +771,7 @@ C'est une notion très subjective, car elle dépend de l'échelle de détails ju
 Mais l'idée est que tout ce qui concerne ce domaine d'expertise est dans cette ensemble délimité, dans ce module, et que par conséquent, toutes les modifications demandées dans le cadre de ce domaine ne concerne que cet ensemble.
 --
 
-=== Single Responsibility Principle: fonctions
+=== Single Responsibility Principle > fonctions
 
 **Règle d'Or**
 
@@ -878,7 +893,7 @@ def alert_user(user): <4>
 <4> `alert_user` fait une seule chose, mais bien
 
 
-=== Single Responsibility Principe : application à une classe
+=== Single Responsibility Principe > classe
 
 [Quote]
 ____
@@ -888,7 +903,7 @@ ____
 [%step]
 _Formulée ainsi, cette définition semble énigmatique, sauf si ..._
 
-=== Single Responsibility Principe : application à une classe
+=== Single Responsibility Principe > classe
 
 * Si nous la relisons selon la règle d'or : 
 
@@ -982,16 +997,61 @@ class BarometricSensor:
 [.smaller]
 <1> _Délégation_, au sein de `BarometricSensor` à `IpAddress`
 
-=== Application SRP 
+=== Illustration
 
-Si l'adressage ip passe de IPV4 à ipv6, stylée la classe réseau change. 
+[.center]
+image::images/SRP_sensor_1.svg[]
 
-Si le modèle physique de mesurée barometric change, seule la classe capteur change. 
+=== Illustration
 
-== Segregation of interface 
+[.center]
+image::images/SRP_sensor_2.svg[]
 
-En montrer le moins possible 
+=== Illustration
 
+[.center]
+image::images/SRP_sensor_3.svg[]
+
+
+== Interface Segregation Principle 
+
+* Améliorer la conception > Principes fondamentaux
+** Separation of Concern
+** Single Responsibility Principle
+** **=> Interface Segregation Principle**
+
+== Interface Segregation Principle 
+
+* Un module => plusieurs aspects
+** Un utilisateur n'a pas besoin/envie de tous connaître
+* *Interface Segregation Principle*
+** => Offrir plusieurs facettes
+** => Laisser l'utilisateur choisir celle qui lui importe
+*** => Dont les évolutions ont une importance pour lui
+
+include::_interface_segregation_principle_illustration.adoc[]
+
+== Interface Segregation Principle 
+
+[.center]
+image::images/ISP_big_class.svg[]
+
+[NOTE.notes]
+--
+Dans le cas des grandes classes, cela permet de limiter sévèrement la connaissance, donc le couplage, donc les effets de bords.
+--
+
+
+== Interface Segregation Principle et refactorisation
+
+* `Extract interface`
+* `Extract superclass`
+
+** Faire de copies d'écran
+
+== Bad smells de conception
+
+include::_conception_bad_smells.adoc[]
 
 
 [.end.background]
@@ -999,6 +1059,21 @@ En montrer le moins possible
 == Améliorer la conception : conclusion
 
 Améliorer la conception : niveau compétence
+
+* Modularisation
+** Voir un le système comme un jeu de construction
+** Produire des modules
+*** A forte cohésion interne
+*** A faible couplage externe
+*** Avec un minimum d'exposition via l'abstraction de l'interface
+* Principes
+** Separation of concerns
+*** Réduire la complexité en décomposant le système
+** Single Responsibility Principle
+*** Concentration de la connaissance mobilisable
+** Interface Segregation Principle
+*** Minimisation de la connaissance offerte
+*** Limitation du couplage au stricte nécessaire
 
 
 // end::content[]

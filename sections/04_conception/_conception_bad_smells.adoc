@@ -1,0 +1,46 @@
+== Duplication
+
+* Symptôme
+** Du code est dupliqué en plusieurs endroits
+** La maintenance aussi
+* Techniques
+** `Extract Method`
+** `Extract Class`
+** Et toute la magie de la OOP
+*** `Pull Up Method`
+*** `Extract Superclass`
+
+== Classe trop grosse
+
+* Symptômes
+** Une classe porte trop de responsabilités
+** Elle est trop longue
+** Elle fait trop de chose
+** On ne sait ce qu'elle fait _vraiment_
+* Techniques
+** `Extract Method`
+** `Extract Subclass`
+** `Extract Interface`
+
+== Shotgun surgery
+
+* Symptômes
+** A chaque évolution, vous devez modifier beaucoup de classes différentes
+** => Les responsabilités ne sont pas ou sont mal définies
+** => Trop de connaissance répartie dans le code
+* Techniques
+** Il faut faire du ménage !
+*** `Move Method`
+*** `Move Field`
+*** et tout l'arsenal de ce qu'il est possible de bouger
+
+== Touffes de données (Data clumps)
+
+* Symptômes
+** Des données qui sont toujours traitées ensemble sont réparties dans des classes très différentes
+** Vous avez du mal à percevoir les entités
+* Techniques
+** `Extract Class`
+** `Introduce Parameter Object`
+** `Preserve Whole Object`
+

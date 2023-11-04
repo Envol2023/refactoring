@@ -161,7 +161,7 @@ def move(rover,
 rover= {
     'weight': 10,
     'position': [0., 0.],
-    'speed': 0.
+    'speed': 0.,
 
     'engine' :{ 'consumption_coef': [0., 3.45, 12.] },
 
@@ -271,7 +271,7 @@ Comme un tout
 rover= {
     'weight': 10,
     'position': [0., 0.],
-    'speed': 0.
+    'speed': 0.,
 
     'engine' :{ 'consumption_coef': [0., 3.45, 12.] },
 
@@ -391,10 +391,10 @@ image::images/sameroof.png[]
 --
 
 
-=== Object Oriented Programing
+// === Object Oriented Programing
 
-[.center]
-image::images/procedural_vs_object.png[]
+// [.center]
+// image::images/procedural_vs_object.png[]
 
 === Taille du projet
 

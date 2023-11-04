@@ -1,0 +1,194 @@
+== Illustration
+
+[.left-column]
+--
+[.center]
+D'un côté, {cr}
+un équipement de Visioconférence
+[.big]
+[source,python]
+----
+# module conference.py
+class ConferenceDevice:
+    def connect(self):...
+    def disconnect(self):...
+
+    def start_video(self):...
+    def stop_video(self):...
+
+    def start_sound(self):...
+    def stop_sound(self):...
+----
+--
+
+[.left-column]
+--
+[.center]
+De l'autre, {cr}
+_des_ enregistreurs de _son_ et de _vidéo_
+[.big]
+[source,python]
+----
+# module video_recorder.py
+from conference import ConferenceDevice
+
+class VideoRecorder:
+    def capture_video(self, device: ConferenceDevice):
+        device.start_video()
+        device.stop_video()
+----
+[.big]
+[source,python]
+----
+# module sound_recorder.py
+from conference import ConferenceDevice
+
+class SoundRecorder:
+    def capture_sound(self, device: ConferenceDevice):
+        device.start_sound()
+        device.stop_sound()
+----
+--
+
+== Illustration
+
+[.center]
+image::images/design-ConferenceDevice_0.svg[]
+
+
+== Illustration
+
+Mais les _enregistreurs_ en savent **trop** => Couplage inutile et source potentielle d'erreurs
+
+[.center]
+image::images/design-ConferenceDevice_1.svg[]
+
+
+== Illustration
+
+[.left-column]
+--
+[.center]
+Création d'interfaces _dédiées_
+[.big]
+[source,python]
+----
+class ConferenceDevice:
+    def connect(self):...
+    def disconnect(self):...
+
+    def start_video(self):...
+    def stop_video(self):...
+
+    def start_sound(self):...
+    def stop_sound(self):...
+----
+
+[.big]
+[source,python]
+----
+# module video.py
+class VideoDevice(Protocol):
+    def start_video(self):...
+    def stop_video(self):...
+----
+[.big]
+[source,python]
+----
+# module sound.py
+class SoundDevice(Protocol):
+    def start_sound(self):...
+    def stop_sound(self):...
+----
+--
+
+[.center]
+[.right-column]
+--
+
+Exposition de 2 interfaces _distinctes_
+[.big]
+[source,python]
+----
+from sound import SoundDevice
+from video import VideoDevice
+
+class ConferenceDevice(VideoDevice, SoundDevice):
+    def connect(self):...
+    def disconnect(self):...
+
+    def start_sound(self):...
+    def stop_sound(self):...
+
+    def start_sound(self):...
+    def stop_sound(self):...
+----
+--
+
+== Illustration
+
+[.center]
+[.left-column]
+--
+Couplage fort {cr}
+Les enregistreurs en savent **trop**
+[.big]
+[source,python]
+----
+# module video_recorder.py
+from conference import ConferenceDevice
+
+class VideoRecorder:
+    def capture_video(self, device: ConferenceDevice):
+        device.start_video()
+        device.stop_video()
+----
+[.big]
+[source,python]
+----
+# module sound_recorder.py
+from conference import ConferenceDevice
+
+class SoundRecorder:
+    def capture_sound(self, device: ConferenceDevice):
+        device.start_sound()
+        device.stop_sound()
+----
+--
+
+[.center]
+[.right-column]
+--
+Couplage faible {cr}
+Les enregistreurs en savent **juste ce qu'il faut**
+[.big]
+[source,python]
+----
+# module video_recorder.py
+from video import VideoDevice
+
+class VideoRecorder:
+    def capture_video(self, device: VideoDevice):
+        device.start_video()
+        device.stop_video()
+----
+[.big]
+[source,python]
+----
+# module sound_recorder.py
+from sound import SoundDevice
+
+class SoundRecorder:
+    def capture_sound(self, device: SoundDevice):
+        device.start_sound()
+        device.stop_sound()
+----
+--
+
+== Illustration
+
+Maintenant les _enregistreurs_ en savent **assez** => Découplage
+
+[.center]
+image::images/design-ConferenceDevice_2.svg[]
+

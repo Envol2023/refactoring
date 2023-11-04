@@ -1,5 +1,7 @@
 == Plus de détails
 
+En options ci-après, les type de couplage et de cohésion selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
+
 === 7 types de cohésion 
 
 [.smaller]

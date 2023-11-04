@@ -83,7 +83,7 @@ include::code_well_targeted.adoc[{include_options}]
 
 == Bad smells 
 
-Mettre ici bad smells sur le thème de l'écriture. 
+include::understanding_bad_smells.adoc[]
 
 [.end.background]
 [.center]

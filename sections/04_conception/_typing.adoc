@@ -179,7 +179,8 @@ La principale abstraction en Python, c'est le Duck Walking
 * Langage de gentlemen
 ** Presque tout est accessible 
 ** Pas de mécanisme de typage fort, pas de vérification à l'exécution
-* Validation laissée à des outils tiers
+* Validation laissée à des outils *tiers*
+** Mypy, Pytype, Pyright/Pylance
 * Duck Walking
 ** Principale abstraction
 
