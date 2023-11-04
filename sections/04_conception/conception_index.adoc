@@ -351,6 +351,8 @@ include::_typing.adoc[]
 
 == Définition d'un bon module
 
+*A déplacer plus bas*
+
 [%step]
 * Caractérisation d'un bon module
 *** Forte cohésion
