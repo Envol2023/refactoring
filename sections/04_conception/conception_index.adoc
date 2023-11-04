@@ -571,6 +571,11 @@ Python peut, en jouant sur les initialisations de packages au sein des `__init__
 
 Comment améliorer les interfaces pour répondre à ces exigences ?
 
+
+[%step]
+**Minimiser la connaissance requise**
+
+
 [%step]
 **Rendre l'interface la plus abstraite possible**
 
