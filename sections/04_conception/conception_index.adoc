@@ -76,9 +76,8 @@ notamment https://archive-devlog.cnrs.fr/_media/nmsaw2016/anf-nmsaw-module-3.2-b
 ** Petit buffer pour charger un contexte en entier
 ** Dispersion sur des sujets très différents
 * Décomposer le gros problème 
-** En plusieurs petits problèmes
-** Reliés entre eux
-** Plus faciles à isoler, à maîtriser
+** En plusieurs petits problèmes reliés entre eux
+** Plus faciles à _bufferiser_ , à maîtriser
 
 [%step]
 [.right-column-1-3]
