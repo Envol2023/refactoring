@@ -1047,6 +1047,11 @@ class BarometricSensor:
 [.smaller]
 <1> _Délégation_, au sein de `BarometricSensor` à `IpAddress`
 
+=== Application SRP 
+
+Si l'adressage ip passe de IPV4 à ipv6, stylée la classe réseau change. 
+
+Si le modèle physique de mesurée barometric change, seule la classe capteur change. 
 
 [.end.background]
 [.center]
