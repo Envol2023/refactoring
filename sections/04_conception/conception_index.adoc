@@ -3,6 +3,7 @@ include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
 :imagesdir: ../
 endif::[]
+:toc:
 
 // tag::content[]
 
