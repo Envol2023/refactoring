@@ -114,10 +114,16 @@ rover= {
     'position': [0., 0.],
     'speed': 0.
 }
+----
+[.big]
+[source,python]
+----
 engine = { 'consumption_coef': [0., 3.45, 12.] }
-
+----
+[.big]
+[source,python]
+----
 battery = { 'capacity': 120, 'level': 12.2 }
-
 ...
 ----
 --
@@ -230,9 +236,15 @@ rover= {
     'position': [0., 0.],
     'speed': 0.
 }
+----
+[source,python]
+----
 engine = { 'consumption_coef': [0., 3.45, 12.] }
-
+----
+[source,python]
+----
 battery = { 'capacity': 120, 'level': 12.2 }
+...
 ----
 --
 

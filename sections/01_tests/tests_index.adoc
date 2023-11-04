@@ -11,6 +11,7 @@ endif::[]
 
 Un rapide rappel sur les tests automatisés
 
+ifdef::HIDE_ME[]
 === Comment savoir qu'un code fonctionne ?
 
 [%step]
@@ -26,6 +27,7 @@ Un rapide rappel sur les tests automatisés
 ** Utiliser des tests *exécutables*, 
 ** Exécuter des tests *à volonté*,
 ** => _Nécessite un investissement mais très rentable._
+endif::[]
 
 === Philosophie d'un test
 
@@ -42,17 +44,28 @@ Un rapide rappel sur les tests automatisés
 
 === Déroulement d'un test
 
-* Patterns de test
-** Séquencement d'actions pour les rendre plus lisibles
-* **GWT**
-** *GIVEN*
-** *WHEN* 
-** *THEN*
-* **AAS**
-** *ARRANGE*
-** *ACT*
-** *ASSERT*
+[.left-column-1-3]
+--
+* Séquencement d'actions 
+** Mettre en place
+** Exécuter
+** Vérifier
+--
 
+[.middle-column-1-3]
+--
+* GWT
+** Given
+** When 
+** Then
+--
+[.right-column-1-3]
+--
+* AAS
+** Arrange
+** Act
+** Assert
+--
 == Quel type de tests ?
 
 * Tests unitaires
@@ -102,9 +115,9 @@ image::images/categories_of_test_5.png[width=50%]
 [%step]
 * Rapides 
 ** De l'ordre de la seconde
-* Indépendants
+* Autonomes
 ** Exécutables dans n'importe quel ordre
-*** Seuls ou en masse;
+*** Seuls ou en masse
 *** Aucune dépendance aux tests précédents, 
 *** Aucune influence sur les tests suivants.
 * Répétables

@@ -20,35 +20,98 @@ Content for ENVOL 2023 and further
 [.small.right]
 marc.dexet@ias.u-psud.fr
 
-[.start.background.center]
+== Plan
+
+[.simple]
+* Introduction au refactoring
+* Bref rappel sur le test
+* Voyage à l'intérieur du cerveau
+* Améliorer la compréhension
+* Améliorer la conception
+* Améliorer la testabilité
+* Legacy
 
 == Introduction au refactoring
 
+[.simple]
+* **=> Introduction au refactoring**
+* Bref rappel sur le test
+* Voyage à l'intérieur du cerveau
+* Améliorer la compréhension
+* Améliorer la conception
+* Améliorer la testabilité
+* Legacy
+
 include::./sections/00_refactoring/refactoring_index.adoc[{include_options}]
 
-== Tests
+== Bref rappel sur le test
+
+[.simple]
+* Introduction au refactoring
+* **=> Bref rappel sur le test**
+* Voyage à l'intérieur du cerveau
+* Améliorer la compréhension
+* Améliorer la conception
+* Améliorer la testabilité
+* Legacy
 
 include::./sections/01_tests/tests_index.adoc[{include_options}]
 
-
 == Voyage à l'intérieur du cerveau
+
+[.simple]
+* Introduction au refactoring
+* Bref rappel sur le test
+* **=> Voyage à l'intérieur du cerveau**
+* Améliorer la compréhension
+* Améliorer la conception
+* Améliorer la testabilité
+* Legacy
 
 include::./sections/02_brain/brain_index.adoc[{include_options}]
 
 
 == Améliorer la compréhension
 
+[.simple]
+* Introduction au refactoring
+* Bref rappel sur le test
+* Voyage à l'intérieur du cerveau
+* **=> Améliorer la compréhension**
+* Améliorer la conception
+* Améliorer la testabilité
+* Legacy
+
 include::./sections/03_understanding/understanding_index.adoc[{include_options}]
 
 == Améliorer la conception
+
+[.simple]
+* Introduction au refactoring
+* Bref rappel sur le test
+* Voyage à l'intérieur du cerveau
+* Améliorer la compréhension
+* **=> Améliorer la conception**
+* Améliorer la testabilité
+* Legacy
 
 include::./sections/04_conception/conception_index.adoc[{include_options}]
 
 == Améliorer la testabilité
 
+[.simple]
+* Introduction au refactoring
+* Bref rappel sur le test
+* Voyage à l'intérieur du cerveau
+* Améliorer la compréhension
+* Améliorer la conception
+* **=> Améliorer la testabilité**
+* Legacy
+
 // include::./sections/04_testability/testability_index.adoc[{include_options}]
 
 == Legacy
+
 
 // include::./sections/05_legacy/legacy_index.adoc[{include_options}]
 

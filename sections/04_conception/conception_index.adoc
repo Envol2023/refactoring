@@ -45,12 +45,8 @@ Nous ne nous étendrons pas sur la pertinence ou non de ce mode de fonctionnemen
 === Refactoring de la conception
 
 * Améliorations des aspects _internes_ uniquement
-** Gestion de la complexité
-*** Frein à la compréhension
-*** Frein à la capacité d'évolution 
-** Réduction de la dette technique du passé en gardant un oeil sur l'avenir
-** Améliorer le niveau de confiance
-*** Rendre le code plus testable pour le rendre plus testé
+** Gestion de la *complexité*
+** Réduction de la *dette technique* du passé en gardant un oeil sur l'avenir
 * Conservation du comportement observable
 ** Aspect _Fonctionnel_ conservé
 ** Aspects _Sécurité_ et _Performance_ supposés conservés
@@ -122,20 +118,25 @@ Avoir un ensemble isolé est une condition nécessaire mais pas suffisante pour 
 [.splash.background]
 [.center]
 [%notitle]
-== What is a program ?
+== What is a code ?
 
+[%step]
+Que mettons nous dans un module ?
+[%step]
+Du code.
+[%step]
 [.huge]
 --
-Programme = Données + Traitements
+Code = Données + Traitements
 --
 
-=== Programme = Données + Traitements
+=== Code = Données + Traitements
 
 [.center]
 image::images/data_algo.png[]
 
 
-=== Programme = Données + Traitements
+=== Code = Données + Traitements
 
 [.left-column]
 --
@@ -266,7 +267,7 @@ include::bob_the_rover.adoc[{include_options}]
 [.center]
 == Regrouper
 
-Regrouper données et traitements aide à réduire la complexité.
+Regrouper données et traitements, au sein d'un même module, aide à réduire la complexité.
 
 == Comment établir un module ?
 
@@ -598,7 +599,7 @@ Comment améliorer les interfaces pour répondre à ces exigences ?
 [.center]
 image::images/M2_OSAE-interface.svg[]
 
-* 3 composants différents
+* 3 modules différents
 
 ifdef::mode_slide[]
 [transition=none]
@@ -791,6 +792,34 @@ _You have one job, only one job_
 ** aux fonctions 
 ** qu'aux classes
 
+== Responsabilité
+
+[quote]
+____
+Une **responsabilité** est un ensemble de données et de traitements, {cr} 
+que l'on peut identifier et associer {cr}
+à un *domaine d'expertise* clairement identifié {cr}
+et à lui seul.
+____
+
+[%step]
+* Analogie des experts 
+** Domaine d'expertise => limité, cohérent, concentré
+* Exemples
+** _Affichage du site selon la charte graphique_ => Expertise _Création graphique_
+** _Calcul des totaux des consommations d'énergie_ => Expertise _Suivie énergétique_
+* Contre exemple
+** _Vente de poissons et de fleurs_ => Poissonnier ? Fleuriste ?
+
+
+[NOTE.notes]
+--
+Une responsabilité est un ensemble de données et de traitements que l'on pourrait identifier et associer à un domaine d'expertise et à lui seul.
+
+C'est une notion très subjective, car elle dépend de l'échelle de détails jusqu'où on veut aller.
+
+Mais l'idée est que tout ce qui concerne ce domaine d'expertise est dans cette ensemble délimité, dans ce module, et que par conséquent, toutes les modifications demandées dans le cadre de ce domaine ne concerne que cet ensemble.
+--
 
 === Single Responsibility Principle: fonctions
 
@@ -868,7 +897,7 @@ def save_file_alert_user(ctx: Context): <2>
 --
 === Illustration 
 
-[source,python,attributes]
+[source,python]
 ----
 def end_process(process: Process, ctx: Context):
     process.end()
@@ -889,7 +918,7 @@ def alert_user(user): <2>
 
 === Illustration 
 
-[source,python,attributes]
+[source,python]
 ----
 def end_process(process: Process, ctx: Context):
     process.end()
@@ -914,25 +943,109 @@ def alert_user(user): <4>
 <4> `alert_user` fait une seule chose, mais bien
 
 
-
 === Single Responsibility Principe : application à une classe
 
 [Quote]
-___
- _une classe ne doit changer que pour une seule raison_
-___
+____
+Une classe ne doit changer que pour une seule raison
+____
 
 [%step]
-_Formulée ainsi, cette définition semble énigmatique, sauf si ...__
+_Formulée ainsi, cette définition semble énigmatique, sauf si ..._
 
 === Single Responsibility Principe : application à une classe
 
-* si on le relit avec la règle d'or : 
+* Si nous la relisons selon la règle d'or : 
 
 [Quote]
-___
- _Comme une classe ne doit prendre en charge qu'une seule responsabilité, et bien le faire, seule une évolution de cette responsabilité peut motiver la modification de la classe._
-___
+____
+Comme une classe ne doit prendre en charge qu'une seule responsabilité, et bien le faire, {cr}
+seule une évolution de cette responsabilité peut motiver la modification de la classe.
+____
+
+* Une raison 
+** => Une évolution de la responsabilité
+** => Un changement de règle au sein du domaine d'expertise
+
+=== Illustration
+
+Exemple un capteur barométrique joignable par adressage IP
+
+[.big]
+[source,python]
+----
+
+class BarometricSensor:
+
+    def __init__(self):...
+
+    def get_pressure(self) -> float:...
+    
+    def set_ip_address(self, ip: str):...
+
+    def connect_to_ip_address(self) -> bool:...
+
+----
+ 
+=== Illustration
+
+* Deux responsabilités distinctes
+** La gestion du capteur => _Expertise mesure des pressions_
+** La gestion de l'adressage IP => _Expertise réseau_
+
+
+[.big]
+[source,python]
+----
+class BarometricSensor:
+
+    def __init__(self):...
+
+    def get_pressure(self) -> float:...<1>
+    
+    def set_ip_address(self, ip: str):...<2>
+
+    def connect_to_ip_address(self) -> bool:...<2>
+
+----
+[.smaller]
+<1> _Expertise mesure des pressions_
+<2> _Expertise réseau_
+
+
+=== Illustration
+
+* Application du _Single Responsibility Principle_
+** Une classe porte la responsabilité _Gestion de l'adresse IP_
++
+[.big]
+[source,python]
+----
+class IpAddress:
+    def __init__(self, address: str): ...
+    def check(self): ...
+----
++
+** Une classe porte la responsabilité _Gestion mesure des pressions_
++
+[.big]
+[source,python]
+----
+class BarometricSensor:
+
+    def __init__(self):
+        self.address : IpAddress = None
+
+    def get_pressure(self) -> float:...
+    
+    def set_ip_address(self, ip: str):
+        self.address = IpAddress(ip) <1>
+
+    def connect_to_ip_address(self) -> bool:
+        return self.address.check() <1>
+----
+[.smaller]
+<1> _Délégation_, au sein de `BarometricSensor` à `IpAddress`
 
 
 [.end.background]

@@ -5,6 +5,12 @@ ifndef::imagesdir[]
 endif::[]
 
 // tag::content[]
+[.start.background]
+[.center]
+== Coding brain
+
+Faiblesses et limites {cr}
+des développeuses et développeurs.
 
 [.subsection.background]
 [.center]
@@ -177,6 +183,7 @@ Un plan clair, dont la logique se comprend d'un coup d'oeil, n'est pas des plus 
 
 == TBD référence à Dr Felienne Herman
 
-
+[.end.background]
+== 
 // end::content[]
 
