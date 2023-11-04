@@ -253,7 +253,9 @@ image::images/puppet_master_relationship.png[]
 === Structuration
 
 --
-* La _forme_ des données détermine l'expressivité de la procédure
+* La _forme_ des données peut révéler le modèle sous-jacent 
+** améliorer la compréhension 
+** améliorer l'expressivité de la procédure
 * Une meilleure structuration pour 
 ** => Mettre en avant ce qui est important 
 ** => Mettre en arrière les détails non pertinents
