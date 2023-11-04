@@ -92,7 +92,7 @@ include::breakdown.adoc[]
 [%step]
 * Modularisation
 ** Percevoir le système comme un jeu de construction 
-** Décomposition => réduction de la complexité
+** Décomposition en modules => réduction de la complexité
 * Module
 ** Entité du langage 
 *** _module python, package java, classes, ..._
