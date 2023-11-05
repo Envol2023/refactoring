@@ -80,6 +80,7 @@ include::code_is_text_naming.adoc[{include_options}]
 
 include::code_well_targeted.adoc[{include_options}]
 
+include::code_logical_expression.adoc[{include_options}]
 
 == Bad smells 
 
@@ -91,6 +92,6 @@ include::understanding_bad_smells.adoc[]
 
 Nous avons vu
 
-TBD
+*TBD*
 
 // end::content[]

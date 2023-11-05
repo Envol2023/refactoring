@@ -1,0 +1,198 @@
+= Simplify Logical expressions
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+:icons: font
+
+// tag::content[]
+
+== Les imbrications
+
+[quote, Linus Torvalds]
+____
+if you need more than 3 levels of indentation, {cr}
+you're screwed anyway, {cr}
+and should fix your program.
+____
+
+
+* Les imbrications brouillent la compréhension
+** Sections de code trop longues
+** Trop de conditions à retenir dans le _buffer_
+** L'intention est noyée
+
+
+== Les imbrications: Exemple
+
+[.left-column]
+--
+[.big]
+[source,python]
+----
+@dataclass
+class Rental:
+    from_date : datetime
+    to_date : datetime
+
+class Location:
+    ...
+----
+--
+
+
+[.right-column]
+--
+[.big]
+[source,python]
+----
+@dataclass
+class CarRental:
+    nb_places : int
+    location : Location
+    is_available : int
+    last_rental : Rental
+    next_rental : Rental
+----
+--
+
+
+[.reset-column]
+--
+[.big]
+[source,python]
+----
+
+def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to_date: datetime) -> Optional[Car]:
+    for car in get_cars():
+        ok = False
+        if car.is_available:
+            if car.nb_places >= nb_places:
+                if car.location - departure <= 1: # 1 km
+                    if car.last_rental:
+                        if car.last_rental.from_date - from_date < MAX_HOURS: # hours
+                            ok = True
+                    else:
+                        ok = True 
+                    if ok:
+                        if car.next_rental:
+                            if car.next_rental.to_date - to_date < MAX_HOURS: # hours
+                                return car
+    return None
+----
+--
+
+== Les imbrications > Aplatir
+
+* Se débarrasser des cas négatifs
+** `break`, `continue`, `return`, ...
+** `Replace Nested Conditional with Guard Clause`
+
+[.big]
+[source,python]
+----
+
+def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to_date: datetime) -> Optional[Car]:
+    for car in get_cars():
+        if not car.is_available:
+            continue
+
+        if car.nb_places < nb_places:
+            continue
+
+        if car.location - departure > 1: # 1 km
+            continue
+
+        if car.last_rental and car.from_date - from_date >= MAX_HOURS:
+            continue
+
+        if car.next_rental is None or car.to_date - to_date < MAX_HOURS:
+            return car
+
+    return None
+----
+
+== Decompose Conditional
+
+* Extraire les décisions dans des fonctions 
+** Utilisation de `Extract methods`
+
+[.big]
+[source,python]
+----
+def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to_date: datetime) -> Optional[Car]:
+    for car in get_cars():
+
+        if car.is_available \
+
+        and is_car_fit_for(car, nb_places) \
+
+        and is_near_location(car.location, departure, MAX_DISTANCE) \
+
+        and are_rentals_within_time_frame(car.last_rental, 
+                                          car.next_rental, 
+                                          from_date, 
+                                          to_date):
+            return car
+    return None
+----
+
+[source,python]
+----
+
+def is_car_fit_for(car: Car, nb_places) -> bool : 
+    ...
+
+def is_near_location(loc0: Location, loc1: Location, distance: float) ->bool : 
+    ...
+
+def are_rentals_within_time_frame(last_rental: Rental, next_rental: Rental, 
+                                  from_date: datetime, to_date: datetime) -> bool: 
+    ...
+----
+
+== Decompose Conditional
+
+* Amélioration de la testabilité
+** Chaque fonction peut être testée à part
+
+[.big]
+[source,python]
+----
+def test_is_near_location():
+    # Given
+    loc0 = Location(latitude = 40.782773, longitude= -73.965363)
+    loc1 = Location(latitude = 40.765613, longitude= -73.994888)
+    max_distance_in_km = 5
+
+    # When
+    is_near = is_near_location(loc0, loc1, max_distance_in_km) ->bool : 
+    
+    # Then
+    assert is_near
+----
+
+[.big]
+[source,python]
+----
+def test_are_rentals_within_time_frame_but_no_rentals():
+    # Given
+    last_rental = None
+    next_rental = None
+    from_date = datetime(2023,1,1)
+    to_date = datetime(2023,1,5)
+
+    # When
+    are_in = are_rentals_within_time_frame(last_rental, next_rental, from_date, to_date)
+    
+    # Then
+    assert are_in 
+
+----
+
+
+== Consolidate Conditional Expression
+
+
+
+// end::content[]

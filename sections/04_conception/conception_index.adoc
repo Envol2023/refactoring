@@ -24,7 +24,8 @@ Améliorer la conception : niveau compétence
 ** Lien exigences fonctionnelles <--> réponses apportées.
 * Conception
 ** Proche du code et du langage
-** Définition des entités, des données et des traitements
+** Définition des entités
+*** Modules, packages, classes, données, traitements
 ** Utilisation des paradigmes (OOP, fonctionnel, impératifs, ...) 
 
 
@@ -72,14 +73,13 @@ notamment https://archive-devlog.cnrs.fr/_media/nmsaw2016/anf-nmsaw-module-3.2-b
 * La complexité croit avec
 ** le nombre d'éléments distincts à prendre en compte
 ** le nombre d'interactions entre éléments
-* Saturation de nos capacités cognitives
+* => Saturation de nos capacités cognitives
 ** Petit buffer pour charger un contexte en entier
 ** Dispersion sur des sujets très différents
-* Décomposer le gros problème 
+* => Décomposer le gros problème 
 ** En plusieurs petits problèmes reliés entre eux
 ** Plus faciles à _bufferiser_ , à maîtriser
 
-[%step]
 [.right-column-1-3]
 image::images/breakdown-problem.gif[height=50%]
 
@@ -89,22 +89,49 @@ include::breakdown.adoc[]
 
 [.left-column-2-3]
 --
-[%step]
 * Modularisation
 ** Percevoir le système comme un jeu de construction 
-** Décomposition en modules => réduction de la complexité
-* Module
-** Entité du langage 
-*** _module python, package java, classes, ..._
-** Identifiable 
-** Suffisamment autosuffisant, 
-** Potentiellement réutilisable.
 --
 
 [.right-column-1-3]
 --
 image::images/as_legos.jpg[]
 --
+
+== Modularité
+
+[.left-column-2-3]
+--
+* Modularisation
+** Percevoir le système comme un jeu de construction 
+* Décomposition en modules 
+** => _réduction_ de la complexité _apparente_
+--
+
+[.right-column-1-3]
+--
+image::images/redux.gif[]
+--
+
+== Modularité
+
+[.left-column-2-3]
+--
+* Modularisation
+** Percevoir le système comme un jeu de construction 
+* Décomposition en modules 
+** => _Réduction_ de la complexité _apparente_
+* Effet poupées russes 
+** Des modules, dans des modules, dans des modules ...
+** => _Répartition_ de la complexité
+--
+
+
+[.right-column-1-3]
+--
+image::images/russian_dolls.gif[]
+--
+
 
 [NOTE.notes]
 --
@@ -113,6 +140,18 @@ C'est à dire que nous cherchons à obtenir des sous-composants que nous pouvons
 
 Avoir un ensemble isolé est une condition nécessaire mais pas suffisante pour considérer un sous-composant comme un module. Dans l'idéal, il faudrait qu'il soit identifiable, suffisamment autosuffisant et potentiellement réutilisable.
 --
+
+== Modularité
+
+* Module
+** Entité du langage 
+*** _module python, package java, classes, ..._
+** Identifiable 
+** Suffisamment autosuffisant, 
+** Potentiellement réutilisable.
+
+
+
 
 [.splash.background]
 [.center]
@@ -203,7 +242,7 @@ Réponses => paradigmes de programmation
 
 * *Procédural*
 * *Objet*
-* *Fonctionnel* 
+* Fonctionnel
 * ...
 --
 
@@ -586,7 +625,7 @@ Comment améliorer les interfaces pour répondre à ces exigences ?
 * Concepteur du module
 ** Minimisation de l'exposition => _Que dois-je montrer au minimum pour être utilisable ?_
 
-=== Exemple d'interface 
+=== Exemple d'interface abstraite
 
 * Module de communication 
 ** Définition `Message`
@@ -631,19 +670,36 @@ class Communicator(Protocol):
 
 include::_typing.adoc[]
 
+== Abstraction et simplification 
+
+[.left-column]
+--
+* Simplicité de définition
+** Définition de l'intention 
+*** _"Que veux-je offrir avec ce module ?"_
+** Délégation de l'implémentation
+*** Repousser  =>  _"Je verrai plus tard"_
+*** Répartir => _"Je compte sur quelqu'un pour le coder"_
+--
+
+[.right-column]
+--
+* Simplicité de compréhension
+** L'abstraction est plus facile à manipuler, définir, confronter
+** N'a pas besoin de _fonctionner_
+* Simplicité de communication 
+** Entre utilisateurs et concepteurs du module
+--
+
+
 === Abstraction et contractualisation 
 
-* Compréhension
-** L'abstraction est plus facile à manipuler, définir, échanger
-* Élément de communication 
-** Entre utilisateurs et concepteurs
 * Contractualisation 
 ** Engagement des concepteurs envers ses utilisateurs
 ** Formalisation des exigences minimales des utilisateur envers des concepteurs
 * Liberté d'action pour le concepteur
 ** Tant que l'interface (contrat) est respectée, tout est possible
 
-**Réecrire**
 
 === Exemple de contractualisation 
 
@@ -652,6 +708,9 @@ image:images/interface_as_contract.svg[]
 
 
 == Abstraction comme minimisation du couplage
+
+[.center]
+image::images/ezgif.com-optimize.gif[]
 
 include::_contract_coupling_illustration_schema.adoc[{include_options}]
 
@@ -700,6 +759,7 @@ image::images/reaction_en_chaine.gif[]
 * `Move Method`
 * `Move Field`
 * `Extract Class`
+* `Extract Interface`
 
 
 [.subsection.background]
@@ -725,6 +785,8 @@ image::images/reaction_en_chaine.gif[]
 * Séparer les composants par type de préoccupation
 ** C'est bon, je pense qu'on a tous compris...
 ** Identifier, séparer, déplacer, regrouper...
+
+image::images/redux.gif[]
 
 
 === Single Responsibility Principle
@@ -785,6 +847,7 @@ ____
 
 [.left-column]
 --
+[.big]
 [source,python]
 ----
 def end_process(process: Process, ctx: Context):
@@ -815,6 +878,7 @@ def end_process(process: Process, ctx: Context):
 
 [.left-column]
 --
+[.big]
 [source,python]
 ----
 def end_process(process: Process, ctx: Context):
@@ -848,6 +912,7 @@ def save_file_alert_user(ctx: Context): <2>
 --
 === Illustration 
 
+[.big]
 [source,python]
 ----
 def end_process(process: Process, ctx: Context):
@@ -869,6 +934,7 @@ def alert_user(user): <2>
 
 === Illustration 
 
+[.big]
 [source,python]
 ----
 def end_process(process: Process, ctx: Context):
@@ -896,7 +962,7 @@ def alert_user(user): <4>
 
 === Single Responsibility Principe > classe
 
-[Quote]
+[quote]
 ____
 Une classe ne doit changer que pour une seule raison
 ____
@@ -908,7 +974,7 @@ _Formulée ainsi, cette définition semble énigmatique, sauf si ..._
 
 * Si nous la relisons selon la règle d'or : 
 
-[Quote]
+[quote]
 ____
 Comme une classe ne doit prendre en charge qu'une seule responsabilité, et bien le faire, {cr}
 seule une évolution de cette responsabilité peut motiver la modification de la classe.

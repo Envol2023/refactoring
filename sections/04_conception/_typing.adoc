@@ -1,3 +1,4 @@
+:icons: font
 == Abstraction par langage
 
 * En java
@@ -234,22 +235,22 @@ Fonction conçue pour une _Porte_
 [.big]
 [source,python]
 ----
-def open_and_close(door: Door):
+def open_and_close_door(door: Door):
     door.open() # <--- Si ça ouvre comme une porte
     door.close() # <--- Si ça ferme comme une porte
 ----
 --
 
 [%step]
-[left-column]
+[.left-column]
 --
 [.center]
-Fonctionne avec une _Porte_
+Fonctionne avec une _Porte_ *:)*
 [.big]
 [source,python]
 ----
 door = Door()
-open_and_close(door)
+open_and_close_door(door)
 ----
 --
 
@@ -257,13 +258,13 @@ open_and_close(door)
 [.right-column]
 --
 [.center]
-Fonctionne avec un _Four_
+Fonctionne avec un _Four_ *:(*
 
 [.big]
 [source,python]
 ----
 oven = Oven()
-open_and_close(oven)
+open_and_close_door(oven)
 ----
 --
 
@@ -275,12 +276,12 @@ Alors qu'en java
 [source,java,attributes]
 ----
 class Operator {
-    void openAndClose(Door door) { ... }
+    void openAndCloseDoor(Door door) { ... }
 }
 
-operator.openAndClose(new Door()) // OK
+operator.openAndCloseDoor(new Door()) // OK
 
-operator.openAndClose(new Oven()) // KO ne compile pas
+operator.openAndCloseDoor(new Oven()) // KO ne compile pas
 ----
 
 === Abstraction en Python : Abstract Base Classes
@@ -363,7 +364,7 @@ Définition d'un type attendu
 [.big]
 [source,python]
 ----
-def open_and_close(openable: Openable):
+def open_and_close_openable(openable: Openable):
     openable.open() # <--- Expected
 
     do_something()
@@ -383,12 +384,12 @@ Toujours pas vérifié au runtime
 class Letter:
     def open(self): ...
 
-open_and_close(Letter()) # <-- Python n'y voit que du feu
+open_and_close_openable(Letter()) # <-- Python n'y voit que du feu
 ----
 [source]
 ----
 ...
-  File "demo.py", line 11, in open_and_close
+  File "demo.py", line 11, in open_and_close_door
     openable.close()  # <--- Expected
 AttributeError: 'Letter' object has no attribute 'close'
 ----
@@ -401,7 +402,7 @@ Mais vérifiable _en amont_ par des outils tiers
 [source,bash,attributes]
 ----
 $> mypy .
-demo.py:16: error: Argument 1 to "open_and_close" has incompatible type "Letter"; expected "Openable"  [arg-type]
+demo.py:16: error: Argument 1 to "open_and_close_door" has incompatible type "Letter"; expected "Openable"  [arg-type]
 demo.py:16: note: "Letter" is missing following "Openable" protocol member:
 demo.py:16: note:     close
 ----

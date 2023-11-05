@@ -9,10 +9,10 @@
 == Fonction trop longue
 
 * Symptôme
-** Vous êtes obligé de scroller de plus d'un écran pour parcourir une méthode d'un bout à l'autre.
-** Vous êtes perdu quand vous la parcourez.
-** Cela contrevient également les principes de code clean sur la lisibilité du code.
-*** de l'ordre de la dizaine de ligne
+** Obligé de scroller plus d'un écran pour parcourir une méthode
+** Être perdu en la lisant
+** Violation des principes de _Code Clean_ 
+*** Longueur fonction de l'ordre de la dizaine de lignes
 * Techniques
 ** `Extract Method`
 ** Mettre en avant ce qui est important

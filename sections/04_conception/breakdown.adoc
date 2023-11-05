@@ -1,4 +1,4 @@
-== Breakdowns
+== Décomposition du système
 
 ifdef::mode_slide[]
 [%notitle]
@@ -32,10 +32,10 @@ endif::[]
 
 
 [NOTE.notes]
-La première étape consiste à repérer des "clusters", des regroupements d'éléments particulièrement reliés.
+La première étape consiste à repérer les liens entre éléments.
 
 [.center]
-Recherche de regroupements d'éléments (_clusters_)
+Recherche des liens entre éléments
 
 [.center]
 image::images/design-complexite_2.png[height=50%]
@@ -51,7 +51,7 @@ endif::[]
 
 
 [.center]
-Recherche de regroupements d'éléments (_clusters_)
+Recherche des liens entre éléments pour constituer des regroupements (_clusters_)
 
 [.center]
 image::images/design-complexite_3.png[height=50%]

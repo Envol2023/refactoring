@@ -1,4 +1,4 @@
-= Ne tenir compte que du contrat
+= Ne tenir compte que de l'abstraction
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
 :imagesdir: ../../
@@ -8,7 +8,7 @@ endif::[]
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++
 
-== Ne tenir compte que du contrat
+== Ne tenir compte que de l'abstraction
 
 [.left-column]
 [.center]
@@ -30,7 +30,7 @@ image::images/flexibility-bound2interface_0.svg[{image_options}]
 ifdef::mode_slide[]
 [transition=fade]
 [%notitle]
-=== Ne tenir compte que du contrat
+=== Ne tenir compte que de l'abstraction
 endif::[]
 
 ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
@@ -52,7 +52,7 @@ image::images/flexibility-bound2interface_1.svg[{image_options}]
 ifdef::mode_slide[]
 [transition=fade]
 [%notitle]
-=== Ne tenir compte que du contrat
+=== Ne tenir compte que de l'abstraction
 endif::[]
 
 ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
@@ -83,7 +83,7 @@ image::images/flexibility-bound2interface_propagation_1.svg[]
 ifdef::mode_slide[]
 [transition=fade]
 [%notitle]
-=== Ne tenir compte que du contrat
+=== Ne tenir compte que de l'abstraction
 endif::[]
 
 ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
@@ -96,7 +96,8 @@ ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
 *A* ne doit *PAS dépendre* {cr}
 de ce qu'[.big]#*EST*# sa dépendance, {cr}
 mais {cr}
-de ce qu'[.big]#*OFFRE*# sa dépendance.
+de ce qu'[.big]#*OFFRE*# sa dépendance. {cr}
+=> son [.huge]#Abstraction#
 --
 
 [.right-column]
@@ -109,7 +110,7 @@ image::images/flexibility-bound2interface_2.svg[{image_options}]
 ifdef::mode_slide[]
 [transition=fade]
 [%notitle]
-=== Ne tenir compte que du contrat
+=== Ne tenir compte que de l'abstraction
 endif::[]
 
 ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
@@ -136,7 +137,7 @@ image::images/browser_contract.gif[]
 ifdef::mode_slide[]
 [transition=fade]
 [%notitle]
-=== Ne tenir compte que du contrat
+=== Ne tenir compte que de l'abstraction
 endif::[]
 
 ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
@@ -146,7 +147,7 @@ ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
 [.center]
 --
 Donc, tant que le composant *B* {cr}
-*_respecte_* le contrat, {cr}
+*_respecte_* le contrat, _(l'abstraction)_ {cr}
 il peut être _n'importe quoi_.
 
 *_Respecter_* le contrat {cr}
@@ -162,7 +163,7 @@ image::images/flexibility-bound2interface_3.svg[{image_options}]
 ifdef::mode_slide[]
 [transition=fade]
 [%notitle]
-=== Ne tenir compte que du contrat
+=== Ne tenir compte que de l'abstraction
 endif::[]
 
 ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
@@ -171,11 +172,11 @@ ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
 [.left-column]
 [.center]
 --
-Donc, tant que le composant {cr}
+Donc, tant que le composant *B* {cr}
 *_respecte_* le contrat, {cr}
 il peut être modifié.
 
-Aucune importance...
+Aucun impact sur *A*...
 --
 
 [.right-column]
@@ -187,7 +188,7 @@ image::images/flexibility-bound2interface_4.svg[{image_options}]
 ifdef::mode_slide[]
 [transition=fade]
 [%notitle]
-=== Ne tenir compte que du contrat
+=== Ne tenir compte que de l'abstraction
 endif::[]
 
 ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
@@ -210,7 +211,7 @@ image::images/flexibility-bound2interface_5.svg[{image_options}]
 ifdef::mode_slide[]
 [transition=fade]
 [%notitle]
-=== Ne tenir compte que du contrat
+=== Ne tenir compte que de l'abstraction
 endif::[]
 
 ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
