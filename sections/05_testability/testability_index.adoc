@@ -1,0 +1,426 @@
+= Testabilité
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+[.start.background]
+[.center]
+== Améliorer la testabilité
+
+"Code that isn't tested doesn't work - this seems to be the safe assumption."
+
+== Testabilité
+
+[quote]
+____
+Tests are the Programmer’s stone, transmuting fear into boredom.
+____
+
+
+La testabilité est la facilité à créer un test unitaire
+Un test unitaire doit permettre d'isoler le composant et ne tester que lui, si possible.
+Or cette faculté est très influencer par la conception.
+
+Si un code est difficile à tester ne le sera, ou cela représentera une grande charge qui découragera.
+
+=== Obstacles à la testabilité
+
+* La mise en oeuvre demande des ressources considérables qui vont au delà des moyen du développeur
+** Monter une base de données, un site extérieur
+* Les tests ne sont pas répétables car ils dépendent de choses qui sont trop fluctuantes
+** Heure, propriétés système, randomisation
+* Je ne peux rien observer
+
+
+
+=== Raison de la difficulté à tester
+
+* La dépendance irritante
+* L'instanciation cachée
+* Le Singleton
+
+=== Le paramètre irritant
+
+[source,python]
+----
+class Validator:
+
+    def __init__(self, conn: connection)
+        """
+        :param conn: psycopg2 connection
+        """
+        ...
+
+    def validate(self, msg: Message):
+        ...
+    def load_rules(self, conn: connection):
+        ...
+----
+
+=== Test lourd à faire
+
+[source,python]
+----
+def test_validator_load_rules():
+    # Given
+    conn = psycopg2.connect(database = TEST_DATABASE, 
+                            user = TEST_USER, 
+                            host= TEST_HOST,
+                            password = TEST_PASSWORD,
+                            port = 5432)
+    clear_then_load_rules_in_database(conn)
+
+    validator = Validator(conn=conn)
+    message = Message(id=123, content=f'CONTACT server=nowhere.com')
+
+    # When
+    is_valid = validator.validate(msg)
+
+    # Then
+    assert is_valid
+----
+
+
+== La dépendance cachée
+
+[source,python]
+----
+class RadioCommunicator(Communicator):
+
+    def __init__(self):
+        self.transmitter = XBandTransmitter()
+
+    def send(msg: Message) -> None: 
+        if not self.check_compliance_with_very_complicated_rules(msg):
+            return
+
+        channel: XBandChannel = self.transmitter.get_channel()
+        channel.write(Message.to_base68(msg))
+        channel.close()
+
+    def receive(self) -> Message:
+        channel: XBandChannel = self.transmitter.get_channel()
+        content = channel.read()
+        if content :
+            return Message.from_base68(content)
+        channel.close()
+----
+
+Comment faire un test de `RadioCommunicator` alors que tout repose sur `XBandTransmitter` ?
+
+== La dépendance cachée : le problème
+
+La dépendance cachée traduit un problème de conception qui concerne l'initialisation des objet.
+La dépendance cachée peut créer de sérieux problèmes de test, car nous ne savons pas forcément, en tant que concepteur du `RadioCommunicator` tout ce que cela implique.
+L'autre problème concerne la connaissance, donc le coupage inhérent à cette dépendance cachée.
+
+Le mieux est de reposer que l'abstraction plutôt que l'implémentation.
+
+== La dépendance cachée : extraire l'interface du XBandTransmitter
+
+Le XBandTransmitter semble manifestement se limiter à obtenir  un `Channel`
+Le XBandChannel se limite lui à écrire, lire et se fermer.
+
+
+Écrivons donc une interface `RadioTransmitter` et une interface `Channel`
+
+[.left-column]
+--
+[source,python]
+----
+class Channel(Protocol):
+    def write(self, content: str): 
+        ...
+    def read(self) -> str :
+        ...
+    def close(self):
+        ...
+
+class RadioTransmitter(Protocol):
+    def get_channel(self) -> Channel:
+        ...
+----
+--
+
+[.right-column]
+--
+[source,python]
+----
+class RadioCommunicator(Communicator):
+
+    def __init__(self):
+        self.transmitter: RadioTransmitter = XBandTransmitter()
+
+    def send(msg: Message) -> None: 
+        if not self.check_compliance_with_very_complicated_rules(msg):
+            return
+
+        channel: Channel = self.transmitter.get_channel()
+        channel.write(Message.to_base68(msg))
+        channel.close()
+
+    def receive(self) -> Message:
+        channel: Channel = self.transmitter.get_channel()
+        content = channel.read()
+        if content :
+            return Message.from_base68(content)
+        channel.close()
+----
+--
+
+=== Ajouter un paramètre optionnel
+
+[source,python]
+----
+class RadioCommunicator(Communicator):
+
+    def __init__(self, transmitter: RadioTransmitter = None):
+        self.transmitter: RadioTransmitter = transmitter
+        if self.transmitter is None:
+            self.transmitter = XBandTransmitter()
+        ..
+----
+
+=== Tester
+
+[source,python]
+----
+# Create Fake Channel
+class FakeChannel(Channel):
+    def __init__(self):
+        self.read_buffer = []
+        self.write_buffer = []
+        self.is_closed = False
+
+    def write(self, content: str): 
+        self.write_buffer.append(content)
+
+    def read(self) -> str :
+        return self.read_buffer.pop()
+
+    def close(self):
+        self.closed = True
+
+class FakeTransmitter(RadioTransmitter):
+    def __init__(self, fake_channel: FakeChannel):
+        self.fake_channel = fake_channel
+
+    def get_channel(self) -> Channel:
+        return self.fake_channel    
+----
+
+[source,python]
+----
+def test_send_message():
+    # Given
+    fake_channel = FakeChannel()  
+    fake_transmitter = FakeTransmitter(fake_channel)
+    message = Message(id=123, content=f'CONTACT server=nowhere.com')
+
+    # When
+    communicator(transmitter=fake_transmitter)
+    communicator.send(message)
+
+    # Then
+    assert len(fake_channel.write_buffer) > 0
+
+----
+
+=== Cas de la dépendance globale
+
+
+[source,python]
+----
+class ReportStream:
+
+    def __init__(self, out: IO[str])
+        self.out = out
+
+    def report_last_messages(self):
+        messages = MessagesCollector.get_messages()
+        if not messages:
+            return
+        for message in messages:
+            out.write(f'ID:{message.id} => {message.content}')
+----
+
+Cette classe est dépendante d'une variable globale `MessagesCollector`.
+Il est très difficile de la tester ainsi, c'est possible, mais cela doit être laborieux.
+
+=== Singleton is an anti-pattern
+
+Le Singleton est un pattern que l'on trouve dans le Gang OfFour pour assurer qu'il n'a a qu'une seule instance qui puisse exister.
+Mais il pose d'énormes problèmes.
+
+La classe `ReportStream` est très fortement couplée à `MessagesCollector`.
+Elle n'a besoin que d'obtenir des évènements.
+
+Typiquement une injection d'une abstraction dont la responsabilité serait de fournir des évènements seraient largement suffisant.
+
+[source,python]
+----
+class MessageProvider(Protocol):
+
+    def get_messages(self) -> list[Message]:
+        ...
+----
+
+
+
+=== Travail sur le Singleton
+
+Si on peut modifier `MessagesCollector`
+
+* Lui faire endosser l'interface `MessageProvider`
+* Lui faire returner via un `get` lui même
+* Transformer la méthode de classe en méthode d'instance
+
+[source,python]
+----
+class MessagesCollector(MessageProvider):
+
+    instance = MessagesCollector()
+
+    @classmethod
+    def get(cls, self):
+        return cls.instance
+
+    @classmethod
+    def set(cls, provider: MessageProvider):
+        cls.instance = provider
+
+    def get_messages(cls):
+        ...
+----
+
+[source,python]
+----
+class ReportStream:
+
+    def __init__(self, out: IO[str])
+        self.out = out
+
+    def report_last_messages(self):
+        messages = MessagesCollector.get().get_messages()
+        if not messages:
+            return
+        for message in messages:
+            out.write(f'ID:{message.id} => {message.content}')
+----
+
+=== Test en modifiant le Singleton
+
+[source,python]
+----
+@pytest.fixture
+def message_provider():
+    class FakeMessageProvider(MessageProvider):
+        def __init__(self):
+            self.messages = []
+
+        def get_messages(self) -> list[Message]:
+            return self.messages
+
+    # Set Up
+    fake_provider = FakeMessageProvider()
+    instance = MessagesCollector.get()
+    MessagesCollector.set(fake_provider)
+
+    yield fake_provider
+
+    # Tear Down
+    MessagesCollector.set(instance)
+
+----
+
+[source,python]
+----
+def test_print_messages(message_provider):
+    # Given
+    fake_provider = message_provider
+    out = io.StringIO
+    report = ReportStream(out)
+
+    fake_provider.messages = [Message(id=1, content='foo')]
+
+    # When
+    report.report_last_messages()
+
+    # Then
+    assert io.get_value() == 'ID:1 => foo'
+----
+
+
+=== En injectant le fournisseur
+
+[.left-column]
+--
+[source,python]
+----
+class ReportStream:
+
+    def __init__(self, out: IO[str])
+        self.out = out
+
+    def report_last_messages(self):
+        messages = MessagesCollector.get_messages()
+        if not messages:
+            return
+        for message in messages:
+            out.write(f'ID:{message.id} => {message.content}')
+----
+--
+
+[.right-column]
+--
+[source,python]
+----
+class ReportStream:
+
+    def __init__(self, out: IO[str], provider: MessageProvider)
+        self.out = out
+        self.provider = provider
+
+    def report_last_messages(self):
+        messages = self.provider.get_messages()
+        if not messages:
+            return
+        for message in messages:
+            out.write(f'ID:{message.id} => {message.content}')
+----
+--
+
+=== Simplification du test
+
+[source,python]
+----
+class FakeMessageProvider(MessageProvider):
+    def __init__(self):
+        self.messages = []
+
+    def get_messages(self) -> list[Message]:
+        return self.messages
+
+def test_print_messages():
+    # Given
+    fake_provider = FakeMessageProvider()
+    out = io.StringIO
+    report = ReportStream(out=out, provider=fake_provider)
+
+    fake_provider.messages = [Message(id=1, content='foo')]
+
+    # When
+    report.report_last_messages()
+
+    # Then
+    assert io.get_value() == 'ID:1 => foo'
+----
+
+// end::content[]
+
+[.end.background]
+[.center]
+== Améliorer la testabilité

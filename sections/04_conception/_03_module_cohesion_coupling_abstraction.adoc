@@ -1,0 +1,451 @@
+= Module is about cohesion, coupling and abstraction
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+== Comment établir un module ?
+
+[.left-column]
+--
+* Critères
+** Comment savoir ce qui va ensemble et ce qui est différent ?
+* Interface
+** Séparation entre modules 
+** Comment interagir avec les autres modules
+--
+
+[.right-column]
+--
+[.right.middle]
+image::images/design-module.svg[]
+--
+
+[NOTE.notes]
+--
+Les mathématiques ont développé la théorie des ensembles pour traiter de ce genre de question. Toutefois, aussi belle et pertinente soit-elle, ce n'est pas forcément elle qui va être la plus utile au quotidien aux développeuses et développeurs qui doivent faire face à tas de lignes de code qui sont tout simplement impossible à comprendre sans sentir le tournis.
+
+Ce que veulent faire ces personnes, c'est trouver le moyen d'établir les critères qui permettent de savoir si un ensemble d'instructions font parties d'un ensemble ou non.
+
+Cette question est presque d'ordre générale pour l'humain : il passe son temps, parfois à son corps défendant, à tout classer. Les événements, les éléments de la nature, les sons, les situations et aussi les autres humains, afin de pouvoir se faire l'économie d'une réflexion et d'une écoute. De même que le cerveau filtre ce qu'il veut ignorer pour éviter la saturation, comme l'herbe dans le dos quand nous sommes allongés au soleil dans un parc, mais qu'il est capable de regarder attentivement sur des araignées et des fourmis sont aperçues dans le proche voisinage.
+
+Établir des frontières, des interfaces, des critères, c'est une technique de minimisation de l'effort cognitif.
+Ca tombe bien, car c'est notre objectif aussi.
+--
+
+== Cohésion, couplage et abstraction
+
+Pour qualifier un module, on utilise souvent trois propriétés
+
+* La cohésion d'un module
+* Le couplage entre modules
+* Le niveau d'abstraction du module
+
+=== Cohésion
+
+[quote]
+____
+La cohésion indique à quel point les différentes parties d'un module sont liées entre elles et comment elles se concentrent sur la réalisation d'un objectif commun spécifique.
+____
+
+[%step]
+* Faible cohésion
+** Le lien entre les composants est inexistant ou futile.
+* Forte cohésion
+** Les composants contribuent à une seule et unique tâche bien spécifique.
+
+=== Couplage
+
+[quote]
+____
+Le couplage indique à quel point des modules différents sont interdépendants.
+____
+
+// [.at-top-right]
+// image::images/coupling.gif[height=300px]
+
+[%step]
+* Faible couplage
+** Les composants des différents modules n'échangent pas d'information.
+* Fort couplage
+** les composants des différents modules lisent et modifient directement leurs données respectives.
+
+=== Abstraction
+
+[quote]
+____
+L'abstraction est la représentation des caractéristiques essentielles d'une entité sans se préoccuper de sa forme concrète.
+____
+
+include::_cohesion_coupling_combinaisons.adoc[]
+
+include::_cohesion_coupling_types.adoc[]
+
+=== Couplage et cohésion
+
+[%step]
+* Couplage et Cohésion sont sur un bateau...
+* Notions liées
+** Cohésion -> vision intra-module
+** Couplage -> vision inter-modules
+** Couplage _résiduel_ => coopération nécessaire pour atteindre des objectifs de haut-niveau
+* Pas évidentes à mesurer
+** Existence de métriques mais très théorique et peu utilisables
+* Comment pouvons nous **améliorer les choses** ?
+** Maintenant que nous savons ?
+
+[NOTE.notes]
+--
+Il existe des métriques, mais elles ne sont pas évidentes à utiliser au quotidien.
+
+
+REP (Reuse/Release Equivalence Principle)
+"the granule of reuse is the granule of release"
+
+CCP (Common Closure Principle)
+"Gather into components those classes that change for the same reasons and at the same times. Separate into different components those classes that change at different times and for different reason"
+
+A component (class, method, …) should not have multiple reasons to change
+
+CRP (Common Reuse Principle)
+"Don’t force users of a component to depend on things they don’t need."
+--
+
+[.splash.background]
+[.center]
+[%notitle]
+=== Couplage et cohésion
+
+Couplage et cohésion traduisent le niveau de connaissances nécessaires 
+
+L'objectif de la refactorisation est de minimiser ces connaissances.
+
+[%step] 
+Comment _sentir_ cette minimisation ? 
+
+=== Couplage et cohésion > subdivision du travail
+
+[.left-column-2-3]
+--
+* Analogie pour orienter le refactoring
+** Système complexe faisant appel à plusieurs domaines d'expertise
+** Des expert(e)s
+--
+[.right-column-1-3]
+--
+image:images/design-system-expert_0.svg[]
+image:images/design-system-expert_2.svg[]
+--
+
+=== Couplage et cohésion > subdivision du travail
+
+[.left-column-2-3]
+--
+* Décomposition 
+** du système  -> en sous-systèmes _moins complexes_ 
+** du travail -> tâche par domaine d'expertise
+--
+[.right-column-1-3]
+--
+image:images/design-system-expert_1.svg[]
+image:images/design-system-expert_3.svg[]
+--
+
+=== Couplage et cohésion > subdivision du travail
+
+[.left-column-2-3]
+--
+* Pourquoi ?
+** Pour les confier à **ceux qui savent** 
+** -> Un module <==> un(e) expert(e)
+* Expert(e)
+** Connaît très bien son domaine, sa culture, ses règles 
+*** => *Forte Cohésion*
+** Ne devrait en savoir plus que nécessaire sur les autres domaines 
+*** => *Faible Couplage*
+* Démarche d'optimisation
+** Maximiser la compétence, 
+** Minimiser les risques de mauvaise compréhension
+** Minimiser les modifications en cascade
+--
+
+[.right-column-1-3]
+--
+image:images/design-system-expert_4.svg[]
+--
+
+
+[NOTE.notes]
+--
+Imaginer que vous avez le logiciel de vol d'un instrument spatial embarqué sur un satellite dans le cadre d'une mission de l'ESA.
+Le logiciel de vol est composé 
+
+* d'un système de communication avec le logiciel de bord du satellite, 
+* d'un module de la mémoire de bord, 
+* d'un module de dialogue et pilotage avec le système optique, 
+* d'un module de dialogue avec les sondes de températures, 
+* d'un module de dialogue avec les systèmes de calibration, les systèmes mécaniques etc...
+
+On perçoit aisément que les domaines d'expertises sont très variés, et que la bonne attitude est de confier les modules à ceux qui savent.
+
+C'est la subdivision du travail en fonction de l'expertise nécessaire. Vous n'allez pas confier le module de pilotage du système optique au service thermique !
+
+Pourquoi ?
+
+Parce que vous faites l'hypothèse raisonnable que les experts font mieux ce pour quoi ils sont experts que lorsqu'ils vont s'aventurer dans un domaine en dehors de leur expertise.
+Car ainsi, ils se focalisent sur ce qu'ils savent très bien faire et minimisent les connaissances nécessaires.
+--
+
+=== Couplage et cohésion > gestion de la connaissance
+
+[.left-column]
+--
+* Cohésion
+** Vision *intra*-module
+** *Minimisation* de la connaissance nécessaire
+*** *Concentration* sur un domaine d'expertise, 
+*** À l'*intérieur* de ses frontières
+
+[.center]
+image::images/design-cohesion_vs_coupling_0.png[height=300]
+--
+
+[.right-column]
+--
+* Couplage
+** Vision *inter*-modules
+** *Augmentation* de la connaissance nécessaire
+*** *Dispersion* au delà du domaine d'expertise, 
+*** À l'*extérieur* des frontières
+
+[.center]
+image::images/design-cohesion_vs_coupling_1.png[height=300]
+--
+
+[NOTE.notes]
+--
+La cohésion correspond à la minimisation des connaissances nécessaires à la compréhension d'un module. C'est une vision interne au module.
+
+* Un module à forte cohésion pourrait être placé sous la responsabilité d'un expert dont le savoir est concentré sur un domaine précis à une échelle donnée.
+
+Par exemple au sein d'un logiciel de vol tel que décrit précédemment, le module pilotage de l'électronique principale sera plutôt confié à un ou une spécialiste de l'électronique de l'instrument.
+Au sein de ce module pilotage
+
+* la partie compression de données peut être confié à un expert compression
+* la partie gestion de la puissance confié à un expert électronique de puissance
+* etc...
+
+Le couplage correspond à l'augmentation de la connaissance nécessaire de plusieurs domaines d'expertise.
+Du point de vue d'un concepteur de module, le couplage implique une connaissance plus ou moins poussée de modules autre que le sien.
+
+Pour reprendre notre exemple, un fort couplage serait que le concepteur la partie compression sache comment le module optique fonctionne intimement.
+--
+
+[.splash.background]
+[%notitle]
+[.center]
+=== Couplage et cohésion
+
+[%step]
+Définissez vos modules comme si vous aviez une armée d'expert(e)s à votre disposition.
+[%step]
+Chaque module est associé à un expert, réel ou dans votre tête, et un seul.
+[%step]
+La compréhension et la conception d'un module ne nécessite qu'une casquette d'expert.
+
+[.splash.background]
+[.center]
+[%notitle]
+== Interface du module
+
+* Ok, un *bon* module c'est :
+** Une *forte* cohésion
+** Un *faible* couplage
+
+[%step]
+Mais qu'en est-il de l'interface ?
+
+== Interface du module
+
+[.left-column-2-3]
+--
+* L'interface
+** Sépare les modules
+** Permet les interactions inter-modules
+* Plusieurs types d'interfaces
+** Espaces de nommage => packaging, modules python 
+** Interface => au sens moyen d'interagir
+* Objectif conception 
+** *Minimiser* les impacts des _modifications_ en cas d'évolution des structures internes
+--
+
+[.right-column-1-3]
+--
+[.center]
+image::images/design-cohesion_vs_coupling_2.png[height=300]
+--
+
+[NOTE.notes]
+--
+L'interface sert de frontière entre les modules. Ces frontières sont de plusieurs nature.
+Par exemple l'espace de nommage dans lequel les entités sont organisé définit une frontière et suivant les écosystèmes des intimités différentes.
+
+Par exemple, _java_ prévoit un niveau de visibilité, _protected_ qui permet une visibilité par tous les membres du même _package_.
+
+Python peut, en jouant sur les initialisations de packages au sein des `__init__.py`, offrir une visibilité _choisie_ en fonction de ce que le concepteur veut montrer, mais cela reste encore très libéral. Python est un langage de gentlemen, et un gentlemen est censé se garder de regarder là où il ne doit pas.
+--
+
+[.splash.background]
+[.center]
+[%notitle]
+=== Interface du module
+
+Comment améliorer les interfaces pour répondre à ces exigences ?
+
+
+[%step]
+**Minimiser la connaissance requise**
+
+
+[%step]
+**Rendre l'interface la plus abstraite possible**
+
+=== Abstraction
+
+* Description *minimale* d'un module
+** Interactions, services fondamentaux
+* Utilisateur du module
+** Minimisation des connaissances => _Que dois-je savoir au minimum pour utiliser ce module ?_
+* Concepteur du module
+** Minimisation de l'exposition => _Que dois-je montrer au minimum pour être utilisable ?_
+
+=== Exemple d'interface abstraite
+
+* Module de communication 
+** Définition `Message`
+** Définition `Communicator`
+* Strict minimum
+
+[.left-column]
+--
+[.center]
+Java
+[.big]
+[source,java]
+----
+interface Message {
+    public String getId();
+    public String getContent();
+}
+
+interface Communicator {
+    public Message receive();
+    public void send(Message msg);
+}
+----
+--
+
+[.right-column]
+--
+[.center]
+Python
+[.big]
+[source,python]
+----
+class Message(Protocol):
+    def get_id() -> str: ...
+    def get_content() -> str: ...
+
+class Communicator(Protocol):
+    def receive() -> Message:...
+    def send(msg: Message) -> None: ...
+----
+--
+
+include::_typing.adoc[]
+
+== Abstraction et simplification 
+
+[.left-column]
+--
+* Simplicité de définition
+** Définition de l'intention 
+*** _"Que veux-je offrir avec ce module ?"_
+** Délégation de l'implémentation
+*** Repousser  =>  _"Je verrai plus tard"_
+*** Répartir => _"Je compte sur quelqu'un pour le coder"_
+--
+
+[.right-column]
+--
+* Simplicité de compréhension
+** L'abstraction est plus facile à manipuler, définir, confronter
+** N'a pas besoin de _fonctionner_
+* Simplicité de communication 
+** Entre utilisateurs et concepteurs du module
+--
+
+
+=== Abstraction et contractualisation 
+
+* Contractualisation 
+** Engagement des concepteurs envers ses utilisateurs
+** Formalisation des exigences minimales des utilisateur envers des concepteurs
+* Liberté d'action pour le concepteur
+** Tant que l'interface (contrat) est respectée, tout est possible
+
+
+=== Exemple de contractualisation 
+
+[.center]
+image:images/interface_as_contract.svg[]
+
+
+== Abstraction comme minimisation du couplage
+
+[.center]
+image::images/ezgif.com-optimize.gif[]
+
+include::_contract_coupling_illustration_schema.adoc[{include_options}]
+
+=== Abstraction de l'interface
+
+[%step]
+* Avantages
+** Fournit *stabilité* et *simplicité* de manipulation
+** Permet de communiquer et contractualiser entre groupe de personnes
+** Est concentrée sur la représentation (modélisation) 
+** Cache les détails d'implémentation
+* Inconvénients
+** Un peu _overkill_ dans des cas très simples
+** Ne permet pas de faire "tourner" le code
+
+
+== Cohésion, Cohérence et Abstraction
+
+[.left-column-2-3]
+--
+* Orientation du refactoring
+** Renforcer la cohésion du module
+** Diminuer le couplage entre modules
+** Accroître l'abstraction de l'interface
+* Refactoring => Minimisation 
+** De la **connaissance** 
+*** Pour la compréhension, donc la conception
+** Des efforts pour faire **évoluer** la conception
+--
+
+[%step]
+[.right-column-1-3]
+--
+* => Éviter 
+** les effets de bords 
+** et réactions en chaîne
+[.center]
+
+image::images/reaction_en_chaine.gif[]
+--
+
+// end::content[]

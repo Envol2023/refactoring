@@ -108,7 +108,7 @@ include::./sections/04_conception/conception_index.adoc[{include_options}]
 * **=> Améliorer la testabilité**
 * Legacy
 
-// include::./sections/04_testability/testability_index.adoc[{include_options}]
+include::./sections/05_testability/testability_index.adoc[{include_options}]
 
 == Legacy
 

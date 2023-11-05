@@ -1,0 +1,365 @@
+= Fundamentals Principes
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+
+[.subsection.background]
+[.center]
+== Principes de conceptions fondamentaux
+
+=== Principes de conceptions fondamentaux
+
+* Les principes à connaître absolument sont 
+** Separation of Concern
+** Single Responsibility Principle
+** Interface Segregation Principle
+
+== Separation of concern
+
+* Améliorer la conception > Principes fondamentaux
+** **=> Separation of Concern**
+** Single Responsibility Principle
+** Interface Segregation Principle
+
+=== Separation of concern
+
+* Séparer les composants par type de préoccupation
+** C'est bon, je pense qu'on a tous compris...
+** Identifier, séparer, déplacer, regrouper...
+
+image::images/redux.gif[]
+
+
+=== Single Responsibility Principle
+
+* Améliorer la conception > Principes fondamentaux
+** Separation of Concern
+** **=> Single Responsibility Principle**
+** Interface Segregation Principle
+
+=== Single Responsibility Principle
+
+_You have one job, only one job_
+
+[%step]
+* Ce principe s'applique aussi bien 
+** aux fonctions 
+** qu'aux classes
+
+== Responsabilité
+
+[quote]
+____
+Une **responsabilité** est un ensemble de données et de traitements, {cr} 
+que l'on peut identifier et associer {cr}
+à un *domaine d'expertise* clairement identifié {cr}
+et à lui seul.
+____
+
+[%step]
+* Analogie des experts 
+** Domaine d'expertise => limité, cohérent, concentré
+* Exemples
+** _Affichage du site selon la charte graphique_ => Expertise _Création graphique_
+** _Calcul des totaux des consommations d'énergie_ => Expertise _Suivie énergétique_
+* Contre exemple
+** _Vente de poissons et de fleurs_ => Poissonnier ? Fleuriste ?
+
+
+[NOTE.notes]
+--
+Une responsabilité est un ensemble de données et de traitements que l'on pourrait identifier et associer à un domaine d'expertise et à lui seul.
+
+C'est une notion très subjective, car elle dépend de l'échelle de détails jusqu'où on veut aller.
+
+Mais l'idée est que tout ce qui concerne ce domaine d'expertise est dans cette ensemble délimité, dans ce module, et que par conséquent, toutes les modifications demandées dans le cadre de ce domaine ne concerne que cet ensemble.
+--
+
+=== Single Responsibility Principle > fonctions
+
+**Règle d'Or**
+
+[quote,Uncle Bob,Code Clean]
+____
+Une fonction ne doit faire **qu'une** chose, une **seule** chose, mais bien.
+____
+
+=== Illustration 
+
+[.left-column]
+--
+[.big]
+[source,python]
+----
+def end_process(process: Process, ctx: Context):
+    process.end() <1>
+
+    file = ctx.get_file() <2>
+    if file: 
+        with open(file,'w') as f:
+            ... # Do something with file
+    user = ctx.get_user() <3>
+    if user: 
+        ... # Do something with user
+----
+[.smaller]
+<1> Gestion d'un process
+<2> Récupération et gestion d'un fichier
+<3> Récupération et gestion d'un utilisateur
+--
+
+[.right-column]
+--
+[.smaller]
+* Constat
+** Gestion d'un process d'un côté
+** Gestion d'un fichier et d'un utilisateur de l'autre
+--
+=== Illustration 
+
+[.left-column]
+--
+[.big]
+[source,python]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+
+    save_file_alert_user(ctx) <1>
+
+def save_file_alert_user(ctx: Context): <2>
+    file = ctx.get_file()
+    user = ctx.get_user()
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+    if user:
+        ... # Do something with user
+
+----
+[.smaller]
+<1> Séparation des préoccupations
+<2> Création d'une fonction `save_file_alert_user`
+--
+
+[.right-column]
+--
+* Mais `save_file_alert_user` ...
+** n'est pas réutilisable en dehors de ce cas d'usage
+** fait deux choses très différentes
+** => 2 domaines d'expertise impliqués
+*** _Spécialiste de la sauvegarde des fichiers_ 
+***  _Spécialiste des communications avec l'utilisateur_
+--
+=== Illustration 
+
+[.big]
+[source,python]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+    save_file(ctx.get_file()) <1>
+    alert_user(ctx.get_user()) <2>
+
+def save_file(file): <1>
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+def alert_user(user): <2>
+    if user:
+        ... # Do something with user
+----
+[.smaller]
+<1> `save_file` relève du domaine d'expertise _Spécialiste de la sauvegarde des fichiers_  et lui seul
+<2> `alert_user` relève du domaine d'expertise _Spécialiste des communications avec l'utilisateur_ et lui seul
+
+=== Illustration 
+
+[.big]
+[source,python]
+----
+def end_process(process: Process, ctx: Context):
+    process.end()
+    do_post_process(ctx) <1>
+
+def do_post_process(ctx: Context): <2>
+    save_file(ctx.get_file())
+    alert_user(ctx.get_user())
+
+def save_file(file): <3>
+    if file:
+        with open(file,'w') as f:
+            ... # Do something with file
+def alert_user(user): <4>
+    if user:
+        ... # Do something with user
+----
+[.smaller]
+<1> Introduction de `do_post_process`
+<2> `do_post_process` cache des détails sans importance du point de vue du _Spécialiste de la gestion des processus_ mais est *adaptable* suivant les situations.
+<3> `save_file` fait une seule chose, mais bien
+<4> `alert_user` fait une seule chose, mais bien
+
+
+=== Single Responsibility Principe > classe
+
+[quote]
+____
+Une classe ne doit changer que pour une seule raison
+____
+
+[%step]
+_Formulée ainsi, cette définition semble énigmatique, sauf si ..._
+
+=== Single Responsibility Principe > classe
+
+* Si nous la relisons selon la règle d'or : 
+
+[quote]
+____
+Comme une classe ne doit prendre en charge qu'une seule responsabilité, et bien le faire, {cr}
+seule une évolution de cette responsabilité peut motiver la modification de la classe.
+____
+
+* Une raison 
+** => Une évolution de la responsabilité
+** => Un changement de règle au sein du domaine d'expertise
+
+=== Illustration
+
+Exemple un capteur barométrique joignable par adressage IP
+
+[.big]
+[source,python]
+----
+
+class BarometricSensor:
+
+    def __init__(self):...
+
+    def get_pressure(self) -> float:...
+    
+    def set_ip_address(self, ip: str):...
+
+    def connect_to_ip_address(self) -> bool:...
+
+----
+ 
+=== Illustration
+
+* Deux responsabilités distinctes
+** La gestion du capteur => _Expertise mesure des pressions_
+** La gestion de l'adressage IP => _Expertise réseau_
+
+
+[.big]
+[source,python]
+----
+class BarometricSensor:
+
+    def __init__(self):...
+
+    def get_pressure(self) -> float:...<1>
+    
+    def set_ip_address(self, ip: str):...<2>
+
+    def connect_to_ip_address(self) -> bool:...<2>
+
+----
+[.smaller]
+<1> _Expertise mesure des pressions_
+<2> _Expertise réseau_
+
+
+=== Illustration
+
+* Application du _Single Responsibility Principle_
+** Une classe porte la responsabilité _Gestion de l'adresse IP_
++
+[.big]
+[source,python]
+----
+class IpAddress:
+    def __init__(self, address: str): ...
+    def check(self): ...
+----
++
+** Une classe porte la responsabilité _Gestion mesure des pressions_
++
+[.big]
+[source,python]
+----
+class BarometricSensor:
+
+    def __init__(self):
+        self.address : IpAddress = None
+
+    def get_pressure(self) -> float:...
+    
+    def set_ip_address(self, ip: str):
+        self.address = IpAddress(ip) <1>
+
+    def connect_to_ip_address(self) -> bool:
+        return self.address.check() <1>
+----
+[.smaller]
+<1> _Délégation_, au sein de `BarometricSensor` à `IpAddress`
+
+=== Illustration
+
+[.center]
+image::images/SRP_sensor_1.svg[]
+
+=== Illustration
+
+[.center]
+image::images/SRP_sensor_2.svg[]
+
+=== Illustration
+
+[.center]
+image::images/SRP_sensor_3.svg[]
+
+
+== Interface Segregation Principle 
+
+* Améliorer la conception > Principes fondamentaux
+** Separation of Concern
+** Single Responsibility Principle
+** **=> Interface Segregation Principle**
+
+== Interface Segregation Principle 
+
+* Un module => plusieurs aspects
+** Un utilisateur ne les connait pas tous
+* *Interface Segregation Principle*
+** => Offrir plusieurs facettes
+** => Laisser l'utilisateur utiliser celle qui lui importe
+*** => Dont les évolutions ont une importance pour lui
+
+include::_interface_segregation_principle_illustration.adoc[]
+
+== Interface Segregation Principle 
+
+[.center]
+image::images/ISP_big_class.svg[]
+
+[NOTE.notes]
+--
+Dans le cas des grandes classes, cela permet de limiter sévèrement la connaissance, donc le couplage, donc les effets de bords.
+--
+
+
+== Interface Segregation Principle et refactorisation
+
+* `Extract interface`
+* `Extract superclass`
+
+** Faire de copies d'écran
+
+
+// end::content[]

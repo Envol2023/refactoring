@@ -1,0 +1,99 @@
+= Gestion de la complexité
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+
+== Gestion de la complexité
+
+
+[%step]
+[.left-column-2-3]
+* La complexité croit avec
+** le nombre d'éléments distincts à prendre en compte
+** le nombre d'interactions entre éléments
+* => Saturation de nos capacités cognitives
+** Petit buffer pour charger un contexte en entier
+** Dispersion sur des sujets très différents
+* => Décomposer le gros problème 
+** En plusieurs petits problèmes reliés entre eux
+** Plus faciles à _bufferiser_ , à maîtriser
+
+[.right-column-1-3]
+image::images/breakdown-problem.gif[height=50%]
+
+include::breakdown.adoc[]
+
+== Modularité
+
+[.left-column-2-3]
+--
+* Modularisation
+** Percevoir le système comme un jeu de construction 
+--
+
+[.right-column-1-3]
+--
+image::images/as_legos.jpg[]
+--
+
+
+
+== Modularité
+
+[.left-column-2-3]
+--
+* Modularisation
+** Percevoir le système comme un jeu de construction 
+* Décomposition en modules 
+** => _réduction_ de la complexité _apparente_
+--
+
+[.right-column-1-3]
+--
+image::images/redux.gif[]
+--
+
+== Modularité
+
+[.left-column-2-3]
+--
+* Modularisation
+** Percevoir le système comme un jeu de construction 
+* Décomposition en modules 
+** => _Réduction_ de la complexité _apparente_
+* Effet poupées russes 
+** Des modules, dans des modules, dans des modules ...
+** => _Répartition_ de la complexité
+--
+
+
+[.right-column-1-3]
+--
+image::images/russian_dolls.gif[]
+--
+
+
+[NOTE.notes]
+--
+En applicant la décomposition d'un ensemble complexe en sous-éléments moins complexes, nous faisons un premier pas vers la modularisation.
+C'est à dire que nous cherchons à obtenir des sous-composants que nous pouvons manipuler, sur lesquels nous concentrer, et au besoin, remonter notre attention à un niveau au dessus pour avoir une vision plus globale.
+
+Avoir un ensemble isolé est une condition nécessaire mais pas suffisante pour considérer un sous-composant comme un module. Dans l'idéal, il faudrait qu'il soit identifiable, suffisamment autosuffisant et potentiellement réutilisable.
+--
+
+== Modularité
+
+* Module
+** Entité du langage 
+*** _module python, package java, classes, ..._
+** Identifiable 
+** Suffisamment autosuffisant, 
+** Potentiellement réutilisable.
+
+
+
+// end::content[]

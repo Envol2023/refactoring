@@ -4,7 +4,6 @@ ifndef::imagesdir[]
 :imagesdir: ../../
 endif::[]
 
-{doctype}
 
 // tag::content[]
 
@@ -14,35 +13,22 @@ endif::[]
 
 Améliorer la conception : niveau compétence
 
-// introd
-include::_00_conception_introd.adoc[{include_options}]
 
-// Complexité et modularité
-include::_01_complexity.adoc[{include_options}]
 
-// Module is about data and processing
-include::_02_module_data_processing.adoc[{include_options}]
 
-// Module is about cohesion, coupling and abstraction
-include::_03_module_cohesion_coupling_abstraction.adoc[{include_options}]
 
-// Principles
-include::_04_conception_principles.adoc[{include_options}]
 
-// Bad Smells
-include::_05_conception_bad_smells.adoc[{include_options}]
 
-== Technique de refactoring pour améliorer la conception
+== Bad smells de conception
 
-* `Extract Method`
-* `Move Method`
-* `Move Field`
-* `Extract Class`
-* `Extract Interface`
+include::_conception_bad_smells.adoc[]
+
 
 [.end.background]
 [.center]
 == Améliorer la conception : conclusion
+
+Améliorer la conception : niveau compétence
 
 * Modularisation
 ** Voir un le système comme un jeu de construction
@@ -58,5 +44,6 @@ include::_05_conception_bad_smells.adoc[{include_options}]
 ** Interface Segregation Principle
 *** Minimisation de la connaissance offerte
 *** Limitation du couplage au stricte nécessaire
+
 
 // end::content[]

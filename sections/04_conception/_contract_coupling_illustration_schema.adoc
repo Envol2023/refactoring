@@ -6,8 +6,6 @@ endif::[]
 
 // tag::content[]
 
-//+++++++++++++++++++++++++++++++++++++++++++++++++
-
 == Ne tenir compte que de l'abstraction
 
 [.left-column]
@@ -67,11 +65,9 @@ image::images/flexibility-bound2interface_propagation_0.svg[]
 
 [.middle-column-1-3]
 --
-ifdef::mode_slide[]
 Toute modification risque de propager {cr} 
 *une obligation de s'adapter* {cr}
 à l'ensemble de la chaîne.
-endif::mode_slide[]
 --
 
 [.right-column-1-3]
@@ -233,7 +229,6 @@ Ce contract, c'est l'abstraction de l'interface
 image::images/flexibility-bound2interface_5bis.svg[{image_options}]
 --
 
-ifndef::mode_slide[:leveloffset: -1]
 //-+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
 // end::content[]

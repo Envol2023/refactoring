@@ -1,3 +1,8 @@
+= Conception Bas Smells
+
+// tag::content[]
+
+
 == Duplication
 
 * Symptôme
@@ -44,3 +49,4 @@
 ** `Introduce Parameter Object`
 ** `Preserve Whole Object`
 
+// end::content[]

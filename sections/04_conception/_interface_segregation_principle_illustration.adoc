@@ -1,4 +1,8 @@
 == Illustration
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
 
 [.left-column]
 --

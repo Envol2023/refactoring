@@ -1,0 +1,61 @@
+= Conception Logicielle
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+== Conception Logicielle
+
+* Conception vs Architecture ?
+** Limites pas toujours nettes <= cas des frameworks _invasifs_.
+* Architecture : 
+** Description haut niveau de la solution, 
+** Éloignée des contingences du langage.
+** Lien exigences fonctionnelles <--> réponses apportées.
+* Conception
+** Proche du code et du langage
+** Définition des entités
+*** Modules, packages, classes, données, traitements
+** Utilisation des paradigmes (OOP, fonctionnel, impératifs, ...) 
+
+
+[NOTE.notes]
+--
+Architecture logicielle vs conception logicielle.
+
+La différence entre les deux peut être plus ou moins nette, notamment en fonction de la complexité et la taille du logiciel.
+
+Nous retiendrons que l'architecture logicielle est une description de haut-niveau, aussi agnostique et indépendante de l'écosystème (langages, frameworks…,) que possible.
+Elle fait le lien entre les exigences fonctionnelles et les réponses apportées.
+
+La conception logicielle s'attache plus à la structuration du code, des données et des traitements, la définition des entités et l'utilisation des mécanismes du paradigme utilisé (OOP, fonctionnel, impératif…,) 
+
+Dans certaines situations, le framework sous-jacent est tellement invasif qu'il à tendance à contraindre l'architecture logicielle.
+Nous ne nous étendrons pas sur la pertinence ou non de ce mode de fonctionnement.
+--
+
+== Refactoring de la conception
+
+* Améliorations des aspects _internes_ uniquement
+** Gestion de la *complexité*
+** Réduction de la *dette technique* du passé en gardant un oeil sur l'avenir
+* Conservation du comportement observable
+** Aspect _Fonctionnel_ conservé
+** Aspects _Sécurité_ et _Performance_ supposés conservés
+
+
+[NOTE.notes]
+--
+
+Le comportement observable, c'est ce que perçoit un utilisateur du système _de l'extérieur_, ce que nous pouvons résumer grossièrement à trois aspects : les fonctionnalités offertes, la sécurité, les performances.
+
+Dans le cadre du refactoring, nous considérons qu'aucune évolution dans ces 3 domaines n'est à considérer, même s'il est effectivement courant de faire un refactoring pour améliorer les performances ou minimiser la consommation de ressources.
+
+Pour la sécurité dans la conception, vous pouvez voir les documents de l'ANF https://archive-devlog.cnrs.fr/anf-nmsaw2016, 
+notamment https://archive-devlog.cnrs.fr/_media/nmsaw2016/anf-nmsaw-module-3.2-bonne_pratiques.pdf  et https://archive-devlog.cnrs.fr/_media/nmsaw2016/anf-nmsaw-module-3.4-principes.pdf
+
+--  
+
+//end::content[]

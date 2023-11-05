@@ -37,7 +37,7 @@ ifdef::mode_book[]
 :include_options: leveloffset=+1
 endif::[]
 ifdef::mode_slide[]
-:include_options: tag=prez
+:include_options: tag=content
 endif::[]
 ifdef::mode_slide[]
 :cr: + 
