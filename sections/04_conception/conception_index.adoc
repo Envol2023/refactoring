@@ -1024,10 +1024,10 @@ image::images/SRP_sensor_3.svg[]
 == Interface Segregation Principle 
 
 * Un module => plusieurs aspects
-** Un utilisateur n'a pas besoin/envie de tous connaître
+** Un utilisateur ne les connait pas tous
 * *Interface Segregation Principle*
 ** => Offrir plusieurs facettes
-** => Laisser l'utilisateur choisir celle qui lui importe
+** => Laisser l'utilisateur utiliser celle qui lui importe
 *** => Dont les évolutions ont une importance pour lui
 
 include::_interface_segregation_principle_illustration.adoc[]
