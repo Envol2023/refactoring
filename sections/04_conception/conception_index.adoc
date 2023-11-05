@@ -586,8 +586,6 @@ Comment améliorer les interfaces pour répondre à ces exigences ?
 * Concepteur du module
 ** Minimisation de l'exposition => _Que dois-je montrer au minimum pour être utilisable ?_
 
-include::_typing.adoc[]
-
 === Exemple d'interface 
 
 * Module de communication 
@@ -630,6 +628,8 @@ class Communicator(Protocol):
     def send(msg: Message) -> None: ...
 ----
 --
+
+include::_typing.adoc[]
 
 === Abstraction et contractualisation 
 
