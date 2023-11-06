@@ -24,10 +24,9 @@ class RadioCommunicator(Communicator):
     def send(msg: Message) -> None: 
         if not self.check_compliance_with_very_complicated_rules(msg):
             return
-
-        channel: Channel = self.transmitter.get_channel()
         #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
-        if channel.is_open() and channel.is_writable():
+        channel: Channel = self.transmitter.get_channel()
+        if channel.is_open() and channel.is_writable():     # <--- New rule !
             channel.write(Message.to_base68(msg))
             channel.close()
         else:
@@ -41,7 +40,7 @@ class RadioCommunicator(Communicator):
 
 ** `Extract Method`
 
-[source,python,attributes]
+[source,python]
 -----
 class RadioCommunicator(Communicator):
 
@@ -51,7 +50,7 @@ class RadioCommunicator(Communicator):
         if not self.check_compliance_with_very_complicated_rules(msg):
             return
 
-        if not self._write_to_channel(msg)
+        if not self._write_to_channel(msg)  
             self.pending_messages.append(msg)
 
     #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
@@ -78,14 +77,6 @@ class ForTestRadioCommunicator(RadioCommunicator):
         super().__init__(None, None)
         self.channel_is_open = channel_is_open
         self.channel_is_writable = channel_is_writable
-
-
-    def send(msg: Message) -> None: 
-        if not self.check_compliance_with_very_complicated_rules(msg):
-            return
-
-        if not self._write_to_channel(msg)
-            self.pending_messages.append(msg)
 
     #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
     def _write_to_channel(self, mgs: Message):
