@@ -485,7 +485,7 @@ def test_send_message():
 
 
     # When
-    communicator(transmitter=fake_transmitter)
+    communicator = RadioCommunicator(transmitter=fake_transmitter)
     communicator.send(message)
 
 

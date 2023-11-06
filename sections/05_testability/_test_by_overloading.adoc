@@ -9,9 +9,9 @@ endif::[]
 
 == Testing par surcharge
 
-Imaginons que `RadioCommunicator` vérifie que 
+Imaginons que `RadioCommunicator` évolue parce que Channel évolue (ce qui n'est déjà pas bon signe au niveau des responsabilités)
 
-* `Channel` est _ouvert_ et _écrivable_ avant d'envoyer un message
+* Si `Channel` est _ouvert_ et _écrivable_  alors _envoyer un message_
 * Sinon `RadioCommunicator` met le message en liste d'attente.
 
 [source,python,attributes]
@@ -37,13 +37,15 @@ class RadioCommunicator(Communicator):
 
 == ! 
 
+* Étapes
+
+** `Extract Method`
+
 [source,python,attributes]
 -----
 class RadioCommunicator(Communicator):
 
-    def __init__(self, transmitter: RadioTransmitter):
-        self.transmitter: RadioTransmitter = transmitter
-        self.pending_messages = []
+    #...
 
     def send(msg: Message) -> None: 
         if not self.check_compliance_with_very_complicated_rules(msg):
@@ -63,7 +65,10 @@ class RadioCommunicator(Communicator):
     #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
 -----
 
+== ! 
 
+* Mise en test
+** Surcharge de la méthode à éviter `_write_to_channel`
 
 [source,python,attributes]
 -----
@@ -87,5 +92,157 @@ class ForTestRadioCommunicator(RadioCommunicator):
         return self.channel_is_open and self.channel_is_writable
     #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
 -----
+
+[source,python]
+----
+def test_send_message():
+    # Given
+    communicator = ForTestRadioCommunicator(transmitter=fake_transmitter)
+    message = Message(id=123, content=f'CONTACT server=nowhere.com')
+
+    # When
+    communicator.send(message)
+
+    # Then
+    assert message in communicator.pending_messages
+
+----
+
+=== Test par sous-classage
+
+[source,python]
+----
+class GitlabIssueDispatcher:
+
+    def __init__(self, gitlab: Gitlab):
+        self.gitlab = gitlab
+
+    def dispatch(self, issues: List[Issue]):
+        self.deduplicate_issues(issues)
+        self.balance_issues_per_assignee(issues)
+        self.create_issues_in_tracking_system(issues)
+
+    def deduplicate_issues(self, issues: List[Issue]) -> None:
+        # Do something
+    def balance_issues_per_assignee(self, issues: List[Issue]) -> None:
+        # Do something
+
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+    def convert_to_tracking_system(self, issue: Issue) -> Any:
+        # Do something
+
+    def create_issues_in_tracking_system(self, issues : List[Issue]) -> None:
+        for issue in self.issues:
+            project_id = issue.project_id
+            project = self.gitlab.projects.get(id=project_id)
+            project.issues.create(self.convert_to_tracking_system(issue))
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+
+
+----
+
+Nous voulons tester l'enchaînement des étapes.
+Le test serait plus facile à faire si on se débarrassait de la dépendance à la librairie `python-gitlab` non ?
+
+* Étapes
+** `Extract class` `GitlabIssueDispatcher` -> `IssueDispatcher`
+** Laisser la méthode ou les méthodes  problématiques non définies et abstraites
+
+
+[source,python]
+----
+class IssueDispatcher(ABC):
+
+    def __init__(self):
+
+    def dispatch(self, issues: List[Issue]):
+        self.deduplicate_issues(issues)
+        self.balance_issues_per_assignee(issues)
+        self.create_issues_in_tracking_system(issues)
+
+    def deduplicate_issues(self, issues: List[Issue]) -> None:
+        # Do something
+    def balance_issues_per_assignee(self, issues: List[Issue]) -> None:
+        # Do something
+
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+    @abstractmethod
+    def convert_to_tracking_system(self, issue: Issue) -> Any:
+        pass
+
+    @abstractmethod
+    def create_issues_in_tracking_system(self, issues : List[Issue]) -> None:
+        pass
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+
+----
+
+[source,python,attributes]
+----
+class GitlabIssueDispatcher(IssueDispatcher):
+
+    def __init__(self, file_path: Path, gitlab: Gitlab):
+        super().__init__(file_path)
+        self.gitlab = gitlab
+
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+    def convert_to_tracking_system(self, issue: Issue) -> Any:
+        # Do something
+
+    def create_issues_in_tracking_system(self, issues : List[Issue]) -> None:
+        for issue in self.issues:
+            project_id = issue.project_id
+            project = self.gitlab.projects.get(id=project_id)
+            project.issues.create(self.convert_to_tracking_system(issue))    
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+----
+
+
+[source,python,attributes]
+----
+class ForTestIssueDispatcher(IssueDispatcher):
+    def __init__(self, file_path):
+        super().__init__(file_path)
+
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+    def convert_to_tracking_system(self, issue: Issue) -> Any:
+        # Don't care
+        pass
+
+    def create_issues_in_tracking_system(self, issues : List[Issue]) -> None:
+        # Don't care    
+        pass
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+----
+
+[source,python,attributes]
+----
+def test_issue_dispatcher()
+    # Given
+    dispatcher = ForTestIssueDispatcher()
+    issues = [Issue(id=i, assignee=j) for i in range(5) for j in range(5)]
+    
+    # When
+    dispatcher.dispatch(issues)
+
+    # Then 
+    assert ... # some assertions
+----
+
+Avantages
+
+[source,python,attributes]
+----
+class GitlabIssueDispatcher(IssueDispatcher): ...
+
+class GithubIssueDispatcher(IssueDispatcher): ...
+
+class JiraIssueDispatcher(IssueDispatcher): ...
+    
+----
+
+
+
+
 
 // end::tagname[]
