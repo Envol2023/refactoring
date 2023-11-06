@@ -1,0 +1,111 @@
+= Typage
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../
+endif::[]
+
+// tag::content[]
+== Expliciter les attentes
+
+* Signature
+** Ensemble d'éléments qui identifient un traitement
+*** Nom
+*** Paramètres
+*** Type de retour
+
+Exemple en java
+
+[.big]
+[source,java,attributes]
+----
+public Travel getTravel(Profile p, Enterprise e)
+----
+
+En python 
+
+[.big]
+[source,python,attributes]
+----
+def get_travel(profile, enterprise): ...
+----
+
+=== Le problème Python
+
+* C'est vous le compilateur
+** Pas de coercition, pas de compilation poussée
+** Vérification au runtime
+*** Surprise à la fin => `Attribute error: foo has no attribute named bar`
+* => Charge mentale importante
+** Connaissance 
+*** des arguments possibles
+*** des vérifications (ou pas)
+
+
+[.big]
+[source,python,attributes]
+----
+get_travel(Profile(id=125), Enterprise(id=987))
+----
+
+
+[.big]
+[source,python,attributes]
+----
+get_travel("John", "ACME")
+----
+
+
+=== Python utilisez les type hints
+
+[%linenums,python]
+----
+object: Type
+----
+
+Typage des arguments
+
+[source,python]
+----
+def get_travel(profile: Profile, enterprise: Enterprise): 
+    ...
+----
+
+
+Typage du retour
+
+[source,python]
+----
+def get_travel(profile: Profile, enterprise: Enterprise) -> Travel: 
+    ...
+----
+
+=== Package Typings
+
+Liste
+
+[.big]
+[source,python]
+-----
+from typings import List
+events: List[Event] = []
+-----
+
+Dictionnaire
+
+
+[.big]
+[source,python]
+-----
+from typings import Dict
+categories_by_name: Dict[str, Category] = {}
+-----
+
+Plus de détails 
+
+https://realpython.com/python-type-checking/
+
+
+
+
+
+// end::content[]
