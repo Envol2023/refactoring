@@ -29,7 +29,6 @@ marc.dexet@ias.u-psud.fr
 * Améliorer la compréhension
 * Améliorer la conception
 * Améliorer la testabilité
-* Legacy
 
 == Introduction au refactoring
 
@@ -40,7 +39,6 @@ marc.dexet@ias.u-psud.fr
 * Améliorer la compréhension
 * Améliorer la conception
 * Améliorer la testabilité
-* Legacy
 
 include::./sections/00_refactoring/refactoring_index.adoc[{include_options}]
 
@@ -53,7 +51,6 @@ include::./sections/00_refactoring/refactoring_index.adoc[{include_options}]
 * Améliorer la compréhension
 * Améliorer la conception
 * Améliorer la testabilité
-* Legacy
 
 include::./sections/01_tests/tests_index.adoc[{include_options}]
 
@@ -66,7 +63,6 @@ include::./sections/01_tests/tests_index.adoc[{include_options}]
 * Améliorer la compréhension
 * Améliorer la conception
 * Améliorer la testabilité
-* Legacy
 
 include::./sections/02_brain/brain_index.adoc[{include_options}]
 
@@ -80,7 +76,6 @@ include::./sections/02_brain/brain_index.adoc[{include_options}]
 * **=> Améliorer la compréhension**
 * Améliorer la conception
 * Améliorer la testabilité
-* Legacy
 
 include::./sections/03_understanding/understanding_index.adoc[{include_options}]
 
@@ -93,7 +88,6 @@ include::./sections/03_understanding/understanding_index.adoc[{include_options}]
 * Améliorer la compréhension
 * **=> Améliorer la conception**
 * Améliorer la testabilité
-* Legacy
 
 include::./sections/04_conception/conception_index.adoc[{include_options}]
 
@@ -106,7 +100,6 @@ include::./sections/04_conception/conception_index.adoc[{include_options}]
 * Améliorer la compréhension
 * Améliorer la conception
 * **=> Améliorer la testabilité**
-* Legacy
 
 include::./sections/05_testability/testability_index.adoc[{include_options}]
 

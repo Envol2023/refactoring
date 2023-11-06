@@ -16,15 +16,65 @@ endif::[]
 
 [quote]
 ____
-Tests are the Programmer’s stone, transmuting fear into boredom.
+Tests are the Programmer's stone, transmuting fear into boredom.
 ____
 
 
-La testabilité est la facilité à créer un test unitaire
-Un test unitaire doit permettre d'isoler le composant et ne tester que lui, si possible.
-Or cette faculté est très influencer par la conception.
+=== Definition de la Testabilité
 
-Si un code est difficile à tester ne le sera, ou cela représentera une grande charge qui découragera.
+[quote]
+____
+La testabilité d'un module est la facilité à créer une série de tests automatisés.
+____
+
+* Qualité Logicielle
+** Une des caractéristiques de la _Maintenabilité_
+
+=== Testabilité
+
+Le premier frein au changement est la peur de tout casser.
+
+image::images/break_everything.gif[]
+
+* Ne peut se faire sereinement, à un rythme _soutenable_ sans avoir confiance
+
+=== Testabilité et confiance
+
+[.center]
+image::images/testability-cercle-vertueux.svg[]
+
+
+=== La testabilité et qualité de conception
+
+* Si un code est mal conçu, il est difficile à tester
+* La réciproque n'est pas toujours vraie
+
+=== Tests au plus tôt
+
+* Les tests doivent être créés au plus tôt 
+** Pour des raisons de productivité
+**INCLURE GRAPHIQUE PRODUCTIVITE**
+** Pour des raisons de correction de la conception au plus tôt
+**INCLURE SCHEMA**
+
+== Cycles de vies
+
+=== Un test doit échouer
+
+image::images/pytest-lifecycle.png[]
+
+=== Le TDD et refactoring
+
+image::images/pytest-tdd-lifecycle.png[]
+
+=== Bug fix
+
+image::images/pytest-bugfix-lifecycle.png[]
+
+=== Le cercle infernale
+
+[.center]
+image::images/testability-cercle.svg[alt]
 
 === Obstacles à la testabilité
 
@@ -33,8 +83,6 @@ Si un code est difficile à tester ne le sera, ou cela représentera une grande 
 * Les tests ne sont pas répétables car ils dépendent de choses qui sont trop fluctuantes
 ** Heure, propriétés système, randomisation
 * Je ne peux rien observer
-
-
 
 === Raison de la difficulté à tester
 

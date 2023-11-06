@@ -80,6 +80,8 @@ include::code_is_text_naming.adoc[{include_options}]
 
 include::code_well_targeted.adoc[{include_options}]
 
+include::code_typing.adoc[{include_options}]
+
 include::code_logical_expression.adoc[{include_options}]
 
 == Bad smells 

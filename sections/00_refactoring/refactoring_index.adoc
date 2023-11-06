@@ -49,8 +49,14 @@ image::../images/ISO_9126_quality_(en).png[width=90%]
 https://commons.wikimedia.org/wiki/File:ISO_9126_quality_(en).svg
 --
 
-
+[.center]
 === Maîtriser la complexité
+
+[.center]
+image::images/complexity.gif[role=half-size]
+
+
+ifdef::mode_slide[=== Maîtriser la complexité]
 
 ****
 * Complexité vs Complication ?
@@ -66,7 +72,6 @@ https://commons.wikimedia.org/wiki/File:ISO_9126_quality_(en).svg
 * Développement => activité complexe peut devenir vite très compliquée
 ** Beaucoup d'éléments & d'aspects à prendre en compte
  
-
 [NOTE.notes]
 --
 Un logiciel est une solution en réponse à un besoin humain. Si ce besoin est simple, simple à exprimer, à formaliser, à traduire en code, que la traduction est assez directe, la solution sera simple également. Mais de tels besoins, à part des scripts très modestes, ne nécessitent pas de méthodologie.

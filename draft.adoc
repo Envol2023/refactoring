@@ -435,7 +435,6 @@ Renommage fonction **SANS OUTIL de TESTS**
 * Faciliter la compréhension
 * Améliorer la conception
 * Faciliter la testabilité
-* Application avec du code legacy
 
 == Test 101
 

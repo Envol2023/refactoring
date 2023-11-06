@@ -45,6 +45,9 @@ image::images/redux.gif[]
 
 _You have one job, only one job_
 
+[.center]
+image:images/you-had-one-job.jpg[]
+
 [%step]
 * Ce principe s'applique aussi bien 
 ** aux fonctions 
