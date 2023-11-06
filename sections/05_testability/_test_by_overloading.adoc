@@ -1,0 +1,61 @@
+= Test par surcharge
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::tagname[]
+
+
+== Testing par surcharge
+
+Imaginons que `RadioCommunicator` vérifie que 
+
+* `Channel` est _ouvert_ et _écrivable_ avant d'envoyer un message
+* Sinon `RadioCommunicator` met le message en liste d'attente.
+
+[source,python,attributes]
+-----
+class RadioCommunicator(Communicator):
+
+    def __init__(self, transmitter: RadioTransmitter):
+        self.transmitter: RadioTransmitter = transmitter
+
+    def send(msg: Message) -> None: 
+        if not self.check_compliance_with_very_complicated_rules(msg):
+            return
+
+        channel: Channel = self.transmitter.get_channel()
+        if channel.is_open() and channel.is_writable():
+            channel.write(Message.to_base68(msg))
+            channel.close()
+        else:
+            self.pending_messages.append(msg)
+-----
+
+== ! 
+
+[source,python,attributes]
+-----
+class RadioCommunicator(Communicator):
+
+    def __init__(self, transmitter: RadioTransmitter):
+        self.transmitter: RadioTransmitter = transmitter
+
+    def send(msg: Message) -> None: 
+        if not self.check_compliance_with_very_complicated_rules(msg):
+            return
+
+        if not self._write_to_channel(msg)
+            self.pending_messages.append(msg)
+
+    def _write_to_channel(self, mgs: Message):
+        channel: Channel = self.transmitter.get_channel()
+        if channel.is_open() and channel.is_writable():
+            channel.write(Message.to_base68(msg))
+            channel.close()
+            return True
+        return False
+-----
+
+// end::tagname[]

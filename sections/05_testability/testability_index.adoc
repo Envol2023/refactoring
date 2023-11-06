@@ -38,6 +38,24 @@ image::images/break_everything.gif[]
 
 * Ne peut se faire sereinement, à un rythme _soutenable_ sans avoir confiance
 
+== Cycles de vies
+
+**A REFAIRE**
+
+Les tests sont comme un capital: plus tôt ils sont créés plus vite les bénéfices 
+
+=== Un test doit échouer
+
+image::images/pytest-lifecycle.png[]
+
+=== Le TDD et refactoring
+
+image::images/pytest-tdd-lifecycle.png[]
+
+=== Bug fix
+
+image::images/pytest-bugfix-lifecycle.png[]
+
 === Testabilité et confiance
 
 [.center]
@@ -57,21 +75,207 @@ image::images/testability-cercle-vertueux.svg[]
 ** Pour des raisons de correction de la conception au plus tôt
 **INCLURE SCHEMA**
 
-== Cycles de vies
 
-Les tests sont comme un capital: plus tôt ils sont créés plus vite les bénéfices 
+== Test facile
 
-=== Un test doit échouer
+[.big]
+[source,python]
+-----
+def filter_info_log(logs: List[Log]) -> List[Log]:
+    return [log for log in logs if log.level == "INFO"]
+-----
 
-image::images/pytest-lifecycle.png[]
+[.left-column]
+--
 
-=== Le TDD et refactoring
+[.big]
+[source,python]
+-----
+def test_filter_info_log_empty():
+    # Given
+    logs = []
 
-image::images/pytest-tdd-lifecycle.png[]
+    # When
+    result = filter_info_log(logs)
 
-=== Bug fix
+    # Then
+    assert result == []
+-----
+--
 
-image::images/pytest-bugfix-lifecycle.png[]
+
+[.right-column]
+--
+[.big]
+[source,python]
+-----
+def test_filter_info_log_no_info_logs():
+    # Given
+    logs = [Log(level="ERROR")]
+
+    # When
+    result = filter_info_log(logs)
+
+    # Then
+    assert result == []
+-----
+--
+
+=== Test moins facile
+
+[.big]
+[source,python,attributes]
+-----
+class LogFilter:
+    def __init__(self, rules: Rules):
+        self.rules = rules
+    
+    def filter_info_log(self, logs: List[Log]) -> List[Log]:
+        return [log for log in logs if self.rules.validate(log, "INFOS")]
+-----
+
+[.left-column]
+--
+[.big]
+[source,python]
+-----
+def test_filter_info_log_empty():
+    # Given
+    logs = []
+    rules = Rules()
+    log_filter = LogFilter(rules)
+
+    # When
+    result = log_filter.filter_info_log(logs)
+
+    # Then
+    assert result == []
+-----
+--
+
+
+[.right-column]
+--
+[.big]
+[source,python]
+-----
+def test_filter_info_log_no_info_logs():
+    # Given
+    logs = [Log(level="ERROR")]
+    rules = Rules()
+    log_filter = LogFilter(rules)
+
+    # When
+    result = log_filter.filter_info_log(logs)
+
+    # Then
+    assert result == []
+-----
+--
+
+
+
+=== Test franchement pas facile
+
+[.big]
+[source,python,attributes]
+-----
+class LogFilter:
+    def __init__(self, rules: Rules):
+        self.rules = rules
+    ...
+
+class Rules:
+    def __init__(self, db_name: str, db_host: str, db_login: str, db_password: str):
+        self. conn = psycopg2.connect(database = db_name, 
+                                        user = db_login, 
+                                        host= db_host,
+                                        password = db_password)
+
+        self.load_rules(self.conn)
+-----
+
+[.left-column]
+--
+[.big]
+[source,python]
+-----
+def test_filter_info_log_empty():
+    # Given
+    conn = psycopg2.connect(database = TEST_DATABASE, 
+                            user = TEST_USER, 
+                            host= TEST_HOST,
+                            password = TEST_PASSWORD,
+                            port = 5432)
+    clear_then_load_rules_in_database(conn)
+
+    logs = []
+    rules = Rules(conn)
+    log_filter = LogFilter(rules)
+
+    # When
+    result = log_filter.filter_info_log(logs)
+
+    # Then
+    assert result == []
+-----
+--
+
+
+[.right-column]
+--
+[.big]
+[source,python]
+-----
+def test_filter_info_log_no_info_logs():
+    # Given
+    conn = psycopg2.connect(database = TEST_DATABASE, 
+                            user = TEST_USER, 
+                            host= TEST_HOST,
+                            password = TEST_PASSWORD,
+                            port = 5432)
+    clear_then_load_rules_in_database(conn)
+
+    logs = [Log(level="ERROR")]
+    rules = Rules(conn)
+    log_filter = LogFilter(rules)
+
+    # When
+    result = log_filter.filter_info_log(logs)
+
+    # Then
+    assert result == []
+-----
+--
+
+=== Facilité et couplage
+
+[.left-column]
+--
+[%step]
+* Coupable couplage
+** Mise en condition => beaucoup de travail
+*** => instanciation de nombreux objets
+* Objectifs
+** => Découpler au maximum
+*** Conception _propre_
+** => Se libérer des dépendances
+*** Plusieurs stratégies
+--
+
+[.right-column]
+--
+[%step]
+* Action préventives 
+** => Nouveau code  -> nouveau test
+* Action correctives
+** => Legacy code
+--
+
+== Legacy et théorie
+
+
+
 
 === Le cercle infernale
 
@@ -126,8 +330,10 @@ def test_validator_load_rules():
     validator = Validator(conn=conn)
     message = Message(id=123, content=f'CONTACT server=nowhere.com')
 
+
     # When
     is_valid = validator.validate(msg)
+
 
     # Then
     assert is_valid
@@ -270,9 +476,11 @@ def test_send_message():
     fake_transmitter = FakeTransmitter(fake_channel)
     message = Message(id=123, content=f'CONTACT server=nowhere.com')
 
+
     # When
     communicator(transmitter=fake_transmitter)
     communicator.send(message)
+
 
     # Then
     assert len(fake_channel.write_buffer) > 0
@@ -396,8 +604,10 @@ def test_print_messages(message_provider):
 
     fake_provider.messages = [Message(id=1, content='foo')]
 
+
     # When
     report.report_last_messages()
+
 
     # Then
     assert io.get_value() == 'ID:1 => foo'
@@ -462,8 +672,10 @@ def test_print_messages():
 
     fake_provider.messages = [Message(id=1, content='foo')]
 
+
     # When
     report.report_last_messages()
+
 
     # Then
     assert io.get_value() == 'ID:1 => foo'
