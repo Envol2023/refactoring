@@ -26,11 +26,13 @@ class RadioCommunicator(Communicator):
             return
 
         channel: Channel = self.transmitter.get_channel()
+        #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
         if channel.is_open() and channel.is_writable():
             channel.write(Message.to_base68(msg))
             channel.close()
         else:
             self.pending_messages.append(msg)
+        #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
 -----
 
 == ! 
@@ -41,6 +43,7 @@ class RadioCommunicator(Communicator):
 
     def __init__(self, transmitter: RadioTransmitter):
         self.transmitter: RadioTransmitter = transmitter
+        self.pending_messages = []
 
     def send(msg: Message) -> None: 
         if not self.check_compliance_with_very_complicated_rules(msg):
@@ -49,6 +52,7 @@ class RadioCommunicator(Communicator):
         if not self._write_to_channel(msg)
             self.pending_messages.append(msg)
 
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
     def _write_to_channel(self, mgs: Message):
         channel: Channel = self.transmitter.get_channel()
         if channel.is_open() and channel.is_writable():
@@ -56,6 +60,32 @@ class RadioCommunicator(Communicator):
             channel.close()
             return True
         return False
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+-----
+
+
+
+[source,python,attributes]
+-----
+class ForTestRadioCommunicator(RadioCommunicator):
+
+    def __init__(self, channel_is_open: bool, channel_is_writable: bool):
+        super().__init__(None, None)
+        self.channel_is_open = channel_is_open
+        self.channel_is_writable = channel_is_writable
+
+
+    def send(msg: Message) -> None: 
+        if not self.check_compliance_with_very_complicated_rules(msg):
+            return
+
+        if not self._write_to_channel(msg)
+            self.pending_messages.append(msg)
+
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
+    def _write_to_channel(self, mgs: Message):
+        return self.channel_is_open and self.channel_is_writable
+    #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
 -----
 
 // end::tagname[]
