@@ -59,6 +59,8 @@ image::images/testability-cercle-vertueux.svg[]
 
 == Cycles de vies
 
+Les tests sont comme un capital: plus tôt ils sont créés plus vite les bénéfices 
+
 === Un test doit échouer
 
 image::images/pytest-lifecycle.png[]
