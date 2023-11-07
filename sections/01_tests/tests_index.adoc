@@ -173,6 +173,18 @@ def test_is_a_planet_with_mixedcase():
 ** https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks
 --
 
+== Automatisation des tests unitaires
+
+* Utiliser les tests unitaires comme un processus continu
+** Ne lancez pas les tests unitaires à la main.
+** Vous ne serez pas alerté des écarts de comportement.
+* Utilisez l'exécution continue
+** Dans l'IDE
+** Système de monitoring
+
+[.center]
+image::images/red-green-lights-2.gif[]
+
 [NOTE.notes]
 --
 
