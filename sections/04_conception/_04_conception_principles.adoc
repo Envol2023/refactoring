@@ -365,23 +365,77 @@ Dans le cas des grandes classes, cela permet de limiter sévèrement la connaiss
 ** Faire de copies d'écran
 
 
-=== Héritage vs Composition
+=== Composition Over Inheritance
 
-* Piège par excellence
-** Mauvaise compréhension POO => Difficulté de maintenance
+* Héritage 
+** Mécanisme très puissant de modélisation
+* Attention piège !
+** Couplage entre classes
+*** => Evolution classe mère => évolution classe fille
+** Tendance à faire des héritages très profonds
+
+[.left-column]
+--
+* Relation **EST UN**
+** Un  _poste de travail_ **est une** _personne_
+
+[source,python,attributes]
+----
+class Person:
+    def __init__(self, title: str, name: str, age: int):
+        self.title = title
+        self.name = name
+        self.age = age
 
 
-=== Héritage
+class Assignment(Person):
+    def __init__(self, title: str, name: str, age: int, function_name):
+        super().__init__(title, name, age)
+        self.function_name = function_name
+----
+--
 
-*Trouver exemple de hiérarchie* 
+[.right-column]
+--
+* Relation **A UN** ou **UTILISE UN** ou **EST COMPOSE DE**
+** Un _poste de travail_ **est composé de** une personne _et_ d'une fonction.
 
-https://stackoverflow.com/questions/49002/prefer-composition-over-inheritance
+[source,python,attributes]
+----
+class Person:
+    def __init__(self, title: str, name: str, age: int):
+        self.title = title
+        self.name = name
+        self.age = age
 
+
+class Assignment:
+    def __init__(self, person: Person, function_name: str):
+        self.person = person
+        self.function_name = function_name
+----
+--
 
 
 [NOTE.notes]
 --
 Chez les développeurs et développeuses peu expérimenté(e)s ou n'étant pas très bien formé(e)s à la programmation objet, c'est un écueil souvent rencontré.
-Il s'ensuit des héritages lourds à transporter, des responsabilités mal distribuées, et une difficulté de maintenance avérée
+Il s'ensuit des héritages lourds à transporter, des responsabilités mal distribuées, et une difficulté de maintenance avérée.
+
+Le couplage étroit fourni par l'héritage fait que l'implémentation d'une sous-classe est très liée à l'implémentation d'une super-classe, de sorte que tout changement dans l'implémentation de la classe mère obligera la sous-classe à changer.
 --
+
+== Composition et responsabilités
+
+* A chacun son expertise
+** La composition facilite l'identification des responsabilité. 
+
+
+== Conseils
+
+* Maîtriser son langage
+* Connaître les paradigmes utilisés
+* Connaître les Design Pattern 
+** Gang Of Four, GRASP...
+
 // end::content[]
