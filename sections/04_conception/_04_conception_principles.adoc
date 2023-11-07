@@ -430,6 +430,16 @@ Le couplage étroit fourni par l'héritage fait que l'implémentation d'une sous
 * A chacun son expertise
 ** La composition facilite l'identification des responsabilité. 
 
+=== split loop
+Application du SRP à un cas classique 
+Compromis performance / design 
+
+Petit laïus performance 
+
+=== techniques de recherche de responsabilité 
+
+Et composition sprout 
+
 
 == Conseils
 
