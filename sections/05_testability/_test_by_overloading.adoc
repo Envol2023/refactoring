@@ -4,16 +4,29 @@ ifndef::imagesdir[]
 :imagesdir: ../../
 endif::[]
 
-// tag::tagname[]
+// tag::content[]
 
 
 == Testing par surcharge
 
-Imaginons que `RadioCommunicator` évolue parce que Channel évolue (ce qui n'est déjà pas bon signe au niveau des responsabilités)
+[.simple]
+* Nouvelles règles pour `RadioCommunicator` 
+** Evolution de  `Channel` => évolution de `RadioCommunicator`
 
-* Si `Channel` est _ouvert_ et _écrivable_  alors _envoyer un message_
-* Sinon `RadioCommunicator` met le message en liste d'attente.
+[.smaller.center]
+====
+**SI** `Channel` _ouvert_ **ET** _écrivable_  
+**ALORS** _envoyer un message_ {cr}
+**SINON** mettre message _en liste d'attente_.
+====
 
+[.center]
+**Alerte : responsabilités !!**
+
+
+ifdef::mode_slide[== Testing par surcharge]
+
+[.big]
 [source,python,attributes]
 -----
 class RadioCommunicator(Communicator):
@@ -34,11 +47,30 @@ class RadioCommunicator(Communicator):
         #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
 -----
 
+
+ifdef::mode_slide[== Testing par surcharge]
+
+
+
+[.center]
+image::images/testability-hierarchy-slide-test_2.svg[]
+
+[.center]
+image::images/testability-hierarchy-slide-test_3.svg[]
+
+[.center]
+image::images/testability-hierarchy-slide-test_4.svg[]
+
+[.center]
+image::images/testability-hierarchy-slide-test_5.svg[]
+
+
 == ! 
 
-* Étapes
-
+* Étape 1
 ** `Extract Method`
+*** `_write_to_channel(Message)`
+
 
 [source,python]
 -----
@@ -66,8 +98,10 @@ class RadioCommunicator(Communicator):
 
 == ! 
 
-* Mise en test
-** Surcharge de la méthode à éviter `_write_to_channel`
+* Étape 2
+** Création classe de test en **héritant** de la classe à tester
+** Surcharge de  `_write_to_channel`
+*** <= **problématique**, **hors responsabilité**
 
 [source,python,attributes]
 -----
@@ -84,6 +118,13 @@ class ForTestRadioCommunicator(RadioCommunicator):
     #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
 -----
 
+[NOTE.notes]
+--
+Nous surchargeons la méthode problématique `_write_to_channel` car elle est difficile à simuler et surtout elle est hors responsabilité.
+
+Ce problème relève de l'expertise très spécifique `Transmission par canaux`, pas `Communication générale des message`
+--
+
 [source,python]
 ----
 def test_send_message():
@@ -99,6 +140,27 @@ def test_send_message():
 
 ----
 
+== Resumé
+
+[.left-column]
+--
+[.center]
+image::images/testability-hierarchy-slide-test_0.svg[]
+
+--
+
+[.middle-column]
+--
+[.center]
+image::images/testability-hierarchy-slide-test_1.svg[]
+--
+
+[.right-column]
+--
+[.center]
+image::images/testability-hierarchy-slide-test_2.svg[]
+
+--
 === Test par sous-classage
 
 [source,python]
@@ -232,8 +294,27 @@ class JiraIssueDispatcher(IssueDispatcher): ...
     
 ----
 
+== Résumé
+
+[.center]
+image::images/testability-hierarchy-slide-test_0.svg[]
+
+[.center]
+image::images/testability-hierarchy-slide-test_1.svg[]
+
+[.center]
+image::images/testability-hierarchy-slide-test_2.svg[]
+
+[.center]
+image::images/testability-hierarchy-slide-test_3.svg[]
+
+[.center]
+image::images/testability-hierarchy-slide-test_4.svg[]
+
+[.center]
+image::images/testability-hierarchy-slide-test_5.svg[]
 
 
 
 
-// end::tagname[]
+// end::content[]

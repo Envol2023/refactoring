@@ -742,6 +742,19 @@ def test_print_messages():
     assert io.get_value() == 'ID:1 => foo'
 ----
 
+== Résumé
+
+image::images/report_stream-0.svg[]
+
+image::images/report_stream-1.svg[]
+
+image::images/report_stream-2.svg[]
+
+== Amélioration de la testabilité par la hiérarchisation
+
+include::_test_by_overloading.adoc[{include_options}]
+
+
 === Simuler une base de données
 
 * Utiliser le pattern du repository
