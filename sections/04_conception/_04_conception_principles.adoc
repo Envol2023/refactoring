@@ -365,4 +365,23 @@ Dans le cas des grandes classes, cela permet de limiter sévèrement la connaiss
 ** Faire de copies d'écran
 
 
+=== Héritage vs Composition
+
+* Piège par excellence
+** Mauvaise compréhension POO => Difficulté de maintenance
+
+
+=== Héritage
+
+*Trouver exemple de hiérarchie* 
+
+https://stackoverflow.com/questions/49002/prefer-composition-over-inheritance
+
+
+
+[NOTE.notes]
+--
+Chez les développeurs et développeuses peu expérimenté(e)s ou n'étant pas très bien formé(e)s à la programmation objet, c'est un écueil souvent rencontré.
+Il s'ensuit des héritages lourds à transporter, des responsabilités mal distribuées, et une difficulté de maintenance avérée
+--
 // end::content[]
