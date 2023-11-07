@@ -1,0 +1,35 @@
+= Testabilité
+== Améliorer la testabilité
+== Testabilité
+=== Definition de la Testabilité
+=== Testabilité
+== Cycles de vies
+=== Un test doit échouer
+=== Le TDD et refactoring
+=== Bug fix
+=== Testabilité, conception et confiance
+=== La testabilité et qualité de conception
+=== Tests au plus tôt
+== Test facile
+=== Test moins facile
+=== Test franchement pas facile
+=== Facilité et couplage
+== Legacy et théorie
+=== Le cercle infernale
+=== Obstacles à la testabilité
+=== Raison de la difficulté à tester
+=== Le paramètre irritant
+=== Test lourd à faire
+== La dépendance cachée
+== La dépendance cachée : le problème
+== La dépendance cachée : extraire l'interface du XBandTransmitter
+=== Ajouter un paramètre optionnel
+=== Tester
+=== Cas de la dépendance globale
+=== Singleton is an anti-pattern
+=== Travail sur le Singleton
+=== Test en modifiant le Singleton
+=== En injectant le fournisseur
+=== Simplification du test
+=== Simuler une base de données
+== Améliorer la testabilité

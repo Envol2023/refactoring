@@ -10,15 +10,37 @@ endif::[]
 [.center]
 == Améliorer la testabilité
 
-"Code that isn't tested doesn't work - this seems to be the safe assumption."
 
-== Testabilité
 
-[quote]
+
+=== L'immobilisation par la peur
+
+* La peur de tout casser.
+** => Premier frein au changement
+
+image::images/break_everything.gif[]
+
+Aucune évolution n'est possible, à un rythme _soutenable_ sans confiance.
+
+=== Le complexe de Frankenstein
+
+Nous sommes tellement heureux d'avoir un code qui fonctionne assemblant des lignes de code sans cohérence
+
+image::images/frankenstein_0.gif[alt]
+
+
+=== Le complexe de Frankenstein
+
+\... que nous ne voyons que trop tard que le code nous échappe totalement
+
+image::images/frankenstein_1.gif[alt]
+
+== La pierre philosophale
+
+[quote, Kent Beck]
 ____
 Tests are the Programmer's stone, transmuting fear into boredom.
 ____
-
 
 === Definition de la Testabilité
 
@@ -30,50 +52,82 @@ ____
 * Qualité Logicielle
 ** Une des caractéristiques de la _Maintenabilité_
 
-=== Testabilité
+== L'échec comme premier pas.
 
-Le premier frein au changement est la peur de tout casser.
+Dans la philosophe des tests, l'échec n'est pas négatif, c'est sa persistence qu'il l'est éventuellement.
 
-image::images/break_everything.gif[]
+L'échec indique qu'un état souhaité n'est pas atteint. L'objectif est de l'atteindre
 
-* Ne peut se faire sereinement, à un rythme _soutenable_ sans avoir confiance
+=== Cycle de vie > Développement Normal
 
-== Cycles de vies
 
-**A REFAIRE**
-
-Les tests sont comme un capital: plus tôt ils sont créés plus vite les bénéfices 
-
-=== Un test doit échouer
-
+[.center]
 image::images/pytest-lifecycle.png[]
+
+=== Cycle de vie > Bug fix
+
+[.center]
+image::images/pytest-bugfix-lifecycle.png[]
 
 === Le TDD et refactoring
 
-image::images/pytest-tdd-lifecycle.png[]
-
-=== Bug fix
-
-image::images/pytest-bugfix-lifecycle.png[]
-
-=== Testabilité et confiance
+* Test Driven Development
+** Approche érigée en philosophie
 
 [.center]
+image::images/pytest-tdd-lifecycle.png[]
+
+[quote,Kent Beck]
+____
+"Code that isn't tested doesn't work - this seems to be the safe assumption."
+____
+
+
+=== Testabilité, conception et confiance
+
+[.left-column]
+[.center]
+--
+Cercle vertueux
+
 image::images/testability-cercle-vertueux.svg[]
 
+--
+
+[%step]
+[.right-column]
+[.center]
+--
+Cercle vicieux
+
+image::images/testability-cercle-vicieux.svg[]
+--
+
+[%step]
+[.reset-column.center]
+--
+[quote]
+____
+"Réalisez les projets avec des personnes motivées. Fournissez-leur l'environnement et le soutien dont elles ont besoin et _faites-leur confiance_ pour atteindre les objectifs fixés."
+____
+--
+
+[NOTE.notes]
+--
+Il y a une relation très claire entre la conception, la testabilité et la confiance que nous plaçons dans le code.
+Cette confiance agit directement sur notre motivation, notre engagement sur le projet lui-même.
+
+La motivation est un principe très fort dans l'agilité. L'un de ces principes n'est-il pas ?
+
+____
+Réalisez les projets avec des personnes motivées. Fournissez-leur l'environnement et le soutien dont elles ont besoin et _faites-leur confiance_ pour atteindre les objectifs fixés.
+____
+--
 
 === La testabilité et qualité de conception
 
 * Si un code est mal conçu, il est difficile à tester
 * La réciproque n'est pas toujours vraie
-
-=== Tests au plus tôt
-
-* Les tests doivent être créés au plus tôt 
-** Pour des raisons de productivité
-**INCLURE GRAPHIQUE PRODUCTIVITE**
-** Pour des raisons de correction de la conception au plus tôt
-**INCLURE SCHEMA**
 
 
 == Test facile
@@ -687,6 +741,19 @@ def test_print_messages():
     # Then
     assert io.get_value() == 'ID:1 => foo'
 ----
+
+== Résumé
+
+image::images/report_stream-0.svg[]
+
+image::images/report_stream-1.svg[]
+
+image::images/report_stream-2.svg[]
+
+== Amélioration de la testabilité par la hiérarchisation
+
+include::_test_by_overloading.adoc[{include_options}]
+
 
 === Simuler une base de données
 
