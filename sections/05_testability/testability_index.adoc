@@ -350,25 +350,48 @@ ____
 [.center]
 image::images/testability-cercle.svg[alt]
 
-=== Obstacles à la testabilité
+=== Obstacles à la testabilité (unitaire)
 
+* Dépendances trop lourdes ou complexes
+** Base de données, Web Servies extérieurs, Librairies tierces
+** Arbre de dépendances trop profond
+* Tests non idempotents 
+** Liées au temps, gestion asynchrone, randomisation
+* Absence d'observable
+** Pas de changement d'état, pas de retour
+
+
+[NOTE.notes]
+--
 * La mise en oeuvre demande des ressources considérables qui vont au delà des moyen du développeur
 ** Monter une base de données, un site extérieur
 * Les tests ne sont pas répétables car ils dépendent de choses qui sont trop fluctuantes
 ** Heure, propriétés système, randomisation
-* Je ne peux rien observer
+* Je ne peux rien observer, aucun moyen de savoir si il s'est passée quelque chose.
+--
 
 === Chirurgie de guerre 
 
-TODO
-Il faut tester ! 
+* Tester coûte que coûte
+** => Renoncer temporairement à un idéal de conception
+** => Constater la conservation des comportements
+* Tout est autorisé ou presque
+** Mettre une variable témoin 
 
-* mettre une variable témoin 
-* abandonner la pureté du modèle pour capter le comportement 
 
-=== Tests de caractérisation 
 
-TODO
+=== Test de caractérisation 
+
+* Test de caractérisation
+** _Test par approbation_
+** Test _extérieur_ de type boite noire
+** Utilise l'idempotence d'un résultat conservé sous forme de fichier
+
+ifdef::mode_slide[=== Test de caractérisation]
+
+https://approvaltests.com/
+
+TODO faire un graphique pour montrer comment marche l'approbation
 
 === Raison de la difficulté à tester
 
