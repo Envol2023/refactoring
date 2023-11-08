@@ -384,6 +384,8 @@ Quand même mocker devient compliqué, c'est qu'il y a un problème de conceptio
 
 TBD 
 
+Le mocking ou la paresse Harry Potter -> solution pirouette cacahuète qui permet de s'en sortir quand tout est mal goupillé. 
+
 === Le paramètre irritant
 
 [source,python]
