@@ -336,8 +336,6 @@ the behavior of our code quickly and verifiably. Without them, we really don't k
 if our code is getting better or worse.
 ____
 
-
-
 === Le cercle infernale
 
 [.center]
@@ -351,11 +349,25 @@ image::images/testability-cercle.svg[alt]
 ** Heure, propriétés système, randomisation
 * Je ne peux rien observer
 
+=== Chirurgie de guerre 
+
+TBD
+Il faut tester ! 
+
+* mettre une variable témoin 
+* abandonner la pureté du modèle pour capter le comportement 
+
+=== Tests de caractérisation 
+
+TBD
+
 === Raison de la difficulté à tester
 
 * La dépendance irritante
 * L'instanciation cachée
 * Le Singleton
+
+TBC 
 
 === Le paramètre irritant
 
