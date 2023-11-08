@@ -177,6 +177,8 @@ def test_filter_info_log_no_info_logs():
 
 === Test moins facile
 
+TODO Faire un accès statique 
+
 [.big]
 [source,python,attributes]
 -----
@@ -230,6 +232,8 @@ def test_filter_info_log_no_info_logs():
 
 
 === Test franchement pas facile
+
+TODO inclure la connection de la base de données dans le filtre 
 
 [.big]
 [source,python,attributes]
