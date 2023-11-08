@@ -6,6 +6,11 @@ endif::[]
 
 // tag::content[]
 
+== TODO
+
+* testability and responsibility 
+* testability and abstraction 
+
 [.start.background]
 [.center]
 == Améliorer la testabilité
