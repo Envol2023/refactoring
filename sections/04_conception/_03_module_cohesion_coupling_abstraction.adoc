@@ -96,22 +96,6 @@ include::_cohesion_coupling_types.adoc[]
 * Comment pouvons nous **améliorer les choses** ?
 ** Maintenant que nous savons ?
 
-[NOTE.notes]
---
-Il existe des métriques, mais elles ne sont pas évidentes à utiliser au quotidien.
-
-
-REP (Reuse/Release Equivalence Principle)
-"the granule of reuse is the granule of release"
-
-CCP (Common Closure Principle)
-"Gather into components those classes that change for the same reasons and at the same times. Separate into different components those classes that change at different times and for different reason"
-
-A component (class, method, …) should not have multiple reasons to change
-
-CRP (Common Reuse Principle)
-"Don’t force users of a component to depend on things they don’t need."
---
 
 [.splash.background]
 [.center]
@@ -390,10 +374,18 @@ include::_typing.adoc[]
 * Simplicité de compréhension
 ** L'abstraction est plus facile à manipuler, définir, confronter
 ** N'a pas besoin de _fonctionner_
+* Façade cachant la complexité réelle
+** L'implémentation peut être très complexe tant que contrat respecté
 * Simplicité de communication 
 ** Entre utilisateurs et concepteurs du module
 --
 
+[NOTE.notes]
+--
+Sur la notion de façade, c'est un Design Pattern général pour cacher la complexité d'un module, et souvent de l'agencement de tous les sous-modules derrière.
+
+Un cas d'école en Python est Numpy https://github.com/numpy/numpy/blob/main/numpy/__init__.py
+--
 
 === Abstraction et contractualisation 
 
