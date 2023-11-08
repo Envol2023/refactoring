@@ -366,6 +366,7 @@ TBD
 * La dépendance irritante
 * L'instanciation cachée
 * Le Singleton
+* Les boucles imbriquées 
 
 TBC 
 
@@ -781,6 +782,16 @@ include::_test_by_overloading.adoc[{include_options}]
 
 * Utiliser le pattern du repository
 ** Insérer une couche d'abstraction si la construction des requêtes n'est pas de la responsabilité de l'objet sous test
+
+TBD
+
+== Boucles imbriquées 
+
+TBD
+
+== Recherche de responsabilité sur legacy 
+
+TBD 
 
 == Méthode MIKADO 
 
