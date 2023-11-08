@@ -94,6 +94,6 @@ include::understanding_bad_smells.adoc[]
 
 Nous avons vu
 
-TODO
+TODO Résumé conception 
 
 // end::content[]

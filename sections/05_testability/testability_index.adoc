@@ -400,7 +400,7 @@ TODO faire un graphique pour montrer comment marche l'approbation
 * Le Singleton
 * Les boucles imbriquées 
 
-TODO 
+TODO Vérifie cohérence Raison de la difficulté à tester
 
 === Mocking
 
@@ -410,7 +410,8 @@ Dire puissance mais parfois cache misère.
 
 Quand même mocker devient compliqué, c'est qu'il y a un problème de conception. 
 
-TODO 
+TODO Faire topo sur effet Harray Potter du mocking
+TODO Donner URL sur /pytest-euclid
 
 Le mocking ou la paresse Harry Potter -> solution pirouette cacahuète qui permet de s'en sortir quand tout est mal goupillé. 
 
@@ -817,19 +818,19 @@ include::_test_by_overloading.adoc[{include_options}]
 * Utiliser le pattern du repository
 ** Insérer une couche d'abstraction si la construction des requêtes n'est pas de la responsabilité de l'objet sous test
 
-TODO
+TODO Simulation base de données avec repository
 
 == Boucles imbriquées 
 
-TODO
+TODO Boucles imbriquées 
 
 == Recherche de responsabilité sur legacy 
 
-TODO 
+TODO  Recherche de responsabilité sur legacy 
 
 == Méthode MIKADO 
 
-TODO
+TODO Méthode MIKADO 
 
 
 [.end.background]

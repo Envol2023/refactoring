@@ -118,12 +118,19 @@ CRP (Common Reuse Principle)
 [%notitle]
 === Couplage et cohésion
 
-Couplage et cohésion traduisent le niveau de connaissances nécessaires 
+Couplage et cohésion sont des indicateurs des connaissances impliquées.
 
-L'objectif de la refactorisation est de minimiser ces connaissances.
+L'objectif de la refactorisation est de *minimiser* l'étendue de ces connaissances nécessaires pour maintenir le code en limitant les efforts et les impacts.
 
 [%step] 
-Comment _sentir_ cette minimisation ? 
+Comment _percevoir_ cette étendue, là, face à son écran ? 
+
+[NOTE.notes]
+--
+Couplage et cohésion traduisent les niveaux de connaissances nécessaires pour appréhender les modules et analyser les impacts d'évolution.
+Toutefois, percevoir ce à quoi ce niveau de connaissance correspond n'est pas forcément évident. Il faut aller au delà du simple principe.
+Il faut un guide pour que le développeur ou la développeuse sache dans quelle direction il faut aller.
+--
 
 === Couplage et cohésion > subdivision du travail
 
@@ -409,6 +416,13 @@ image:images/interface_as_contract.svg[]
 image::images/ezgif.com-optimize.gif[]
 
 include::_contract_coupling_illustration_schema.adoc[{include_options}]
+
+[NOTE.notes]
+--
+L'abstraction est un puissant outil pour diminuer le couplage effective, en tant que besoin de savoir, car elle force à avoir une vision assez minimaliste de l'usage d'un module.
+
+Si l'abstraction est très riche, il faudra peut-être à la scinder.
+--
 
 === Abstraction de l'interface
 
