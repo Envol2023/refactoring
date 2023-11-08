@@ -181,7 +181,7 @@ Comme dans une ville, si l'uniformité est ennuyeuse, l'absence de motif, qui fa
 Un plan clair, dont la logique se comprend d'un coup d'oeil, n'est pas des plus spontanés, mais est très efficace. Le cerveau en comprend aisément les cheminements et la logique. Il ira directement à l'essentiel.
 --
 
-== TBD référence à Dr Felienne Herman
+== TODO référence à Dr Felienne Herman
 
 [.end.background]
 == 

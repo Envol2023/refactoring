@@ -135,7 +135,7 @@ Du point de vue managérial, nous passons d'une culture de la surveillance de ce
 
 **Ce n'est pas parce qu'un logiciel fonctionne qu'il est bon**
 
-**TODO** mettre ici image du chien
+*TODO* mettre ici image du chien
 
 L'essence du développement logiciel, c'est de pouvoir faire évoluer un logiciel, surtout en agilité.
 
@@ -1045,7 +1045,7 @@ Comment, maintenant que nous avons défini ces notions, pouvons nous **améliore
 
 Il existe des métriques, mais elles ne sont pas évidentes à utiliser au quotidien.
 
-**TODO** décrire les métriques
+*TODO* décrire les métriques
 
 
 Couplage et cohésion sont des aspects liés: **A REFAIRE**
@@ -1659,11 +1659,11 @@ class JobDispatcher:
 
 == Heritage vs Composition 
 
-TBD
+TODO
 
 == Bad smells de conception 
 
-TBD
+TODO
 
 == Techniques de refactoring à utiliser
 
