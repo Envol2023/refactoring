@@ -369,6 +369,16 @@ TBD
 
 TBC 
 
+=== Mocking
+
+Un mot sur les mock
+
+Dire puissance mais parfois cache misère. 
+
+Quand même mocker devient compliqué, c'est qu'il y a un problème de conception. 
+
+TBD 
+
 === Le paramètre irritant
 
 [source,python]
