@@ -40,6 +40,8 @@ image::images/frankenstein_0.gif[alt]
 
 image::images/frankenstein_1.gif[alt]
 
+Un manque de culture conceptuel qui devient cruel et démotivant. 
+
 == La pierre philosophale
 
 [quote, Kent Beck]
