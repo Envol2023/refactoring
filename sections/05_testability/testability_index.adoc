@@ -384,14 +384,181 @@ image::images/testability-cercle.svg[alt]
 
 * Test de caractérisation
 ** _Test par approbation_
-** Test _extérieur_ de type boite noire
+* Test _extérieur_ 
 ** Utilise l'idempotence d'un résultat conservé sous forme de fichier
+https://approvaltests.com/
+
 
 ifdef::mode_slide[=== Test de caractérisation]
 
-https://approvaltests.com/
+[.center]
+image::images/testability-approval.svg[]
 
-TODO faire un graphique pour montrer comment marche l'approbation
+ifdef::mode_slide[=== Test de caractérisation]
+
+[.left-column]
+--
+[.big]
+[source,python]
+----
+@dataclass
+class City:
+    name: str
+
+
+@dataclass
+class Address:
+    street: str
+    city: City
+
+----
+--
+
+[.right-column]
+--
+[.big]
+[source,python]
+----
+@dataclass
+class Person:
+    name: str
+    age: int
+    address: Optional[Address] = None
+    knows: List[Person] = field(default_factory=list)
+
+    def add_relation(self, relation: Person):
+        self.knows.append(relation)
+
+
+
+@dataclass
+class Family:
+    name: str
+    members: List[Person] = field(default_factory=list)
+----
+--
+
+[.reset-column]
+--
+[.big]
+[source,python,attributes]
+----
+def find_related_people_in_same_cities(families: List[Family]):
+    people_relations_by_cities = {}
+    for family in families:
+        for people in family.members:
+            if people.knows:
+                city_name = people.address.city.name
+                relations = people_relations_by_cities.get(city_name)
+                if not relations:
+                    relations = []
+                    people_relations_by_cities[city_name] = relations
+                relations.append(people)
+    return people_relations_by_cities
+----
+--
+
+ifdef::mode_slide[=== Test de caractérisation]
+
+Test avec approval
+
+[.big]
+[source,python]
+----
+from approvaltests.approvals import verify
+
+def test_approval():
+    # ___ GIVEN ____
+    city = City(name='Sample City')
+
+    alice = Person(name='Alice', age=25, address=Address(street='123 Street A', city=city))
+    bob = Person(name='Bob', age=30, address=Address(street='456 Street B', city=city))
+    family1 = Family(name='Smith', members=[alice, bob])
+    charlie = Person(name='Charlie', age=28, address=Address(street='789 Street C', city=city))
+    family2 = Family(name='Johnson', members=[charlie])
+
+    alice.knows.append(charlie)
+
+    # ___ WHEN ____
+    related_people = find_related_people_in_same_cities([family1, family2])
+
+    # ___ THEN ____
+    verify(related_people)
+----
+
+
+
+
+ifdef::mode_slide[=== Test de caractérisation]
+
+
+Lancement avec 
+
+[.big]
+[source,bash]
+----
+pytest --approvaltests-use-reporter='PythonNativeReporter'
+----
+
+Dans `Pycharm`
+
+[.center]
+image:images/capture_approval_1.png[]
+
+
+ifdef::mode_slide[=== Test de caractérisation]
+
+Sortie du test en échec
+
+[source,text]
+----
+to approve this result:
+
+move "/home/mdexet/approval_demo/tests/test_prettyworld.test_approval.received.txt" 
+ "/home/mdexet/approval_demo/tests/test_prettyworld.test_approval.approved.txt"
+
+...
+code>       verify(related_people)
+E       approvaltests.approval_exception.ApprovalException: Approval Mismatch, received != approved
+E       	Approved: /home/mdexet/approval_demo/tests/test_prettyworld.test_approval.approved.txt
+E       	Received: /home/mdexet/approval_demo/tests/test_prettyworld.test_approval.received.txt
+----
+
+Dans PyCharm
+
+[.center]
+image:images/capture_approval_0.png[width=500] 
+
+
+
+ifdef::mode_slide[=== Test de caractérisation]
+
+Contenu de _test_prettyworld.test_approval.approved.txt_
+
+[source,text]
+----
+{'Sample City': [Person(name='Alice', age=25, address=Address(street='123 Street A', 
+ city=City(name='Sample City')), 
+  knows=[Person(name='Charlie', age=28, address=Address(street='789 Street C', city=City(name='Sample City')), knows=[])])]}
+----
+
+ifdef::mode_slide[=== Test de caractérisation]
+
+Deviation
+
+[source,text,attributes]
+----
+
+tests\test_prettyworld.py:24: ApprovalException
+-------------------------------------------------------------------------------------------------------------------- Captured stdout call --------------------------------------------------------------------------------------------------------------------- 
+--- test_prettyworld.test_approval.approved.txt
++++ test_prettyworld.test_approval.received.txt
+@@ -1 +1 @@
+-{'Sample City': [Person(name='AliceFOO', age=25, address=Address(street='123 Street A', city=City(name='Sample City')), knows=[Person(name='Charlie', age=28, address=Address(street='789 Street C', city=City(name='Sample City')), knows=[])])]}
++{'Sample City': [Person(name='Alice', age=25, address=Address(street='123 Street A', city=City(name='Sample City')), knows=[Person(name='Charlie', age=28, address=Address(street='789 Street C', city=City(name='Sample City')), knows=[])])]}
+
+----
+
 
 === Raison de la difficulté à tester
 
