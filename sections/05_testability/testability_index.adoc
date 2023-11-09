@@ -131,6 +131,10 @@ Réalisez les projets avec des personnes motivées. Fournissez-leur l'environnem
 ____
 --
 
+=== Les tests comme bac à sable 
+
+TODO Développer 
+
 === La testabilité et qualité de conception
 
 * Si un code est mal conçu, il est difficile à tester
