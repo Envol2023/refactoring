@@ -220,6 +220,10 @@ endif::[]
 
 https://www.lemondeinformatique.fr/actualites/lire-la-dette-technique-reste-mal-comprise-86974.html
 
+TODO Remplacer par quadrant 
+
+https://wikiagile.fr/index.php?title=Quadrant_de_la_Dette_Technique
+
 === Comment mesurer la dette technique ?
 
 [%step]
