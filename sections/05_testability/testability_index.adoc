@@ -377,6 +377,9 @@ image::images/testability-cercle.svg[alt]
 ** => Constater la conservation des comportements
 * Tout est autorisé ou presque
 ** Mettre une variable témoin 
+** Transgresser les principes de conception
+
+TODO Faire liste en référence à Legacy 
 
 
 
@@ -533,31 +536,98 @@ image:images/capture_approval_0.png[width=500]
 
 ifdef::mode_slide[=== Test de caractérisation]
 
-Contenu de _test_prettyworld.test_approval.approved.txt_
+Contenu du fichier de référence `test_prettyworld.test_approval.approved.txt`
 
+[.big]
 [source,text]
 ----
-{'Sample City': [Person(name='Alice', age=25, address=Address(street='123 Street A', 
- city=City(name='Sample City')), 
+{'Sample City': [Person(name='Alice', age=25, address=Address(street='123 Street A', city=City(name='Sample City')), 
   knows=[Person(name='Charlie', age=28, address=Address(street='789 Street C', city=City(name='Sample City')), knows=[])])]}
 ----
 
+
 ifdef::mode_slide[=== Test de caractérisation]
 
-Deviation
+Dès que le fichier est copié, le test est validé.
+En cas de déviation, que ce passe-t-il ?
 
-[source,text,attributes]
+[.big]
+[source,text]
 ----
 
 tests\test_prettyworld.py:24: ApprovalException
--------------------------------------------------------------------------------------------------------------------- Captured stdout call --------------------------------------------------------------------------------------------------------------------- 
+-------------------------------- Captured stdout call --------------------------------- 
 --- test_prettyworld.test_approval.approved.txt
 +++ test_prettyworld.test_approval.received.txt
 @@ -1 +1 @@
--{'Sample City': [Person(name='AliceFOO', age=25, address=Address(street='123 Street A', city=City(name='Sample City')), knows=[Person(name='Charlie', age=28, address=Address(street='789 Street C', city=City(name='Sample City')), knows=[])])]}
-+{'Sample City': [Person(name='Alice', age=25, address=Address(street='123 Street A', city=City(name='Sample City')), knows=[Person(name='Charlie', age=28, address=Address(street='789 Street C', city=City(name='Sample City')), knows=[])])]}
+-{'Sample City': [Person(name='AliceFOO', age=25, address=Address(street='123 Street A', city=City(name='Sample City')), 
+ knows=[Person(name='Charlie', age=28, address=Address(street='789 Street C', city=City(name='Sample City')), knows=[])])]}
++{'Sample City': [Person(name='Alice', age=25, address=Address(street='123 Street A', city=City(name='Sample City')), 
+ knows=[Person(name='Charlie', age=28, address=Address(street='789 Street C', city=City(name='Sample City')), knows=[])])]}
 
 ----
+
+Avec `WinMerge` sous Windows
+
+[.center]
+image::images/capture_approval_winmerge.png[alt]
+
+ifdef::mode_slide[=== Test de caractérisation]
+
+* Date ? 
+** => Scrubber (_Laveur_) :  Remplace dates par placeholder `date${n}`
+
+[.left-column-1-3]
+--
+[source,python]
+-----
+@dataclass
+class DatedNote:
+    note: str
+    date : datetime
+
+    def merge(self, o: DatedNote):
+        self.note = f'{self.note}/{o.note}'
+        d = max(self.date, o.date)
+        self.date =d
+
+-----
+--
+[.right-column-2-3]
+--
+
+[source,python]
+-----
+def test_with_date_scrubbers():
+    # --Given--
+    # Create 2 hours spaced datetime
+    now = datetime.now()
+    later = now + timedelta(hours=2)
+    
+    # Assign them to different notes
+    dated_note0 = DatedNote("Foo", now)
+    dated_note1 = DatedNote("Bar", later)
+
+    # Ad hoc reporter
+    def as_report(note: DatedNote):
+        return f'NOTE:{note.note}, DATE={note.date.strftime("%Y%m%dT%H%M%SZ")}'
+
+    # --When--
+    dated_note1.merge(dated_note0)
+    # --Then--
+    verify(as_report(dated_note1),  
+            options=Options().with_scrubber(
+                DateScrubber.get_scrubber_for("00000000T000000Z")))
+-----
+--
+
+[.reset-column]
+--
+[source,text]
+----
+NOTE:Bar/Foo, DATE=<date0>
+----
+--
 
 
 === Raison de la difficulté à tester
@@ -989,7 +1059,135 @@ TODO Simulation base de données avec repository
 
 == Boucles imbriquées 
 
-TODO Boucles imbriquées 
+* Priorité Single Responsability Principle
+** Boucles imbriquées avec plusieurs responsabilités mélangées
+
+[.big]
+[source,python]
+-----
+avg_w_lug = 0
+total_p = 0
+
+for r in flight.reservations:
+    for lug in r.luggages:
+        avg_w_lug += lug.weight if not lug.cabin or 0
+    p = r.price
+    if r.discnt:
+        p = p * r.discnt
+    total_p += p
+
+avg_w_lug = avg_w_lug / len(reservations)
+-----
+
+[%step]
+Ah oui, encore une version compressée...
+
+ifdef::mode_slide[== Boucles imbriquées]
+
+En clair
+
+[.big]
+[source,python]
+-----
+average_weight_luggage = 0
+total_price = 0
+
+for reservation in flight.reservations:
+    for luggage in reservation.luggages:
+        average_weight_luggage += luggage.weight if not luggage.in_cabin or 0
+
+    price = reservation.price 
+    if reservation.discount:
+        price = price * reservation.discount
+    total_price += price
+
+average_weight_luggage = average_weight_luggage / len(reservations)
+-----
+
+* Comment tester et surtout quoi tester ?
+** Responsabilités mélangées ? 
+*** Lesquelles ?
+
+ifdef::mode_slide[== Boucles imbriquées]
+
+* Responsabilités identifiées
+** _Calcul du poids total des baggages en soute_
+** _Calcul du prix total du vol_
+
+Réécriture
+
+[.big]
+[source,python]
+-----
+average_weight_luggage = 0
+for reservation in flight.reservations:
+    for luggage in reservation.luggages:
+        average_weight_luggage += luggage.weight if not luggage.in_cabin or 0
+average_weight_luggage = average_weight_luggage / len(reservations)
+
+total_price = 0
+for reservation in flight.reservations:
+    price = reservation.price 
+    if reservation.discount:
+        price = price * reservation.discount
+    total_price += price
+-----
+
+[source,python]
+-----
+def test_total_weight_with_some_cabin_bagages_and_without_discount():
+    ...
+def test_total_price_with_discounts_but_no_baggages():
+    ...
+-----
+
+ifdef::mode_slide[== Boucles imbriquées]
+
+Réécriture
+
+[.big]
+[source,python]
+-----
+def get_total_weight_of_in_hold_baggages(reservations: List[Reservation]) -> float:
+    average_weight = 0
+    for reservation in reservations:
+        for luggage in reservation.luggages:
+            average_weight += luggage.weight if not luggage.in_cabin or 0
+    average_weight = average_weight / len(reservations)
+    return average_weight
+
+def get_total_price(reservations: List[Reservation]) -> float:
+    total = 0
+    for reservation in reservations:
+        price = reservation.price 
+        if reservation.discount:
+            price = price * reservation.discount
+        total += price
+    return total
+-----
+[.big]
+[source,python]
+-----
+def test_total_weight_with_some_cabin_bagages(): ...
+def test_total_weight_without_bagages(): ...    
+def test_total_price_with_some_discounts():  ...
+def test_total_price_without_discounts(): ...
+-----
+
+
+== Design vs performance
+
+* Un faux débat
+** => Souvent la dégradation est minime
+** => Les compilateurs sont capables d'optimiser  
+*** Python...un peu https://wiki.python.org/moin/PythonSpeed/PerformanceTips
+** Seul un profiling est pertinent
+* Ce qui compte
+** (1) Bien écrire le code.
+** (2) Vérifier qu'il est correct (passe les tests)
+** (3) Établir un profil en cas de lenteur seulement.
+** (4) Optimiser si besoin.
+** (5) Répéter à partir du point 2. 
 
 == Recherche de responsabilité sur legacy 
 
