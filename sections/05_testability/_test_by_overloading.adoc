@@ -310,19 +310,8 @@ class JiraIssueDispatcher(IssueDispatcher): ...
 == Résumé
 
 [.center]
-image::images/testability-hierarchy-slide-test_0.svg[]
-
-[.center]
-image::images/testability-hierarchy-slide-test_1.svg[]
-
-[.center]
-image::images/testability-hierarchy-slide-test_2.svg[]
-
-[.center]
 image::images/testability-hierarchy-slide-test_3.svg[]
 
-[.center]
-image::images/testability-hierarchy-slide-test_4.svg[]
 
 [.center]
 image::images/testability-hierarchy-slide-test_5.svg[]
