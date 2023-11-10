@@ -29,6 +29,8 @@ Aucune évolution n'est possible, à un rythme _soutenable_ sans confiance.
 
 === Le complexe de Frankenstein
 
+TODO Déplacer dans Conception. 
+
 Nous sommes tellement heureux d'avoir un code qui fonctionne assemblant des lignes de code sans cohérence
 
 image::images/frankenstein_0.gif[alt]
