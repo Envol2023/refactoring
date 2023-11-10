@@ -422,8 +422,7 @@ image::https://media.giphy.com/media/C3YUQjB5agrdK/giphy.gif[]
 
 [quote,Michael C. Feathers]
 ____
-Code without tests is bad code. It doesn't matter how well written it is; it doesn't mat-
-ter how pretty or object-oriented or well-encapsulated it is. With tests, we can change
+Code without tests is bad code. It doesn't matter how well written it is; it doesn't matter how pretty or object-oriented or well-encapsulated it is. With tests, we can change
 the behavior of our code quickly and verifiably. Without them, we really don't know
 if our code is getting better or worse.
 ____
