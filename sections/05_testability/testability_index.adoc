@@ -1127,49 +1127,7 @@ include::_test_by_overloading.adoc[{include_options}]
 * Utiliser le pattern du repository
 ** Insérer une couche d'abstraction si la construction des requêtes n'est pas de la responsabilité de l'objet sous test
 
-[.left-column]
---
-[source,python]
------
-class Authentication:
-
-    def get_user_by_id(self, user_id) -> AuthenticatedUser:
-        # Execute SQL SELECT
-        return user
-
-    def update_user(self, user: AuthenticatedUser) -> AuthenticatedUser:
-        # Execute SQL UPDATE
-        return user            
-    
-    def delete_user(self, user_id): ...
-
-    #...
-
------
---
-
-[.right-column]
---
-[source,python,attributes]
------
-class UserRepository(Protocol):
-
-    def get_user_by_id(self, user_id) -> AuthenticatedUser: 
-        ...
-    def update_user(self, user: AuthenticatedUser) -> AuthenticatedUser: 
-        ...
-    def delete_user(self, user_id): 
-        ...
-
-class Authentication:
-    def __init__(self, user_repository: UserRepository):
-        self.user_repository = user_repository
-
-    def 
------
---
-
-TODO TBD repository
+include::_use_repository.adoc[{include_options}]
 
 == Boucles imbriquées 
 

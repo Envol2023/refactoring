@@ -1,0 +1,267 @@
+= Utilisation du Repository Pattern
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+== Exemple
+
+* Situation où nous dépendons d'une externatlité
+** Base de données, API, librairie externe
+
+[.reset-column]
+--
+[.big]
+[source,python]
+----
+import expensive_to_test_api as api
+
+class CityService:   
+    def __init__(self, store: api.Store):
+        self.store = store
+
+    def get_cities_where_street_have_no_name(self) -> list[City]:
+        # Lot of stuff with api
+
+     def merge_cities(self, city_name_left: str, city_name_right: str) -> City:
+        # Lot of stuff with api
+
+    def find_all_street_from_city(self, city_name: str) -> list[Street]: 
+        # Lot of stuff with api
+
+    def create_street_in_city(self, street: Street, city: City) -> Street: 
+        # Lot of stuff with api        
+----
+--
+
+[.left-column]
+--
+[source,python]
+-----
+@dataclass
+class Street:
+    name: str
+    gps: GPS
+-----
+--
+
+[.right-column]
+--
+[source,python]
+----
+@dataclass
+class City:
+    city_id: int
+    name: str
+    zip_code: ZipCode
+    streets : list[Street] = field(default_factory=list)
+----
+--
+
+
+ifdef::mode_slide[]
+[%notitle]
+=== Exemple
+endif::[]
+
+[.big]
+[source,python]
+----
+import expensive_to_test_api as api
+
+class CityService:
+    def __init__(self, store: api.Store):
+        self.store = store
+
+    def get_cities_where_street_have_no_name(self) -> list[City]:
+        try:
+            params = {}
+            request = store.prepare_request(params)
+            store_cursor = store.execute_request(request)
+            cities = [self.convert_to_city(obj) for obj in store_cursor]
+            return cities
+        except StoreException as se:
+            raise ModelException(se)
+----
+[.big]
+[source,python]
+----
+
+    def merge_cities(self, city_name_left: str, city_name_right: str) -> City:
+        try:
+            _left = self.find_one_city_by_name(city_name_left)
+            _right = self.find_one_city_by_name(city_name_right)
+            # ... a lot of operations
+            request = store.prepare_request(params)
+            store_cursor = store.execute_request(request)
+            city = self.convert_to_city(store_cursor.one())
+            return city
+        except StoreException as se:
+            raise ModelException(se)
+----
+
+
+[.center]
+image::images/testability-Repository_0.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Exemple
+endif::[]
+
+* Dépendance classique
+** Base de données, API web externe, librairie tierce, ...
+** Lien très structurant => fort couplage => Difficulté d'évolutions
+
+[.center]
+image::images/testability-Repository_1.svg[]
+
+
+* `oxpensive_to_test_api` compliquée à simuler.
+** => A réserver aux tests d'intégrations
+** => Faible testabilité de `CityService`
+* Pistes
+** Mocker, mais ce n'est pas l'objet du cours :) 
+** Découpler avec de l'abstraction
+
+
+=== Pattern Repository
+
+* Ajouter une couche d'abstraction
+** Architecture en couche
+* Pattern recommandé -> `Repository`
+** `Repository` => abstraction de lecture/écriture du domaine
+
+[.left-column]
+--
+[.center]
+**Primitives**
+
+[source,python,attributes]
+-----
+class <T>Repository: 
+    def save(self, t: T) -> T : 
+        ...
+    def find_one(self, id: str) -> T : 
+        ...
+    def find_all(self, ) -> Sequence[T] : 
+        ...
+    def count(self, ) -> int : 
+        ...
+    def delete(self, t: T) : 
+        ...
+    def exists(self, id: str) -> bool : 
+        ...
+-----
+--
+
+
+[.right-column]
+--
+[.center]
+**Cas d'usage spécifiques**
+
+[source,python,attributes]
+-----
+class <T>Repository: 
+    # ... usuals methods
+    def find_all_by_name(self, name: str) -> Sequence[T] :
+        ...
+    def find_all_by_name_and_zip_are(self, name: str, 
+                                    area: str) -> Sequence[T] :
+        ...
+-----
+
+--
+
+=== Pattern Repository
+
+Découplage entre `CityService` et `Expensive_to_test_api` 
+
+[.center]
+image::images/testability-Repository_2.svg[]
+
+Possibilité d'extension
+
+[.center]
+image::images/testability-Repository_3.svg[]
+
+[NOTE.notes]
+--
+Voir, au sujet du repository, les articles suivants
+
+* https://www.cosmicpython.com/book/chapter_02_repository.html
+* https://martinfowler.com/eaaCatalog/repository.html
+--
+
+== Exemple
+
+Création de classes adaptées
+
+[.center]
+image::images/testability-Repository_4.svg[]
+
+== Exemple
+
+[source,python,attributes]
+-----
+class CityRepository(Protocol):
+    def find(self, city_id: int) -> City: ...
+    def find_by_name(self, city_id: int) -> City: ...
+    def find_all(self) -> list[City]: ...
+    def find_all_where_street_have_no_name(self, criteria: Dict) -> list[City]: ...
+    def save(self, city: City) -> City]: ...
+-----
+
+[source,python,attributes]
+-----
+class CityService:
+    def __init__(self, repository: CityRepository):
+        self.repository = repository
+
+    def get_cities_where_street_have_no_name(self) -> list[City]:
+        return self.repository.find_all_where_street_have_no_name()
+
+    def merge_cities(self, city_name_left: str, city_name_right: str) -> City:
+        _left = self.repository.find_by_name(city_name_left)
+        _right = self.repository.find_by_name(city_name_right)
+        # ... a lot of operations
+        merged_city = self.repository.save(merge_city)
+        return merged_city
+
+-----
+
+=== Testing avec repository
+
+[source,python]
+-----
+def test_city_service_merge_cities():
+    # Given
+    NB_CITY=2
+    left  = City(city_id=0, name="Left",  zip_code=ZipCode(91200), streets=[Street(f"name_left_{i}",None) for i in range(NB_CITY))] 
+    right = City(city_id=1, name="Right", zip_code=ZipCode(91201), streets=[Street(f"name_right_{i}",None) for i in range(NB_CITY)]) 
+
+    class FakeCityRepository:
+        def find_by_name(self, name: str):              
+            return left if name = "Left" else right   # <-- no big deal. Easy and rapid to simulate
+
+        def save(self, city):
+            return city                               # <-- no big deal. Easy and rapid to simulate
+
+    fake_city_repository = FakeCityRepository()
+    service = CityService(repository=fake_city_repository)
+
+-----
+[source,python]
+-----
+    # When
+    merged_city = service.merge(left, right)
+
+    # Then
+    assert merged_city.name = "Left-Right" 
+    assert {name for street.name in merged.streets} = {'name_left_0', 'name_left_1', 'name_right_0', 'name_right_1'}
+-----
+
+// end::content[]
