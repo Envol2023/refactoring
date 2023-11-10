@@ -416,7 +416,7 @@ def test_filter_info_log_no_info_logs():
 --
 [.right]
 image::https://media.giphy.com/media/C3YUQjB5agrdK/giphy.gif[]
-
+--
 
 == Legacy et théorie
 
