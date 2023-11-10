@@ -119,7 +119,7 @@ endif::[]
 image::images/testability-Repository_1.svg[]
 
 
-* `oxpensive_to_test_api` compliquée à simuler.
+* `expensive_to_test_api` compliquée à simuler.
 ** => A réserver aux tests d'intégrations
 ** => Faible testabilité de `CityService`
 * Pistes
@@ -141,7 +141,7 @@ image::images/testability-Repository_1.svg[]
 
 [source,python,attributes]
 -----
-class <T>Repository: 
+class TypeTRepository: 
     def save(self, t: T) -> T : 
         ...
     def find_one(self, id: str) -> T : 
@@ -165,7 +165,7 @@ class <T>Repository:
 
 [source,python,attributes]
 -----
-class <T>Repository: 
+class TypeTRepository: 
     # ... usuals methods
     def find_all_by_name(self, name: str) -> Sequence[T] :
         ...
