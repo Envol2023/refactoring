@@ -173,7 +173,7 @@ ____
 image::images/15_Supermarine_Spitfire_R6923,_QJ-S_(15836050395).jpg[]
 
 ____
-Si code se teste bien, il ne peut pas être entièrement mauvais...
+Si un code se teste facilement, il ne peut pas être entièrement mauvais...
 ____
 
 
@@ -459,6 +459,8 @@ image::images/testability-cercle.svg[alt]
 * Tout est autorisé ou presque
 ** Mettre une variable témoin 
 ** Transgresser les principes de conception
+
+**Ce qui compte est de savoir ce que fait réellement le code, avant de l'améliorer**
 
 TODO Faire liste en référence à Legacy 
 
