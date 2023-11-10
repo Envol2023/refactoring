@@ -600,6 +600,7 @@ def compute_invoice(shipment, order, discount):
 * 8) Commiter 
 * Passer à la technique suivante si nécessaire
 
+
 === Mon point de vue personnel
 
 
@@ -620,6 +621,10 @@ def compute_invoice(shipment, order, discount):
 
 Le refactoring ne serait-il qu'un catalogue de _trucs_ et _astuces_ ?
 
+=== Outils de refactoring 
+
+TODO montrer outils IDE
+TODO montrer linter 
 
 == Refactoring : L'esprit plutôt que la lettre
  
