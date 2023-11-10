@@ -78,17 +78,19 @@ image::images/pytest-bugfix-lifecycle.png[]
 
 === Le TDD et refactoring
 
-* Test Driven Development
+* _Test Driven Development_
 ** Approche érigée en philosophie
 
-[.center]
-image::images/pytest-tdd-lifecycle.png[]
 
 [quote,Kent Beck]
 ____
 "Code that isn't tested doesn't work - this seems to be the safe assumption."
 ____
 
+ifdef::mode_slide[=== Le TDD et refactoring]
+
+[.center]
+image::images/pytest-tdd-lifecycle.png[]
 
 === Testabilité, conception et confiance
 
@@ -133,12 +135,60 @@ ____
 
 === Les tests comme bac à sable 
 
-TODO Développer 
+
+
+* Tester pour mieux cerner
+** Contexte fonctionnel pour prototyper
+** Jouer avec un algorithme sans lancer la grosse machinerie
+* Démarche
+** (1) Créer un test unitaire
+** (2) Tâtonner avec un algorithme
+** (3) Réussir à passer le test 
+** (4) => Refactoriser l'algorithme en _beau_ code bien _clean_
+* TDD à la petite semaine
+** Pythoneux: alternative au notebook _pour voir_
+
+[NOTE.notes]
+--
+Les test sont un merveilleux moyen d'expérimenter des algorithmes sans avoir à lancer des processus ou des traitements très lourds.
+Il arrive, quand on développe des pipelines de traitements de donnée, d'avoir à relancer de lourds traitement pour tester des algorithmes.
+Le fait de mettre en place des tests, même grossièrement, oblige à penser plus petit, plus réduit, plus concentré.
+Une fois le cadre en place, il devient plaisant, dans un cadre simple, répétitif, sans risque de bidouiller un peu pour voir comment prendre un problème en main.
+--
+
+ifdef::mode_slide[]
+[.at-top-right]
+--
+[.right]
+image::images/stitch.gif[]
+--
+endif::[]
+
+=== La testabilité et qualité de conception
+____
+"if an airplane looks good, it will fly good."
+____
+
+[.center]
+image::images/15_Supermarine_Spitfire_R6923,_QJ-S_(15836050395).jpg[]
+
+____
+Si code se teste bien, il ne peut pas être entièrement mauvais...
+____
+
+
+[NOTE.notes]
+--
+Ce n'est pas une réalité statistique, mais c'est motivant.
+--
 
 === La testabilité et qualité de conception
 
-* Si un code est mal conçu, il est difficile à tester
-* La réciproque n'est pas toujours vraie
+* Testabilité = indicateur de qualité de conception
+** Un code difficile à tester -> Faiblesses de conception
+** => Revoir la conception 
+* La réciproque est-elle vraie ?
+** Débat...
 
 
 == Test facile
@@ -244,8 +294,6 @@ def test_filter_info_log_no_info_logs():
 
 === Test franchement pas facile
 
-TODO inclure la connection de la base de données dans le filtre 
-
 [.big]
 [source,python,attributes]
 -----
@@ -340,6 +388,33 @@ def test_filter_info_log_no_info_logs():
 * Action correctives
 ** => Legacy code
 --
+
+
+
+=== Mocking
+[.left-column-2-3]
+--
+
+* Situation complexe => Mocking
+** Mock => objet simulé qui **imite** le comportement d'objets réels de manière _contrôlée_.
+** Outil très puissants et utiles
+
+
+* Outil pas toujours simples
+** _Quand même mocker devient compliqué_ => Sérieux problème de conception.
+
+* Effet Harry Potter
+** Trop facile de se sortir d'une mauvaise situation par mauvaise conception.
+* Pour plus de détails
+** voir Mockito pour java https://site.mockito.org/
+** voir : https://github.com/Euclid-Python/Python-pytest/blob/master/pytest-mock.ipynb
+
+--
+[.right-column-1-3]
+--
+[.right]
+image::https://media.giphy.com/media/C3YUQjB5agrdK/giphy.gif[]
+
 
 == Legacy et théorie
 
@@ -645,19 +720,7 @@ NOTE:Bar/Foo, DATE=<date0>
 
 TODO Vérifie cohérence Raison de la difficulté à tester
 
-=== Mocking
-
-Un mot sur les mock
-
-Dire puissance mais parfois cache misère. 
-
-Quand même mocker devient compliqué, c'est qu'il y a un problème de conception. 
-
-TODO Faire topo sur effet Harray Potter du mocking
-TODO Donner URL sur /pytest-euclid
-
-Le mocking ou la paresse Harry Potter -> solution pirouette cacahuète qui permet de s'en sortir quand tout est mal goupillé. 
-
+--
 === Le paramètre irritant
 
 [source,python]
@@ -1055,13 +1118,54 @@ image::images/report_stream-2.svg[]
 
 include::_test_by_overloading.adoc[{include_options}]
 
-
 === Simuler une base de données
 
 * Utiliser le pattern du repository
 ** Insérer une couche d'abstraction si la construction des requêtes n'est pas de la responsabilité de l'objet sous test
 
-TODO Simulation base de données avec repository
+[.left-column]
+--
+[source,python]
+-----
+class Authentication:
+
+    def get_user_by_id(self, user_id) -> AuthenticatedUser:
+        # Execute SQL SELECT
+        return user
+
+    def update_user(self, user: AuthenticatedUser) -> AuthenticatedUser:
+        # Execute SQL UPDATE
+        return user            
+    
+    def delete_user(self, user_id): ...
+
+    #...
+
+-----
+--
+
+[.right-column]
+--
+[source,python,attributes]
+-----
+class UserRepository(Protocol):
+
+    def get_user_by_id(self, user_id) -> AuthenticatedUser: 
+        ...
+    def update_user(self, user: AuthenticatedUser) -> AuthenticatedUser: 
+        ...
+    def delete_user(self, user_id): 
+        ...
+
+class Authentication:
+    def __init__(self, user_repository: UserRepository):
+        self.user_repository = user_repository
+
+    def 
+-----
+--
+
+TODO TBD repository
 
 == Boucles imbriquées 
 
@@ -1195,13 +1299,240 @@ def test_total_price_without_discounts(): ...
 ** (4) Optimiser si besoin.
 ** (5) Répéter à partir du point 2. 
 
-== Recherche de responsabilité sur legacy 
 
-TODO  Recherche de responsabilité sur legacy 
+
+
+== Recherche de responsabilité sur legacy (temporaire)
+
+* Bad smells : 
+** Classe trop grosse ( https://refactoring.guru/fr/smells/large-class[_Large Class_])
+
+
+
+
+[NOTE.notes]
+--
+Nous avons vu que quand une classe semble lourde à tester, qu'elle semble lourde à tester, c'est souvent qu'elle porte trop de responsabilités. Elle fait trop de choses.
+Plusieurs experts se marchent dessus en permanence, il est temps de la décomposer.
+Ce genre de situation est une illustration de la dette technique: on a laissé la classe gonfler, en s'en servant comme pivot pour ajouter de nouvelles fonctionnalités.
+La théorie de la conception aurait voulu que son design soit mûrement réfléchi, et ses responsabilités bien établies à l'avance. Mais ce n'est pas la réalité opérationnelle rencontrée.
+--
+
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+
+* Proximité sémantique
+** Chercher les noms de variable, de fonction qui sont proches
+--
+[source,python]
+----
+from dataclasses import dataclass
+
+@dataclass
+class People:
+    name: str
+    age: int
+    gender: str
+    address: str
+    phone_number: str
+    email: str
+    company_name: str
+    company_address: str
+    job_title: str
+    job_description: str
+----
+
+[source,python]
+----
+    def send_email(self, message: str) -> None: ...
+    def call_by_phone(self) -> None: ...
+    def change_job_title(self, new_title: str) -> None: ...
+    def update_address(self, new_address: str) -> None: ...
+    def get_personal_info(self) -> str: ...
+    def get_company_info(self) -> str: ...
+    def update_personal_info(self, name: str, age: int, gender: str, address: str, phone_number: str, email: str) -> None: ...
+    def update_company_info(self, company_name: str, company_address: str, job_title: str, job_description: str) -> None: ...
+    def calculate_salary(self) -> float: ...
+    def hire_employee(self, employee_info: dict) -> None: ...
+    def fire_employee(self, employee_id: int) -> None: ...
+    # ... Other methods ...
+
+----
+--
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+endif::[]
+
+Éclatons les propriétés et les noms de méthodes
+
+[.center]
+image::images/testability-srp_0.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+endif::[]
+
+Identifions des groupes de propriétés et les noms de méthodes
+
+[.center]
+image::images/testability-srp_1.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+endif::[]
+
+Identifions des groupes de propriétés et de noms de méthodes
+
+[.center]
+image::images/testability-srp_1.1.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+endif::[]
+
+Relions des groupes de propriétés et de noms de méthodes
+
+[.center]
+image::images/testability-srp_2.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+endif::[]
+
+Identifions des responsabilités
+
+[.center]
+image::images/testability-srp_3.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+endif::[]
+
+Reconsidérons la classe originelle
+
+[.center]
+image::images/testability-srp_4.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+endif::[]
+
+Nous avons dégagé plusieurs responsabilités différentes.
+
+La classe `People` devient une composition
+
+[.left-column]
+--
+[source,python]
+----
+from dataclasses import dataclass
+
+@dataclass
+class People:
+    person: Person
+    address: Address
+    phone_number: PhoneNumber
+    email: Email
+    company: Company
+    job: Job
+----
+--
+
+[.right-column]
+--
+[.right.at-middle]
+image::images/testability-srp_5.svg[]
+--
+
+[.reset-column]
+Maintenant il est possible de tester chaque classe indépendamment _chacune dans son  domaine d'expertise_
+
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+
+Et de se limiter aux rares méthodes qui implique plusieurs classes comme
+
+[source,python,attributes]
+-----
+@dataclass
+class People:
+    #...
+    def update_personal_info(self, name: str, age: int, gender: str, address: str, phone_number: str, email: str) -> None: ...
+    def update_company_info(self, company_name: str, company_address: str, job_title: str, job_description: str) -> None: ...
+    def calculate_salary(self) -> float: ...
+    def hire_employee(self, employee_info: dict) -> None: ...
+    def fire_employee(self, employee_id: int) -> None: ...
+-----
+
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par ce qui change
+
+* Scratch refactoring
+** => Modifier pour voir ce qui se passe
+** Ne pas chercher à conserver
+** Découvrir les éléments qui "cassent" en même temps
+* Philosophie du scratch
+** _Ce qui change ensemble va ensemble_
+** _Ce qui ne casse pas ensemble ne va pas ensemble_
+* Attention de le faire dans une branche bidon.
+
+[.at-middle-right]
+image::images/scratch.png[]
+
+
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par relations
+
+[.left-column-2-3]
+--
+
+* Grouper par relations
+** Si première approche sémantique KO
+*** => les noms sont mal formés (tiens, tiens...) par exemple
+** Etablir relations entre méthodes et propriétés **dans le code**
+* Faire un graphique
+** cf _Working Effectively with Legacy Code. p 255_
+
+--
+
+[.right-column-1-3]
+--
+[.center]
+image::images/capture_Working_graph.png[height=300]
+--
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par relations
+endif::[]
+
+[.center]
+image::images/testability-srp_interne_0.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par relations
+endif::[]
+
+[.center]
+image::images/testability-srp_interne_1.svg[]
+
+ifdef::mode_slide[]
+[%notitle]
+=== Recherche de responsabilité sur legacy (temporaire) > Grouper par relations
+endif::[]
+
+[.center]
+image::images/testability-srp_interne_2.svg[]
+
 
 == Méthode MIKADO 
 
-TODO Méthode MIKADO 
+
 
 
 [.end.background]
