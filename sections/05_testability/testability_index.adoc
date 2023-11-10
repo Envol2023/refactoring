@@ -723,7 +723,6 @@ NOTE:Bar/Foo, DATE=<date0>
 
 TODO Vérifie cohérence Raison de la difficulté à tester
 
---
 === Le paramètre irritant
 
 [source,python]
