@@ -264,4 +264,10 @@ def test_city_service_merge_cities():
     assert {name for street.name in merged.streets} = {'name_left_0', 'name_left_1', 'name_right_0', 'name_right_1'}
 -----
 
+== Fail Fast
+
+À noter que la capacité de s'abstraire d'une base de données réelle permet de monter des démonstrateur de type fail fast. 
+
+TODO étoffer 
+
 // end::content[]
