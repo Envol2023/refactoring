@@ -1,0 +1,5 @@
+Inversion de contrôle
+
+ Une technique utilisée pour éviter un couplage fort entre les composants d'un système, qui consiste à les envelopper de manière à ce qu'ils exposent fortement une certaine interface. Un composant attendant cette interface peut alors s'y connecter sans connaître les détails de l'implémentation spécifique, et ainsi être couplé à l'interface au lieu de l'implémentation spécifique .Inversion de contrôle
+
+ Une technique utilisée pour éviter un couplage fort entre les composants d'un système, qui consiste à les envelopper de manière à ce qu'ils exposent fortement une certaine interface. Un composant attendant cette interface peut alors s'y connecter sans connaître les détails de l'implémentation spécifique, et ainsi être couplé à l'interface au lieu de l'implémentation spécifique.
