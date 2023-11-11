@@ -6,6 +6,25 @@ endif::[]
 
 // tag::content[]
 
+== Le complexe de Frankenstein
+
+La joie d'avoir un code qui fonctionne est telle ...
+
+[.center]
+image::images/frankenstein_0.gif[alt]
+
+
+== Le complexe de Frankenstein
+
+\... que nous nous perdons de vue qu'un assemblage de bouts de code 
+
+[.center]
+image::images/frankenstein_1.gif[alt]
+
+[%step]
+\... jusqu'à ce que nous perdions le contrôle...
+
+
 == Conception Logicielle
 
 * Conception vs Architecture ?

@@ -12,6 +12,7 @@ endif::[]
 [.center]
 == Améliorer la conception
 
+TODO cohérence avec les niveaux
 Améliorer la conception : niveau compétence
 
 // introd

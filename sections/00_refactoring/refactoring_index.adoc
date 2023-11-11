@@ -1,4 +1,4 @@
-= Introduction
+= Refactoring
 ifdef::backend-revealjs[]
 include::../../_inc_revealjs.adoc[]
 endif::[]

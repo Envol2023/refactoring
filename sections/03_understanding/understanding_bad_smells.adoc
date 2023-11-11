@@ -11,7 +11,7 @@
 * Symptôme
 ** Obligé de scroller plus d'un écran pour parcourir une méthode
 ** Être perdu en la lisant
-** Violation des principes de _Code Clean_ 
+** Transgression des principes de _Code Clean_ 
 *** Longueur fonction de l'ordre de la dizaine de lignes
 * Techniques
 ** `Extract Method`

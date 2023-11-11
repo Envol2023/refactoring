@@ -234,14 +234,14 @@ class CityService:
 -----
 
 === Testing avec repository
-
+--
 [source,python,attributes]
 ------
 def test_city_service_merge_cities():
     # Given
     NB_CITY=2
-    left  = City(city_id=0, name="Left",  zip_code=ZipCode(91200), streets=[Street(f"name_left_{i}",None) for i in range(NB_CITY))] 
-    right = City(city_id=1, name="Right", zip_code=ZipCode(91201), streets=[Street(f"name_right_{i}",None) for i in range(NB_CITY)]) 
+    left  = City(city_id=0, name="Left",  zip_code=ZipCode(91200), streets=[Street(f"name_left_{i}",None) for i in range(NB_CITY)]) 
+    right = City(city_id=1, name="Right", zip_code=ZipCode(91201), streets=[Street(f"name_right_{i}",None) for i in range(NB_CITY)])
 
     class FakeCityRepository:
         def find_by_name(self, name: str):              
@@ -253,7 +253,7 @@ def test_city_service_merge_cities():
     fake_city_repository = FakeCityRepository()
     service = CityService(repository=fake_city_repository)
 ------
-
+--
 [source,python]
 ----
     # When
@@ -266,11 +266,15 @@ def test_city_service_merge_cities():
 
 == Fail Fast
 
-À noter que la capacité de s'abstraire d'une base de données réelle permet de monter des démonstrateur de type _fail fast_.
-
+* S'abstraire d'une externalité
+** => Monter des démonstrateurs _fail fast_
+*** Valider rapide d'une hypothèse avec le _client_
+____
 _Recherche de cycles courts et de feedback client_
+____
 
-Fail Fast
+[.center]
+image::images/testability-fail-fast.svg[]
 
 
 

@@ -1,2 +1,3 @@
 index.adoc
 ./sections/00_refactoring/refactoring_index.adoc
+./sections/05_testability/testability_index.adoc

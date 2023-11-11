@@ -1,9 +1,11 @@
 = Testabilité
+ifdef::backend-revealjs[]
+include::../../_inc_revealjs.adoc[]
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
-:imagesdir: ../../
+:imagesdir: ../
 endif::[]
-
 // tag::content[]
 
 == TODO
@@ -27,22 +29,6 @@ image::images/break_everything.gif[]
 
 Aucune évolution n'est possible, à un rythme _soutenable_ sans confiance.
 
-=== Le complexe de Frankenstein
-
-TODO Déplacer dans Conception. 
-
-Nous sommes tellement heureux d'avoir un code qui fonctionne assemblant des lignes de code sans cohérence
-
-image::images/frankenstein_0.gif[alt]
-
-
-=== Le complexe de Frankenstein
-
-\... que nous ne voyons que trop tard que le code nous échappe totalement
-
-image::images/frankenstein_1.gif[alt]
-
-Un manque de culture conceptuel qui devient cruel et démotivant. 
 
 == La pierre philosophale
 
@@ -195,6 +181,8 @@ Ce n'est pas une réalité statistique, mais c'est motivant.
 
 == Test facile
 
+Une simple fonction à tester
+
 [.big]
 [source,python]
 -----
@@ -240,10 +228,9 @@ def test_filter_info_log_no_info_logs():
 
 === Test moins facile
 
-TODO Faire un accès statique 
-
+Un filtre plus élaboré avec des règles
 [.big]
-[source,python,attributes]
+[source,python]
 -----
 class LogFilter:
     def __init__(self, rules: Rules):
@@ -296,8 +283,9 @@ def test_filter_info_log_no_info_logs():
 
 === Test franchement pas facile
 
+Un filtre avec des règles chargées depuis une base de données
 [.big]
-[source,python,attributes]
+[source,python]
 -----
 class LogFilter:
     def __init__(self, rules: Rules):
@@ -374,12 +362,13 @@ def test_filter_info_log_no_info_logs():
 [%step]
 * Coupable couplage
 ** Mise en condition => beaucoup de travail
-*** => instanciation de nombreux objets
-* Objectifs
+*** => Instanciation de nombreux objets
+*** => Beaucoup de préoccupation différentes 
+* Objectifs de la refactorisation
 ** => Découpler au maximum
-*** Conception _propre_
+*** Conception _propre_ <= Réduction dette
 ** => Se libérer des dépendances
-*** Plusieurs stratégies
+*** Plusieurs stratégies selon contexte
 --
 
 [.right-column]
@@ -388,42 +377,201 @@ def test_filter_info_log_no_info_logs():
 * Action préventives 
 ** => Nouveau code  -> nouveau test
 * Action correctives
-** => Legacy code
+** => Legacy code -> Euh, une autre histoire
 --
 
 
 
 === Mocking
+
 [.left-column-2-3]
 --
-
+[%step]
 * Situation complexe => Mocking
 ** Mock => objet simulé qui **imite** le comportement d'objets réels de manière _contrôlée_.
 ** Outil très puissants et utiles
-
+*** Simuler un composant 
+*** Espionner les appels à un composant
+*** Création d'un objet virtuel uniquement pour les tests
 
 * Outil pas toujours simples
 ** _Quand même mocker devient compliqué_ => Sérieux problème de conception.
-
-* Effet Harry Potter
-** Trop facile de se sortir d'une mauvaise situation par mauvaise conception.
-* Pour plus de détails
-** voir Mockito pour java https://site.mockito.org/
-** voir : https://github.com/Euclid-Python/Python-pytest/blob/master/pytest-mock.ipynb
-
 --
+
 [.right-column-1-3]
 --
 [.right]
 image::https://media.giphy.com/media/C3YUQjB5agrdK/giphy.gif[]
 --
 
-== Legacy et théorie
+[.black.background]
+[.center]
+=== Mocking > Harry PotDeFleur
+
+Trop facile de se sortir d'une mauvaise situation par mauvaise conception.
+
+[.center]
+image::images/harrypotter.jpg[]
+
+
+
+
+== Mocking Python en 30 secondes
+
+* Simple illustration 
+** Python `unittest.mock.Mock`
+* Pour plus de détails
+** Mockito pour java https://site.mockito.org/
+** Mocking avec Pytest https://github.com/Euclid-Python/Python-pytest/blob/master/pytest-mock.ipynb[Euclid-Python/Python-pytest^]
+
+
+=== Mock > The Callable Box
+
+[.center]
+**Mock, la boîte à invocations**
+
+Un `Mock` est une _fonction_ qui renvoie _toujours_ un autre `Mock`.
+
+[.left-column]
+--
+[.big]
+[source,python]
+-----
+mock = Mock()
+
+foo = mock.foo()
+
+assert isinstance(foo(), Mock)
+-----
+--
+
+[.right-column]
+--
+[.big]
+[source,python]
+-----
+mock = Mock()
+
+result = mock.n().o().p().q().r().s().some_method()
+
+assert isinstance(result, Mock)
+-----
+--
+
+=== Mock > return_value et side_effect
+
+* Simulation des valeurs à renvoyer
+
+* `return_value` 
+** => valeur _unique_ à renvoyer pour tout appel
+
+[.big]
+[source,python]
+-----
+mock = Mock()
+
+mock.some_method.return_value = 'A'
+
+assert [mock.some_method() for _ in range(3)] == ['A', 'A', 'A']
+-----
+
+* `side_effect` 
+** => Séquence de valeurs à associer à une séquence d'appels
+
+[.big]
+[source,python]
+-----
+mock = Mock()
+
+mock.some_method.side_effect = 'A', 'B', 'C'
+
+assert [mock.some_method() for _ in range(3)] == ['A', 'B', 'C']
+-----
+
+
+=== Mock > The Recording Box
+
+[.center]
+**Mock, la boîte à enregistrer**
+
+Espionner les appels de méthodes
+
+--
+[.big]
+[source,python]
+-----
+mock = Mock()
+mock.some_method.return_value = 'foo'
+
+mock.some_method()
+mock.some_method.assert_called_once() # <-- assert been called one time
+
+mock.some_method()
+assert mock.some_method.call_count == 2 # <-- assert been called two times
+-----
+--
+
+Plusieurs possibilités 
+--
+[.big]
+-----
+assert_any_call
+assert_called
+assert_called_once
+assert_called_once_with
+assert_called_with
+assert_has_calls
+assert_not_called
+attach_mock
+call_args
+call_args_list
+call_count
+called
+-----
+--
+
+Voir la documentation 
+[.smaller]#https://docs.python.org/3/library/unittest.mock.html#
+
+
+[.black.background]
+[.center]
+== Legacy
+
+image::images/wikipedia_Bennett_College,_Millbrook_NY.jpg[]
+
+[%step]
+* Le mur de la réalité
+
+[.center]
+=== Legacy
+
+****
+Code ancien, au fonctionnement mystérieux, dont l’évolution semble délicate.
+****
+
+
+[%step]
+--
+****
+Code que vous n'êtes pas prêt à modifier
+****
+--
+
+== Legacy et testabilité
 
 [quote,Michael C. Feathers]
 ____
-Code without tests is bad code. It doesn't matter how well written it is; it doesn't matter how pretty or object-oriented or well-encapsulated it is. With tests, we can change
-the behavior of our code quickly and verifiably. Without them, we really don't know
+Code without tests is **bad** code. {cr}
+
+It doesn't matter how well written it is; {cr}
+it doesn't matter how pretty {cr}
+or object-oriented or well-encapsulated it is. 
+
+**With tests, we can change ** {cr}
+the behavior of our code quickly and verifiably. 
+
+**Without them, we really don't know ** {cr}
 if our code is getting better or worse.
 ____
 
@@ -432,15 +580,22 @@ ____
 [.center]
 image::images/testability-cercle.svg[alt]
 
-=== Obstacles à la testabilité (unitaire)
+=== Obstacles à la testabilité
 
+[.center]
+****
+Obstacles aux tests _unitaires_
+****
+
+[%step]
 * Dépendances trop lourdes ou complexes
-** Base de données, Web Servies extérieurs, Librairies tierces
+** Base de données, Web Services extérieurs, Librairies tierces
+** _Science_ => Équipement, Carte électronique, Instrument
 ** Arbre de dépendances trop profond
 * Tests non idempotents 
 ** Liées au temps, gestion asynchrone, randomisation
 * Absence d'observable
-** Pas de changement d'état, pas de retour
+** Pas de changement d'état, pas de retour, pas de son, pas d'image
 
 
 [NOTE.notes]
@@ -454,6 +609,7 @@ image::images/testability-cercle.svg[alt]
 
 === Chirurgie de guerre 
 
+[%step]
 * Tester coûte que coûte
 ** => Renoncer temporairement à un idéal de conception
 ** => Constater la conservation des comportements
@@ -461,27 +617,35 @@ image::images/testability-cercle.svg[alt]
 ** Mettre une variable témoin 
 ** Transgresser les principes de conception
 
-**Ce qui compte est de savoir ce que fait réellement le code, avant de l'améliorer**
-
-TODO Faire liste en référence à Legacy 
-
-
+[%step]
+****
+Ce qui compte est de savoir ce que fait **réellement** le code, avant de l'améliorer
+****
 
 === Test de caractérisation 
 
-* Test de caractérisation
-** _Test par approbation_
-* Test _extérieur_ 
-** Utilise l'idempotence d'un résultat conservé sous forme de fichier
-https://approvaltests.com/
+* Prendre un cliché du comportement actuel
+* Test par approbation
+** Test _extérieur_ 
+** Comparaison avec un résultat **approuvé** conservé sous forme de **fichier**
+** Fichier qui peut être _fourni_ par la cliente ou le client !!
+* Référence 
 
+[.center]
+--
+https://approvaltests.com/[https://approvaltests.com/^]
 
-ifdef::mode_slide[=== Test de caractérisation]
+****
+Given -> When -> Then -> Verify
+****
+--
+
+ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 [.center]
 image::images/testability-approval.svg[]
 
-ifdef::mode_slide[=== Test de caractérisation]
+ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 [.left-column]
 --
@@ -528,7 +692,7 @@ class Family:
 [.reset-column]
 --
 [.big]
-[source,python,attributes]
+[source,python]
 ----
 def find_related_people_in_same_cities(families: List[Family]):
     people_relations_by_cities = {}
@@ -545,7 +709,7 @@ def find_related_people_in_same_cities(families: List[Family]):
 ----
 --
 
-ifdef::mode_slide[=== Test de caractérisation]
+ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 Test avec approval
 
@@ -576,7 +740,7 @@ def test_approval():
 
 
 
-ifdef::mode_slide[=== Test de caractérisation]
+ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 
 Lancement avec 
@@ -593,7 +757,7 @@ Dans `Pycharm`
 image:images/capture_approval_1.png[]
 
 
-ifdef::mode_slide[=== Test de caractérisation]
+ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 Sortie du test en échec
 
@@ -618,7 +782,7 @@ image:images/capture_approval_0.png[width=500]
 
 
 
-ifdef::mode_slide[=== Test de caractérisation]
+ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 Contenu du fichier de référence `test_prettyworld.test_approval.approved.txt`
 
@@ -630,7 +794,7 @@ Contenu du fichier de référence `test_prettyworld.test_approval.approved.txt`
 ----
 
 
-ifdef::mode_slide[=== Test de caractérisation]
+ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 Dès que le fichier est copié, le test est validé.
 En cas de déviation, que ce passe-t-il ?
@@ -656,7 +820,7 @@ Avec `WinMerge` sous Windows
 [.center]
 image::images/capture_approval_winmerge.png[alt]
 
-ifdef::mode_slide[=== Test de caractérisation]
+ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 * Date ? 
 ** => Scrubber (_Laveur_) :  Remplace dates par placeholder `date${n}`
@@ -714,7 +878,7 @@ NOTE:Bar/Foo, DATE=<date0>
 --
 
 
-=== Raison de la difficulté à tester
+=== Obstacles typiques
 
 * La dépendance irritante
 * L'instanciation cachée
@@ -723,8 +887,11 @@ NOTE:Bar/Foo, DATE=<date0>
 
 TODO Vérifie cohérence Raison de la difficulté à tester
 
-=== Le paramètre irritant
+=== Obstacle > Le paramètre irritant
 
+Exemple avec une base de donnée en paramètre
+
+[.big]
 [source,python]
 ----
 class Validator:
@@ -741,8 +908,11 @@ class Validator:
         ...
 ----
 
-=== Test lourd à faire
+=== Obstacle > Le paramètre irritant
 
+Test lourd à mettre en oeuvre: base nécessaire
+
+[.big]
 [source,python]
 ----
 def test_validator_load_rules():
@@ -767,14 +937,19 @@ def test_validator_load_rules():
 ----
 
 
-== La dépendance cachée
+== Obstacle > La dépendance cachée
 
+Pas vu, pas pris
+
+Utilisation cachée de `XBandTransmitter`
+
+[.big]
 [source,python]
 ----
 class RadioCommunicator(Communicator):
 
     def __init__(self):
-        self.transmitter = XBandTransmitter()
+        self.transmitter = XBandTransmitter() #<--------------- Hidden ! 
 
     def send(msg: Message) -> None: 
         if not self.check_compliance_with_very_complicated_rules(msg):
@@ -794,21 +969,36 @@ class RadioCommunicator(Communicator):
 
 Comment faire un test de `RadioCommunicator` alors que tout repose sur `XBandTransmitter` ?
 
-== La dépendance cachée : le problème
+== Obstacle > La dépendance cachée
 
+**Le problème**
+
+* Fort couplage
+** Connaissance nécessaire hors domaine
+* Difficulté d'exploration
+** Comment _disposer_ la dépendance pour les tests
+* Solution
+** _Reposer sur l'abstraction plutôt que l'implémentation !_
+
+[NOTE.notes]
+--
 La dépendance cachée traduit un problème de conception qui concerne l'initialisation des objet.
 La dépendance cachée peut créer de sérieux problèmes de test, car nous ne savons pas forcément, en tant que concepteur du `RadioCommunicator` tout ce que cela implique.
-L'autre problème concerne la connaissance, donc le coupage inhérent à cette dépendance cachée.
+L'autre problème concerne la connaissance, donc le couplage inhérent à cette dépendance cachée.
 
 Le mieux est de reposer que l'abstraction plutôt que l'implémentation.
+--
 
-== La dépendance cachée : extraire l'interface du XBandTransmitter
+== Obstacle > La dépendance cachée 
 
-Le XBandTransmitter semble manifestement se limiter à obtenir  un `Channel`
-Le XBandChannel se limite lui à écrire, lire et se fermer.
+**Extraire l'interface du XBandTransmitter**
 
+* `XBandTransmitter` 
+** se limite à obtenir un `XBandChannel`
+* `XBandChannel` 
+** se limite à _écrire_, _lire_ et _se fermer_.
 
-Écrivons donc une interface `RadioTransmitter` et une interface `Channel`
+=> Écrivons donc une interface `RadioTransmitter` et une interface `Channel`
 
 [.left-column]
 --
@@ -854,8 +1044,13 @@ class RadioCommunicator(Communicator):
 ----
 --
 
-=== Ajouter un paramètre optionnel
+=== Obstacle > La dépendance cachée 
 
+**Ajouter un paramètre optionnel**
+
+Pattern de l'injection de dépendance.
+
+[.big]
 [source,python]
 ----
 class RadioCommunicator(Communicator):
@@ -867,7 +1062,9 @@ class RadioCommunicator(Communicator):
         ..
 ----
 
-=== Tester
+=== Obstacle > La dépendance cachée 
+
+**Tester**
 
 [source,python]
 ----
@@ -914,8 +1111,11 @@ def test_send_message():
 
 ----
 
-=== Cas de la dépendance globale
+=== Obstacle > La dépendance globale
 
+
+* Pattern du `Singleton`
+** Dépendance à un accès au niveau classe `MessagesCollector.get_messages()`.
 
 [source,python]
 ----
@@ -932,19 +1132,32 @@ class ReportStream:
             out.write(f'ID:{message.id} => {message.content}')
 ----
 
-Cette classe est dépendante d'une variable globale `MessagesCollector`.
-Il est très difficile de la tester ainsi, c'est possible, mais cela doit être laborieux.
+Il est très difficile de la tester ainsi.
+C'est possible, mais cela doit être laborieux.
+
 
 === Singleton is an anti-pattern
 
-Le Singleton est un pattern que l'on trouve dans le Gang OfFour pour assurer qu'il n'a a qu'une seule instance qui puisse exister.
-Mais il pose d'énormes problèmes.
+* Singleton pattern du _Gang Of Four_ 
+** S'assurer qu'une seule instance qui puisse exister.
+* Anti-pattern 
+** Difficile à adapter aux différentes situations
+** Très fort couplage à une classe
+** Un changement impact tout le système
+*** => Aucune isolation :(
 
-La classe `ReportStream` est très fortement couplée à `MessagesCollector`.
-Elle n'a besoin que d'obtenir des évènements.
+=== Obstacle > La dépendance globale
 
-Typiquement une injection d'une abstraction dont la responsabilité serait de fournir des évènements seraient largement suffisant.
+* Analyse
+** `ReportStream` très fortement couplée à `MessagesCollector`
+** Besoin -> obtenir des évènements
+* Solution
+** Abstraction (as ever)
+** Segregation Of Interface
+*** Responsabilité => Fournir des évènements 
+** Injection de l'abstraction
 
+[.big]
 [source,python]
 ----
 class MessageProvider(Protocol):
@@ -953,16 +1166,18 @@ class MessageProvider(Protocol):
         ...
 ----
 
+=== Obstacle > La dépendance globale
 
+**Travail sur le Singleton**
 
-=== Travail sur le Singleton
+* Modifier `MessagesCollector`
+** Lui faire endosser l'interface `MessageProvider`
+** Lui faire retourner via un `get()` lui même
+** Permettre la modification via un `set()`
+** Transformer la méthode de classe en méthode d'instance
 
-Si on peut modifier `MessagesCollector`
-
-* Lui faire endosser l'interface `MessageProvider`
-* Lui faire returner via un `get` lui même
-* Transformer la méthode de classe en méthode d'instance
-
+[.left-column]
+--
 [source,python]
 ----
 class MessagesCollector(MessageProvider):
@@ -980,7 +1195,10 @@ class MessagesCollector(MessageProvider):
     def get_messages(cls):
         ...
 ----
+--
 
+[.right-column]
+--
 [source,python]
 ----
 class ReportStream:
@@ -995,9 +1213,12 @@ class ReportStream:
         for message in messages:
             out.write(f'ID:{message.id} => {message.content}')
 ----
+--
 
 === Test en modifiant le Singleton
 
+[.left-column]
+--
 [source,python]
 ----
 @pytest.fixture
@@ -1018,9 +1239,12 @@ def message_provider():
 
     # Tear Down
     MessagesCollector.set(instance)
-
 ----
+--
 
+
+[.right-column]
+--
 [source,python]
 ----
 def test_print_messages(message_provider):
@@ -1039,9 +1263,17 @@ def test_print_messages(message_provider):
     # Then
     assert io.get_value() == 'ID:1 => foo'
 ----
+--
 
+[.reset-column]
+[.center]
+--
+C'est mieux, mais c'est perfectible ...
+--
 
 === En injectant le fournisseur
+
+Passer du Singleton à l'injection pour se débarrasser définitivement
 
 [.left-column]
 --
@@ -1108,26 +1340,63 @@ def test_print_messages():
     assert io.get_value() == 'ID:1 => foo'
 ----
 
+[%step]
+[.reset-column]
+[.center]
+--
+Oui mais dans la vraie vie ? J'ai besoin d'une unique instance !!
+--
+
+=== Singleton, uniquement à l'injection
+
+[.big]
+[source,python,attributes]
+-----
+if __name__ == "__main__":
+    # ------------------- Actual Singleton here -------------------
+    unique_message_provider = MessagesCollector.get()
+    # -------------------------------------------------------------
+
+    report = ReportStream(out=out, provider=unique_message_provider)
+    report.report_last_messages()
+-----
+
 == Résumé
 
+[.center]
+--
+*Avant*
+
 image::images/report_stream-0.svg[]
+--
+
+ifdef::mode_slide[== Résumé]
+
+[.center]
+--
+*Abstraction*
 
 image::images/report_stream-1.svg[]
+--
+
+ifdef::mode_slide[== Résumé]
+
+[.center]
+--
+*Injection*
 
 image::images/report_stream-2.svg[]
+--
 
-== Amélioration de la testabilité par la hiérarchisation
-
-include::_test_by_overloading.adoc[{include_options}]
-
-=== Simuler une base de données
+== Cas d'usage: Simuler une base de données
 
 * Utiliser le pattern du repository
 ** Insérer une couche d'abstraction si la construction des requêtes n'est pas de la responsabilité de l'objet sous test
 
 include::_use_repository.adoc[{include_options}]
 
-== Boucles imbriquées 
+
+== Obstacle > boucles imbriquées 
 
 * Priorité Single Responsability Principle
 ** Boucles imbriquées avec plusieurs responsabilités mélangées
@@ -1152,7 +1421,7 @@ avg_w_lug = avg_w_lug / len(reservations)
 [%step]
 Ah oui, encore une version compressée...
 
-ifdef::mode_slide[== Boucles imbriquées]
+ifdef::mode_slide[=== Obstacle > boucles imbriquées]
 
 En clair
 
@@ -1178,7 +1447,7 @@ average_weight_luggage = average_weight_luggage / len(reservations)
 ** Responsabilités mélangées ? 
 *** Lesquelles ?
 
-ifdef::mode_slide[== Boucles imbriquées]
+ifdef::mode_slide[=== Obstacle > boucles imbriquées]
 
 * Responsabilités identifiées
 ** _Calcul du poids total des baggages en soute_
@@ -1211,7 +1480,7 @@ def test_total_price_with_discounts_but_no_baggages():
     ...
 -----
 
-ifdef::mode_slide[== Boucles imbriquées]
+ifdef::mode_slide[=== Obstacle > boucles imbriquées]
 
 Réécriture
 
@@ -1258,6 +1527,13 @@ def test_total_price_without_discounts(): ...
 ** (3) Établir un profil en cas de lenteur seulement.
 ** (4) Optimiser si besoin.
 ** (5) Répéter à partir du point 2. 
+
+
+
+
+== Amélioration de la testabilité par la hiérarchisation
+
+include::_test_by_overloading.adoc[{include_options}]
 
 
 
@@ -1418,7 +1694,7 @@ Maintenant il est possible de tester chaque classe indépendamment _chacune dans
 
 Et de se limiter aux rares méthodes qui implique plusieurs classes comme
 
-[source,python,attributes]
+[source,python]
 -----
 @dataclass
 class People:
