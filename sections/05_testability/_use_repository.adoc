@@ -235,8 +235,8 @@ class CityService:
 
 === Testing avec repository
 
-[source,python]
------
+[source,python,attributes]
+------
 def test_city_service_merge_cities():
     # Given
     NB_CITY=2
@@ -252,22 +252,26 @@ def test_city_service_merge_cities():
 
     fake_city_repository = FakeCityRepository()
     service = CityService(repository=fake_city_repository)
+------
 
------
 [source,python]
------
+----
     # When
     merged_city = service.merge(left, right)
 
     # Then
     assert merged_city.name = "Left-Right" 
     assert {name for street.name in merged.streets} = {'name_left_0', 'name_left_1', 'name_right_0', 'name_right_1'}
------
+----
 
 == Fail Fast
 
-À noter que la capacité de s'abstraire d'une base de données réelle permet de monter des démonstrateur de type fail fast. 
+À noter que la capacité de s'abstraire d'une base de données réelle permet de monter des démonstrateur de type _fail fast_.
 
-TODO étoffer 
+_Recherche de cycles courts et de feedback client_
+
+Fail Fast
+
+
 
 // end::content[]

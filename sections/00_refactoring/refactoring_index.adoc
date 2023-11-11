@@ -1,4 +1,7 @@
 = Introduction
+ifdef::backend-revealjs[]
+include::../../_inc_revealjs.adoc[]
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
 :imagesdir: ../
@@ -13,7 +16,7 @@ endif::[]
 
 Refactoring et Agilité
 
-**BOF A REFAIRE**
+TODO trouver une phrase d'accroche
 
 == Que faisons nous quand nous développons ?
 
@@ -208,23 +211,56 @@ ifdef::HIDE_ME[]
 **METTRE GRAPHIQUE**
 endif::[]
 
-=== Dette technique et culpabilisation
+=== Dette technique > Appréciation
 
-* **ATTENTION** 
-** Une métrique de qualité, pas un sujet de culpabilisation
-** La dette est inhérente à tout projet
-** Ne pas _blâmer_ ou avoir honte de la dette
-* Gestion de la dette
-** En avoir conscience
-** Évaluer => résorber
+* Toutes les dettes ne se valent pas
+** Choix assumé pour se développer
+** Descente aux enfer par méconnaissance 
+** => Deux axes d'évaluation
+
+
+[.left-column]
+--
+* Réfléchie
+** Limitation  
+*** A une partie isolée du code ou généralisée
+** Prudence
+*** Aspect marginal ou au coeur de l'application 
+
+--
+[.right-column]
+--
+
+* Volontaire
+** En connaissance de cause
+*** Conscience et compétence 
+*** ... ou absence des deux
+** Recul
+*** Réflexion sur ce qu'il aurait possible de _mieux_ faire
+--
+
+=== Dette technique > Appréciation
+
+[.center]
+image:images/dette-technique-quadrant.svg[]
+
+[%step]
+Ne pas en faire un sujet de honte
+
+[%step]
+Nécessité d'en avoir conscience et de la résorber
+
+[NOTE.notes]
+--
+
+Recommandations de lecture 
 
 https://www.lemondeinformatique.fr/actualites/lire-la-dette-technique-reste-mal-comprise-86974.html
 
-TODO Remplacer par quadrant 
-
 https://wikiagile.fr/index.php?title=Quadrant_de_la_Dette_Technique
+--
 
-=== Comment mesurer la dette technique ?
+=== Dette technique > Mesure 
 
 [%step]
 * Écart aux bonnes pratiques
@@ -237,6 +273,8 @@ https://wikiagile.fr/index.php?title=Quadrant_de_la_Dette_Technique
 *** Bad smells
 * Systèmes d'analyse qualité
 ** Sonarqube, qodana, ...
+
+TODO Inclure document sonarqube
 
 [NOTE.notes]
 --
@@ -621,10 +659,79 @@ def compute_invoice(shipment, order, discount):
 
 Le refactoring ne serait-il qu'un catalogue de _trucs_ et _astuces_ ?
 
-=== Outils de refactoring 
+=== Outils de refactoring > IDE > Java
 
-TODO montrer outils IDE
-TODO montrer linter 
+
+[.center]
+[.left-column]
+--
+Eclipse
+
+image::images/refactoring_java_eclipse.png[]
+--
+[.center]
+[.right-column]
+--
+VSCode 
+
+image::images/refactoring_java_vscode.png[]
+--
+
+
+=== Outils de refactoring > Python
+
+[.center]
+[.left-column]
+--
+PyCharm
+
+image::images/pycharm_refactor.png[]
+--
+
+[.center]
+[.right-column]
+--
+VSCode 
+
+
+image::https://code.visualstudio.com/assets/docs/python/editing/refactorExtractVar.gif[]
+
+image::https://code.visualstudio.com/assets/docs/python/editing/refactorExtractMethod.gif[]
+
+and powerful Renaming
+--
+
+
+=== Outils de refactoring > Linters
+
+[.left-column-2-3]
+--
+* Linters > Jiminy Crocket
+** Analyseurs de code _"temps réel"_
+** Disponible dans _presque_ tous les https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis[langages]
+** Dans tous les bons IDE
+*** Sinon ce n'est pas un _bon_ IDE !
+--
+[.right-column-1-3]
+--
+image::images/jimminy_crickets.jpg[width=400]
+--
+
+[.reset-column]
+--
+
+--
+
+[.left-column]
+--
+image::images/2023-11-11T14-07-45-197Z.png[width=600]
+--
+
+
+[.right-column]
+--
+image::images/2023-11-11T14-21-27-838Z.png[width=600]
+--
 
 == Refactoring : L'esprit plutôt que la lettre
  
@@ -639,9 +746,6 @@ TODO montrer linter
 *** Comprendre l'importance du refactoring & s'en faire l'avocat lors des arbitrages
 * Pour tous
 ** _Evangéliser_ auprès de vos collègues
-
-[.at-top-middle]
-**ICI METTRE CAPTURE PYCHARM**
 
 === Approche du refactoring
 

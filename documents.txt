@@ -1,0 +1,2 @@
+index.adoc
+./sections/00_refactoring/refactoring_index.adoc

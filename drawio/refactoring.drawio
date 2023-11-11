@@ -1,0 +1,64 @@
+<mxfile host="Electron" modified="2023-11-11T10:31:22.768Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="2VRuJNXFxTskiyIg71RM" version="22.0.3" type="device">
+  <diagram name="Page-1" id="Ox6x_V3IcpUCxxCVKWnX">
+    <mxGraphModel dx="2261" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="EAL90NzlQMEruYIv2vaX-1" value="Nous n&#39;avons pas le temps pour la conception" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;shadow=1;" vertex="1" parent="1">
+          <mxGeometry y="160" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-2" value="Nous devons déployer&lt;br&gt;&amp;nbsp;maintenant et assumer les conséquences" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="160" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-3" value="C&#39;est quoi l&#39;architecture ?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;" vertex="1" parent="1">
+          <mxGeometry y="320" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-4" value="Maintenant nous savons comment nous aurions du faire" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="320" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-5" value="Irréfléchie" style="text;html=1;strokeColor=#314354;fillColor=#647687;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-6" value="Réfléchie" style="text;html=1;strokeColor=#314354;fillColor=#647687;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="20" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-7" value="Intentionnelle" style="text;html=1;strokeColor=#314354;fillColor=#647687;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-8" value="Involontaire" style="text;html=1;strokeColor=#314354;fillColor=#647687;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="360" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-9" value="Excessive et imprudente" style="text;html=1;strokeColor=#314354;fillColor=#647687;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="70" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-10" value="Modérée et prudente" style="text;html=1;strokeColor=#314354;fillColor=#647687;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="70" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-11" value="Ignorance" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="400" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-12" value="Quick and dirty" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="-50" y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-13" value="Code Ad Hoc" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="120" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-14" value="Retex de fin de projet" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="400" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-15" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=4;fillColor=#f5f5f5;strokeColor=#999999;shadow=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="480" as="sourcePoint" />
+            <mxPoint x="220" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EAL90NzlQMEruYIv2vaX-16" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=4;fillColor=#f5f5f5;strokeColor=#999999;shadow=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-40" y="300" as="sourcePoint" />
+            <mxPoint x="480" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
