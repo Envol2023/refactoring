@@ -1,4 +1,10 @@
 = Vue du cerveau
+ifdef::backend-revealjs[]
+include::../../_inc_revealjs.adoc[]
+endif::[]
+ifndef::backend-revealjs[]
+:toc:
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
 :imagesdir: ../
@@ -181,9 +187,32 @@ Comme dans une ville, si l'uniformité est ennuyeuse, l'absence de motif, qui fa
 Un plan clair, dont la logique se comprend d'un coup d'oeil, n'est pas des plus spontanés, mais est très efficace. Le cerveau en comprend aisément les cheminements et la logique. Il ira directement à l'essentiel.
 --
 
-== TODO référence à Dr Felienne Herman
+== Travaux de Dr Felienne Herman
+
+Si le sujet vous intéresse
+
+[.simple]
+* Livre _"The Programmer's Brain, what every programmer needs to know about cognition"_
+* https://www.youtube.com/watch?v=jjMlguOrWHc[(Youtube) How to Read Complex Code" by Dr Felienne Hermans^]
+
+[NOTE.notes]
+--
+Le Dr Felienne Herman est une experte au sujet de la cognition dans la programmation. 
+J'attend de pouvoir lire son livre, mais à la vue de ses vidéos, cela me semble très intéressant.
+--
 
 [.end.background]
-== 
+== Résumé
+
+* Coder pour les humains
+** Premier processeur à faire tourner votre code
+* Limites
+** Un petit buffer
+** Biais cognitifs
+* Être sympa avec lui
+** Ne pas générer de dissonance
+** Ne pas surcharger la cartographie mentale
+** Fournir régularité et consistance
+
 // end::content[]
 

@@ -95,8 +95,6 @@ include::understanding_bad_smells.adoc[]
 
 Nous avons vu
 
-* Coder pour les humains
-** Connaître les faiblesse de notre cerveau
 * Rendre le code lisible
 ** Nommage
 ** Montrer les intentions avant les implémentations
