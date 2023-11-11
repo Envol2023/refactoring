@@ -33,6 +33,14 @@ endif::[]
 
 image::images/redux.gif[]
 
+=== Separation of concerns
+
+* Rangement en profondeur 
+** Modèle en couche
+** Principe d'architecture 
+
+TODO étoffer un peu 
+
 
 === Single Responsibility Principle
 
