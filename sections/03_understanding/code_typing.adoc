@@ -57,13 +57,16 @@ get_travel("John", "ACME")
 
 === Python utilisez les type hints
 
-[%linenums,python]
+Syntaxe
+[.big]
+[source,python]
 ----
 object: Type
 ----
 
 Typage des arguments
 
+[.big]
 [source,python]
 ----
 def get_travel(profile: Profile, enterprise: Enterprise): 
@@ -73,6 +76,7 @@ def get_travel(profile: Profile, enterprise: Enterprise):
 
 Typage du retour
 
+[.big]
 [source,python]
 ----
 def get_travel(profile: Profile, enterprise: Enterprise) -> Travel: 
@@ -100,7 +104,7 @@ from typings import Dict
 categories_by_name: Dict[str, Category] = {}
 -----
 
-Plus de détails 
+Plus de détails
 
 https://realpython.com/python-type-checking/
 

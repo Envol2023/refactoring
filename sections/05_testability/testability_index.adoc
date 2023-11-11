@@ -1419,7 +1419,9 @@ avg_w_lug = avg_w_lug / len(reservations)
 -----
 
 [%step]
+--
 Ah oui, encore une version compressée...
+--
 
 ifdef::mode_slide[=== Obstacle > boucles imbriquées]
 
@@ -1538,7 +1540,7 @@ include::_test_by_overloading.adoc[{include_options}]
 
 
 
-== Recherche de responsabilité sur legacy (temporaire)
+== Legacy Responsabilités 
 
 * Bad smells : 
 ** Classe trop grosse ( https://refactoring.guru/fr/smells/large-class[_Large Class_])
@@ -1554,7 +1556,7 @@ Ce genre de situation est une illustration de la dette technique: on a laissé l
 La théorie de la conception aurait voulu que son design soit mûrement réfléchi, et ses responsabilités bien établies à l'avance. Mais ce n'est pas la réalité opérationnelle rencontrée.
 --
 
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 
 * Proximité sémantique
 ** Chercher les noms de variable, de fonction qui sont proches
@@ -1597,7 +1599,7 @@ class People:
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 endif::[]
 
 Éclatons les propriétés et les noms de méthodes
@@ -1607,7 +1609,7 @@ image::images/testability-srp_0.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 endif::[]
 
 Identifions des groupes de propriétés et les noms de méthodes
@@ -1617,7 +1619,7 @@ image::images/testability-srp_1.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 endif::[]
 
 Identifions des groupes de propriétés et de noms de méthodes
@@ -1627,7 +1629,7 @@ image::images/testability-srp_1.1.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 endif::[]
 
 Relions des groupes de propriétés et de noms de méthodes
@@ -1637,7 +1639,7 @@ image::images/testability-srp_2.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 endif::[]
 
 Identifions des responsabilités
@@ -1647,7 +1649,7 @@ image::images/testability-srp_3.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 endif::[]
 
 Reconsidérons la classe originelle
@@ -1657,7 +1659,7 @@ image::images/testability-srp_4.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 endif::[]
 
 Nous avons dégagé plusieurs responsabilités différentes.
@@ -1690,7 +1692,7 @@ image::images/testability-srp_5.svg[]
 [.reset-column]
 Maintenant il est possible de tester chaque classe indépendamment _chacune dans son  domaine d'expertise_
 
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par nom
+=== Legacy Responsabilités  > Grouper par nom
 
 Et de se limiter aux rares méthodes qui implique plusieurs classes comme
 
@@ -1706,7 +1708,7 @@ class People:
     def fire_employee(self, employee_id: int) -> None: ...
 -----
 
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par ce qui change
+=== Legacy Responsabilités  > Grouper par ce qui change
 
 * Scratch refactoring
 ** => Modifier pour voir ce qui se passe
@@ -1721,7 +1723,7 @@ class People:
 image::images/scratch.png[]
 
 
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par relations
+=== Legacy Responsabilités  > Grouper par relations
 
 [.left-column-2-3]
 --
@@ -1743,7 +1745,7 @@ image::images/capture_Working_graph.png[height=300]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par relations
+=== Legacy Responsabilités  > Grouper par relations
 endif::[]
 
 [.center]
@@ -1751,7 +1753,7 @@ image::images/testability-srp_interne_0.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par relations
+=== Legacy Responsabilités  > Grouper par relations
 endif::[]
 
 [.center]
@@ -1759,7 +1761,7 @@ image::images/testability-srp_interne_1.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Recherche de responsabilité sur legacy (temporaire) > Grouper par relations
+=== Legacy Responsabilités  > Grouper par relations
 endif::[]
 
 [.center]

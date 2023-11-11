@@ -1,7 +1,10 @@
 = Conception
+ifdef::backend-revealjs[]
+include::../../_inc_revealjs.adoc[]
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
-:imagesdir: ../../
+:imagesdir: ../
 endif::[]
 
 {doctype}

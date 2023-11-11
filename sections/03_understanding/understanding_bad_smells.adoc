@@ -1,3 +1,10 @@
+
+== Bad smells de comprehension
+
+* Nom Mystérieux
+* Fonction trop longue
+* Longue liste de paramètres
+
 == Nom Mystérieux
 
 * Symptôme
@@ -29,7 +36,7 @@
 ** `Introduce Parameter Object`
 ** `Preserve Whole Object`
 
-=== Introduce Parameter Object
+=== Longue liste de paramètres > Introduce Parameter Object
 
 [.left-column]
 --
@@ -83,7 +90,7 @@ def move(weight: float,
 ----
 --
 
-=== Preserve Whole Object
+=== Longue liste de paramètres > Preserve Whole Object
 
 [.left-column]
 --

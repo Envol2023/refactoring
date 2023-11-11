@@ -3,8 +3,7 @@ bin/
 Gemfile.lock
 *.pdf
 *.bkp
-book.html
-index.html
+*.html
 .vscode/launch.json
 .venv
 .vscode/settings.json

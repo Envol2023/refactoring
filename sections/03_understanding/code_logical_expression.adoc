@@ -191,8 +191,4 @@ def test_are_rentals_within_time_frame_but_no_rentals():
 ----
 
 
-== Consolidate Conditional Expression
-
-
-
 // end::content[]

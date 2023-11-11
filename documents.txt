@@ -1,3 +1,7 @@
 index.adoc
-./sections/00_refactoring/refactoring_index.adoc
-./sections/05_testability/testability_index.adoc
+sections/00_refactoring/refactoring_index.adoc
+sections/01_tests/tests_index.adoc
+sections/02_brain/brain_index.adoc
+sections/03_understanding/understanding_index.adoc
+sections/04_conception/conception_index.adoc
+sections/05_testability/testability_index.adoc

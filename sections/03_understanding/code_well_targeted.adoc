@@ -18,7 +18,7 @@ Coder, c'est structurer un texte pour mettre en relief les préoccupations (_Con
 == Identifier et isoler les préoccupations 
 
 * Une préoccupation annonce son **intention** (_WHAT_).
-** une réponse courte à la question 
+** Une réponse courte à la question 
 *** _"Qu'est-ce que ça fait ?"._
 * Une préoccupation n'est pas une *implémentation* (_HOW_).
 ** Elle ne répond pas à la question 
@@ -367,8 +367,8 @@ image::images/good_practices-scale_3.svg[]
 ** **Code Clean** => 5 à 10 lignes max
 ** Extraire les blocs d'instruction dans des fonction subalternes
 * Mettre les choses importantes en avant
-** Mettre les fonctions de plus haut niveau en début de texte
-** Mettre les fonctions de plus bas niveau en fin de texte
+** *Début* de texte -> fonctions de plus **haut** niveau
+** *Fin* de texte -> fonctions de plus **bas** niveau
 
 
 == Quels techniques de refactoring

@@ -1,9 +1,14 @@
 = Understanding
+ifdef::backend-revealjs[]
+include::../../_inc_revealjs.adoc[]
+endif::[]
+ifndef::backend-revealjs[]
+:toc:
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
 :imagesdir: ../
 endif::[]
-
 // tag::content[]
 
 
@@ -14,9 +19,7 @@ endif::[]
 
 Refactoring, niveau élémentaire.
 
-ifdef::mode_slide[]
-=== Améliorer la compréhension
-endif::[]
+ifdef::mode_slide[=== Améliorer la compréhension]
 
 * Lisibilité
 * Structuration
@@ -32,11 +35,11 @@ C'est le premier niveau de refactorisation, accessible à tous, et ne demandant 
 [.subsection.background]
 [.center]
 [%notitle]
-== Rendre le code lisible
+ifdef::mode_slide[== Rendre le code lisible]
 
 [.huge]#Rendre le code lisible#
 
-== Rendre le code lisible
+ifdef::mode_slide[== Rendre le code lisible]
 
 [.ppt]
 * Comme tout écrit, le code dit quelque chose.
@@ -49,10 +52,10 @@ C'est le premier niveau de refactorisation, accessible à tous, et ne demandant 
 ** Plus il demande d'efforts à lire, moins il est maintenable
 
 
-ifndef::hide_prez[]
+ifdef::mode_slide[]
 [%notitle]
 == Rendre le code lisible
-endif::hide_prez[]
+endif::mode_slide[]
 
 [.huge.center]
 Vous *lisez* votre code +
@@ -84,8 +87,6 @@ include::code_typing.adoc[{include_options}]
 
 include::code_logical_expression.adoc[{include_options}]
 
-== Bad smells 
-
 include::understanding_bad_smells.adoc[]
 
 [.end.background]
@@ -94,6 +95,16 @@ include::understanding_bad_smells.adoc[]
 
 Nous avons vu
 
-TODO Résumé conception 
+* Coder pour les humains
+** Connaître les faiblesse de notre cerveau
+* Rendre le code lisible
+** Nommage
+** Montrer les intentions avant les implémentations
+** Expliciter les attentes
+** Les imbrications
+* Bad smells de comprehension
+** Nom Mystérieux
+** Fonction trop longue
+** Longue liste de paramètres
 
 // end::content[]
