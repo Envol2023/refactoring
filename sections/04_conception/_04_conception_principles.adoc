@@ -335,6 +335,16 @@ image::images/SRP_sensor_2.svg[]
 [.center]
 image::images/SRP_sensor_3.svg[]
 
+== Se poser les bonnes questions 
+
+* Qui fait quoi ? 
+** Puis-je décrire en une phrase simple ce que fait le composant ? 
+* Pourquoi changerait il ? 
+** Si plusieurs réponses relevant de domaines différents 
+*** => Distinguer les responsabilités enfouies 
+* Analogie de l'expert 
+** Puis-je parler de mon composant comme d'une personne ? 
+
 
 == Interface Segregation Principle 
 
@@ -369,8 +379,6 @@ Dans le cas des grandes classes, cela permet de limiter sévèrement la connaiss
 
 * `Extract interface`
 * `Extract superclass`
-
-** Faire de copies d'écran
 
 
 === Composition Over Inheritance
