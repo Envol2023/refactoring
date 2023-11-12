@@ -274,12 +274,14 @@ https://wikiagile.fr/index.php?title=Quadrant_de_la_Dette_Technique
 * Systèmes d'analyse qualité
 ** Sonarqube, qodana, ...
 
-TODO Inclure document sonarqube
-
 [NOTE.notes]
 --
 Les moteurs d'analyse qualité sont des outils très puissants, le plus connu étant sonarqube. Mais il n'est pas forcément nécessaire d'utiliser, encore moins de mettre en oeuvre, un tel système pour avoir une idée des écarts manifestes et corrigeables. Des linters suffisent.
 --
+
+== Exemple avec sonarqube
+
+include::sonarqube.adoc[{include_options}]
 
 [.splash.background]
 [.center]

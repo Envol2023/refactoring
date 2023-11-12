@@ -2,16 +2,16 @@
 ifdef::backend-revealjs[]
 include::../../_inc_revealjs.adoc[]
 endif::[]
+ifndef::backend-revealjs[]
+:toc:
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
-:imagesdir: ../
+:imagesdir: ../../
 endif::[]
+
 // tag::content[]
 
-== TODO
-
-* testability and responsibility 
-* testability and abstraction 
 
 [.start.background]
 [.center]
@@ -1947,5 +1947,7 @@ image::images/testability-Mikado-sample_13.svg[]
 [.end.background]
 [.center]
 == Améliorer la testabilité
+
+TODO faire une résumé
 
 // end::content[]
