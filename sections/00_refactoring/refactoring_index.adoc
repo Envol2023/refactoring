@@ -7,6 +7,8 @@ ifndef::imagesdir[]
 :imagesdir: ../
 endif::[]
 
+Introduction
+
 // tag::content[]
 
 [.dark.background]
@@ -181,7 +183,7 @@ Faire évoluer un logiciel à un rythme soutenable => garantir maintenabilité
 Au cours d'un développement, il est naturel que des compromis, des maladresses ou des raccourcis soient commis. Cela fait parfois gagner du temps ou des ressources, parfois cela est du à un manque de clairvoyance ou plus simplement à une vision de la conception qui n'était pas la plus pertinente mais qui pénalisent la maintenabilité de l'application et sa faculté à évoluer.
 --
 
-== Dette technique
+ifdef::mode_slide[=== Dette technique]
 
 * Dette technique
 ** _Dette_ :  Renoncement accélérant le développement
@@ -192,24 +194,6 @@ Au cours d'un développement, il est naturel que des compromis, des maladresses 
 [.center]
 image:images/dette-technique_1.svg[alt]
 image:images/dette-technique_2.svg[alt]
-
-ifdef::HIDE_ME[]
-=== Dette technique
-
-* Endettement
-** Ne pas rembourser la dette (réécrire le code)
-** => Augmentation du coût des intérêts
-*** => Faire évoluer le logiciel devient de plus en plus difficile
-**** Ajout de fonctionnalité coûteux
-**** Code "démotivant"
-**** Augmentation des bugs
-* Répartition de la consommation
-** moins la dette est _vite_ remboursée
-** plus elle coûte en temps pour être remboursée
-* La dette génère de la dette
-
-**METTRE GRAPHIQUE**
-endif::[]
 
 === Dette technique > Appréciation
 
@@ -278,8 +262,6 @@ https://wikiagile.fr/index.php?title=Quadrant_de_la_Dette_Technique
 --
 Les moteurs d'analyse qualité sont des outils très puissants, le plus connu étant sonarqube. Mais il n'est pas forcément nécessaire d'utiliser, encore moins de mettre en oeuvre, un tel système pour avoir une idée des écarts manifestes et corrigeables. Des linters suffisent.
 --
-
-== Exemple avec sonarqube
 
 include::sonarqube.adoc[{include_options}]
 
@@ -412,7 +394,7 @@ Martin Fowler a publié plusieurs éditions de son célèbre livre, d'un point d
 Tous 
 --
 
-== Refactoring : ressources
+=== Refactoring : ressources
 
 [.simple]
 * Catalogue des techniques en ligne
@@ -490,9 +472,8 @@ image::images/cycle_refactoring.svg[]
 --
 
 
-== Exemple de refactoring canonique
 
-=== Extraire fonction
+== Exemple de refactoring canonique > Extraire fonction
 
 [.left-column]
 .Code

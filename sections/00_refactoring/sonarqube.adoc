@@ -20,7 +20,7 @@ endif::[]
 [.at-middle-right]
 image::images/sonarqube/2023-11-12T18-33-06-601Z.png[] 
 
-== Lancement de l'image sonarqube
+=== Lancement de l'image sonarqube
 
 
 [.big]
@@ -41,7 +41,7 @@ Repérer l'adresse IP
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube
 ----
 
-== Créer le projet dans Sonarqube
+=== Créer le projet dans Sonarqube
 
 Sélectionner _"Create project Manually"_
 

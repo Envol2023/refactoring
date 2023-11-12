@@ -599,9 +599,4 @@ et *améliorez* le _code_ plutôt.
 ** Utiliser des antonymes ( `open` -> `close`, `create`-> `destroy`)
 
 
-[.subsection.background]
-[.center]
-[%notitle]
-== Rendez votre code lisible: 
-
 //end::content[]
