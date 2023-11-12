@@ -4,7 +4,7 @@ include::../../_inc_revealjs.adoc[]
 endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
-:imagesdir: ../
+:imagesdir: ../../
 endif::[]
 
 Introduction
@@ -102,13 +102,23 @@ c'est aussi garder la complexité {cr}
 
 == Agilité 
 
+[.left-column-2-3]
+--
 * Réponse à la complexité
 ** Expériences passées submergées par la complexité
+** Nouvelle façon de définir et atteindre la capacité fonctionnelle
 * Adopter une démarche itérative et incrémentale
 ** Ajouts de fonctionnalité successifs 
 ** Feedback rapide du client
 ** Ne pas prétendre à l'exhaustivité 
 ** Se donner le droit de découvrir et changer
+--
+
+[.right-column-1-3]
+--
+[.middle]
+image::images/iterative-incremental-mona-lisa-b8d2b.png[]
+--
 
 ifdef::mode_slide[]
 === Agilité
@@ -140,7 +150,7 @@ Mesure de la facilité
 
 [%step]
 [.reset-column]
-Faire évoluer un logiciel à un rythme soutenable => garantir maintenabilité
+Faire évoluer un logiciel à un rythme **soutenable** => garantir maintenabilité
 
 [%step]
 [.center]
@@ -249,8 +259,8 @@ https://wikiagile.fr/index.php?title=Quadrant_de_la_Dette_Technique
 [%step]
 * Écart aux bonnes pratiques
 * Bonnes pratiques
-** Heuristiques propre à chaque écosystème
-** Principes reconnus comme universel _(Code Clean)_
+** Heuristiques propres à chaque écosystème
+** Principes reconnus _(Code Clean)_
 ** Design Patterns _(GoF, GRASP, ...)_
 * Référentiel de mauvaises pratiques
 *** Anti patterns
@@ -689,7 +699,7 @@ and powerful Renaming
 
 [.left-column-2-3]
 --
-* Linters > Jiminy Crocket
+* Linters > Jiminy Cricket
 ** Analyseurs de code _"temps réel"_
 ** Disponible dans _presque_ tous les https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis[langages]
 ** Dans tous les bons IDE
@@ -714,6 +724,34 @@ image::images/2023-11-11T14-07-45-197Z.png[width=600]
 [.right-column]
 --
 image::images/2023-11-11T14-21-27-838Z.png[width=600]
+--
+
+== Sonarlint
+
+* Plugin d'analyse _directement dans l'IDE_
+** Jiminy Cricket sur stéroïdes !! 
+* Peut fonctionner en standalone
+** Utilisable sans infrastructure (donc oui, dès maintenant, là)
+** Mais reliable à une instance sonarqube
+
+[.left-column]
+[.center]
+--
+VSCode
+
+image::images/sonarqube/2023-11-12T21-47-43-839Z.png[]
+
+image::images/sonarqube/2023-11-12T21-48-30-820Z.png[]
+--
+
+[.right-column]
+[.center]
+--
+Pycharm
+
+image::images/sonarqube/2023-11-12T21-52-43-886Z.png[width=500]
+
+image::images/sonarqube/2023-11-12T21-54-03-101Z.png[]
 --
 
 == Refactoring : L'esprit plutôt que la lettre
