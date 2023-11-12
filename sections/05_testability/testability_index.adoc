@@ -1767,10 +1767,16 @@ endif::[]
 [.center]
 image::images/testability-srp_interne_2.svg[]
 
+== Gtd 
+
+TODO Brain Dump GTD 
+
 
 == Méthode MIKADO 
 
+TODO MIKADO
 
+TODO Adr dans BRAIN? 
 
 
 [.end.background]
