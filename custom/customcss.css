@@ -349,6 +349,14 @@ td.content {
   margin: 2px;
 }
 
+.reveal table.tableblock.very-packed p {
+  margin: 1px;
+}
+
+.reveal table.tableblock.packed p {
+  margin: 2px;
+}
+
 .reveal .big {
   font-size: 1.2em;
 }

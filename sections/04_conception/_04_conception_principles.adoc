@@ -27,20 +27,16 @@ endif::[]
 
 === Separation of concern
 
+[%step]
 * Séparer les composants par type de préoccupation
 ** C'est bon, je pense qu'on a tous compris...
-** Identifier, séparer, déplacer, regrouper...
-
-image::images/redux.gif[]
-
-=== Separation of concerns
-
 * Rangement en profondeur 
 ** Modèle en couche
 ** Principe d'architecture 
+*** => Clean Architecture, Architecture Hexagonal
+* Identifier, séparer, déplacer, regrouper...
 
-TODO étoffer un peu 
-
+image::images/redux.gif[]
 
 === Single Responsibility Principle
 
@@ -337,14 +333,15 @@ image::images/SRP_sensor_3.svg[]
 
 == Se poser les bonnes questions 
 
-* Qui fait quoi ? 
+* Qui ?
+** Qui a les informations ?
+** Qui sait faire ?
 ** Puis-je décrire en une phrase simple ce que fait le composant ? 
 * Pourquoi changerait il ? 
 ** Si plusieurs réponses relevant de domaines différents 
 *** => Distinguer les responsabilités enfouies 
 * Analogie de l'expert 
-** Puis-je parler de mon composant comme d'une personne ? 
-
+** Puis-je en parler comme d'une personne ? 
 
 == Interface Segregation Principle 
 
@@ -444,18 +441,97 @@ Le couplage étroit fourni par l'héritage fait que l'implémentation d'une sous
 == Composition et responsabilités
 
 * A chacun son expertise
-** La composition facilite l'identification des responsabilité. 
+** => Facilite l'identification des responsabilité.
+* A chacun ses tests
+** => Responsabilité limitée => Test facilité
+* A chacun sa généalogie
+** => Evite des héritages encombrants
 
-== Conseils
+== Pour aller plus loin
 
-* Maîtriser son langage
-* Connaître les paradigmes utilisés
-* Connaître les Design Pattern 
-** Gang Of Four, GRASP...
-* De l'humilité 
+**Compétence principale / Pratique quotidienne > Expertise**
 
-TODO expliquer pourquoi humilité 
+* Principes et Design patterns
+* Gang Of Four
+* Grasp
 
-TODO mettre reference gof, grasp 
 
+=== Design Patterns > Gang of Four
+
+* Design Patterns orientés Conception
+** Assez près du code => Solution refactoring le nez dans le code
+** Pensés OOP (C++/Java) => à adapter à l'écosystème utilisé
+
+[.smaller]
+[.left-column-1-3]
+--
+* Patrons de création
+** Singleton, Prototype
+** Fabrique, Fabrique abstraite
+** Monteur
+--
+
+[.smaller]
+[.middle-column-1-3]
+--
+* Patrons de structure
+** Pont, Façade
+** Adaptateur, Proxy
+** Objet composite
+** Poids-mouche
+** Décorateur
+--
+[.smaller]
+[.right-column-1-3]
+--
+* Patrons de comportement
+** Chaîne de responsabilité
+** Commande, Interpréteur
+** Itérateur, Médiateur
+** Mémento, Observateur
+** État, Stratégie
+** Patron de méthode, Visiteur
+--
+
+[.reset-column]
+--
+* Références
+** https://refactoring.guru/design-patterns[Refactoring.guru Design-patterns^]
+** https://python-patterns.guide/[https://python-patterns.guide/^]
+** https://fr.wikibooks.org/wiki/Patrons_de_conception/Patrons_du_%C2%AB_Gang_of_Four_%C2%BB[Wikibook Patrons de Conceptions Gang Of Four^]
+--
+
+=== General Responsibility Assignment Software Patterns (GRASP)
+
+* Design Patterns orientés Architecture
+** Assez abstrait => Solution d'ordre général **MAIS** aide à se poser _les bonnes questions_
+** Pour développeurs/développeuses **ET** architectes.
+
+[.smaller]
+[.left-column]
+--
+* Principes
+** Expert en information
+** Créateur
+** Faible couplage
+** Forte cohésion
+--
+
+[.smaller]
+[.right-column]
+--
+* Pattern
+** Fabrication pure
+** Indirection
+** Protection des variations
+** Polymorphisme
+** Contrôleur
+--
+
+[.reset-column]
+--
+* Références
+** https://fr.wikibooks.org/wiki/Patrons_de_conception/Patrons_GRASP[Wikibook Patrons de Conceptions GRASP^]
+** https://perso.univ-lyon1.fr/lionel.medini/enseignement/M1IF01/CM-patterns.pdf[Cours de Lionel MEDINI^]
+--
 // end::content[]

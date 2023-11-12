@@ -15,8 +15,9 @@ endif::[]
 [.center]
 == Améliorer la conception
 
-TODO cohérence avec les niveaux
-Améliorer la conception : niveau compétence
+Améliorer la conception : 
+
+**Compétence annexe / Pratique Occasionnelle > Compétence principale / Pratique quotidienne**
 
 // introd
 include::_00_conception_introd.adoc[{include_options}]

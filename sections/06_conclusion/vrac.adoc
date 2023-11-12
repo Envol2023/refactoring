@@ -1,0 +1,31 @@
+= Conseils
+
+
+TODO à déplacer en conclusion 
+
+* Savoir choisir le bon outil pour le bon usage
+** Maîtriser ses langages
+* Connaître les paradigmes utilisés
+** Et savoir en tirer partie
+* Connaître les Design Pattern 
+** Gang Of Four, GRASP...
+* De l'humilité 
+
+TODO expliquer pourquoi humilité 
+
+TODO mettre reference gof, grasp 
+
+[NOTE.notes]
+--
+Je vais me permettre de donner quelques conseils en matière de conception.
+
+Le plus évident est de connaître des langages et de les maîtriser un tant soit peu. 
+Souvent nous rencontrons des codes qui réinventent un comportement que le code comprenait dans ses libraries standards (typiquement, la queue). C'est une perte de temps, une source de bugs et de frustration.
+
+La connaissance des Design Patterns est réellement nécessaire, à un certain moment, il faut avoir l'humilité de ce dire que le développement est une activité qui rentre dans une forme de maturité où des les expériences passées ont donné naissance à des fondamentaux. Les Design Patterns en font partie. Avant d'être Picasso, il faut connaître un peu le travail des maîtres du passé.
+
+Prendre le temps de s'investir dans un écosystème, et là je m'adresse autant aux personnes en charge du développement que du management.
+Pourquoi dans l'ESR nous investissons tellement peu dans nos équipes ? Nous avons déjà le problème d'un complexe de l'imposteur généralisé, qui fait que personne ne s'autorise à dire : "Ben en fait, je ne sais pas très bien" ou "J'ai peut-être besoin de temps et/ou de formation".
+
+Vous n'êtes pas très représentatifs, car vous faite vous-même l'effort de vous investir en étant là. Mais pensez à vos collègues, jeunes ou vieux, qui auraient bien besoin d'approfondir, de se former, de prendre du recul.
+--

@@ -1774,9 +1774,23 @@ TODO Brain Dump GTD
 
 == Méthode MIKADO 
 
-TODO MIKADO
+* Méthode de refactoring
+** Se donner un objectif
+* Cycle de vie
+** Scratcher, explorer les impacts, noter, revenir en arrière
 
-TODO Adr dans BRAIN? 
+
+ifdef::mode_slide[== Méthode MIKADO ]
+
+image::images/testability-Mikado_0.svg[]
+
+ifdef::mode_slide[== Méthode MIKADO ]
+
+image::images/testability-Mikado_1.svg[]
+
+ifdef::mode_slide[== Méthode MIKADO ]
+
+image::images/testability-Mikado_2.svg[]
 
 
 [.end.background]
