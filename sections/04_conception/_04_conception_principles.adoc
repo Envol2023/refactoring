@@ -99,7 +99,7 @@ ____
 
 [.left-column]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 def end_process(process: Process, ctx: Context):
@@ -130,7 +130,7 @@ def end_process(process: Process, ctx: Context):
 
 [.left-column]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 def end_process(process: Process, ctx: Context):
@@ -164,7 +164,7 @@ def save_file_alert_user(ctx: Context): <2>
 --
 === Illustration 
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def end_process(process: Process, ctx: Context):
@@ -186,7 +186,7 @@ def alert_user(user): <2>
 
 === Illustration 
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def end_process(process: Process, ctx: Context):
@@ -240,7 +240,7 @@ ____
 
 Exemple un capteur barométrique joignable par adressage IP
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 
@@ -263,7 +263,7 @@ class BarometricSensor:
 ** La gestion de l'adressage IP => _Expertise réseau_
 
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 class BarometricSensor:
@@ -287,7 +287,7 @@ class BarometricSensor:
 * Application du _Single Responsibility Principle_
 ** Une classe porte la responsabilité _Gestion de l'adresse IP_
 +
-[.big]
+[{code_size}]
 [source,python]
 ----
 class IpAddress:
@@ -297,7 +297,7 @@ class IpAddress:
 +
 ** Une classe porte la responsabilité _Gestion mesure des pressions_
 +
-[.big]
+[{code_size}]
 [source,python]
 ----
 class BarometricSensor:
@@ -363,7 +363,7 @@ include::_interface_segregation_principle_illustration.adoc[]
 
 == Interface Segregation Principle 
 
-[.center]
+//[.center]
 image::images/ISP_big_class.svg[]
 
 [NOTE.notes]
@@ -446,6 +446,14 @@ Le couplage étroit fourni par l'héritage fait que l'implémentation d'une sous
 ** => Responsabilité limitée => Test facilité
 * A chacun sa généalogie
 ** => Evite des héritages encombrants
+
+== Inversion Of Control
+
+* Synthèse logique
+** Single Responsibility Principal => Chacun son job
+** Composition => Assembler les bons composants
+** Abstraction => ne dépendre que du contrat
+
 
 == Pour aller plus loin
 

@@ -2,17 +2,19 @@
 ifdef::backend-revealjs[]
 include::../../_inc_revealjs.adoc[]
 endif::[]
+ifndef::backend-revealjs[]
+:toc:
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
 :imagesdir: ../../
 endif::[]
-
 // tag::content[]
 
 == Ultra rapide présentation de Sonarqube
 
 [%step]
-* Analyseur static open source
+* Analyseur statique open source
 ** Evaluation de la dette suivant plusieurs aspects
 ** Détail des point litigieux
 ** Une forme d'objectivation
@@ -27,7 +29,7 @@ image::images/sonarqube/2023-11-12T18-33-06-601Z.png[]
 === Lancement de l'image sonarqube
 
 
-[.big]
+[{code_size}]
 [source,bash]
 -----
 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
@@ -39,7 +41,7 @@ docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
 
 Repérer l'adresse IP
 
-[.big]
+[{code_size}]
 [source,bash]
 ----
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube
@@ -118,7 +120,7 @@ image::images/sonarqube/12-38-22_SonarQube.png[width=600]
 
 Include un fichier sonar-properties _ultra-simpliste_
 
-[.big]
+[{code_size}]
 [source,language]
 ----
 sonar.projectKey=tm2raw
@@ -133,7 +135,7 @@ sonar.python.coverage.reportPaths=*coverage*.xml
 
 Installer des libraries propres à Python pour l'analyse
 
-[.big]
+[{code_size}]
 [source,bash]
 ----
 pip install pylint pytest pytest-cov
@@ -141,7 +143,7 @@ pip install pylint pytest pytest-cov
 
 === Lancer les tests
 
-[.big]
+[{code_size}]
 [source,bash]
 ----
 pytest -v  tests/unit/ --cov --cov-report=xml --cov-report=html
@@ -149,13 +151,13 @@ pytest -v  tests/unit/ --cov --cov-report=xml --cov-report=html
 
 === Lancer l'analyse
 
-[.big]
+[{code_size}]
 [source,bash]
 -----
 ./sonnar-scanner/bin/sonar-scanner  -Dsonar.host.url=http://172.17.0.2:9000   -Dsonar.token=sqp_5e14217deb6e23ad8c728041f41bd736fb478b3c
 -----
 
-[.big]
+[{code_size}]
 [source,bash]
 -----
 INFO: Scanner configuration file: /home/mdexet/Workdirs/MAJIS/SGS/majis-tm2raw-pipeline/sonnar-scanner/conf/sonar-scanner.properties

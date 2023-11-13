@@ -31,13 +31,15 @@ endif::[]
 :!end_definition_block:
 ifdef::mode_book[]
 :start_definition_block: 
-:end_definition_block: 
+:end_definition_block:
 endif::[]
 ifdef::mode_book[]
 :include_options: leveloffset=+1
+:code_size: .normal
 endif::[]
 ifdef::mode_slide[]
 :include_options: tag=content
+:code_size: .big
 endif::[]
 ifdef::mode_slide[]
 :cr: + 

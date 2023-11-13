@@ -1,0 +1,46 @@
+= Refactoring
+ifdef::backend-revealjs[]
+include::../../_inc_revealjs.adoc[]
+endif::[]
+ifndef::backend-revealjs[]
+:toc:
+endif::[]
+include::../../_inc_context.adoc[]
+ifndef::imagesdir[]
+:imagesdir: ../../
+endif::[]
+
+// tag::content[]
+
+== Conclusions
+
+* Refactoring
+** Plus que de simples techniques
+* Sans refactoring, pas d'Agilité
+** Mais refactoring sans agilité, c'est quand même recommandé
+* Plusieurs niveaux d'application
+
+
+== Livres de réferences
+
+* Code Clean
+** La bible !
+
+image::images/clean_code.jpeg[]
+
+* Refactoring, Improving the Design of Existing Code
+** Bien sûr
+
+image:images/refact2.jpg[]
+
+* Working Effectively with Legacy Code  
+
+image::images/working_effect.jpeg[]
+
+** Un peu vieux, mais très enrichissant 
+
+* Pragmatic Unit Testing in Java with JUnit
+
+image::images/pragmatic_junit8.jpeg[]
+
+// end::content[]

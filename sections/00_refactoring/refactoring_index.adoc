@@ -2,6 +2,9 @@
 ifdef::backend-revealjs[]
 include::../../_inc_revealjs.adoc[]
 endif::[]
+ifndef::backend-revealjs[]
+:toc:
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
 :imagesdir: ../../
@@ -18,7 +21,7 @@ Introduction
 
 Refactoring et Agilité
 
-TODO trouver une phrase d'accroche
+Pas de fête sans gâteaux !
 
 == Que faisons nous quand nous développons ?
 
@@ -49,7 +52,7 @@ TODO trouver une phrase d'accroche
 [.right-column-1-3]
 --
 [.right]
-image::../images/ISO_9126_quality_(en).png[width=90%]
+image::images/ISO_9126_quality_(en).png[width=90%]
 [.x-small] 
 https://commons.wikimedia.org/wiki/File:ISO_9126_quality_(en).svg
 --
@@ -486,8 +489,10 @@ image::images/cycle_refactoring.svg[]
 == Exemple de refactoring canonique > Extraire fonction
 
 [.left-column]
-.Code
 --
+[.center]
+Code
+
 [source,python,attributes]
 ----
 from dataclasses import dataclass
@@ -516,7 +521,9 @@ def compute_invoice(shipment, order, discount):
 
 [.right-column]
 --
-.Tests
+[.center]
+Tests
+
 [source,python,attributes]
 ----
 def test_normal_situation():
@@ -731,7 +738,7 @@ image::images/2023-11-11T14-21-27-838Z.png[width=600]
 * Plugin d'analyse _directement dans l'IDE_
 ** Jiminy Cricket sur stéroïdes !! 
 * Peut fonctionner en standalone
-** Utilisable sans infrastructure (donc oui, dès maintenant, là)
+** Utilisable sans infrastructure (donc oui, dès maintenant, là, toute de suite...)
 ** Mais reliable à une instance sonarqube
 
 [.left-column]
@@ -755,11 +762,12 @@ image::images/sonarqube/2023-11-12T21-54-03-101Z.png[]
 --
 
 == Refactoring : L'esprit plutôt que la lettre
- 
+
+[%step]
 * Avoir un fil conducteur plutôt qu'un catalogue
 ** Nombreuses techniques
 ** Automatisation grâce aux outils existants
-*** IDE, linters
+*** IDE, linters, sonar lint, ...
 * Objectifs
 ** Pour les développeuses et développeurs
 *** Lever le nez du guidon & prendre de la hauteur

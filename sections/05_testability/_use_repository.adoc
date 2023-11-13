@@ -13,7 +13,7 @@ endif::[]
 
 [.reset-column]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 import expensive_to_test_api as api
@@ -66,7 +66,7 @@ ifdef::mode_slide[]
 === Exemple
 endif::[]
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 import expensive_to_test_api as api
@@ -85,7 +85,7 @@ class CityService:
         except StoreException as se:
             raise ModelException(se)
 ----
-[.big]
+[{code_size}]
 [source,python]
 ----
 

@@ -136,7 +136,7 @@ endif::mode_slide[]
 --
 
 Version abrégée
-[.big]
+[{code_size}]
 [source,python]
 ----
 class UsrComProvSrv:
@@ -147,7 +147,7 @@ class UsrComProvSrv:
 [.fragment]
 --
 Version directe
-[.big]
+[{code_size}]
 [source,python]
 ----
 class UserCommunicationProviderService :
@@ -250,7 +250,7 @@ ifdef::mode_slide[]
 
 endif::mode_slide[]
 
-[.big]
+[{code_size}]
 --
 Utiliser des noms courts {cr}
 ne fait pas gagner de temps.  
@@ -315,7 +315,7 @@ ifdef::mode_slide[]
 === Nommage: Aussi court que sa portée
 endif::mode_slide[]
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 co = complaint_service.next()
@@ -331,7 +331,7 @@ if co.is_closed():
 [.center]
 vs
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 complaint = complaint_service.next()
@@ -352,7 +352,7 @@ endif::mode_slide[]
 
 * Objet, classe, variable, propriété, argument -> **NOM**.
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 user = User()
@@ -364,7 +364,7 @@ document = Document(kind=Document.MOTIVATION_LETTER)
 --
 * Action, fonction, méthode -> **VERBE**.
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def find_people(name)
@@ -377,7 +377,7 @@ plane.take_off()
 --
 * Collection, liste, ensemble -> **PLURIEL**.
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 actors = find_actors_for_movie(movie)
@@ -393,7 +393,7 @@ endif::mode_slide[]
 
 * Map : indiquer la *clef* pour ne pas confondre avec des collections.
 
-[.big]
+[{code_size}]
 [source]
 ----
 <subjects>_by_<key>()
@@ -403,7 +403,7 @@ endif::mode_slide[]
 
 Comme
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 actors_by_movie.get(movie)
@@ -414,7 +414,7 @@ countries_to_actors["fr"] = find_actors_in_country("fr")
 
 * Suivre le schéma
 
-[.big]
+[{code_size}]
 [source]
 ----
 <action>_<sujet>()
@@ -424,7 +424,7 @@ L'action est un *verbe* s'appliquant à *sujet*.
 
 Exemple
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 bring_camera_to_stage(camera, "scene 1.3")
@@ -463,7 +463,7 @@ build_decorations_settings("scene 1.3")
 
 [.reset-column]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 find_actors_by_name(name)
@@ -487,7 +487,7 @@ find_all_actors_by_movie_and_country(movie_name, country_name)
 * _start_ -> _stop_
 *  ...
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 session.open();
@@ -573,7 +573,7 @@ endif::mode_slide[]
 
 [.flash.background.center]
 [%notitle]
-[.big]
+[{code_size}]
 === Commentaires suffisants
 
 Si vous avez besoin d'*améliorer* un *commentaire* {cr}

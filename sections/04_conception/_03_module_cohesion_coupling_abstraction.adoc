@@ -323,7 +323,7 @@ Comment améliorer les interfaces pour répondre à ces exigences ?
 --
 [.center]
 Java
-[.big]
+[{code_size}]
 [source,java]
 ----
 interface Message {
@@ -342,7 +342,7 @@ interface Communicator {
 --
 [.center]
 Python
-[.big]
+[{code_size}]
 [source,python]
 ----
 class Message(Protocol):

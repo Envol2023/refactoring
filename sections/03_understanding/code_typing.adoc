@@ -15,7 +15,7 @@ endif::[]
 
 Exemple en java
 
-[.big]
+[{code_size}]
 [source,java,attributes]
 ----
 public Travel getTravel(Profile p, Enterprise e)
@@ -23,7 +23,7 @@ public Travel getTravel(Profile p, Enterprise e)
 
 En python 
 
-[.big]
+[{code_size}]
 [source,python,attributes]
 ----
 def get_travel(profile, enterprise): ...
@@ -41,24 +41,24 @@ def get_travel(profile, enterprise): ...
 *** des vérifications (ou pas)
 
 
-[.big]
+[{code_size}]
 [source,python,attributes]
 ----
 get_travel(Profile(id=125), Enterprise(id=987))
 ----
 
 
-[.big]
+[{code_size}]
 [source,python,attributes]
 ----
 get_travel("John", "ACME")
 ----
 
 
-=== Python utilisez les type hints
+=== Python, utiliser les types hints
 
 Syntaxe
-[.big]
+[{code_size}]
 [source,python]
 ----
 object: Type
@@ -66,7 +66,7 @@ object: Type
 
 Typage des arguments
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def get_travel(profile: Profile, enterprise: Enterprise): 
@@ -76,7 +76,7 @@ def get_travel(profile: Profile, enterprise: Enterprise):
 
 Typage du retour
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def get_travel(profile: Profile, enterprise: Enterprise) -> Travel: 
@@ -87,7 +87,7 @@ def get_travel(profile: Profile, enterprise: Enterprise) -> Travel:
 
 Liste
 
-[.big]
+[{code_size}]
 [source,python]
 -----
 from typings import List
@@ -97,7 +97,7 @@ events: List[Event] = []
 Dictionnaire
 
 
-[.big]
+[{code_size}]
 [source,python]
 -----
 from typings import Dict
@@ -108,8 +108,24 @@ Plus de détails
 
 https://realpython.com/python-type-checking/
 
+Depuis 3.10, on peut utiliser les types natifs
 
+[.left-column]
+--
+[source,python,attributes]
+-----
+from typings import List
+List[Something]
+-----
+--
 
-
+[.left-column]
+--
+[source,python,attributes]
+-----
+# from typings import List
+list[Something]
+-----
+--
 
 // end::content[]

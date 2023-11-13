@@ -12,7 +12,7 @@
 Interface
 
 
-[.big]
+[{code_size}]
 [source,java,attributes]
 ----
 interface Door {
@@ -31,7 +31,7 @@ interface Door {
 [.center]
 Classe abstraite
 
-[.big]
+[{code_size}]
 [source,java,attributes]
 ----
 abstract class AbstractDoor {
@@ -64,7 +64,7 @@ abstract class AbstractDoor {
 [.center]
 Classe abstraite
 
-[.big]
+[{code_size}]
 [source,java,attributes]
 ----
 abstract class AbstractDoor {
@@ -84,7 +84,7 @@ abstract class AbstractDoor {
 [.center]
 Concrétisation par _extension_
 
-[.big]
+[{code_size}]
 [source,java]
 ----
 class DrawbridgeDoor extends AbstractDoor {
@@ -114,7 +114,7 @@ ou utilisation de l'interface `Door`
 [.center]
 Concrétisation par _implémentation_
 
-[.big]
+[{code_size}]
 [source,java]
 ----
 class DrawbridgeDoor implements Door {
@@ -138,7 +138,7 @@ class DrawbridgeDoor implements Door {
 [.center]
 ou un mix des deux
 
-[.big]
+[{code_size}]
 [source,java,attributes]
 ----
 abstract class AbstractDoor implements Door{
@@ -197,7 +197,7 @@ ____
 [.center]
 Type _Porte_
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 class Door:
@@ -214,7 +214,7 @@ class Door:
 --
 [.center]
 Type _Four_
-[.big]
+[{code_size}]
 [source,python]
 ----
 class Oven:
@@ -232,7 +232,7 @@ class Oven:
 [.center]
 Fonction conçue pour une _Porte_
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def open_and_close_door(door: Door):
@@ -246,7 +246,7 @@ def open_and_close_door(door: Door):
 --
 [.center]
 Fonctionne avec une _Porte_ *:)*
-[.big]
+[{code_size}]
 [source,python]
 ----
 door = Door()
@@ -260,7 +260,7 @@ open_and_close_door(door)
 [.center]
 Fonctionne avec un _Four_ *:(*
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 oven = Oven()
@@ -272,7 +272,7 @@ open_and_close_door(oven)
 
 Alors qu'en java
 
-[.big]
+[{code_size}]
 [source,java,attributes]
 ----
 class Operator {
@@ -293,7 +293,7 @@ operator.openAndCloseDoor(new Oven()) // KO ne compile pas
 --
 [.center]
 Classe _abstraite_
-[.big]
+[{code_size}]
 [source,python]
 ----
 from abc import ABC, abstractmethod
@@ -313,7 +313,7 @@ class Door(ABC):
 --
 [.center]
 Classe _dérivée_
-[.big]
+[{code_size}]
 [source,python]
 ----
 class Oven(Door):
@@ -326,14 +326,14 @@ class Oven(Door):
 --
 [.center]
 Instanciation
-[.big]
+[{code_size}]
 [source,python]
 ----
 oven = Oven()
 ----
 [.center]
 Erreur au runtime
-[.big]
+[{code_size}]
 [source]
 ----
 TypeError: Can't instantiate abstract class Oven with abstract method lock
@@ -346,7 +346,7 @@ TypeError: Can't instantiate abstract class Oven with abstract method lock
 --
 [.center]
 Définition d'un _protocole_
-[.big]
+[{code_size}]
 [source,python]
 ----
 from typing import Protocol
@@ -361,7 +361,7 @@ class Openable(Protocol):
 --
 [.center]
 Définition d'un type attendu
-[.big]
+[{code_size}]
 [source,python]
 ----
 def open_and_close_openable(openable: Openable):
@@ -378,7 +378,7 @@ def open_and_close_openable(openable: Openable):
 --
 [.center]
 Toujours pas vérifié au runtime
-[.big]
+[{code_size}]
 [source,python]
 ----
 class Letter:

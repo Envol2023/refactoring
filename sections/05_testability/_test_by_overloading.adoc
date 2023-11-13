@@ -26,7 +26,7 @@ endif::[]
 
 ifdef::mode_slide[== Testing par surcharge]
 
-[.big]
+[{code_size}]
 [source,python,attributes]
 -----
 class RadioCommunicator(Communicator):

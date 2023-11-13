@@ -90,9 +90,9 @@ ifndef::mode_slide[*Illustration étape {counter:CONTRAT_SCHEMA_STEP}*]
 --
 
 *A* ne doit *PAS dépendre* {cr}
-de ce qu'[.big]#*EST*# sa dépendance, {cr}
+de ce qu'[{code_size}]#*EST*# sa dépendance, {cr}
 mais {cr}
-de ce qu'[.big]#*OFFRE*# sa dépendance. {cr}
+de ce qu'[{code_size}]#*OFFRE*# sa dépendance. {cr}
 => son [.huge]#Abstraction#
 --
 

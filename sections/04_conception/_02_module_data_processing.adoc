@@ -39,7 +39,7 @@ image::images/data_algo.png[]
 * Différentes structurations
 ** Scalaires, conteneurs, structures, ...
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 a = 1
@@ -61,7 +61,7 @@ book = {'title': 'Python', 'pages': 324}
 * Procédures
 ** Fonctions, méthodes
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 # computations
@@ -106,7 +106,7 @@ Réponses => paradigmes de programmation
 * Paradigme habituel
 ** Le plus facile et le plus ancien
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 entity = ...

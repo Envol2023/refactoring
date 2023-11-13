@@ -1,7 +1,13 @@
 = Tests
+ifdef::backend-revealjs[]
+include::../../_inc_revealjs.adoc[]
+endif::[]
+ifndef::backend-revealjs[]
+:toc:
+endif::[]
 include::../../_inc_context.adoc[]
 ifndef::imagesdir[]
-:imagesdir: ../
+:imagesdir: ../../
 endif::[]
 
 // tag::content[]
@@ -75,7 +81,7 @@ endif::[]
 === Tests unitaires
 
 * Tests **techniques**
-** Créés et utilisés par les *développeurs* de l'unité.
+** Créés et utilisés par les *développeuses & développeurs* du composant.
 ** Concernent
 *** Une unité de programmation : une classe, une fonction, ... 
 ** Se concentrent sur l'**intérieur** du composant
@@ -87,7 +93,7 @@ image::images/categories_of_test_3.png[width=50%]
 === Tests d'intégration 
 
 * Tests **techniques**
-** Créés et utilisés par les *développeurs* de l'application.
+** Créés et utilisés par les *développeuses & développeurs* de l'application.
 ** Concernent
 *** _plusieurs_ unités de programmation en interaction.
 ** Se concentrent sur *l'extérieur* des composants
@@ -100,7 +106,7 @@ image::images/categories_of_test_4.png[width=50%]
 === Tests d'acceptation
 
 * Tests **fonctionnels**
-** Crées (souvent avec les *développeurs*) et utilisés par les *fonctionnels*
+** Crées (souvent avec les *développeuses & développeurs*) et utilisés par les *fonctionnel(le)s*
 ** Concernent 
 *** Les fonctionnalités utilisables
 *** Sans connaissance du contenu technique

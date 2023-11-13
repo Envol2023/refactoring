@@ -58,7 +58,7 @@ image:images/rover_1_wheel.png[width=200]
 [.center]
 *_Données_*
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 radius = 1
@@ -75,7 +75,7 @@ position = [0.,0.]
 [.center]
 *_Procédure_*
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 
@@ -106,7 +106,7 @@ def move(radius,
 [.center]
 *_Données_*
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 rover= {
@@ -115,12 +115,12 @@ rover= {
     'speed': 0.
 }
 ----
-[.big]
+[{code_size}]
 [source,python]
 ----
 engine = { 'consumption_coef': [0., 3.45, 12.] }
 ----
-[.big]
+[{code_size}]
 [source,python]
 ----
 battery = { 'capacity': 120, 'level': 12.2 }
@@ -133,7 +133,7 @@ battery = { 'capacity': 120, 'level': 12.2 }
 [.center]
 *_Procédure_*
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def move(rover, 
@@ -155,7 +155,7 @@ def move(rover,
 [.center]
 *_Données_*
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 rover= {
@@ -178,7 +178,7 @@ rover= {
 *_Procédure_*
 
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def move(rover, 
@@ -304,7 +304,7 @@ def move(rover,
 
 [.left-column-1-3]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 def move(radius, 
@@ -330,7 +330,7 @@ def move(radius,
 
 [.right-column-1-3]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 def move(rover, 

@@ -1,15 +1,12 @@
 == Illustration
-include::../../_inc_context.adoc[]
-ifndef::imagesdir[]
-:imagesdir: ../../
-endif::[]
+
 
 [.left-column]
 --
 [.center]
 D'un côté, {cr}
 un équipement de Visioconférence
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module conference.py
@@ -30,7 +27,7 @@ class ConferenceDevice:
 [.center]
 De l'autre, {cr}
 _des_ enregistreurs de _son_ et de _vidéo_
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module video_recorder.py
@@ -41,7 +38,7 @@ class VideoRecorder:
         device.start_video()
         device.stop_video()
 ----
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module sound_recorder.py
@@ -57,6 +54,7 @@ class SoundRecorder:
 == Illustration
 
 [.center]
+
 image::images/design-ConferenceDevice_0.svg[]
 
 
@@ -74,7 +72,7 @@ image::images/design-ConferenceDevice_1.svg[]
 --
 [.center]
 Création d'interfaces _dédiées_
-[.big]
+[{code_size}]
 [source,python]
 ----
 class ConferenceDevice:
@@ -88,7 +86,7 @@ class ConferenceDevice:
     def stop_sound(self):...
 ----
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module video.py
@@ -96,7 +94,7 @@ class VideoDevice(Protocol):
     def start_video(self):...
     def stop_video(self):...
 ----
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module sound.py
@@ -111,7 +109,7 @@ class SoundDevice(Protocol):
 --
 
 Exposition de 2 interfaces _distinctes_
-[.big]
+[{code_size}]
 [source,python]
 ----
 from sound import SoundDevice
@@ -136,7 +134,7 @@ class ConferenceDevice(VideoDevice, SoundDevice):
 --
 Couplage fort {cr}
 Les enregistreurs en savent **trop**
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module video_recorder.py
@@ -147,7 +145,7 @@ class VideoRecorder:
         device.start_video()
         device.stop_video()
 ----
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module sound_recorder.py
@@ -165,7 +163,7 @@ class SoundRecorder:
 --
 Couplage faible {cr}
 Les enregistreurs en savent **juste ce qu'il faut**
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module video_recorder.py
@@ -176,7 +174,7 @@ class VideoRecorder:
         device.start_video()
         device.stop_video()
 ----
-[.big]
+[{code_size}]
 [source,python]
 ----
 # module sound_recorder.py

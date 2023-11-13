@@ -73,7 +73,7 @@ ____
 [.center]
 == Bonnes Pratiques
 
-[.big]#Tenir compte de nos limites#
+[{code_size}]#Tenir compte de nos limites#
 
 == Notre cerveau
 

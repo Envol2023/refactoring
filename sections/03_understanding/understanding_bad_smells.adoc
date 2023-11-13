@@ -40,7 +40,7 @@
 
 [.left-column]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 def move(weight: float,
@@ -58,7 +58,7 @@ def move(weight: float,
 
 [.right-column]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 @dataclass
@@ -77,7 +77,7 @@ class Battery:
 
 ----
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def move(weight: float,
@@ -94,7 +94,7 @@ def move(weight: float,
 
 [.left-column]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 def move(weight: float,
@@ -110,7 +110,7 @@ def move(weight: float,
 
 [.right-column]
 --
-[.big]
+[{code_size}]
 [source,python]
 ----
 @dataclass
@@ -136,7 +136,7 @@ class Rover:
     battery: Battery
 ----
 
-[.big]
+[{code_size}]
 [source,python]
 ----
 def move(rover: Rover, 
