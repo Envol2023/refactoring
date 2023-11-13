@@ -447,12 +447,167 @@ Le couplage étroit fourni par l'héritage fait que l'implémentation d'une sous
 * A chacun sa généalogie
 ** => Evite des héritages encombrants
 
-== Inversion Of Control
+== Dependency Inversion Principal
 
 * Synthèse logique
 ** Single Responsibility Principal => Chacun son job
 ** Composition => Assembler les bons composants
 ** Abstraction => ne dépendre que du contrat
+* Qui des deux doit s'adapter à l'autre ?
+** Le composant de haut-niveau ou celui de bas-niveau ?
+
+== Dependency Inversion Principal > Niveaux
+
+
+* Niveaux ?
+** Haut-niveau -> proche de l'humain, fondamental pour le métier, important
+** Bas-niveau -> proche de la machine, éloigné du métier, accessoire
+* Exemples
+** Haut-niveau:  Entités métier ("Employé", "Observation", "Protocol expérimental")
+** Bas-niveau: Briques informatiques ("Oracle", "MySQL" ou "MongoDB" ?)  
+
+== Dependency Inversion Principal > Approche classique 
+
+Utilisation directe
+
+[.left-column]
+--
+[.center]
+image::images/design-DIP_a.svg[]
+--
+
+
+[.right-column]
+--
+[.center]
+Couplage à la version v1
+[{code_size}]
+[source,python,attributes]
+-----
+@dataclass
+class SurveyService:
+    persistence: BigOneDBv1
+-----
+[.center]
+Couplage à la version v4
+[{code_size}]
+[source,python,attributes]
+-----
+@dataclass
+class SurveyService:
+    persistence: BigOneDBv4
+-----
+--
+
+== Dependency Inversion Principal > Abstraction par le bas 
+
+BigOne: _"L'abstraction, c'est bon, mangez-en !"_
+
+[.left-column]
+--
+[.center]
+image::images/design-DIP_0.svg[]
+--
+
+
+[.right-column]
+--
+[.center]
+BigOne propose une interface
+[{code_size}]
+[source,python,attributes]
+-----
+@dataclass
+class SurveyService:
+    persistence: BigOneDBInterface
+-----
+[.center]
+IT: _"Oui mais bon, AltBD, c'est mieux c'est open source !"_
+[{code_size}]
+[source,python,attributes]
+-----
+@dataclass
+class SurveyService:
+    persistence: AltDBInterface
+-----
+--
+
+
+== Dependency Inversion Principal > Abstraction par le haut 
+
+Architecte du Survey : _"Stop, voici mes attentes, point barre"_
+
+[.left-column]
+--
+[.center]
+image::images/design-DIP_1.svg[]
+--
+
+
+[.right-column]
+--
+[.center]
+SurveyService expose ses attentes
+[{code_size}]
+[source,python,attributes]
+-----
+@dataclass
+class SurveyService:
+    persistence: SurveyPersistence
+-----
+[.center]
+Les fournisseurs DB doivent y répondre
+[{code_size}]
+[source,python,attributes]
+-----
+class AltDBInterface(SurveyPersistence):
+    ...
+
+class BigOneDBInterface(SurveyPersistence):
+    ...
+
+-----
+--
+
+
+== Dependency Inversion Principal > Adapter 
+
+Ok, BigOne ne va pas vraiment s'adapter à nous. Coupons la poire en deux.
+
+
+[.left-column]
+--
+[.center]
+image::images/design-DIP_2.svg[]
+--
+
+
+[.right-column]
+--
+[.center]
+SurveyService expose ses attentes
+[{code_size}]
+[source,python,attributes]
+-----
+@dataclass
+class SurveyService:
+    persistence: SurveyPersistence
+-----
+
+[.center]
+[{code_size}]
+[source,python,attributes]
+-----
+class SurveyPersistenceBigOneAdapter(SurveyPersistence):
+    def __init__(self, db: BigOneDBInterface):
+        ...
+class SurveyPersistenceAltAdapter(SurveyPersistence):
+    def __init__(self, db: AltDBInterface):
+        ...
+
+-----
+--
+
 
 
 == Pour aller plus loin

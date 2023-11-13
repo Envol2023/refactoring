@@ -1,9 +1,10 @@
-= Conception Bas Smells
+= Conception Bad Smells
 
 // tag::content[]
+== Conception Bad Smells
 
 
-== Duplication
+=== Bad Smell > Duplication
 
 * Symptôme
 ** Du code est dupliqué en plusieurs endroits
@@ -15,7 +16,7 @@
 *** `Pull Up Method`
 *** `Extract Superclass`
 
-== Classe trop grosse
+=== Bad Smell > Classe trop grosse
 
 * Symptômes
 ** Une classe porte trop de responsabilités
@@ -27,7 +28,7 @@
 ** `Extract Subclass`
 ** `Extract Interface`
 
-== Shotgun surgery
+=== Bad Smell > Shotgun surgery
 
 * Symptômes
 ** A chaque évolution, vous devez modifier beaucoup de classes différentes
@@ -39,7 +40,7 @@
 *** `Move Field`
 *** et tout l'arsenal de ce qu'il est possible de bouger
 
-== Touffes de données (Data clumps)
+=== Bad Smell > Touffes de données (Data clumps)
 
 * Symptômes
 ** Des données qui sont toujours traitées ensemble sont réparties dans des classes très différentes

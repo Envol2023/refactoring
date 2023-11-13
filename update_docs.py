@@ -14,6 +14,6 @@ def convert_asciidocs_to_html(paths: list[Path]):
         name = doc.stem
         path = doc.parent
         subprocess.Popen(f"bin/asciidoctor-revealjs {doc} -o {name}.html -v", shell=True)
-        subprocess.Popen(f"bin/asciidoctor {doc} -a data-uri -b html5 -o book_{name}.html -v", shell=True)
+        #subprocess.Popen(f"bin/asciidoctor {doc} -a data-uri -b html5 -o book_{name}.html -v", shell=True)
 
 convert_asciidocs_to_html(get_asciidoc_list(Path('./documents.txt')))
