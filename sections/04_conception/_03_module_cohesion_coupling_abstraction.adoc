@@ -343,7 +343,7 @@ interface Communicator {
 [.center]
 Python
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class Message(Protocol):
     def get_id() -> str: ...

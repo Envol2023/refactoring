@@ -59,7 +59,7 @@ image:images/rover_1_wheel.png[width=200]
 *_Données_*
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 radius = 1
 weight = 100
@@ -76,7 +76,7 @@ position = [0.,0.]
 *_Procédure_*
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 
 def move(radius, 
@@ -107,7 +107,7 @@ def move(radius,
 *_Données_*
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 rover= {
     'weight': 10,
@@ -116,12 +116,12 @@ rover= {
 }
 ----
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 engine = { 'consumption_coef': [0., 3.45, 12.] }
 ----
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 battery = { 'capacity': 120, 'level': 12.2 }
 ...
@@ -134,7 +134,7 @@ battery = { 'capacity': 120, 'level': 12.2 }
 *_Procédure_*
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def move(rover, 
         engine, 
@@ -156,7 +156,7 @@ def move(rover,
 *_Données_*
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 rover= {
     'weight': 10,
@@ -179,7 +179,7 @@ rover= {
 
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def move(rover, 
 
@@ -198,7 +198,7 @@ def move(rover,
 Sans structuration
 
 | --
-[source,python]
+[source,python,attributes]
 ----
 radius = 1
 weight = 100
@@ -210,7 +210,7 @@ position = [0.,0.]
 --
 
 | --
-[source,python]
+[source,python,attributes]
 ----
 def move(radius, 
         weight,
@@ -229,7 +229,7 @@ def move(radius,
 Conteneurs simples
 
 | --
-[source,python]
+[source,python,attributes]
 ----
 rover= {
     'weight': 10,
@@ -237,11 +237,11 @@ rover= {
     'speed': 0.
 }
 ----
-[source,python]
+[source,python,attributes]
 ----
 engine = { 'consumption_coef': [0., 3.45, 12.] }
 ----
-[source,python]
+[source,python,attributes]
 ----
 battery = { 'capacity': 120, 'level': 12.2 }
 ...
@@ -249,7 +249,7 @@ battery = { 'capacity': 120, 'level': 12.2 }
 --
 
 | --
-[source,python]
+[source,python,attributes]
 ----
 def move(rover, 
         engine, 
@@ -266,7 +266,7 @@ def move(rover,
 Comme un tout
 
 | --
-[source,python]
+[source,python,attributes]
 ----
 rover= {
     'weight': 10,
@@ -282,7 +282,7 @@ rover= {
 --
 
 | --
-[source,python]
+[source,python,attributes]
 ----
 def move(rover, 
 
@@ -305,7 +305,7 @@ def move(rover,
 [.left-column-1-3]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def move(radius, 
         weight,
@@ -331,7 +331,7 @@ def move(radius,
 [.right-column-1-3]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def move(rover, 
         destination,

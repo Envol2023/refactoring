@@ -186,7 +186,7 @@ ifdef::mode_slide[=== !]
 * Séparation distincte entre l'**intention** (_WHAT_) ...
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def check_propulsion_energy_against_duration(report, patrol_duration):
     ...

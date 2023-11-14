@@ -7,7 +7,7 @@
 D'un côté, {cr}
 un équipement de Visioconférence
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module conference.py
 class ConferenceDevice:
@@ -28,7 +28,7 @@ class ConferenceDevice:
 De l'autre, {cr}
 _des_ enregistreurs de _son_ et de _vidéo_
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module video_recorder.py
 from conference import ConferenceDevice
@@ -39,7 +39,7 @@ class VideoRecorder:
         device.stop_video()
 ----
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module sound_recorder.py
 from conference import ConferenceDevice
@@ -73,7 +73,7 @@ image::images/design-ConferenceDevice_1.svg[]
 [.center]
 Création d'interfaces _dédiées_
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class ConferenceDevice:
     def connect(self):...
@@ -87,7 +87,7 @@ class ConferenceDevice:
 ----
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module video.py
 class VideoDevice(Protocol):
@@ -95,7 +95,7 @@ class VideoDevice(Protocol):
     def stop_video(self):...
 ----
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module sound.py
 class SoundDevice(Protocol):
@@ -110,7 +110,7 @@ class SoundDevice(Protocol):
 
 Exposition de 2 interfaces _distinctes_
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 from sound import SoundDevice
 from video import VideoDevice
@@ -135,7 +135,7 @@ class ConferenceDevice(VideoDevice, SoundDevice):
 Couplage fort {cr}
 Les enregistreurs en savent **trop**
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module video_recorder.py
 from conference import ConferenceDevice
@@ -146,7 +146,7 @@ class VideoRecorder:
         device.stop_video()
 ----
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module sound_recorder.py
 from conference import ConferenceDevice
@@ -164,7 +164,7 @@ class SoundRecorder:
 Couplage faible {cr}
 Les enregistreurs en savent **juste ce qu'il faut**
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module video_recorder.py
 from video import VideoDevice
@@ -175,7 +175,7 @@ class VideoRecorder:
         device.stop_video()
 ----
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # module sound_recorder.py
 from sound import SoundDevice

@@ -182,7 +182,7 @@ Ce n'est pas une réalité statistique, mais c'est motivant.
 Une simple fonction à tester
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def filter_info_log(logs: List[Log]) -> List[Log]:
     return [log for log in logs if log.level == "INFO"]
@@ -192,7 +192,7 @@ def filter_info_log(logs: List[Log]) -> List[Log]:
 --
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def test_filter_info_log_empty():
     # Given
@@ -210,7 +210,7 @@ def test_filter_info_log_empty():
 [.right-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def test_filter_info_log_no_info_logs():
     # Given
@@ -228,7 +228,7 @@ def test_filter_info_log_no_info_logs():
 
 Un filtre plus élaboré avec des règles
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 class LogFilter:
     def __init__(self, rules: Rules):
@@ -241,7 +241,7 @@ class LogFilter:
 [.left-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def test_filter_info_log_empty():
     # Given
@@ -261,7 +261,7 @@ def test_filter_info_log_empty():
 [.right-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def test_filter_info_log_no_info_logs():
     # Given
@@ -283,7 +283,7 @@ def test_filter_info_log_no_info_logs():
 
 Un filtre avec des règles chargées depuis une base de données
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 class LogFilter:
     def __init__(self, rules: Rules):
@@ -303,7 +303,7 @@ class Rules:
 [.left-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def test_filter_info_log_empty():
     # Given
@@ -330,7 +330,7 @@ def test_filter_info_log_empty():
 [.right-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def test_filter_info_log_no_info_logs():
     # Given
@@ -433,7 +433,7 @@ Un `Mock` est une _fonction_ qui renvoie _toujours_ un autre `Mock`.
 [.left-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 mock = Mock()
 
@@ -446,7 +446,7 @@ assert isinstance(foo(), Mock)
 [.right-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 mock = Mock()
 
@@ -464,7 +464,7 @@ assert isinstance(result, Mock)
 ** => valeur _unique_ à renvoyer pour tout appel
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 mock = Mock()
 
@@ -477,7 +477,7 @@ assert [mock.some_method() for _ in range(3)] == ['A', 'A', 'A']
 ** => Séquence de valeurs à associer à une séquence d'appels
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 mock = Mock()
 
@@ -496,7 +496,7 @@ Espionner les appels de méthodes
 
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 mock = Mock()
 mock.some_method.return_value = 'foo'
@@ -552,7 +552,7 @@ Code ancien, au fonctionnement mystérieux, dont l’évolution semble délicate
 [%step]
 --
 ****
-Code que vous n'êtes pas prêt à modifier
+_Code que vous n'êtes pas prêt à modifier_
 ****
 --
 
@@ -648,7 +648,7 @@ ifdef::mode_slide[=== Test de caractérisation > Exemple]
 [.left-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 @dataclass
 class City:
@@ -666,7 +666,7 @@ class Address:
 [.right-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 @dataclass
 class Person:
@@ -690,7 +690,7 @@ class Family:
 [.reset-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def find_related_people_in_same_cities(families: List[Family]):
     people_relations_by_cities = {}
@@ -712,7 +712,7 @@ ifdef::mode_slide[=== Test de caractérisation > Exemple]
 Test avec approval
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 from approvaltests.approvals import verify
 
@@ -825,7 +825,7 @@ ifdef::mode_slide[=== Test de caractérisation > Exemple]
 
 [.left-column-1-3]
 --
-[source,python]
+[source,python,attributes]
 -----
 @dataclass
 class DatedNote:
@@ -842,7 +842,7 @@ class DatedNote:
 [.right-column-2-3]
 --
 
-[source,python]
+[source,python,attributes]
 -----
 def test_with_date_scrubbers():
     # --Given--
@@ -880,17 +880,15 @@ NOTE:Bar/Foo, DATE=<date0>
 
 * La dépendance irritante
 * L'instanciation cachée
-* Le Singleton
-* Les boucles imbriquées 
-
-TODO Vérifie cohérence Raison de la difficulté à tester
+* La dépendance globale ou/et Singleton
+* La boucle imbriquée
 
 === Obstacle > Le paramètre irritant
 
 Exemple avec une base de donnée en paramètre
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class Validator:
 
@@ -911,7 +909,7 @@ class Validator:
 Test lourd à mettre en oeuvre: base nécessaire
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def test_validator_load_rules():
     # Given
@@ -942,7 +940,7 @@ Pas vu, pas pris
 Utilisation cachée de `XBandTransmitter`
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class RadioCommunicator(Communicator):
 
@@ -1000,7 +998,7 @@ Le mieux est de reposer que l'abstraction plutôt que l'implémentation.
 
 [.left-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 class Channel(Protocol):
     def write(self, content: str): 
@@ -1018,7 +1016,7 @@ class RadioTransmitter(Protocol):
 
 [.right-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 class RadioCommunicator(Communicator):
 
@@ -1042,14 +1040,14 @@ class RadioCommunicator(Communicator):
 ----
 --
 
-==== Obstacle > La dépendance cachée 
+=== Obstacle > La dépendance cachée 
 
 **Ajouter un paramètre optionnel**
 
 Pattern de l'injection de dépendance.
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class RadioCommunicator(Communicator):
 
@@ -1060,11 +1058,11 @@ class RadioCommunicator(Communicator):
         ..
 ----
 
-==== Obstacle > La dépendance cachée 
+=== Obstacle > La dépendance cachée 
 
 **Tester**
 
-[source,python]
+[source,python,attributes]
 ----
 # Create Fake Channel
 class FakeChannel(Channel):
@@ -1090,7 +1088,7 @@ class FakeTransmitter(RadioTransmitter):
         return self.fake_channel    
 ----
 
-[source,python]
+[source,python,attributes]
 ----
 def test_send_message():
     # Given
@@ -1115,7 +1113,7 @@ def test_send_message():
 * Pattern du `Singleton`
 ** Dépendance à un accès au niveau classe `MessagesCollector.get_messages()`.
 
-[source,python]
+[source,python,attributes]
 ----
 class ReportStream:
 
@@ -1156,7 +1154,7 @@ C'est possible, mais cela doit être laborieux.
 ** Injection de l'abstraction
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class MessageProvider(Protocol):
 
@@ -1176,7 +1174,7 @@ class MessageProvider(Protocol):
 
 [.left-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 class MessagesCollector(MessageProvider):
 
@@ -1197,7 +1195,7 @@ class MessagesCollector(MessageProvider):
 
 [.right-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 class ReportStream:
 
@@ -1217,7 +1215,7 @@ class ReportStream:
 
 [.left-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 @pytest.fixture
 def message_provider():
@@ -1243,7 +1241,7 @@ def message_provider():
 
 [.right-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 def test_print_messages(message_provider):
     # Given
@@ -1275,7 +1273,7 @@ Passer du Singleton à l'injection pour se débarrasser définitivement
 
 [.left-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 class ReportStream:
 
@@ -1293,7 +1291,7 @@ class ReportStream:
 
 [.right-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 class ReportStream:
 
@@ -1312,7 +1310,7 @@ class ReportStream:
 
 === Simplification du test
 
-[source,python]
+[source,python,attributes]
 ----
 class FakeMessageProvider(MessageProvider):
     def __init__(self):
@@ -1400,7 +1398,7 @@ include::_use_repository.adoc[{include_options}]
 ** Boucles imbriquées avec plusieurs responsabilités mélangées
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 avg_w_lug = 0
 total_p = 0
@@ -1426,7 +1424,7 @@ ifdef::mode_slide[=== Obstacle > boucles imbriquées]
 En clair
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 average_weight_luggage = 0
 total_price = 0
@@ -1456,7 +1454,7 @@ ifdef::mode_slide[=== Obstacle > boucles imbriquées]
 Réécriture
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 average_weight_luggage = 0
 for reservation in flight.reservations:
@@ -1472,7 +1470,7 @@ for reservation in flight.reservations:
     total_price += price
 -----
 
-[source,python]
+[source,python,attributes]
 -----
 def test_total_weight_with_some_cabin_bagages_and_without_discount():
     ...
@@ -1485,7 +1483,7 @@ ifdef::mode_slide[=== Obstacle > boucles imbriquées]
 Réécriture
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def get_total_weight_of_in_hold_baggages(reservations: List[Reservation]) -> float:
     average_weight = 0
@@ -1505,7 +1503,7 @@ def get_total_price(reservations: List[Reservation]) -> float:
     return total
 -----
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 def test_total_weight_with_some_cabin_bagages(): ...
 def test_total_weight_without_bagages(): ...    
@@ -1536,15 +1534,22 @@ def test_total_price_without_discounts(): ...
 include::_test_by_overloading.adoc[{include_options}]
 
 
+== Obstacle > Ma classe fait trop de choses 
 
-
-== Legacy Responsabilités 
-
-* Bad smells : 
+[%step]
+* Top 10 Bad smells : 
 ** Classe trop grosse ( https://refactoring.guru/fr/smells/large-class[_Large Class_])
+** => Part dans tous les sens
+** Intestable
+* C'est grave docteur ?
+** => Oui, trop de responsabilités
+** => Décomposition trop faible ou héritage mal digéré
 
-
-
+[%step]
+[.center]
+*****
+Il faut débusquer les responsabilités cachées !
+*****
 
 [NOTE.notes]
 --
@@ -1554,12 +1559,17 @@ Ce genre de situation est une illustration de la dette technique: on a laissé l
 La théorie de la conception aurait voulu que son design soit mûrement réfléchi, et ses responsabilités bien établies à l'avance. Mais ce n'est pas la réalité opérationnelle rencontrée.
 --
 
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 
 * Proximité sémantique
-** Chercher les noms de variable, de fonction qui sont proches
+** Chercher les noms de propriétés, de fonction qui sont proches
 --
-[source,python]
+
+[.center]
+Noms de propriétés
+
+[{code_size}]
+[source,python,attributes]
 ----
 from dataclasses import dataclass
 
@@ -1576,9 +1586,20 @@ class People:
     job_title: str
     job_description: str
 ----
+--
 
-[source,python]
+ifdef::mode_slide[=== Responsabilités  > Grouper par nom]
+
+--
+[.center]
+Noms de méthodes
+
+[{code_size}]
+[source,python,attributes]
 ----
+@dataclass
+class People:
+    ...
     def send_email(self, message: str) -> None: ...
     def call_by_phone(self) -> None: ...
     def change_job_title(self, new_title: str) -> None: ...
@@ -1597,7 +1618,7 @@ class People:
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 endif::[]
 
 Éclatons les propriétés et les noms de méthodes
@@ -1607,7 +1628,7 @@ image::images/testability-srp_0.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 endif::[]
 
 Identifions des groupes de propriétés et les noms de méthodes
@@ -1617,7 +1638,7 @@ image::images/testability-srp_1.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 endif::[]
 
 Identifions des groupes de propriétés et de noms de méthodes
@@ -1627,7 +1648,7 @@ image::images/testability-srp_1.1.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 endif::[]
 
 Relions des groupes de propriétés et de noms de méthodes
@@ -1637,7 +1658,7 @@ image::images/testability-srp_2.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 endif::[]
 
 Identifions des responsabilités
@@ -1647,7 +1668,7 @@ image::images/testability-srp_3.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 endif::[]
 
 Reconsidérons la classe originelle
@@ -1657,7 +1678,7 @@ image::images/testability-srp_4.svg[]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 endif::[]
 
 Nous avons dégagé plusieurs responsabilités différentes.
@@ -1666,7 +1687,8 @@ La classe `People` devient une composition
 
 [.left-column]
 --
-[source,python]
+[{code_size}]
+[source,python,attributes]
 ----
 from dataclasses import dataclass
 
@@ -1690,11 +1712,13 @@ image::images/testability-srp_5.svg[]
 [.reset-column]
 Maintenant il est possible de tester chaque classe indépendamment _chacune dans son  domaine d'expertise_
 
-=== Legacy Responsabilités  > Grouper par nom
+=== Responsabilités  > Grouper par nom
 
-Et de se limiter aux rares méthodes qui implique plusieurs classes comme
+Et de _prioriser_ les tests de _People_ {cr}
+=> Focus sur les rares méthodes impliquant plusieurs classes comme
 
-[source,python]
+[{code_size}]
+[source,python,attributes]
 -----
 @dataclass
 class People:
@@ -1706,7 +1730,7 @@ class People:
     def fire_employee(self, employee_id: int) -> None: ...
 -----
 
-=== Legacy Responsabilités  > Grouper par ce qui change
+=== Responsabilités  > Grouper par ce qui change
 
 * Scratch refactoring
 ** => Modifier pour voir ce qui se passe
@@ -1715,13 +1739,13 @@ class People:
 * Philosophie du scratch
 ** _Ce qui change ensemble va ensemble_
 ** _Ce qui ne casse pas ensemble ne va pas ensemble_
-* Attention de le faire dans une branche bidon.
+* Attention de le faire dans une branche jetable ou dédiée.
 
 [.at-middle-right]
 image::images/scratch.png[]
 
 
-=== Legacy Responsabilités  > Grouper par relations
+=== Responsabilités  > Grouper par relations
 
 [.left-column-2-3]
 --
@@ -1743,54 +1767,57 @@ image::images/capture_Working_graph.png[height=300]
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par relations
+=== Responsabilités  > Grouper par relations
 endif::[]
 
 [.center]
+--
+Lister les propriétés et les méthodes 
+
 image::images/testability-srp_interne_0.svg[]
+--
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par relations
+=== Responsabilités  > Grouper par relations
 endif::[]
 
 [.center]
+--
+Lier les propriétés et méthodes utilisées **dans le corps** de chaque méthode 
+
 image::images/testability-srp_interne_1.svg[]
+--
 
 ifdef::mode_slide[]
 [%notitle]
-=== Legacy Responsabilités  > Grouper par relations
+=== Responsabilités  > Grouper par relations
 endif::[]
 
 [.center]
-image::images/testability-srp_interne_2.svg[]
+--
+Faire des clusters. Un cluster => Une responsabilité => Une classe
 
-== Méthode MIKADO 
+image::images/testability-srp_interne_2.svg[]
+--
+
+[.subsection.background]
+[.center]
+== Un peu de méthode
+
+Pour éviter de se perdre en cours de route...
+
+=== Méthode MIKADO 
 
 * Méthode de refactoring
 ** Se donner un objectif
 * Cycle de vie
-** Scratcher, explorer les impacts, noter, revenir en arrière
+** Scratcher -> explorer les impacts -> noter -> revenir en arrière
 * Graphique
 ** Utilisation d'une arborescence 
 ** Mind mapping, papier/gomme, post-it
 * Disclaimer
 ** Je découvre aussi :)
-
-ifdef::mode_slide[== Méthode MIKADO ]
-
-[.center]
-image::images/testability-Mikado_0.svg[]
-
-ifdef::mode_slide[== Méthode MIKADO ]
-
-[.center]
-image::images/testability-Mikado_1.svg[]
-
-ifdef::mode_slide[== Méthode MIKADO ]
-
-[.center]
-image::images/testability-Mikado_2.svg[]
 
 == Mikado illustration
 
@@ -1904,6 +1931,7 @@ ifdef::mode_slide[=== Mikado illustration]
 [.center]
 image::images/testability-Mikado-sample_11.svg[]
 
+
 ifdef::mode_slide[=== Mikado illustration]
 
 [.left-column]
@@ -1937,6 +1965,22 @@ ifdef::mode_slide[=== Mikado illustration]
 image::images/testability-Mikado-sample_13.svg[]
 --
 
+ifdef::mode_slide[== Méthode MIKADO ]
+
+[.center]
+image::images/testability-Mikado_0.svg[]
+
+ifdef::mode_slide[=== Méthode MIKADO ]
+
+[.center]
+image::images/testability-Mikado_1.svg[]
+
+ifdef::mode_slide[=== Méthode MIKADO ]
+
+[.center]
+image::images/testability-Mikado_2.svg[]
+
+
 == Mikado références
 
 * https://www.youtube.com/watch?v=xXvuBX1bVh8[Live-Refactoring de Legacy Code avec la technique du Golden Master ()]
@@ -1958,6 +2002,7 @@ image::images/testability-Mikado-sample_13.svg[]
 ** Le paramètre irritant
 ** La dépendance cachée
 ** La dépendance globale
+** La boucle imbriquée
 --
 
 [.right-column]
@@ -1966,7 +2011,7 @@ image::images/testability-Mikado-sample_13.svg[]
 * Par la hiérarchisation
 ** Testing par surcharge
 ** Test par sous-classage
-* Legacy Responsabilités
+* Responsabilités
 *** Grouper par nom
 *** Grouper par ce qui change
 *** Grouper par relations

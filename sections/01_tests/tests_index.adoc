@@ -12,6 +12,7 @@ endif::[]
 
 // tag::content[]
 
+[.center]
 [.start.background]
 == Test 101
 

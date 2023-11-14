@@ -14,7 +14,7 @@ endif::[]
 [.reset-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 import expensive_to_test_api as api
 
@@ -38,7 +38,7 @@ class CityService:
 
 [.left-column]
 --
-[source,python]
+[source,python,attributes]
 -----
 @dataclass
 class Street:
@@ -49,7 +49,7 @@ class Street:
 
 [.right-column]
 --
-[source,python]
+[source,python,attributes]
 ----
 @dataclass
 class City:
@@ -67,7 +67,7 @@ ifdef::mode_slide[]
 endif::[]
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 import expensive_to_test_api as api
 
@@ -86,7 +86,7 @@ class CityService:
             raise ModelException(se)
 ----
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 
     def merge_cities(self, city_name_left: str, city_name_right: str) -> City:
@@ -254,7 +254,7 @@ def test_city_service_merge_cities():
     service = CityService(repository=fake_city_repository)
 ------
 --
-[source,python]
+[source,python,attributes]
 ----
     # When
     merged_city = service.merge(left, right)

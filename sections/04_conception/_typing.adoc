@@ -198,7 +198,7 @@ ____
 Type _Porte_
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class Door:
   def open(self):
@@ -215,7 +215,7 @@ class Door:
 [.center]
 Type _Four_
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class Oven:
   def open(self):
@@ -233,7 +233,7 @@ class Oven:
 Fonction conçue pour une _Porte_
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def open_and_close_door(door: Door):
     door.open() # <--- Si ça ouvre comme une porte
@@ -247,7 +247,7 @@ def open_and_close_door(door: Door):
 [.center]
 Fonctionne avec une _Porte_ *:)*
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 door = Door()
 open_and_close_door(door)
@@ -261,7 +261,7 @@ open_and_close_door(door)
 Fonctionne avec un _Four_ *:(*
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 oven = Oven()
 open_and_close_door(oven)
@@ -294,7 +294,7 @@ operator.openAndCloseDoor(new Oven()) // KO ne compile pas
 [.center]
 Classe _abstraite_
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 from abc import ABC, abstractmethod
 
@@ -314,7 +314,7 @@ class Door(ABC):
 [.center]
 Classe _dérivée_
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class Oven(Door):
     ... # <-- pas de redéfinitions de @abstractmethod lock
@@ -327,7 +327,7 @@ class Oven(Door):
 [.center]
 Instanciation
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 oven = Oven()
 ----
@@ -347,7 +347,7 @@ TypeError: Can't instantiate abstract class Oven with abstract method lock
 [.center]
 Définition d'un _protocole_
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 from typing import Protocol
 
@@ -362,7 +362,7 @@ class Openable(Protocol):
 [.center]
 Définition d'un type attendu
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def open_and_close_openable(openable: Openable):
     openable.open() # <--- Expected
@@ -379,7 +379,7 @@ def open_and_close_openable(openable: Openable):
 [.center]
 Toujours pas vérifié au runtime
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class Letter:
     def open(self): ...

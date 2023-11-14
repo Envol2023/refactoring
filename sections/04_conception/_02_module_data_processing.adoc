@@ -40,7 +40,7 @@ image::images/data_algo.png[]
 ** Scalaires, conteneurs, structures, ...
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 a = 1
 name = 'John Doe'
@@ -62,7 +62,7 @@ book = {'title': 'Python', 'pages': 324}
 ** Fonctions, méthodes
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 # computations
 b = a*a
@@ -107,7 +107,7 @@ Réponses => paradigmes de programmation
 ** Le plus facile et le plus ancien
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 entity = ...
 procedure(entity)

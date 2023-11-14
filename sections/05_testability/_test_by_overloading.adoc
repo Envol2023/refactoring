@@ -26,7 +26,7 @@ endif::[]
 
 ifdef::mode_slide[== Testing par surcharge]
 
-[{code_size}]
+[{code_size}][{code_size}]
 [source,python,attributes]
 -----
 class RadioCommunicator(Communicator):
@@ -85,7 +85,8 @@ image::images/testability-hierarchy-slide-test_3.svg[]
 *** `_write_to_channel(Message)`
 
 
-[source,python]
+[{code_size}]
+[source,python,attributes]
 -----
 class RadioCommunicator(Communicator):
 
@@ -115,7 +116,7 @@ class RadioCommunicator(Communicator):
 ** Création classe de test en **héritant** de la classe à tester
 ** Surcharge de  `_write_to_channel` pour la rendre inoffensive 
 *** <= **problématique**, **hors responsabilité**
-
+[{code_size}]
 [source,python,attributes]
 -----
 class ForTestRadioCommunicator(RadioCommunicator):
@@ -138,7 +139,8 @@ Nous surchargeons la méthode problématique `_write_to_channel` car elle est di
 Ce problème relève de l'expertise très spécifique `Transmission par canaux`, pas `Communication générale des message`
 --
 
-[source,python]
+[{code_size}]
+[source,python,attributes]
 ----
 def test_send_message():
     # Given
@@ -157,6 +159,7 @@ def test_send_message():
 == Test par sous-classage
 
 Autre possibilité: 
+
 **(1)** Extraire une classe abstraite, moins spécialisée {cr}
 **(2)** Rendre la méthode `very_hard(...)` _abstraite_ (à créer)
 
@@ -164,7 +167,7 @@ Autre possibilité:
 [.center]
 image::images/testability-hierarchy-slide-test_4.svg[]
 
-ifdef::mode_slide[== Test par sous-classage]
+=== Test par sous-classage
 
 **(3.a)** Dériver (faire hériter) une classe de test _de la classe abstraite_ {cr}
 **(3.b)** Rendre inoffensive la méthode `very_hard(...)` {cr}
@@ -174,9 +177,10 @@ ifdef::mode_slide[== Test par sous-classage]
 image::images/testability-hierarchy-slide-test_5.svg[]
 
 
-=== Test par sous-classage
+ifdef::mode_slide[=== Test par sous-classage]
 
-[source,python]
+[{code_size}]
+[source,python,attributes]
 ----
 class GitlabIssueDispatcher:
 
@@ -207,6 +211,8 @@ class GitlabIssueDispatcher:
 
 ----
 
+ifdef::mode_slide[=== Test par sous-classage]
+
 Nous voulons tester l'enchaînement des étapes.
 Le test serait plus facile à faire si on se débarrassait de la dépendance à la librairie `python-gitlab` non ?
 
@@ -214,8 +220,11 @@ Le test serait plus facile à faire si on se débarrassait de la dépendance à 
 ** `Extract class` `GitlabIssueDispatcher` -> `IssueDispatcher`
 ** Laisser la méthode ou les méthodes  problématiques non définies et abstraites
 
+ifdef::mode_slide[=== Test par sous-classage]
 
-[source,python]
+
+[{code_size}]
+[source,python,attributes]
 ----
 class IssueDispatcher(ABC):
 
@@ -243,6 +252,9 @@ class IssueDispatcher(ABC):
 
 ----
 
+ifdef::mode_slide[=== Test par sous-classage]
+
+[{code_size}]
 [source,python,attributes]
 ----
 class GitlabIssueDispatcher(IssueDispatcher):
@@ -263,7 +275,9 @@ class GitlabIssueDispatcher(IssueDispatcher):
     #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
 ----
 
+ifdef::mode_slide[=== Test par sous-classage]
 
+[{code_size}]
 [source,python,attributes]
 ----
 class ForTestIssueDispatcher(IssueDispatcher):
@@ -281,6 +295,8 @@ class ForTestIssueDispatcher(IssueDispatcher):
     #----*--*----*--*----*--*----*--*----*--*----*--*----*--*----
 ----
 
+ifdef::mode_slide[=== Test par sous-classage]
+[{code_size}]
 [source,python,attributes]
 ----
 def test_issue_dispatcher()
@@ -295,8 +311,10 @@ def test_issue_dispatcher()
     assert ... # some assertions
 ----
 
-Avantages
+ifdef::mode_slide[=== Test par sous-classage]
 
+Avantages: adaptation potentielle à plusieurs fournisseurs
+[{code_size}]
 [source,python,attributes]
 ----
 class GitlabIssueDispatcher(IssueDispatcher): ...
@@ -306,17 +324,6 @@ class GithubIssueDispatcher(IssueDispatcher): ...
 class JiraIssueDispatcher(IssueDispatcher): ...
     
 ----
-
-== Résumé
-
-[.center]
-image::images/testability-hierarchy-slide-test_3.svg[]
-
-
-[.center]
-image::images/testability-hierarchy-slide-test_5.svg[]
-
-
 
 
 // end::content[]

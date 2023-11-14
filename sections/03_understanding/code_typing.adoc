@@ -59,7 +59,7 @@ get_travel("John", "ACME")
 
 Syntaxe
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 object: Type
 ----
@@ -67,7 +67,7 @@ object: Type
 Typage des arguments
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def get_travel(profile: Profile, enterprise: Enterprise): 
     ...
@@ -77,7 +77,7 @@ def get_travel(profile: Profile, enterprise: Enterprise):
 Typage du retour
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def get_travel(profile: Profile, enterprise: Enterprise) -> Travel: 
     ...
@@ -88,7 +88,7 @@ def get_travel(profile: Profile, enterprise: Enterprise) -> Travel:
 Liste
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 from typings import List
 events: List[Event] = []
@@ -98,7 +98,7 @@ Dictionnaire
 
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 -----
 from typings import Dict
 categories_by_name: Dict[str, Category] = {}

@@ -1,4 +1,4 @@
-= Refactoring, Optimisation and Agility
+= Refactoring et Agilité
 ifdef::backend-revealjs[]
 include::_inc_revealjs.adoc[]
 endif::[]
@@ -17,16 +17,19 @@ ifndef::imagesdir[]
 endif::[]
 
 
-Content for ENVOL 2023 and further
+ENVOL 2023
 
 
 [.small.right]
+--
 marc.dexet@ias.u-psud.fr
 
+image::https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png[width=200] 
+
+Licence https://creativecommons.org/licenses/by-nc/4.0/deed.fr[CC by-nc 4.0]
+--
+
 == Plan
-
-INCLUDE OPTIONS {include_options}
-
 
 [.simple]
 * Introduction au refactoring

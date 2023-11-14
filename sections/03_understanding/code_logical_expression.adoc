@@ -28,7 +28,7 @@ ____
 [.left-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 @dataclass
 class Rental:
@@ -44,7 +44,7 @@ class Location:
 [.right-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 @dataclass
 class CarRental:
@@ -60,7 +60,7 @@ class CarRental:
 [.reset-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 
 def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to_date: datetime) -> Optional[Car]:
@@ -89,7 +89,7 @@ def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to
 ** `Replace Nested Conditional with Guard Clause`
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 
 def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to_date: datetime) -> Optional[Car]:
@@ -118,7 +118,7 @@ def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to
 ** Utilisation de `Extract methods`
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to_date: datetime) -> Optional[Car]:
     for car in get_cars():
@@ -137,7 +137,7 @@ def find_rental_car(departure: Location, nb_places: int, from_date: datetime, to
     return None
 ----
 
-[source,python]
+[source,python,attributes]
 ----
 
 def is_car_fit_for(car: Car, nb_places) -> bool : 
@@ -157,7 +157,7 @@ def are_rentals_within_time_frame(last_rental: Rental, next_rental: Rental,
 ** Chaque fonction peut être testée à part
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def test_is_near_location():
     # Given
@@ -173,7 +173,7 @@ def test_is_near_location():
 ----
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def test_are_rentals_within_time_frame_but_no_rentals():
     # Given

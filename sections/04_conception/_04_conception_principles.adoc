@@ -100,7 +100,7 @@ ____
 [.left-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def end_process(process: Process, ctx: Context):
     process.end() <1>
@@ -131,7 +131,7 @@ def end_process(process: Process, ctx: Context):
 [.left-column]
 --
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def end_process(process: Process, ctx: Context):
     process.end()
@@ -165,7 +165,7 @@ def save_file_alert_user(ctx: Context): <2>
 === Illustration 
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def end_process(process: Process, ctx: Context):
     process.end()
@@ -187,7 +187,7 @@ def alert_user(user): <2>
 === Illustration 
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 def end_process(process: Process, ctx: Context):
     process.end()
@@ -241,7 +241,7 @@ ____
 Exemple un capteur barométrique joignable par adressage IP
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 
 class BarometricSensor:
@@ -264,7 +264,7 @@ class BarometricSensor:
 
 
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class BarometricSensor:
 
@@ -288,7 +288,7 @@ class BarometricSensor:
 ** Une classe porte la responsabilité _Gestion de l'adresse IP_
 +
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class IpAddress:
     def __init__(self, address: str): ...
@@ -298,7 +298,7 @@ class IpAddress:
 ** Une classe porte la responsabilité _Gestion mesure des pressions_
 +
 [{code_size}]
-[source,python]
+[source,python,attributes]
 ----
 class BarometricSensor:
 
@@ -387,11 +387,14 @@ Dans le cas des grandes classes, cela permet de limiter sévèrement la connaiss
 *** => Evolution classe mère => évolution classe fille
 ** Tendance à faire des héritages très profonds
 
-[.left-column]
+ifdef::mode_slide[=== Composition Over Inheritance]
+
 --
-* Relation **EST UN**
+* Héritage
+** Relation **EST UN**
 ** Un  _poste de travail_ **est une** _personne_
 
+[{code_size}]
 [source,python,attributes]
 ----
 class Person:
@@ -408,11 +411,14 @@ class Assignment(Person):
 ----
 --
 
-[.right-column]
+ifdef::mode_slide[=== Composition Over Inheritance]
+
 --
-* Relation **A UN** ou **UTILISE UN** ou **EST COMPOSE DE**
+* Composition
+** Relation **A UN** ou **UTILISE UN** ou **EST COMPOSE DE**
 ** Un _poste de travail_ **est composé de** une personne _et_ d'une fonction.
 
+[{code_size}]
 [source,python,attributes]
 ----
 class Person:
@@ -447,17 +453,16 @@ Le couplage étroit fourni par l'héritage fait que l'implémentation d'une sous
 * A chacun sa généalogie
 ** => Evite des héritages encombrants
 
-== Dependency Inversion Principal
+== Dependency Inversion Principle
 
 * Synthèse logique
-** Single Responsibility Principal => Chacun son job
-** Composition => Assembler les bons composants
-** Abstraction => ne dépendre que du contrat
+** _Single Responsibility Principle_ => Chacun son job
+** _Composition_ => Assembler les bons composants
+** _Abstraction_ => ne dépendre que du contrat
 * Qui des deux doit s'adapter à l'autre ?
 ** Le composant de haut-niveau ou celui de bas-niveau ?
 
-== Dependency Inversion Principal > Niveaux
-
+== Dependency Inversion Principle > Niveaux
 
 * Niveaux ?
 ** Haut-niveau -> proche de l'humain, fondamental pour le métier, important
@@ -466,7 +471,7 @@ Le couplage étroit fourni par l'héritage fait que l'implémentation d'une sous
 ** Haut-niveau:  Entités métier ("Employé", "Observation", "Protocol expérimental")
 ** Bas-niveau: Briques informatiques ("Oracle", "MySQL" ou "MongoDB" ?)  
 
-== Dependency Inversion Principal > Approche classique 
+== Dependency Inversion Principle > Approche classique 
 
 Utilisation directe
 
@@ -499,7 +504,7 @@ class SurveyService:
 -----
 --
 
-== Dependency Inversion Principal > Abstraction par le bas 
+== Dependency Inversion Principle > Abstraction par le bas 
 
 BigOne: _"L'abstraction, c'est bon, mangez-en !"_
 
@@ -533,7 +538,7 @@ class SurveyService:
 --
 
 
-== Dependency Inversion Principal > Abstraction par le haut 
+== Dependency Inversion Principle > Abstraction par le haut 
 
 Architecte du Survey : _"Stop, voici mes attentes, point barre"_
 
@@ -570,7 +575,7 @@ class BigOneDBInterface(SurveyPersistence):
 --
 
 
-== Dependency Inversion Principal > Adapter 
+== Dependency Inversion Principle > Adapter 
 
 Ok, BigOne ne va pas vraiment s'adapter à nous. Coupons la poire en deux.
 
@@ -612,7 +617,7 @@ class SurveyPersistenceAltAdapter(SurveyPersistence):
 
 == Pour aller plus loin
 
-**Compétence principale / Pratique quotidienne > Expertise**
+**Compétence majeure / Pratique régulière > Expertise**
 
 * Principes et Design patterns
 * Gang Of Four
@@ -625,6 +630,7 @@ class SurveyPersistenceAltAdapter(SurveyPersistence):
 ** Assez près du code => Solution refactoring le nez dans le code
 ** Pensés OOP (C++/Java) => à adapter à l'écosystème utilisé
 
+[%step]
 [.smaller]
 [.left-column-1-3]
 --
@@ -634,6 +640,7 @@ class SurveyPersistenceAltAdapter(SurveyPersistence):
 ** Monteur
 --
 
+[%step]
 [.smaller]
 [.middle-column-1-3]
 --
@@ -644,6 +651,7 @@ class SurveyPersistenceAltAdapter(SurveyPersistence):
 ** Poids-mouche
 ** Décorateur
 --
+[%step]
 [.smaller]
 [.right-column-1-3]
 --
@@ -656,6 +664,7 @@ class SurveyPersistenceAltAdapter(SurveyPersistence):
 ** Patron de méthode, Visiteur
 --
 
+[%step]
 [.reset-column]
 --
 * Références
@@ -670,6 +679,7 @@ class SurveyPersistenceAltAdapter(SurveyPersistence):
 ** Assez abstrait => Solution d'ordre général **MAIS** aide à se poser _les bonnes questions_
 ** Pour développeurs/développeuses **ET** architectes.
 
+[%step]
 [.smaller]
 [.left-column]
 --
@@ -680,6 +690,7 @@ class SurveyPersistenceAltAdapter(SurveyPersistence):
 ** Forte cohésion
 --
 
+[%step]
 [.smaller]
 [.right-column]
 --
@@ -691,6 +702,7 @@ class SurveyPersistenceAltAdapter(SurveyPersistence):
 ** Contrôleur
 --
 
+[%step]
 [.reset-column]
 --
 * Références

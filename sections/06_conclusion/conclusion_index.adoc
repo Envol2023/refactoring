@@ -13,15 +13,48 @@ endif::[]
 // tag::content[]
 
 == Conclusions
-
-TODO etoffer
-
+[.left-column]
+--
 * Refactoring
 ** Plus que de simples techniques
 * Sans refactoring, pas d'Agilité
-** Mais refactoring sans agilité, c'est quand même recommandé
-* Plusieurs niveaux d'application
+** Mais pas besoin d'être agile pour refactoriser
+* Être bien équipé
+* Avoir une culture développement 
+--
 
+[.right-column]
+--
+* Chemin de progression
+** Compétence mineure / Pratique occasionnelle
+*** -> Améliorer la compréhension
+** Compétence majeure / Pratique régulière
+*** -> Améliorer la conception
+*** -> Améliorer la testabilité
+** Expertise / Pratique quotidienne
+*** -> Design Patterns
+*** -> Tests avancés / Mocking
+--
+
+[.splash.background]
+[.center]
+[%notitle]
+=== Souvenez-vous
+
+[.huge]
+--
+Always code as {cr}
+if the guy {cr}
+who ends up maintaining your code {cr}
+will be a violent psychopath {cr}
+who knows where you live. {cr}
+--
+
+[.splash.background]
+[.center]
+=== Souvenez-vous
+
+image::images/Anthony-Perkins-in-Psycho-Universal.webp[]
 
 == Livres de référence
 
@@ -43,7 +76,7 @@ image:images/refact2.jpg[height=200]
 image::images/working_effect.jpeg[height=200]
 --
 
-== Livres de référence
+ifdef::mode_slide[=== Livres de référence]
 
 [.left-column]
 --
@@ -69,4 +102,25 @@ image::images/pragmatic_junit8.jpeg[height=200]
 
 image::images/bopytest2-250.jpg[height=200]
 --
+
+== Générique
+
+[.left-column]
+--
+* Éditeur
+** VSCode
+** Plugin ASciidoc
+* Langage de markup
+** Asciidoctor
+--
+
+[.right-column]
+--
+* Présentation 
+** Asciidoctor + revealjs
+* Création d'images
+** Drawio
+** Excalidraw
+--
+
 // end::content[]

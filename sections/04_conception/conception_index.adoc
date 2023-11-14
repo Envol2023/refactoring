@@ -17,7 +17,7 @@ endif::[]
 
 Améliorer la conception : 
 
-**Compétence annexe / Pratique Occasionnelle > Compétence principale / Pratique quotidienne**
+**Compétence mineure / Pratique occasionnelle > Compétence majeure / Pratique régulière**
 
 // introd
 include::_00_conception_introd.adoc[{include_options}]
@@ -55,6 +55,12 @@ include::_05_conception_bad_smells.adoc[{include_options}]
 *** A forte cohésion interne
 *** A faible couplage externe
 *** Avec un minimum d'exposition via l'abstraction de l'interface
+
+
+[.end.background]
+[.center]
+== Améliorer la conception : conclusion
+
 * Principes
 ** Separation of concerns
 *** Réduire la complexité en décomposant le système
@@ -63,5 +69,7 @@ include::_05_conception_bad_smells.adoc[{include_options}]
 ** Interface Segregation Principle
 *** Minimisation de la connaissance offerte
 *** Limitation du couplage au stricte nécessaire
-
+** Dependency Inversion Principle
+*** Les composants de haut-niveau posent leurs exigences  
+*** Les dépendances de bas niveau y répondent via des adaptateurs
 // end::content[]

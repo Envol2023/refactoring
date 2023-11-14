@@ -56,8 +56,8 @@ Angle:
 * Gestion de projet
 
 Profils
-* Compétence annexe / Pratique Occasionnelle
-* Compétence principale / Pratique quotidienne
+* Compétence mineure / Pratique occasionnelle
+* Compétence majeure / Pratique régulière
 * Expertise
 
 --

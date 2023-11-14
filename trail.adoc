@@ -164,7 +164,7 @@ Faire l'explication de type FAST, mais en plus court.
 
 === Exemple de tests unitaire
 
-[source,python]
+[source,python,attributes]
 ----
 def test_something
     # Given
