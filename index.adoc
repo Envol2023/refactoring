@@ -3,7 +3,7 @@ ifdef::backend-revealjs[]
 include::_inc_revealjs.adoc[]
 endif::[]
 ifndef::backend-revealjs[]
-:toc:
+:toc: auto 
 :toc-title: Table des matières
 :toclevels: 4
 :doctype: book
@@ -12,15 +12,21 @@ include::_inc_context.adoc[]
 :print-detail: true
 :print-timing: true
 :ROLE: notes
-:include_options: tag=content
+ifndef::imagesdir[]
+:imagesdir: ./
+endif::[]
 
 
 Content for ENVOL 2023 and further
+
 
 [.small.right]
 marc.dexet@ias.u-psud.fr
 
 == Plan
+
+INCLUDE OPTIONS {include_options}
+
 
 [.simple]
 * Introduction au refactoring
@@ -103,4 +109,5 @@ include::./sections/04_conception/conception_index.adoc[{include_options}]
 
 include::./sections/05_testability/testability_index.adoc[{include_options}]
 
+include::./sections/06_conclusion/conclusion_index.adoc[{include_options}]
 

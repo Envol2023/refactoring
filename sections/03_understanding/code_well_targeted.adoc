@@ -51,7 +51,7 @@ def report_starship_availability_for(patrol):
     return rpt
 ----
 
-=== ! 
+ifdef::mode_slide[=== !] 
 
 Identification des blocks d'instructions
 
@@ -85,7 +85,7 @@ def report_starship_availability_for(patrol):
 [.simple]
 * Oh désolé, c'est la version _compressée_...
 
-=== ! 
+ifdef::mode_slide[=== !] 
 
 Voici la version normale, pour humain 
 
@@ -106,7 +106,7 @@ Voici la version normale, pour humain
 ...
 ----
 
-=== ! 
+ifdef::mode_slide[=== !] 
 
 Commenter les blocs de code pour y voir clair
 
@@ -135,7 +135,7 @@ Commenter les blocs de code pour y voir clair
 ** _Vérification de l'énergie de propulsion par rapport à la durée de la patrouille._
 ** _Vérification du délai de réparation des moteurs par rapport au départ de la patrouille._
 
-=== ! 
+ifdef::mode_slide[=== !] 
 
 Passer de la compréhension par les _commentaires_
 
@@ -180,7 +180,7 @@ icon:arrow-down[]
 def check_propulsion_energy_against_duration(report, patrol_duration):
 ----
 --
-=== !
+ifdef::mode_slide[=== !]
 
 [.simple]
 * Séparation distincte entre l'**intention** (_WHAT_) ...
@@ -206,7 +206,7 @@ def ...:
 ----
 
 
-=== !
+ifdef::mode_slide[=== !]
 
 [{code_size}]
 [source,python,attributes]
@@ -227,7 +227,7 @@ def report_starship_availability_for(patrol):
     return report
 ----
 
-=== !
+ifdef::mode_slide[=== !]
 
 [{code_size}]
 [source,python,attributes]
@@ -246,7 +246,7 @@ def report_starship_availability_for(patrol):
     return report
 ----
 
-=== !
+ifdef::mode_slide[=== !]
 
 [.simple]
 * Et en continuant ce processus
@@ -344,7 +344,7 @@ image::images/good_practices-scale_0.svg[]
 [.center]
 image::images/good_practices-scale_1.svg[]
 
-=== ! 
+ifdef::mode_slide[=== !] 
 
 Passer d'un niveau supérieur à un niveau inférieur.
 
@@ -352,7 +352,7 @@ Passer d'un niveau supérieur à un niveau inférieur.
 image::images/good_practices-scale_2.svg[]
 
 
-=== ! 
+ifdef::mode_slide[=== !] 
 
 Passer d'un niveau supérieur à un niveau inférieur.
 

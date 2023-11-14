@@ -191,6 +191,10 @@ Faire évoluer un logiciel à un rythme **soutenable** => garantir maintenabilit
 ** => Compromis, maladresses, manques de clairvoyances, renoncements
 ** => Compréhension ou conception obsolète ou incomplète
 
+TODO place cette image
+
+image::images/dette_technique.png[]
+
 [NOTE.notes]
 --
 Au cours d'un développement, il est naturel que des compromis, des maladresses ou des raccourcis soient commis. Cela fait parfois gagner du temps ou des ressources, parfois cela est du à un manque de clairvoyance ou plus simplement à une vision de la conception qui n'était pas la plus pertinente mais qui pénalisent la maintenabilité de l'application et sa faculté à évoluer.

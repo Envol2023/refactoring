@@ -935,7 +935,7 @@ def test_validator_load_rules():
 ----
 
 
-== Obstacle > La dépendance cachée
+=== Obstacle > La dépendance cachée
 
 Pas vu, pas pris
 
@@ -967,7 +967,7 @@ class RadioCommunicator(Communicator):
 
 Comment faire un test de `RadioCommunicator` alors que tout repose sur `XBandTransmitter` ?
 
-== Obstacle > La dépendance cachée
+=== Obstacle > La dépendance cachée
 
 **Le problème**
 
@@ -987,7 +987,7 @@ L'autre problème concerne la connaissance, donc le couplage inhérent à cette 
 Le mieux est de reposer que l'abstraction plutôt que l'implémentation.
 --
 
-== Obstacle > La dépendance cachée 
+=== Obstacle > La dépendance cachée 
 
 **Extraire l'interface du XBandTransmitter**
 
@@ -1042,7 +1042,7 @@ class RadioCommunicator(Communicator):
 ----
 --
 
-=== Obstacle > La dépendance cachée 
+==== Obstacle > La dépendance cachée 
 
 **Ajouter un paramètre optionnel**
 
@@ -1060,7 +1060,7 @@ class RadioCommunicator(Communicator):
         ..
 ----
 
-=== Obstacle > La dépendance cachée 
+==== Obstacle > La dépendance cachée 
 
 **Tester**
 
@@ -1946,6 +1946,32 @@ image::images/testability-Mikado-sample_13.svg[]
 [.center]
 == Améliorer la testabilité
 
-TODO faire une résumé
+[.left-column]
+--
+* L’échec comme premier pas.
+* Mocking
+* Legacy
+** Le cercle infernale
+** Chirurgie de guerre
+** Test de caractérisation
+* Obstacles typiques
+** Le paramètre irritant
+** La dépendance cachée
+** La dépendance globale
+--
+
+[.right-column]
+--
+
+* Par la hiérarchisation
+** Testing par surcharge
+** Test par sous-classage
+* Legacy Responsabilités
+*** Grouper par nom
+*** Grouper par ce qui change
+*** Grouper par relations
+* Méthode MIKADO
+--
+
 
 // end::content[]

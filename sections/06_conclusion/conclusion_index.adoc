@@ -14,6 +14,8 @@ endif::[]
 
 == Conclusions
 
+TODO etoffer
+
 * Refactoring
 ** Plus que de simples techniques
 * Sans refactoring, pas d'Agilité
@@ -21,26 +23,50 @@ endif::[]
 * Plusieurs niveaux d'application
 
 
-== Livres de réferences
+== Livres de référence
 
-* Code Clean
-** La bible !
-
-image::images/clean_code.jpeg[]
-
+[.left-column]
+--
 * Refactoring, Improving the Design of Existing Code
+** Martin Fowler
 ** Bien sûr
 
-image:images/refact2.jpg[]
+image:images/refact2.jpg[height=200]
+--
 
+[.right-column]
+--
 * Working Effectively with Legacy Code  
-
-image::images/working_effect.jpeg[]
-
+** Michael Feathers
 ** Un peu vieux, mais très enrichissant 
 
+image::images/working_effect.jpeg[height=200]
+--
+
+== Livres de référence
+
+[.left-column]
+--
+* Clean Code
+** Robert C. Martin 
+** La bible !
+
+image::images/clean_code.jpeg[height=200]
+
+* Design Patterns, Tête la première
+
+image::images/design_pattern_tete_.jpg[height=200]
+--
+[.right-column]
+--
 * Pragmatic Unit Testing in Java with JUnit
+** Jeff Langr
 
-image::images/pragmatic_junit8.jpeg[]
+image::images/pragmatic_junit8.jpeg[height=200]
 
+* Python Testing with pytest, Second Edition
+** Brian Okken
+
+image::images/bopytest2-250.jpg[height=200]
+--
 // end::content[]

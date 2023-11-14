@@ -34,7 +34,7 @@ ifdef::mode_book[]
 :end_definition_block:
 endif::[]
 ifdef::mode_book[]
-:include_options: leveloffset=+1
+:include_options: leveloffset=+1,tag=content
 :code_size: .normal
 endif::[]
 ifdef::mode_slide[]
