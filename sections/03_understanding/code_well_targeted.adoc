@@ -377,6 +377,4 @@ image::images/good_practices-scale_3.svg[]
 * `Extract Method`
 
 
-== Exercice
-
 // end::content[]

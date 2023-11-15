@@ -44,5 +44,6 @@ student2 = Student("Jane Doe", 80, 75, 85)
 report_generator = ReportGenerator()
 report_generator.generate_report(student2)
 
-
+* Créer la classe report
+* Copier e
 

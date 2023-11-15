@@ -72,4 +72,116 @@ include::_05_conception_bad_smells.adoc[{include_options}]
 ** Dependency Inversion Principle
 *** Les composants de haut-niveau posent leurs exigences  
 *** Les dépendances de bas niveau y répondent via des adaptateurs
+
+== Exercice
+
+[.simple]
+* Se mettre par deux
+* Cloner le projet https://github.com/RefactoringEnvol2023/02_extract_class.git
+* Créer un environnement virtuel
+** `python -m venv .venv --prompt "exo01`
+* Activez le 
+** Linux/MacOS => `source .venv/bin/activate`
+** Windows => `.venv/Script/Active.ps1`
+*** En cas de problème : `Set-ExecutionPolicy Unrestricted -Scope Process`
+* Dans un shell lancer la commande `ptw --now tests`
+* Lire le README.md
+
+
+ifdef::mode_slide[]
+=== Solution 
+
+A chaque étape, les tests doivent passer
+
+=== Solution > Etape {counter:StepExoClass}
+
+Créer une classe vide `Report` et l'instancie dans `StudentReport`
+
+[source,python,attributes]
+-----
+class Report:
+    pass
+
+class StudentReport:
+    def __init__(self, student_name, math_grade, literature_grade, science_grade):
+        self.student_name = student_name
+        self.math_grade = math_grade
+        self.literature_grade = literature_grade
+        self.science_grade = science_grade
+        self.report = Report()    
+-----
+
+
+=== Solution > Etape {counter:StepExoClass}
+
+Recopier signature de generate_report avec le paramètre student en plus
+
+[source,python,attributes]
+-----
+class Report:
+
+    def generate_report(self, student, out: Optional[StringIO]=None):
+        ...
+-----
+
+=== Solution > Etape {counter:StepExoClass}
+
+Recopier le contenu en adaptant
+
+[source,python,attributes]
+-----
+class Report:
+
+    def generate_report(self, student, out: Optional[StringIO]=None):
+        out = out if out else sys.stdout
+        average_grade = (student.math_grade + student.literature_grade + student.science_grade) / 3
+        print(f"Student: {student.student_name},", file=out, sep='\n')
+        print(f"Math Grade: {student.math_grade},", file=out, sep='\n')
+        print(f"Literature Grade: {student.literature_grade},", file=out, sep='\n')
+        print(f"Science Grade: {student.science_grade},", file=out, sep='\n')
+        print(f"Average Grade: {average_grade},", file=out, sep='\n')
+-----
+
+=== Solution > Etape {counter:StepExoClass}
+
+Déléguer l'appel
+
+[source,python,attributes]
+-----
+class StudentReport:
+    def __init__(self, student_name, math_grade, literature_grade, science_grade):
+        self.student_name = student_name
+        self.math_grade = math_grade
+        self.literature_grade = literature_grade
+        self.science_grade = science_grade
+        self.report = Report()
+
+    def generate_report(self, out: Optional[StringIO]=None):
+        self.report.generate_report(student=self, out=out)
+-----
+
+
+=== Solution > Etape {counter:StepExoClass}
+
+Inverser les dépendances dans le test
+
+[source,python,attributes]
+-----
+def test_report():
+    student = StudentReport("John Doe", 90, 85, 95)
+    out = StringIO()
+    report = Report()
+    # __When__
+    report.generate_report(student, out)
+    # __Then__
+    assert out.getvalue() == 'Student: John Doe,\n' \
+        'Math Grade: 90,\n' \
+        'Literature Grade: 85,\n' \
+        'Science Grade: 95,\n' \
+        'Average Grade: 90.0,\n'
+    
+-----
+
+endif::mode_slide[]
+
 // end::content[]

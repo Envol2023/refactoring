@@ -3,7 +3,7 @@ ifdef::backend-revealjs[]
 include::_inc_revealjs.adoc[]
 endif::[]
 ifndef::backend-revealjs[]
-:toc: auto 
+:toc: left 
 :toc-title: Table des matières
 :toclevels: 4
 :doctype: book

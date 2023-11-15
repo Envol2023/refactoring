@@ -105,4 +105,18 @@ Nous avons vu
 ** Fonction trop longue
 ** Longue liste de paramètres
 
+== Exercice
+
+[.simple]
+* Se mettre par deux
+* Cloner le projet https://github.com/RefactoringEnvol2023/01_understanding_exercice.git
+* Créer un environnement virtuel
+** `python -m venv .venv --prompt "exo01`
+* Activez le 
+** Linux/MacOS => `source .venv/bin/activate`
+** Windows => `.venv/Script/Active.ps1`
+*** En cas de problème : `Set-ExecutionPolicy Unrestricted -Scope Process`
+* Vérifier que vous êtes sur la branche `RAW`
+* Dans un shell lancer la commande `ptw --now tests`
+* Lire le README.md
 // end::content[]
