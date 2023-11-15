@@ -84,6 +84,7 @@ include::_05_conception_bad_smells.adoc[{include_options}]
 ** Linux/MacOS => `source .venv/bin/activate`
 ** Windows => `.venv/Script/Active.ps1`
 *** En cas de problème : `Set-ExecutionPolicy Unrestricted -Scope Process`
+* **Installer les dépendances** `pip install -e .[dev]`
 * Dans un shell lancer la commande `ptw --now tests`
 * Lire le README.md
 

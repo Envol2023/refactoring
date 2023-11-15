@@ -117,6 +117,7 @@ Nous avons vu
 ** Windows => `.venv/Script/Active.ps1`
 *** En cas de problème : `Set-ExecutionPolicy Unrestricted -Scope Process`
 * Vérifier que vous êtes sur la branche `RAW`
+* **Installer les dépendances** `pip install -e .[dev]`
 * Dans un shell lancer la commande `ptw --now tests`
 * Lire le README.md
 // end::content[]
