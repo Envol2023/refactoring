@@ -24,7 +24,7 @@ ENVOL 2023
 --
 marc.dexet@ias.u-psud.fr
 
-image::https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png[width=200] 
+image::https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc.png[width=200] 
 
 Licence https://creativecommons.org/licenses/by-nc/4.0/deed.fr[CC by-nc 4.0]
 --
