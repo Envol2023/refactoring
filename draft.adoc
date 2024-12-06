@@ -1166,7 +1166,7 @@ Comment améliorer les frontières pour répondre à ces exigences ?
 
 * Avantages
 ** Fournit stabilité et simplicité de manipulation
-** Permet de communiquer et contractualiser entre groupe de personnes
+** Permet de communiquer et contractualiser entre groupes de personnes
 *** Alors que rien n'existe encore
 ** Est concentrée sur la représentation (modélisation) 
 * Inconvénients

@@ -335,7 +335,7 @@ vs
 [source,python,attributes]
 ----
 complaint = complaint_service.next()
-customer = co.get_customer()
+customer = complaint.get_customer()
 ...
 # bla bla
 # 500 lignes plus loin
@@ -565,7 +565,7 @@ endif::mode_slide[]
 * Commentaires symptomatiques
 ** Portion de code nécessitant un commentaire d'explication
 *** => Problème de design !
-*** Mauvaise nommage des éléments ?
+*** Mauvais nommage des éléments ?
 *** Mauvaise isolation des fonctions ?
 * Le code doit être *auto-explicatif*
 ** Dans l'absolu, il doit pouvoir se passer de commentaires.

@@ -447,7 +447,7 @@ Le couplage étroit fourni par l'héritage fait que l'implémentation d'une sous
 == Composition et responsabilités
 
 * A chacun son expertise
-** => Facilite l'identification des responsabilité.
+** => Facilite l'identification des responsabilités.
 * A chacun ses tests
 ** => Responsabilité limitée => Test facilité
 * A chacun sa généalogie

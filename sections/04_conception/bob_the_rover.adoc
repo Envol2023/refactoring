@@ -99,7 +99,7 @@ def move(radius,
 
 === Structuration des données
 
-* En tant que _simples_ de conteneurs
+* En tant que _simples_ conteneurs
 
 [.left-column]
 --

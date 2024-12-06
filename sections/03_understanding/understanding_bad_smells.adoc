@@ -7,7 +7,7 @@
 
 == Nom Mystérieux
 
-* Symptôme
+* Symptômes
 ** Nom incompréhensible, imprononçable
 * Techniques
 ** `Rename Method`
@@ -15,7 +15,7 @@
 
 == Fonction trop longue
 
-* Symptôme
+* Symptômes
 ** Obligé de scroller plus d'un écran pour parcourir une méthode
 ** Être perdu en la lisant
 ** Transgression des principes de _Code Clean_ 

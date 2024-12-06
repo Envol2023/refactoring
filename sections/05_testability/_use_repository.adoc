@@ -8,7 +8,7 @@ endif::[]
 
 == Exemple
 
-* Situation où nous dépendons d'une externatlité
+* Situation où nous dépendons d'une externalité
 ** Base de données, API, librairie externe
 
 [.reset-column]
@@ -161,7 +161,7 @@ class TypeTRepository:
 [.right-column]
 --
 [.center]
-**Cas d'usage spécifiques**
+**Cas d'usages spécifiques**
 
 [source,python,attributes]
 -----
@@ -268,7 +268,7 @@ def test_city_service_merge_cities():
 
 * S'abstraire d'une externalité
 ** => Monter des démonstrateurs _fail fast_
-*** Valider rapide d'une hypothèse avec le _client_
+*** Validation rapide d'une hypothèse avec le _client_
 ____
 _Recherche de cycles courts et de feedback client_
 ____

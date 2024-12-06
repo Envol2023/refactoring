@@ -311,7 +311,7 @@ sans changer son comportement observable
 [%step]
 * Amélioration _qualités internes_
 ** => Préoccupation des développeuses et développeurs
-* Conservations _qualités externes_ observables
+* Conservation _qualités externes_ observables
 ** => Ne concerne pas les utilisatrices et utilisateurs
 ** Iso-fonctionnalités
 * Allocations de ressources
@@ -372,7 +372,7 @@ Et ce n'est pas parce que le navire flotte qu'il est dans un état satisfaisant.
 [%step]
 * Non, une activité _normale_
 ** Activité de développement !
-* Doit-elle être traiter à part ?
+* Doit-elle être traitée à part ?
 ** _Non_ => entretien du code
 ** _Oui_ => si dette écrasante => plan d'action et allocation dédiée
 * Management/Gestion de projet
@@ -487,7 +487,7 @@ image::images/cycle_refactoring.svg[]
 
 * A tout moment le cycle
 ** Peut être suspendu en plein milieu
-** Peut-être reversible
+** Peut être reversible
 --
 
 
@@ -722,7 +722,7 @@ and powerful Renaming
 --
 * Linters > Jiminy Cricket
 ** Analyseurs de code _"temps réel"_
-** Disponible dans _presque_ tous les https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis[langages]
+** Disponibles dans _presque_ tous les https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis[langages]
 ** Dans tous les bons IDE
 *** Sinon ce n'est pas un _bon_ IDE !
 --
@@ -785,7 +785,7 @@ image::images/sonarqube/2023-11-12T21-54-03-101Z.png[]
 * Objectifs
 ** Pour les développeuses et développeurs
 *** Lever le nez du guidon & prendre de la hauteur
-** Pour les chef(fes) de projet
+** Pour les chef(fe)s de projet
 *** Comprendre l'importance du refactoring & s'en faire l'avocat lors des arbitrages
 * Pour tous
 ** _Evangéliser_ auprès de vos collègues
