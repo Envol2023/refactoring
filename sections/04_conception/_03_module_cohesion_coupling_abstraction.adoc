@@ -136,7 +136,7 @@ image:images/design-system-expert_2.svg[]
 --
 * Décomposition 
 ** du système  -> en sous-systèmes _moins complexes_ 
-** du travail -> tâche par domaine d'expertise
+** du travail -> en tâches par domaine d'expertise
 --
 [.right-column-1-3]
 --
@@ -154,7 +154,7 @@ image:images/design-system-expert_3.svg[]
 * Expert(e)
 ** Connaît très bien son domaine, sa culture, ses règles 
 *** => *Forte Cohésion*
-** Ne devrait en savoir plus que nécessaire sur les autres domaines 
+** Ne devrait pas en savoir plus que nécessaire sur les autres domaines 
 *** => *Faible Couplage*
 * Démarche d'optimisation
 ** Maximiser la compétence, 
@@ -266,7 +266,7 @@ Mais qu'en est-il de l'interface ?
 ** Sépare les modules
 ** Permet les interactions inter-modules
 * Plusieurs types d'interfaces
-** Espaces de nommage => packaging, modules python 
+** Espace de nommage => packaging, modules python 
 ** Interface => au sens moyen d'interagir
 * Objectif conception 
 ** *Minimiser* les impacts des _modifications_ en cas d'évolution des structures internes
@@ -421,7 +421,7 @@ Si l'abstraction est très riche, il faudra peut-être à la scinder.
 [%step]
 * Avantages
 ** Fournit *stabilité* et *simplicité* de manipulation
-** Permet de communiquer et contractualiser entre groupe de personnes
+** Permet de communiquer et contractualiser entre groupes de personnes
 ** Est concentrée sur la représentation (modélisation) 
 ** Cache les détails d'implémentation
 * Inconvénients

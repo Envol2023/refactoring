@@ -6,7 +6,7 @@
 
 === Bad Smell > Duplication
 
-* Symptôme
+* Symptômes
 ** Du code est dupliqué en plusieurs endroits
 ** La maintenance aussi
 * Techniques

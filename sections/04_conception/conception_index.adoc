@@ -50,7 +50,7 @@ include::_05_conception_bad_smells.adoc[{include_options}]
 == Améliorer la conception : conclusion
 
 * Modularisation
-** Voir un le système comme un jeu de construction
+** Voir un système comme un jeu de construction
 ** Produire des modules
 *** A forte cohésion interne
 *** A faible couplage externe
@@ -68,7 +68,7 @@ include::_05_conception_bad_smells.adoc[{include_options}]
 *** Concentration de la connaissance mobilisable
 ** Interface Segregation Principle
 *** Minimisation de la connaissance offerte
-*** Limitation du couplage au stricte nécessaire
+*** Limitation du couplage au strict nécessaire
 ** Dependency Inversion Principle
 *** Les composants de haut-niveau posent leurs exigences  
 *** Les dépendances de bas niveau y répondent via des adaptateurs

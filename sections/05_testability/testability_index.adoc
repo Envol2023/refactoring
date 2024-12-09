@@ -47,7 +47,7 @@ ____
 
 == L'échec comme premier pas.
 
-Dans la philosophe des tests, l'échec n'est pas négatif, c'est sa persistence qu'il l'est éventuellement.
+Dans la philosophe des tests, l'échec n'est pas négatif, c'est sa persistence qui l'est éventuellement.
 
 L'échec indique qu'un état souhaité n'est pas atteint. L'objectif est de l'atteindre
 
@@ -361,7 +361,7 @@ def test_filter_info_log_no_info_logs():
 * Coupable couplage
 ** Mise en condition => beaucoup de travail
 *** => Instanciation de nombreux objets
-*** => Beaucoup de préoccupation différentes 
+*** => Beaucoup de préoccupations différentes 
 * Objectifs de la refactorisation
 ** => Découpler au maximum
 *** Conception _propre_ <= Réduction dette
@@ -387,12 +387,12 @@ def test_filter_info_log_no_info_logs():
 [%step]
 * Situation complexe => Mocking
 ** Mock => objet simulé qui **imite** le comportement d'objets réels de manière _contrôlée_.
-** Outil très puissants et utiles
+** Outil très puissant et utile
 *** Simuler un composant 
 *** Espionner les appels à un composant
 *** Création d'un objet virtuel uniquement pour les tests
 
-* Outil pas toujours simples
+* Outil pas toujours simple
 ** _Quand même mocker devient compliqué_ => Sérieux problème de conception.
 --
 
@@ -591,7 +591,7 @@ Obstacles aux tests _unitaires_
 ** _Science_ => Équipement, Carte électronique, Instrument
 ** Arbre de dépendances trop profond
 * Tests non idempotents 
-** Liées au temps, gestion asynchrone, randomisation
+** Liés au temps, gestion asynchrone, randomisation
 * Absence d'observable
 ** Pas de changement d'état, pas de retour, pas de son, pas d'image
 
@@ -972,7 +972,7 @@ Comment faire un test de `RadioCommunicator` alors que tout repose sur `XBandTra
 * Fort couplage
 ** Connaissance nécessaire hors domaine
 * Difficulté d'exploration
-** Comment _disposer_ la dépendance pour les tests
+** Comment _disposer_ de la dépendance pour les tests
 * Solution
 ** _Reposer sur l'abstraction plutôt que l'implémentation !_
 
@@ -1135,11 +1135,11 @@ C'est possible, mais cela doit être laborieux.
 === Singleton is an anti-pattern
 
 * Singleton pattern du _Gang Of Four_ 
-** S'assurer qu'une seule instance qui puisse exister.
+** S'assurer qu'une seule instance puisse exister.
 * Anti-pattern 
 ** Difficile à adapter aux différentes situations
 ** Très fort couplage à une classe
-** Un changement impact tout le système
+** Un changement impacte tout le système
 *** => Aucune isolation :(
 
 === Obstacle > La dépendance globale
@@ -1562,7 +1562,7 @@ La théorie de la conception aurait voulu que son design soit mûrement réfléc
 === Responsabilités  > Grouper par nom
 
 * Proximité sémantique
-** Chercher les noms de propriétés, de fonction qui sont proches
+** Chercher les noms de propriétés, de fonctions qui sont proches
 --
 
 [.center]
@@ -1835,7 +1835,7 @@ ifdef::mode_slide[=== Mikado illustration]
 [.center]
 image::images/testability-Mikado-sample_1.svg[]
 
-Les responsabilité apparaissent en essayant de la tester
+Les responsabilités apparaissent en essayant de la tester
 
 ifdef::mode_slide[=== Mikado illustration]
 
@@ -1867,7 +1867,7 @@ image::images/testability-Mikado-sample_4.svg[]
 
 ifdef::mode_slide[=== Mikado illustration]
 
-*Etape {counter:Mikado_Sample}*: C'est partie
+*Etape {counter:Mikado_Sample}*: C'est parti
 
 _"Extraire une interface de l'accès aux données"_
 
@@ -1995,7 +1995,7 @@ image::images/testability-Mikado_2.svg[]
 * L’échec comme premier pas.
 * Mocking
 * Legacy
-** Le cercle infernale
+** Le cercle infernal
 ** Chirurgie de guerre
 ** Test de caractérisation
 * Obstacles typiques

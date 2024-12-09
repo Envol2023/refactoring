@@ -16,10 +16,10 @@ endif::[]
 [%step]
 * Analyseur statique open source
 ** Evaluation de la dette suivant plusieurs aspects
-** Détail des point litigieux
+** Détail des points litigieux
 ** Une forme d'objectivation
 * Rapide présentation
-** Je vous en met plein les mirettes
+** Je vous en mets plein les mirettes
 ** Nous jouerons plus tard si nous en avons le temps
 ** Vous aurez le temps à la maison de jouer avec :)
 

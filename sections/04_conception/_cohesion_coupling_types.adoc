@@ -1,6 +1,6 @@
 == Plus de détails
 
-En options ci-après, les type de couplage et de cohésion selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
+En option ci-après, les types de couplage et de cohésion selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
 
 === 7 types de cohésion 
 
@@ -8,7 +8,7 @@ En options ci-après, les type de couplage et de cohésion selon Pressman R. S.,
 Selon Pressman R. S., _Software Engineering: A Practitioner's Approach_) 
 
 * **Accidentel** : 
-** Lien entre composants inexistant ou futile.
+** Liens entre composants inexistants ou futiles.
 * **Logique** : 
 ** Les composants sont reliés logiquement par un ou plusieurs critères communs.
 *** Exemple : _les composants sont rangés par type (Controller, Model, View en MVC)_
@@ -43,7 +43,7 @@ Selon Pressman R. S., _Software Engineering: A Practitioner's Approach_)
 ** les composants n'échangent pas d'information.
 * **Par données**
 ** les composants échangent de l'information par des méthodes utilisant des arguments (paramètres) de type simple (nombre, chaîne de caractères, tableau).
-* **Par paquet**
+* **Par paquets**
 ** les composants échangent de l'information par des méthodes utilisant des arguments de type composé (structure, classe).
 * **Par contrôle**
 ** les composants se passent ou modifient leur contrôle par changement d'un drapeau (verrou).

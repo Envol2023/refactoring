@@ -128,7 +128,7 @@ image::images/categories_of_test_5.png[width=50%]
 *** Aucune dépendance aux tests précédents, 
 *** Aucune influence sur les tests suivants.
 * Répétables
-** Même tests unitaires => mêmes résultats
+** Mêmes tests unitaires => mêmes résultats
 ** Aucune dépendance à l'environnement 
 *** réseau, base de données, système de fichiers, paramètres utilisateur, données sur disque...
 *** Ordinateur, utilisateur, temps, date d'exécution

@@ -20,7 +20,7 @@ endif::[]
 ** Dispersion sur des sujets très différents
 * => Décomposer le gros problème 
 ** En plusieurs petits problèmes reliés entre eux
-** Plus faciles à _bufferiser_ , à maîtriser
+** Plus faciles à _bufferiser_, à maîtriser
 
 [.right-column-1-3]
 image::images/breakdown-problem.gif[height=50%]

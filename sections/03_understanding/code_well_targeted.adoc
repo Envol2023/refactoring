@@ -53,7 +53,7 @@ def report_starship_availability_for(patrol):
 
 ifdef::mode_slide[=== !] 
 
-Identification des blocks d'instructions
+Identification des blocs d'instructions
 
 [source,python,attributes]
 ----
@@ -365,7 +365,7 @@ image::images/good_practices-scale_3.svg[]
 ** En suivant les règles de nommage
 * Limiter son contenu à un nombre réduit de lignes
 ** **Code Clean** => 5 à 10 lignes max
-** Extraire les blocs d'instruction dans des fonction subalternes
+** Extraire les blocs d'instructions dans des fonctions subalternes
 * Mettre les choses importantes en avant
 ** *Début* de texte -> fonctions de plus **haut** niveau
 ** *Fin* de texte -> fonctions de plus **bas** niveau

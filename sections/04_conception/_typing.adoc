@@ -287,7 +287,7 @@ operator.openAndCloseDoor(new Oven()) // KO ne compile pas
 === Abstraction en Python : Abstract Base Classes
 
 * Module abc - Abstract Base Classes
-** Vérifie que des méthode abstraites sont redéfinies à l'instanciation
+** Vérifie que des méthodes abstraites sont redéfinies à l'instanciation
 
 [.left-column]
 --
